@@ -1,0 +1,85 @@
+.wc-block-components-button {
+	border-radius: 999px;
+	background: var(--azure-teal);
+	color: var(--azure-ink);
+	box-shadow: 0 12px 28px rgba(112, 201, 191, 0.22);
+}
+
+.wc-block-components-button:hover,
+.wc-block-components-button:focus-visible {
+	background: #81d5cc;
+	color: var(--azure-ink);
+}
+
+.wc-block-cart__submit-container,
+.wc-block-checkout__actions_row {
+	background: var(--azure-bg);
+}
+
+.wc-block-cart__submit-container::before {
+	box-shadow: 0 -16px 36px 12px rgba(216, 209, 195, 0.55);
+}
+
+.wc-block-components-order-summary,
+.wc-block-checkout__totals {
+	border-radius: 24px;
+	border: 1px solid rgba(15, 25, 33, 0.08);
+	background: var(--azure-bg-soft);
+	box-shadow: var(--azure-shadow-soft);
+}
+
+.wc-block-components-form .wc-block-components-text-input input,
+.wc-block-components-form .wc-block-components-text-input select,
+.wc-block-components-form .wc-block-components-textarea,
+.wc-block-checkout__actions_row,
+.wc-block-components-checkbox {
+	border-radius: 18px;
+}
+
+.wc-block-components-order-summary-item__quantity {
+	background: var(--azure-bg);
+	border-color: var(--azure-ink);
+	box-shadow: 0 0 0 2px var(--azure-bg);
+	color: var(--azure-ink);
+}
+
+.azure-commerce-content .wp-block-woocommerce-cart,
+.azure-commerce-content .wp-block-woocommerce-checkout,
+.azure-commerce-content .woocommerce {
+	max-width: none;
+}
+
+.wc-block-cart,
+.wc-block-checkout {
+	color: var(--azure-ink);
+}
+
+.wc-block-cart__empty-cart__title,
+.wc-block-cart__empty-cart__description,
+.wc-block-cart__empty-cart__title.with-empty-cart-icon::before {
+	color: var(--azure-ink);
+}
+
+.wc-block-cart__empty-cart__title {
+	font-family: var(--azure-font-display);
+	font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.wc-block-cart__empty-cart__description {
+	color: var(--azure-ink-soft);
+}
+
+.wc-block-cart-items,
+.wc-block-components-sidebar,
+.wc-block-components-totals-wrapper,
+.wc-block-components-main,
+.wc-block-checkout__main {
+	border-color: rgba(15, 25, 33, 0.1);
+}
+
+.wc-block-cart-items,
+.wc-block-components-sidebar,
+.wc-block-checkout__main,
+.wc-block-checkout__sidebar {
+	border-radius: 24px;
+}

@@ -1,0 +1,116 @@
+.azure-card,
+.azure-story-card,
+.azure-search-card,
+.azure-empty-state,
+.azure-sidebar-card {
+	padding: clamp(20px, 3vw, 28px);
+	border-radius: var(--azure-radius-card);
+	border: 1px solid rgba(15, 25, 33, 0.08);
+	background: var(--azure-bg-soft);
+	box-shadow: var(--azure-shadow-soft);
+}
+
+.azure-story-card--dark {
+	border-color: rgba(255, 255, 255, 0.08);
+	background: var(--azure-ink);
+	color: var(--azure-white-tint);
+}
+
+.azure-story-card h3,
+.azure-card h3,
+.azure-search-card h2,
+.azure-newsletter-card h3,
+.azure-contact-card h2,
+.azure-compliance-card h2 {
+	margin: 0 0 12px;
+	font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+}
+
+.azure-story-card p:last-child,
+.azure-card p:last-child,
+.azure-search-card p:last-child {
+	margin-bottom: 0;
+}
+
+.azure-accordion-list {
+	display: grid;
+	gap: 16px;
+	align-content: start;
+	align-self: start;
+}
+
+.azure-accordion {
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 22px;
+	background: rgba(23, 37, 47, 0.96);
+	overflow: hidden;
+}
+
+.azure-accordion summary {
+	list-style: none;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 16px;
+	padding: 22px 26px;
+	cursor: pointer;
+	font-family: var(--azure-font-body);
+	font-size: 1.0625rem;
+	font-weight: 700;
+	line-height: 1.45;
+	color: var(--azure-white-tint);
+}
+
+.azure-accordion summary::-webkit-details-marker {
+	display: none;
+}
+
+.azure-accordion summary::after {
+	content: "+";
+	font-size: 20px;
+	line-height: 1;
+	color: var(--azure-gold-soft);
+	margin-top: 2px;
+}
+
+.azure-accordion[open] summary::after {
+	content: "–";
+}
+
+.azure-accordion__content {
+	padding: 0 26px 24px;
+	color: rgba(244, 250, 249, 0.88);
+}
+
+.azure-accordion__content p {
+	margin: 0;
+	max-width: 60ch;
+	font-family: var(--azure-font-body);
+	font-size: 1rem;
+	line-height: 1.7;
+	color: inherit;
+}
+
+.azure-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 28px;
+	padding: 0 12px;
+	border-radius: 999px;
+	background: rgba(112, 201, 191, 0.18);
+	color: var(--azure-teal-strong);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.azure-badge--sale {
+	background: rgba(233, 210, 160, 0.18);
+	color: var(--azure-gold);
+}
+
+.azure-section-heading--split {
+	align-items: end;
+}

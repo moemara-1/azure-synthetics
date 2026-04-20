@@ -1,0 +1,2173 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "wMHLu",
+      "x": 80,
+      "y": 40,
+      "name": "AzureSynthetics Storefront",
+      "clip": true,
+      "width": 1440,
+      "fill": "$bg",
+      "cornerRadius": 34,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "qfd3h",
+          "name": "Hero",
+          "clip": true,
+          "width": "fill_container",
+          "height": 760,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "82TiX",
+              "x": 0,
+              "y": 0,
+              "name": "heroBg",
+              "fill": [
+                {
+                  "type": "gradient",
+                  "gradientType": "linear",
+                  "enabled": true,
+                  "rotation": 135,
+                  "size": {
+                    "height": 1
+                  },
+                  "colors": [
+                    {
+                      "color": "#09141A",
+                      "position": 0
+                    },
+                    {
+                      "color": "#102532",
+                      "position": 0.56
+                    },
+                    {
+                      "color": "#08141A",
+                      "position": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "gradient",
+                  "gradientType": "radial",
+                  "enabled": true,
+                  "opacity": 0.42,
+                  "rotation": 0,
+                  "size": {
+                    "width": 0.56,
+                    "height": 0.8
+                  },
+                  "colors": [
+                    {
+                      "color": "#70C9BF66",
+                      "position": 0
+                    },
+                    {
+                      "color": "#70C9BF00",
+                      "position": 1
+                    }
+                  ],
+                  "center": {
+                    "x": 0.78,
+                    "y": 0.18
+                  }
+                }
+              ],
+              "width": 1440,
+              "height": 760
+            },
+            {
+              "type": "frame",
+              "id": "ZramQ",
+              "x": 32,
+              "y": 28,
+              "name": "topbar",
+              "width": 1376,
+              "height": 56,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "SxFJI",
+                  "name": "brand",
+                  "gap": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "XejRh",
+                      "name": "logo",
+                      "width": 52,
+                      "height": 52,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./assets/azure-logo-transparent.png",
+                        "mode": "fit"
+                      },
+                      "cornerRadius": 16
+                    },
+                    {
+                      "type": "frame",
+                      "id": "r8eId",
+                      "name": "brandText",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yERfk",
+                          "name": "brandName",
+                          "fill": "$whiteTint",
+                          "content": "Azure Synthetics",
+                          "fontFamily": "Funnel Sans",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "xXSuB",
+                          "name": "brandSub",
+                          "fill": "#A6BAC4",
+                          "content": "Clinical-grade peptide storefront",
+                          "fontFamily": "Geist",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OBvJh",
+                  "name": "rightWrap",
+                  "gap": 28,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "w6k2j",
+                      "name": "nav",
+                      "gap": 20,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "NiDDf",
+                          "name": "navHome",
+                          "fill": "$whiteTint",
+                          "content": "Home",
+                          "fontFamily": "Geist",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "vEuzs",
+                          "name": "navShop",
+                          "fill": "#C0CFD4",
+                          "content": "Shop",
+                          "fontFamily": "Geist",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "QjPYz",
+                          "name": "navScience",
+                          "fill": "#C0CFD4",
+                          "content": "Science",
+                          "fontFamily": "Geist",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CnQz6",
+                          "name": "navFaq",
+                          "fill": "#C0CFD4",
+                          "content": "FAQ",
+                          "fontFamily": "Geist",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cyHO5",
+                      "name": "actions",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "avoiB",
+                          "name": "accountLink",
+                          "fill": "$whiteTint",
+                          "content": "Account",
+                          "fontFamily": "Geist",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "h4RCi",
+                          "name": "cartIcon",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "shopping-bag",
+                          "iconFontFamily": "lucide",
+                          "fill": "$goldSoft"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pDjM8",
+              "x": 32,
+              "y": 120,
+              "name": "copy",
+              "width": 500,
+              "height": 570,
+              "layout": "vertical",
+              "gap": 18,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Rc5wD",
+                  "name": "overline",
+                  "fill": "$goldSoft",
+                  "content": "PRECISION PEPTIDES",
+                  "fontFamily": "Geist",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.8
+                },
+                {
+                  "type": "text",
+                  "id": "iD3st",
+                  "name": "headline",
+                  "fill": "$whiteTint",
+                  "textGrowth": "fixed-width",
+                  "width": 480,
+                  "content": "Performance biology, engineered for protocols that demand proof.",
+                  "lineHeight": 0.98,
+                  "fontFamily": "Funnel Sans",
+                  "fontSize": 58,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "bJSXO",
+                  "name": "body",
+                  "fill": "#B7C7CD",
+                  "textGrowth": "fixed-width",
+                  "width": 460,
+                  "content": "Azure Synthetics brings together clinical-grade compounds, transparent documentation, and an elevated storefront built for serious repeat buyers rather than casual wellness shoppers.",
+                  "lineHeight": 1.45,
+                  "fontFamily": "Geist",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "ShDQO",
+                  "name": "ctaArea",
+                  "width": 470,
+                  "height": 64,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 999,
+                      "id": "xDbNA",
+                      "x": 0,
+                      "y": 0,
+                      "name": "ctaBg",
+                      "fill": "$teal",
+                      "width": 214,
+                      "height": 56
+                    },
+                    {
+                      "type": "text",
+                      "id": "J9Nr9",
+                      "x": 22,
+                      "y": 18,
+                      "name": "ctaText",
+                      "fill": "$ink",
+                      "content": "Explore catalog",
+                      "fontFamily": "Geist",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "ellipse",
+                      "id": "Mormu",
+                      "x": 176,
+                      "y": 16,
+                      "name": "ctaDot",
+                      "fill": "$ink",
+                      "width": 24,
+                      "height": 24
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "xTYxL",
+                      "x": 181,
+                      "y": 21,
+                      "name": "ctaArrow",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "arrow-up-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$whiteTint"
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 999,
+                      "id": "MYJ8e",
+                      "x": 228,
+                      "y": 7,
+                      "name": "auditBg",
+                      "fill": "#FFFFFF10",
+                      "width": 242,
+                      "height": 42,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#FFFFFF14"
+                      }
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "vGv8r",
+                      "x": 246,
+                      "y": 19,
+                      "name": "auditIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "shield-check",
+                      "iconFontFamily": "lucide",
+                      "fill": "$goldSoft"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fk23g",
+                      "x": 270,
+                      "y": 17,
+                      "name": "auditText",
+                      "fill": "$whiteTint",
+                      "content": "Every lot ships with a third-party COA.",
+                      "fontFamily": "Geist",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "TFd1K",
+                  "name": "underNote",
+                  "fill": "#8DA2AB",
+                  "textGrowth": "fixed-width",
+                  "width": 460,
+                  "content": "Used by performance clinics, longevity operators, and protocol-driven self-optimizers.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IO2p7",
+              "x": 586,
+              "y": 118,
+              "name": "visual",
+              "width": 822,
+              "height": 588,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 34,
+                  "id": "D7LR7",
+                  "x": 0,
+                  "y": 0,
+                  "name": "visualBg",
+                  "fill": [
+                    {
+                      "type": "gradient",
+                      "gradientType": "linear",
+                      "enabled": true,
+                      "rotation": 130,
+                      "size": {
+                        "height": 1
+                      },
+                      "colors": [
+                        {
+                          "color": "#11212A",
+                          "position": 0
+                        },
+                        {
+                          "color": "#173443",
+                          "position": 0.6
+                        },
+                        {
+                          "color": "#0E171D",
+                          "position": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "gradient",
+                      "gradientType": "radial",
+                      "enabled": true,
+                      "opacity": 0.44,
+                      "rotation": 0,
+                      "size": {
+                        "width": 0.58,
+                        "height": 0.82
+                      },
+                      "colors": [
+                        {
+                          "color": "#70C9BF66",
+                          "position": 0
+                        },
+                        {
+                          "color": "#70C9BF00",
+                          "position": 1
+                        }
+                      ],
+                      "center": {
+                        "x": 0.75,
+                        "y": 0.2
+                      }
+                    }
+                  ],
+                  "width": 822,
+                  "height": 588
+                },
+                {
+                  "type": "ellipse",
+                  "id": "UYAnc",
+                  "x": 486,
+                  "y": 78,
+                  "name": "visualGlow",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "radial",
+                    "enabled": true,
+                    "opacity": 0.38,
+                    "rotation": 0,
+                    "size": {
+                      "width": 1,
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#70C9BF99",
+                        "position": 0
+                      },
+                      {
+                        "color": "#70C9BF00",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 220,
+                  "height": 220
+                },
+                {
+                  "type": "ellipse",
+                  "id": "jkuyn",
+                  "x": 280,
+                  "y": 454,
+                  "name": "productShadow",
+                  "fill": "#06101580",
+                  "width": 282,
+                  "height": 46
+                },
+                {
+                  "type": "frame",
+                  "id": "iF5jh",
+                  "x": 218,
+                  "y": 36,
+                  "name": "heroVial",
+                  "width": 420,
+                  "height": 486,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/hero_vial.png",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 30
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 24,
+                  "id": "hTcQF",
+                  "x": 42,
+                  "y": 44,
+                  "name": "chipBg",
+                  "fill": "#0B171DD8",
+                  "width": 190,
+                  "height": 82,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#FFFFFF10"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "RszG8",
+                  "x": 60,
+                  "y": 62,
+                  "name": "chipLabel",
+                  "fill": "#A9BEC7",
+                  "content": "BATCH TRACEABILITY",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.2
+                },
+                {
+                  "type": "text",
+                  "id": "8ULQm",
+                  "x": 60,
+                  "y": 84,
+                  "name": "chipText",
+                  "fill": "$whiteTint",
+                  "textGrowth": "fixed-width",
+                  "width": 154,
+                  "content": "Linked to assay, cold-chain route, and storage profile.",
+                  "lineHeight": 1.35,
+                  "fontFamily": "Geist",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 24,
+                  "id": "39Ewc",
+                  "x": 42,
+                  "y": 438,
+                  "name": "noteBg",
+                  "fill": "#F5F9F8F0",
+                  "width": 278,
+                  "height": 102
+                },
+                {
+                  "type": "text",
+                  "id": "QkiQe",
+                  "x": 62,
+                  "y": 462,
+                  "name": "noteText",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": 236,
+                  "content": "99.1%–99.6% purity across flagship lots, packed in stability-preserving cold-chain kits.",
+                  "lineHeight": 1.38,
+                  "fontFamily": "Geist",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6eCeB",
+          "name": "Credibility Rail",
+          "width": "fill_container",
+          "height": 160,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "q1c5X",
+              "x": 0,
+              "y": 0,
+              "name": "trustBg",
+              "fill": "$bgSoft",
+              "width": 1440,
+              "height": 160
+            },
+            {
+              "type": "text",
+              "id": "nI1cU",
+              "x": 46,
+              "y": 63,
+              "name": "trustLabel",
+              "fill": "$tealStrong",
+              "content": "CLINICAL CONFIDENCE",
+              "fontFamily": "Geist",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "rectangle",
+              "id": "3ShwY",
+              "x": 388,
+              "y": 44,
+              "name": "line1",
+              "fill": "$line",
+              "width": 1,
+              "height": 60
+            },
+            {
+              "type": "frame",
+              "id": "RuuoV",
+              "x": 430,
+              "y": 44,
+              "name": "metric1",
+              "width": 250,
+              "height": 72,
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MJYFI",
+                  "name": "metric1Num",
+                  "fill": "$ink",
+                  "content": "48 hr",
+                  "fontFamily": "Funnel Sans",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "cvLad",
+                  "name": "metric1Txt",
+                  "fill": "$muted",
+                  "content": "cold-chain dispatch window",
+                  "fontFamily": "Geist",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "qxYdm",
+              "x": 738,
+              "y": 44,
+              "name": "line2",
+              "fill": "$line",
+              "width": 1,
+              "height": 60
+            },
+            {
+              "type": "frame",
+              "id": "7cuxg",
+              "x": 780,
+              "y": 44,
+              "name": "metric2",
+              "width": 250,
+              "height": 72,
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FkFdu",
+                  "name": "metric2Num",
+                  "fill": "$ink",
+                  "content": "3-stage",
+                  "fontFamily": "Funnel Sans",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "RAxw5",
+                  "name": "metric2Txt",
+                  "fill": "$muted",
+                  "content": "verification before release",
+                  "fontFamily": "Geist",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "6a9NA",
+              "x": 1088,
+              "y": 44,
+              "name": "line3",
+              "fill": "$line",
+              "width": 1,
+              "height": 60
+            },
+            {
+              "type": "frame",
+              "id": "kXVbV",
+              "x": 1130,
+              "y": 44,
+              "name": "metric3",
+              "width": 250,
+              "height": 72,
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "f9abs",
+                  "name": "metric3Num",
+                  "fill": "$ink",
+                  "content": "99%+",
+                  "fontFamily": "Funnel Sans",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "bPdGc",
+                  "name": "metric3Txt",
+                  "fill": "$muted",
+                  "content": "purity target on flagship lines",
+                  "fontFamily": "Geist",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cTUHb",
+          "name": "Brand Story",
+          "width": "fill_container",
+          "height": 680,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "YnFe3",
+              "x": 0,
+              "y": 0,
+              "name": "storyBg",
+              "fill": "$bg",
+              "width": 1440,
+              "height": 680
+            },
+            {
+              "type": "text",
+              "id": "wJI2W",
+              "x": 48,
+              "y": 92,
+              "name": "storyKicker",
+              "fill": "$tealStrong",
+              "content": "WHY BUYERS STAY",
+              "fontFamily": "Geist",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": 1.4
+            },
+            {
+              "type": "text",
+              "id": "1Xwx1",
+              "x": 48,
+              "y": 124,
+              "name": "storyTitle",
+              "fill": "$ink",
+              "textGrowth": "fixed-width",
+              "width": 620,
+              "content": "A storefront calibrated for repeat protocols, not impulse experimentation.",
+              "lineHeight": 1.02,
+              "fontFamily": "Funnel Sans",
+              "fontSize": 46,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "VRGhf",
+              "x": 48,
+              "y": 274,
+              "name": "storyBody",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 560,
+              "content": "Every product page is paired with usage framing, release-level documentation, and continuity signals that make the buying experience feel reliable at scale. The design language stays premium, but the information architecture is clinical and direct.",
+              "lineHeight": 1.5,
+              "fontFamily": "Geist",
+              "fontSize": 17,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "SP175",
+              "x": 48,
+              "y": 392,
+              "name": "storyNote",
+              "fill": "$muted",
+              "content": "Trust should be legible before checkout.",
+              "fontFamily": "Geist Mono",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "w07CO",
+              "x": 820,
+              "y": 84,
+              "name": "labFrame",
+              "metadata": {
+                "type": "unsplash",
+                "username": "mostafa_jamei",
+                "link": "https://unsplash.com/@mostafa_jamei",
+                "author": "mostafa jamei"
+              },
+              "width": 572,
+              "height": 340,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1656337426953-554b8e5b50f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzY1NjEwOTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 28
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 26,
+              "id": "P2qZM",
+              "x": 48,
+              "y": 476,
+              "name": "card1Bg",
+              "fill": "$bgSoft",
+              "width": 416,
+              "height": 156,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$line"
+              }
+            },
+            {
+              "type": "text",
+              "id": "iz1MZ",
+              "x": 76,
+              "y": 510,
+              "name": "card1Title",
+              "fill": "$ink",
+              "content": "Protocol-first education",
+              "fontFamily": "Geist",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "xGP9w",
+              "x": 76,
+              "y": 544,
+              "name": "card1Desc",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 354,
+              "content": "Explainers, timing references, and product pairings reduce support friction while increasing buyer confidence.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 26,
+              "id": "DFf7e",
+              "x": 486,
+              "y": 476,
+              "name": "card2Bg",
+              "fill": "$bgSoft",
+              "width": 416,
+              "height": 156,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$line"
+              }
+            },
+            {
+              "type": "text",
+              "id": "IsKDN",
+              "x": 514,
+              "y": 510,
+              "name": "card2Title",
+              "fill": "$ink",
+              "content": "Visible lot integrity",
+              "fontFamily": "Geist",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "1fHJQ",
+              "x": 514,
+              "y": 544,
+              "name": "card2Desc",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 354,
+              "content": "Lot-linked COAs, cold-chain metadata, and purity ranges appear as first-class purchase information, not buried disclaimers.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 26,
+              "id": "9rE3F",
+              "x": 924,
+              "y": 476,
+              "name": "card3Bg",
+              "fill": "$ink",
+              "width": 468,
+              "height": 156,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#20303A"
+              }
+            },
+            {
+              "type": "text",
+              "id": "fLrmv",
+              "x": 952,
+              "y": 510,
+              "name": "card3Title",
+              "fill": "$whiteTint",
+              "content": "Retention by design",
+              "fontFamily": "Geist",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "lmmrW",
+              "x": 952,
+              "y": 544,
+              "name": "card3Desc",
+              "fill": "#B6C6CC",
+              "textGrowth": "fixed-width",
+              "width": 406,
+              "content": "Subscribers get protocol refreshes, assay updates, and reorder logic that feels like product infrastructure rather than marketing automation.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "ellipse",
+              "id": "s6DLa",
+              "x": 708,
+              "y": 168,
+              "name": "deco",
+              "fill": "#D7B46D1A",
+              "width": 82,
+              "height": 82
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ypYgS",
+          "name": "Featured Products",
+          "width": "fill_container",
+          "height": 820,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "Ystn8",
+              "x": 0,
+              "y": 0,
+              "name": "productsBg",
+              "fill": "$panelDark",
+              "width": 1440,
+              "height": 820
+            },
+            {
+              "type": "text",
+              "id": "2bV8i",
+              "x": 48,
+              "y": 90,
+              "name": "productsKicker",
+              "fill": "$goldSoft",
+              "content": "FEATURED FORMULATIONS",
+              "fontFamily": "Geist",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": 1.4
+            },
+            {
+              "type": "text",
+              "id": "8xshr",
+              "x": 48,
+              "y": 122,
+              "name": "productsTitle",
+              "fill": "$whiteTint",
+              "content": "Precision formulas in demand",
+              "fontFamily": "Funnel Sans",
+              "fontSize": 48,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "7DUz4",
+              "x": 1188,
+              "y": 126,
+              "name": "productsCta",
+              "fill": "$teal",
+              "content": "Open full catalog →",
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 28,
+              "id": "micKP",
+              "x": 48,
+              "y": 230,
+              "name": "card1Bg",
+              "fill": "$panelMid",
+              "width": 286,
+              "height": 456,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#233440"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "9buXZ",
+              "x": 70,
+              "y": 254,
+              "name": "card1Img",
+              "width": 242,
+              "height": 248,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/card_bpc157.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 22
+            },
+            {
+              "type": "text",
+              "id": "RnLEE",
+              "x": 70,
+              "y": 536,
+              "name": "card1Name",
+              "fill": "$whiteTint",
+              "content": "BPC-157",
+              "fontFamily": "Geist",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "M8mza",
+              "x": 70,
+              "y": 570,
+              "name": "card1Meta",
+              "fill": "#A9BBC3",
+              "content": "Recovery / repair · from $95",
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 28,
+              "id": "GsrZr",
+              "x": 382,
+              "y": 230,
+              "name": "card2Bg",
+              "fill": "$panelMid",
+              "width": 286,
+              "height": 456,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#233440"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "3yryP",
+              "x": 404,
+              "y": 254,
+              "name": "card2Img",
+              "width": 242,
+              "height": 248,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/card_motsc.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 22
+            },
+            {
+              "type": "text",
+              "id": "x2KaV",
+              "x": 404,
+              "y": 536,
+              "name": "card2Name",
+              "fill": "$whiteTint",
+              "content": "MOTS-C",
+              "fontFamily": "Geist",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "PLo8a",
+              "x": 404,
+              "y": 570,
+              "name": "card2Meta",
+              "fill": "#A9BBC3",
+              "content": "Metabolic support · from $110",
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 28,
+              "id": "vCdH8",
+              "x": 716,
+              "y": 230,
+              "name": "card3Bg",
+              "fill": "$panelMid",
+              "width": 286,
+              "height": 456,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#233440"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "wS5Ej",
+              "x": 738,
+              "y": 254,
+              "name": "card3Img",
+              "width": 242,
+              "height": 248,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/card_cjcipa.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 22
+            },
+            {
+              "type": "text",
+              "id": "1Vu0p",
+              "x": 738,
+              "y": 536,
+              "name": "card3Name",
+              "fill": "$whiteTint",
+              "content": "CJC / IPA",
+              "fontFamily": "Geist",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "zyyYP",
+              "x": 738,
+              "y": 570,
+              "name": "card3Meta",
+              "fill": "#A9BBC3",
+              "content": "Sleep and recovery · from $105",
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 28,
+              "id": "eJayV",
+              "x": 1050,
+              "y": 230,
+              "name": "card4Bg",
+              "fill": "#183140",
+              "width": 342,
+              "height": 456,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#2D4D5A"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "57IkS",
+              "x": 1072,
+              "y": 254,
+              "name": "card4Img",
+              "width": 298,
+              "height": 248,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/card_glp3.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 22
+            },
+            {
+              "type": "text",
+              "id": "39WEV",
+              "x": 1072,
+              "y": 536,
+              "name": "card4Name",
+              "fill": "$whiteTint",
+              "content": "GLP-3",
+              "fontFamily": "Geist",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "vnr29",
+              "x": 1072,
+              "y": 570,
+              "name": "card4Meta",
+              "fill": "#C8D7DC",
+              "content": "Body composition protocols · from $130",
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "vqTuQ",
+          "name": "Science Grid",
+          "width": "fill_container",
+          "height": 700,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "87Xgs",
+              "x": 0,
+              "y": 0,
+              "name": "scienceBg",
+              "fill": "$bgSoft",
+              "width": 1440,
+              "height": 700
+            },
+            {
+              "type": "text",
+              "id": "PhcON",
+              "x": 48,
+              "y": 88,
+              "name": "scienceKicker",
+              "fill": "$tealStrong",
+              "content": "OPERATIONAL RIGOR",
+              "fontFamily": "Geist",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": 1.4
+            },
+            {
+              "type": "text",
+              "id": "abkpM",
+              "x": 48,
+              "y": 122,
+              "name": "scienceTitle",
+              "fill": "$ink",
+              "textGrowth": "fixed-width",
+              "width": 560,
+              "content": "Testing, packaging, and replenishment built into one visual system.",
+              "lineHeight": 1.04,
+              "fontFamily": "Funnel Sans",
+              "fontSize": 44,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "41qVd",
+              "x": 48,
+              "y": 268,
+              "name": "scienceBody",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 500,
+              "content": "The future storefront should make technical quality feel understandable: a buyer can scan the page, grasp the process, and know exactly why the product earns trust.",
+              "lineHeight": 1.5,
+              "fontFamily": "Geist",
+              "fontSize": 17,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 30,
+              "id": "VXtOP",
+              "x": 702,
+              "y": 84,
+              "name": "mainCardBg",
+              "fill": "$ink",
+              "width": 690,
+              "height": 332
+            },
+            {
+              "type": "frame",
+              "id": "YrHPg",
+              "x": 736,
+              "y": 118,
+              "name": "assayImg",
+              "metadata": {
+                "type": "unsplash",
+                "username": "jkoblitz",
+                "link": "https://unsplash.com/@jkoblitz",
+                "author": "Julia Koblitz"
+              },
+              "width": 256,
+              "height": 264,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1614934273538-70f8ffc2e76e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzY1NjEyNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 24
+            },
+            {
+              "type": "text",
+              "id": "JWbzm",
+              "x": 1030,
+              "y": 142,
+              "name": "mainCardTitle",
+              "fill": "$whiteTint",
+              "content": "Release discipline",
+              "fontFamily": "Geist",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "eSZCP",
+              "x": 1030,
+              "y": 188,
+              "name": "mainCardText",
+              "fill": "#B9CBD1",
+              "textGrowth": "fixed-width",
+              "width": 308,
+              "content": "Every flagship drop is staged around purity targets, assay visibility, temperature-safe fulfillment, and replenishment messaging that feels operational rather than promotional.",
+              "lineHeight": 1.48,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 26,
+              "id": "FkaNb",
+              "x": 702,
+              "y": 452,
+              "name": "subCardBg",
+              "fill": "#173040",
+              "width": 310,
+              "height": 170
+            },
+            {
+              "type": "text",
+              "id": "YjHjx",
+              "x": 734,
+              "y": 488,
+              "name": "subCardTitle",
+              "fill": "$whiteTint",
+              "content": "Cold-chain ready",
+              "fontFamily": "Geist",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Q7Kql",
+              "x": 734,
+              "y": 524,
+              "name": "subCardText",
+              "fill": "#C5D6DB",
+              "textGrowth": "fixed-width",
+              "width": 246,
+              "content": "Shipping language and packaging cues reinforce premium handling without reading like compliance copy.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 26,
+              "id": "uNLWx",
+              "x": 1048,
+              "y": 452,
+              "name": "statBlock",
+              "fill": "$bg",
+              "width": 344,
+              "height": 170
+            },
+            {
+              "type": "text",
+              "id": "NVADH",
+              "x": 1080,
+              "y": 490,
+              "name": "statTitle",
+              "fill": "$ink",
+              "content": "Reorder flow",
+              "fontFamily": "Geist",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "aDKgJ",
+              "x": 1080,
+              "y": 526,
+              "name": "statText",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 280,
+              "content": "Protocol-aware replenishment prompts keep repeat buyers moving without making the experience feel like subscription spam.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ejHnT",
+          "name": "Collections",
+          "width": "fill_container",
+          "height": 560,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "lmnfR",
+              "x": 0,
+              "y": 0,
+              "name": "collectionsBg",
+              "fill": "$bg",
+              "width": 1440,
+              "height": 560
+            },
+            {
+              "type": "text",
+              "id": "QFf1L",
+              "x": 48,
+              "y": 88,
+              "name": "collectionsKicker",
+              "fill": "$tealStrong",
+              "content": "SHOP BY GOAL",
+              "fontFamily": "Geist",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": 1.4
+            },
+            {
+              "type": "text",
+              "id": "IJyCt",
+              "x": 48,
+              "y": 122,
+              "name": "collectionsTitle",
+              "fill": "$ink",
+              "textGrowth": "fixed-width",
+              "width": 540,
+              "content": "Collections organized around outcomes, not SKU chaos.",
+              "lineHeight": 1.04,
+              "fontFamily": "Funnel Sans",
+              "fontSize": 42,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "LwoQs",
+              "x": 48,
+              "y": 252,
+              "name": "col1",
+              "fill": "$ink",
+              "content": "Recovery + Repair",
+              "fontFamily": "Geist",
+              "fontSize": 32,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "gk4in",
+              "x": 388,
+              "y": 260,
+              "name": "col1Desc",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 430,
+              "content": "BPC-157, TB-500, and tissue-supporting stacks for comeback protocols.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "pjHyi",
+              "x": 48,
+              "y": 330,
+              "name": "col2",
+              "fill": "$ink",
+              "content": "Body Composition",
+              "fontFamily": "Geist",
+              "fontSize": 32,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "uWTZP",
+              "x": 388,
+              "y": 338,
+              "name": "col2Desc",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 430,
+              "content": "GLP and metabolic formulations framed for disciplined, repeat purchasing.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "QAk7g",
+              "x": 48,
+              "y": 408,
+              "name": "col3",
+              "fill": "$ink",
+              "content": "Longevity + Energy",
+              "fontFamily": "Geist",
+              "fontSize": 32,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Um2R0",
+              "x": 388,
+              "y": 416,
+              "name": "col3Desc",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 430,
+              "content": "MOTS-C and mitochondrial support compounds presented with modern clinical clarity.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "id": "cbGgR",
+              "x": 48,
+              "y": 304,
+              "name": "rule1",
+              "fill": "$line",
+              "width": 770,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "wFlx4",
+              "x": 48,
+              "y": 382,
+              "name": "rule2",
+              "fill": "$line",
+              "width": 770,
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "RykM0",
+              "x": 918,
+              "y": 146,
+              "name": "sideImage",
+              "metadata": {
+                "type": "unsplash",
+                "username": "thefourthwxll",
+                "link": "https://unsplash.com/@thefourthwxll",
+                "author": "Faustina Okeke"
+              },
+              "width": 474,
+              "height": 320,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1766297247027-0bca929da0df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzY1NjEzMDl8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 28
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GleDs",
+          "name": "Promo Banner",
+          "width": "fill_container",
+          "height": 360,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "MEzRh",
+              "x": 0,
+              "y": 0,
+              "name": "promoBg",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 135,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#0D1B24",
+                    "position": 0
+                  },
+                  {
+                    "color": "#1A3344",
+                    "position": 0.72
+                  },
+                  {
+                    "color": "#102028",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 1440,
+              "height": 360
+            },
+            {
+              "type": "text",
+              "id": "Ph1nj",
+              "x": 48,
+              "y": 78,
+              "name": "promoTitle",
+              "fill": "$whiteTint",
+              "textGrowth": "fixed-width",
+              "width": 520,
+              "content": "Subscribe for early-access drops and 10% off the first order.",
+              "lineHeight": 1.04,
+              "fontFamily": "Funnel Sans",
+              "fontSize": 42,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "HlVMn",
+              "x": 48,
+              "y": 196,
+              "name": "promoBody",
+              "fill": "#B7C8CF",
+              "textGrowth": "fixed-width",
+              "width": 470,
+              "content": "A sharper cadence for serious buyers: release alerts, protocol updates, and preferred pricing when new compounds go live.",
+              "lineHeight": 1.48,
+              "fontFamily": "Geist",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "g94O3",
+              "x": 48,
+              "y": 266,
+              "name": "promoButton",
+              "fill": "$teal",
+              "width": 198,
+              "height": 54
+            },
+            {
+              "type": "text",
+              "id": "2EGJp",
+              "x": 74,
+              "y": 284,
+              "name": "promoButtonText",
+              "fill": "$ink",
+              "content": "Join the list",
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "yjUVB",
+              "x": 842,
+              "y": 40,
+              "name": "promoImage",
+              "width": 548,
+              "height": 280,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/promo_vials.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 28
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "opiyg",
+          "name": "FAQ and Newsletter",
+          "width": "fill_container",
+          "height": 620,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "zwLpF",
+              "x": 0,
+              "y": 0,
+              "name": "faqBg",
+              "fill": "$panelDark",
+              "width": 1440,
+              "height": 620
+            },
+            {
+              "type": "text",
+              "id": "Xt6ui",
+              "x": 48,
+              "y": 92,
+              "name": "faqTitle",
+              "fill": "$whiteTint",
+              "textGrowth": "fixed-width",
+              "width": 420,
+              "content": "Need a clearer path through the catalog?",
+              "lineHeight": 1.04,
+              "fontFamily": "Funnel Sans",
+              "fontSize": 44,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "nj8va",
+              "x": 48,
+              "y": 232,
+              "name": "faqBody",
+              "fill": "#B9CBD1",
+              "textGrowth": "fixed-width",
+              "width": 400,
+              "content": "Use concise FAQs, guided collections, and a softer subscription prompt so the close of the page feels helpful instead of salesy.",
+              "lineHeight": 1.5,
+              "fontFamily": "Geist",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 22,
+              "id": "h6dTs",
+              "x": 562,
+              "y": 112,
+              "name": "faq1Bg",
+              "fill": "#17252F",
+              "width": 830,
+              "height": 74
+            },
+            {
+              "type": "text",
+              "id": "Qvbvu",
+              "x": 596,
+              "y": 139,
+              "name": "faq1Text",
+              "fill": "$whiteTint",
+              "content": "Are the peptides sold in powder form or pre-filled?",
+              "fontFamily": "Geist",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 22,
+              "id": "zLRZX",
+              "x": 562,
+              "y": 204,
+              "name": "faq2Bg",
+              "fill": "#17252F",
+              "width": 830,
+              "height": 74
+            },
+            {
+              "type": "text",
+              "id": "LkI5f",
+              "x": 596,
+              "y": 231,
+              "name": "faq2Text",
+              "fill": "$whiteTint",
+              "content": "How do you present assay reports and lot verification?",
+              "fontFamily": "Geist",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 22,
+              "id": "p5p04",
+              "x": 562,
+              "y": 296,
+              "name": "faq3Bg",
+              "fill": "#17252F",
+              "width": 830,
+              "height": 74
+            },
+            {
+              "type": "text",
+              "id": "pFEK0",
+              "x": 596,
+              "y": 323,
+              "name": "faq3Text",
+              "fill": "$whiteTint",
+              "content": "Can clinics set up preferred pricing or bulk reorder flows?",
+              "fontFamily": "Geist",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 28,
+              "id": "fXSB2",
+              "x": 48,
+              "y": 406,
+              "name": "newsBg",
+              "fill": "$bgSoft",
+              "width": 1344,
+              "height": 164
+            },
+            {
+              "type": "text",
+              "id": "aUvmo",
+              "x": 84,
+              "y": 450,
+              "name": "newsTitle",
+              "fill": "$ink",
+              "content": "Get release updates without inbox noise.",
+              "fontFamily": "Funnel Sans",
+              "fontSize": 30,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "D1nRl",
+              "x": 84,
+              "y": 492,
+              "name": "newsBody",
+              "fill": "$inkSoft",
+              "textGrowth": "fixed-width",
+              "width": 520,
+              "content": "One line, one promise: flagship drops, pricing windows, and protocol notes worth actually opening.",
+              "lineHeight": 1.45,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "cow9X",
+              "x": 962,
+              "y": 454,
+              "name": "inputBg",
+              "fill": "#FFFFFF",
+              "width": 390,
+              "height": 58
+            },
+            {
+              "type": "text",
+              "id": "DFc2L",
+              "x": 990,
+              "y": 474,
+              "name": "inputText",
+              "fill": "$muted",
+              "content": "your@email.com",
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Wf7Xi",
+          "name": "Footer",
+          "width": "fill_container",
+          "height": 248,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "HfWmG",
+              "x": 0,
+              "y": 0,
+              "name": "footerBg",
+              "fill": "$ink",
+              "width": 1440,
+              "height": 248
+            },
+            {
+              "type": "frame",
+              "id": "20PXl",
+              "x": 48,
+              "y": 54,
+              "name": "footerLogo",
+              "width": 62,
+              "height": 62,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./assets/azure-logo-transparent.png",
+                "mode": "fit"
+              },
+              "cornerRadius": 18
+            },
+            {
+              "type": "text",
+              "id": "02AIU",
+              "x": 126,
+              "y": 66,
+              "name": "footerBrand",
+              "fill": "$whiteTint",
+              "content": "Azure Synthetics",
+              "fontFamily": "Funnel Sans",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Aghwr",
+              "x": 126,
+              "y": 104,
+              "name": "footerTag",
+              "fill": "#AFC1C8",
+              "content": "Future-grade peptide storefront systems.",
+              "fontFamily": "Geist",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "lNxRb",
+              "x": 756,
+              "y": 72,
+              "name": "footerCol1",
+              "fill": "$whiteTint",
+              "textGrowth": "fixed-width",
+              "width": 120,
+              "content": "Shop\nScience\nAssays\nFAQ",
+              "lineHeight": 1.9,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "yC2JJ",
+              "x": 972,
+              "y": 72,
+              "name": "footerCol2",
+              "fill": "$whiteTint",
+              "textGrowth": "fixed-width",
+              "width": 160,
+              "content": "Protocol Notes\nLot Reports\nShipping\nContact",
+              "lineHeight": 1.9,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "hGGte",
+              "x": 1188,
+              "y": 72,
+              "name": "footerCol3",
+              "fill": "$whiteTint",
+              "textGrowth": "fixed-width",
+              "width": 180,
+              "content": "Mon–Fri 09:00–18:00\nhello@azuresynthetics.com\n+49 30 5555 9090",
+              "lineHeight": 1.9,
+              "fontFamily": "Geist",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "plBBu",
+              "x": 48,
+              "y": 196,
+              "name": "footerSmall",
+              "fill": "#7F949D",
+              "content": "Designed for the next generation of protocol-driven buyers.",
+              "fontFamily": "Geist Mono",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#F3F0E8"
+    },
+    "bgSoft": {
+      "type": "color",
+      "value": "#FBF8F2"
+    },
+    "fontBody": {
+      "type": "string",
+      "value": "Geist"
+    },
+    "fontDisplay": {
+      "type": "string",
+      "value": "Funnel Sans"
+    },
+    "fontMono": {
+      "type": "string",
+      "value": "Geist Mono"
+    },
+    "gold": {
+      "type": "color",
+      "value": "#D7B46D"
+    },
+    "goldSoft": {
+      "type": "color",
+      "value": "#E9D2A0"
+    },
+    "hero": {
+      "type": "color",
+      "value": "#08141A"
+    },
+    "ink": {
+      "type": "color",
+      "value": "#0F1921"
+    },
+    "inkSoft": {
+      "type": "color",
+      "value": "#2C3943"
+    },
+    "line": {
+      "type": "color",
+      "value": "#D8D1C3"
+    },
+    "lineDark": {
+      "type": "color",
+      "value": "#24313B"
+    },
+    "muted": {
+      "type": "color",
+      "value": "#6E7C86"
+    },
+    "panelDark": {
+      "type": "color",
+      "value": "#101C24"
+    },
+    "panelMid": {
+      "type": "color",
+      "value": "#162530"
+    },
+    "space12": {
+      "type": "number",
+      "value": 12
+    },
+    "space16": {
+      "type": "number",
+      "value": 16
+    },
+    "space24": {
+      "type": "number",
+      "value": 24
+    },
+    "space32": {
+      "type": "number",
+      "value": 32
+    },
+    "space4": {
+      "type": "number",
+      "value": 4
+    },
+    "space48": {
+      "type": "number",
+      "value": 48
+    },
+    "space64": {
+      "type": "number",
+      "value": 64
+    },
+    "space8": {
+      "type": "number",
+      "value": 8
+    },
+    "space96": {
+      "type": "number",
+      "value": 96
+    },
+    "teal": {
+      "type": "color",
+      "value": "#70C9BF"
+    },
+    "tealStrong": {
+      "type": "color",
+      "value": "#2F8698"
+    },
+    "whiteTint": {
+      "type": "color",
+      "value": "#F4FAF9"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+services:
+  db:
+    image: mariadb:11.4
+    container_name: azure-synthetics-db
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    container_name: azure-synthetics-wordpress
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      HOME: /tmp
+      WP_CLI_CACHE_DIR: /tmp/.wp-cli/cache
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - ./wp-content/themes/azure-synthetics:/var/www/html/wp-content/themes/azure-synthetics
+      - ./wp-content/plugins/azure-synthetics-core:/var/www/html/wp-content/plugins/azure-synthetics-core
+      - ./:/workspace
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    container_name: azure-synthetics-wpcli
+    user: "33:33"
+    depends_on:
+      - db
+      - wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wp-content/themes/azure-synthetics:/var/www/html/wp-content/themes/azure-synthetics
+      - ./wp-content/plugins/azure-synthetics-core:/var/www/html/wp-content/plugins/azure-synthetics-core
+      - ./:/workspace
+    working_dir: /var/www/html
+    entrypoint: ["wp"]
+
+volumes:
+  db_data:
+  wordpress_data:

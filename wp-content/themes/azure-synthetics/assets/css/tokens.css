@@ -1,0 +1,34 @@
+:root {
+	--azure-bg: #f3f0e8;
+	--azure-bg-soft: #fbf8f2;
+	--azure-ink: #0f1921;
+	--azure-ink-soft: #2c3943;
+	--azure-muted: #6e7c86;
+	--azure-line: #d8d1c3;
+	--azure-line-dark: #24313b;
+	--azure-panel-dark: #101c24;
+	--azure-panel-mid: #162530;
+	--azure-white-tint: #f4faf9;
+	--azure-teal: #70c9bf;
+	--azure-teal-strong: #2f8698;
+	--azure-gold: #d7b46d;
+	--azure-gold-soft: #e9d2a0;
+	--azure-shadow-soft: 0 24px 48px rgba(15, 25, 33, 0.08);
+	--azure-shadow-dark: 0 30px 60px rgba(0, 0, 0, 0.24);
+	--azure-radius-soft: 18px;
+	--azure-radius-card: 28px;
+	--azure-radius-xl: 34px;
+	--azure-shell: min(1440px, calc(100vw - 32px));
+	--azure-space-4: 4px;
+	--azure-space-8: 8px;
+	--azure-space-12: 12px;
+	--azure-space-16: 16px;
+	--azure-space-24: 24px;
+	--azure-space-32: 32px;
+	--azure-space-48: 48px;
+	--azure-space-64: 64px;
+	--azure-space-96: 96px;
+	--azure-font-body: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--azure-font-display: "Funnel Sans", "Avenir Next", "Segoe UI", sans-serif;
+	--azure-font-mono: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+}
