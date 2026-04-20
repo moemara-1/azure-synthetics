@@ -1,0 +1,129 @@
+.azure-search-page .azure-search-grid,
+.azure-contact-page .azure-contact-grid,
+.azure-compliance-page .azure-compliance-grid,
+.azure-faq-page .azure-two-column {
+	margin-top: var(--azure-space-32);
+}
+
+.azure-faq-guidance,
+.azure-faq-guidance__cards {
+	display: grid;
+	gap: var(--azure-space-24);
+}
+
+.azure-faq-guidance__intro h2,
+.azure-science-page h2,
+.azure-science-explainer h3,
+.azure-science-process-step h3 {
+	margin-top: 0;
+}
+
+.azure-commerce-page .azure-page-hero {
+	padding-top: var(--azure-space-48);
+}
+
+.azure-commerce-page .azure-page-section {
+	padding-top: var(--azure-space-32);
+}
+
+.azure-commerce-content {
+	min-height: 320px;
+}
+
+.azure-science-page__hero-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.55fr);
+	gap: var(--azure-space-48);
+	align-items: end;
+}
+
+.azure-science-page__hero-note {
+	padding: clamp(20px, 3vw, 28px);
+	border-radius: var(--azure-radius-card);
+	background: var(--azure-panel-dark);
+	color: var(--azure-white-tint);
+}
+
+.azure-science-page__hero-note p:last-child {
+	margin-bottom: 0;
+	color: rgba(244, 250, 249, 0.78);
+}
+
+.azure-science-explainer-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--azure-space-24);
+	margin-top: var(--azure-space-32);
+}
+
+.azure-science-explainer,
+.azure-science-process-step {
+	padding: clamp(20px, 3vw, 28px);
+	border-radius: var(--azure-radius-card);
+	background: var(--azure-bg-soft);
+	border: 1px solid rgba(15, 25, 33, 0.08);
+	box-shadow: var(--azure-shadow-soft);
+}
+
+.azure-science-explainer p:not(.azure-meta-line) {
+	color: var(--azure-ink-soft);
+}
+
+.azure-science-page__process {
+	padding-bottom: var(--azure-space-64);
+	background: var(--azure-panel-dark);
+	color: var(--azure-white-tint);
+}
+
+.azure-science-page__process .azure-two-column {
+	align-items: start;
+}
+
+.azure-science-page__process h2 {
+	font-family: var(--azure-font-display);
+	font-size: clamp(2rem, 4vw, 3.1rem);
+	line-height: 1.05;
+}
+
+.azure-science-process-list {
+	display: grid;
+	gap: var(--azure-space-16);
+}
+
+.azure-science-process-step {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: var(--azure-space-16);
+	background: rgba(244, 250, 249, 0.06);
+	border-color: rgba(255, 255, 255, 0.12);
+	box-shadow: none;
+}
+
+.azure-science-process-step span {
+	display: inline-grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 999px;
+	background: var(--azure-gold-soft);
+	color: var(--azure-ink);
+	font-weight: 800;
+}
+
+.azure-science-process-step p {
+	color: rgba(244, 250, 249, 0.76);
+}
+
+.azure-404-page .azure-hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--azure-space-12);
+	margin-top: var(--azure-space-32);
+}
+
+@media (max-width: 1024px) {
+	.azure-science-page__hero-grid,
+	.azure-science-explainer-grid {
+		grid-template-columns: 1fr;
+	}
+}

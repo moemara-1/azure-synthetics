@@ -9,13 +9,76 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+function azure_synthetics_request_origin() {
+	$host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'] ?? '';
+
+	if ( ! is_string( $host ) || '' === $host ) {
+		return null;
+	}
+
+	$host = trim( explode( ',', $host )[0] );
+
+	if ( preg_match( '/^(localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/i', $host ) ) {
+		return null;
+	}
+
+	$forwarded_proto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
+	$scheme          = is_string( $forwarded_proto ) && '' !== $forwarded_proto
+		? trim( explode( ',', $forwarded_proto )[0] )
+		: ( ( ! empty( $_SERVER['HTTPS'] ) && 'off' !== strtolower( (string) $_SERVER['HTTPS'] ) ) ? 'https' : 'http' );
+
+	return $scheme . '://' . $host;
+}
+
+function azure_synthetics_apply_origin( $url, $origin = null ) {
+	if ( ! is_string( $url ) || '' === $url ) {
+		return $url;
+	}
+
+	$origin = $origin ?: azure_synthetics_request_origin();
+
+	if ( ! $origin ) {
+		return $url;
+	}
+
+	$url_parts    = wp_parse_url( $url );
+	$origin_parts = wp_parse_url( $origin );
+
+	if ( empty( $url_parts['host'] ) || empty( $origin_parts['host'] ) || empty( $origin_parts['scheme'] ) ) {
+		return $url;
+	}
+
+	if ( ! in_array( strtolower( $url_parts['host'] ), array( 'localhost', '127.0.0.1', '::1' ), true ) ) {
+		return $url;
+	}
+
+	$rebuilt = $origin_parts['scheme'] . '://' . $origin_parts['host'];
+
+	if ( ! empty( $origin_parts['port'] ) ) {
+		$rebuilt .= ':' . $origin_parts['port'];
+	}
+
+	$rebuilt .= $url_parts['path'] ?? '';
+
+	if ( ! empty( $url_parts['query'] ) ) {
+		$rebuilt .= '?' . $url_parts['query'];
+	}
+
+	if ( ! empty( $url_parts['fragment'] ) ) {
+		$rebuilt .= '#' . $url_parts['fragment'];
+	}
+
+	return $rebuilt;
+}
+
 define( 'AZURE_SYNTHETICS_THEME_VERSION', '1.0.0' );
 define( 'AZURE_SYNTHETICS_THEME_DIR', get_template_directory() );
-define( 'AZURE_SYNTHETICS_THEME_URI', get_template_directory_uri() );
+define( 'AZURE_SYNTHETICS_THEME_URI', azure_synthetics_apply_origin( get_template_directory_uri() ) );
 
 $azure_synthetics_includes = array(
 	'inc/setup.php',
 	'inc/content.php',
+	'inc/runtime-urls.php',
 	'inc/assets.php',
 	'inc/template-tags.php',
 	'inc/queries.php',
