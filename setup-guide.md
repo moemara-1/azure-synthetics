@@ -79,9 +79,9 @@
    ```sh
    ./scripts/deploy-to-pantheon.sh
    ```
-4. Import the database export in Pantheon:
+4. Import the Pantheon-clean database export in Pantheon:
    ```text
-   migration_bundle/azure_synthetics_full_migration.sql
+   migration_bundle/azure_synthetics_pantheon_import.sql.gz
    ```
 5. After the import, replace the temporary tunnel URL in the database:
    ```text
