@@ -28,3 +28,9 @@ function azure_synthetics_pantheon_runtime_url_option( $value ) {
 
 add_filter( 'pre_option_home', 'azure_synthetics_pantheon_runtime_url_option' );
 add_filter( 'pre_option_siteurl', 'azure_synthetics_pantheon_runtime_url_option' );
+
+function azure_synthetics_pantheon_live_store_option( $value ) {
+	return azure_synthetics_pantheon_runtime_origin() ? 'no' : $value;
+}
+
+add_filter( 'pre_option_woocommerce_coming_soon', 'azure_synthetics_pantheon_live_store_option' );

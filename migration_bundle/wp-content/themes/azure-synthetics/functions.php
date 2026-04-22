@@ -48,7 +48,10 @@ function azure_synthetics_apply_origin( $url, $origin = null ) {
 		return $url;
 	}
 
-	if ( ! in_array( strtolower( $url_parts['host'] ), array( 'localhost', '127.0.0.1', '::1' ), true ) ) {
+	$url_host     = strtolower( $url_parts['host'] );
+	$legacy_hosts = array( 'localhost', '127.0.0.1', '::1', 'azure-synthetics.loca.lt' );
+
+	if ( ! in_array( $url_host, $legacy_hosts, true ) && ! preg_match( '/(^|\\.)loca\\.lt$/', $url_host ) ) {
 		return $url;
 	}
 
@@ -81,6 +84,7 @@ $azure_synthetics_includes = array(
 	'inc/runtime-urls.php',
 	'inc/assets.php',
 	'inc/template-tags.php',
+	'inc/product-media.php',
 	'inc/queries.php',
 	'inc/schema.php',
 	'inc/block-support.php',
