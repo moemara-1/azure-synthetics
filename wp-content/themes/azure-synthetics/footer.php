@@ -23,14 +23,7 @@ $contact = azure_synthetics_get_contact_details();
 		<div class="azure-site-footer__nav">
 			<h3><?php esc_html_e( 'Navigate', 'azure-synthetics' ); ?></h3>
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'footer',
-					'container'      => false,
-					'menu_class'     => 'azure-footer-menu',
-					'fallback_cb'    => '__return_empty_string',
-				)
-			);
+			azure_synthetics_render_navigation( 'footer', 'azure-footer-menu' );
 			?>
 		</div>
 		<div class="azure-site-footer__contact">

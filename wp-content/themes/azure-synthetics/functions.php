@@ -74,7 +74,7 @@ function azure_synthetics_apply_origin( $url, $origin = null ) {
 	return $rebuilt;
 }
 
-define( 'AZURE_SYNTHETICS_THEME_VERSION', '1.0.0' );
+define( 'AZURE_SYNTHETICS_THEME_VERSION', '1.0.1' );
 define( 'AZURE_SYNTHETICS_THEME_DIR', get_template_directory() );
 define( 'AZURE_SYNTHETICS_THEME_URI', azure_synthetics_apply_origin( get_template_directory_uri() ) );
 

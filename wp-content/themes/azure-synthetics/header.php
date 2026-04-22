@@ -40,14 +40,7 @@ $cart_count = azure_synthetics_cart_count();
 		</button>
 		<nav class="azure-site-nav" id="site-navigation" aria-label="<?php esc_attr_e( 'Primary navigation', 'azure-synthetics' ); ?>">
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'primary',
-					'container'      => false,
-					'menu_class'     => 'azure-menu',
-					'fallback_cb'    => '__return_empty_string',
-				)
-			);
+			azure_synthetics_render_navigation( 'primary', 'azure-menu' );
 			?>
 			<div class="azure-site-nav__actions">
 				<a class="azure-site-nav__link" href="<?php echo esc_url( azure_synthetics_account_url() ); ?>"><?php esc_html_e( 'Account', 'azure-synthetics' ); ?></a>

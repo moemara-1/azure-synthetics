@@ -607,6 +607,16 @@
 		grid-template-columns: 1fr;
 	}
 
+	.azure-hero__grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.azure-hero__copy,
+	.azure-hero__visual {
+		min-width: 0;
+		width: 100%;
+	}
+
 	.azure-story-grid,
 	.azure-product-grid,
 	.azure-search-grid {
@@ -785,9 +795,30 @@
 		align-items: stretch;
 	}
 
+	.azure-hero__actions {
+		flex-direction: column;
+	}
+
 	.azure-hero__actions .azure-button,
 	.azure-inline-form .azure-button,
 	.azure-inline-form input {
+		width: 100%;
+	}
+
+	.azure-pill-note {
+		width: 100%;
+		justify-content: center;
+		border-radius: 18px;
+		text-align: center;
+	}
+
+	.azure-hero__visual {
+		overflow: hidden;
+		padding: 20px;
+		border-radius: 24px;
+	}
+
+	.azure-hero-card {
 		width: 100%;
 	}
 
