@@ -9,12 +9,12 @@ $cards = azure_synthetics_get_story_cards();
 ?>
 <section class="azure-editorial-section azure-editorial-section--light">
 	<div class="azure-shell azure-editorial-section__grid">
-		<div class="azure-editorial-section__copy">
-			<p class="azure-kicker"><?php esc_html_e( 'Why buyers stay', 'azure-synthetics' ); ?></p>
-			<h2><?php esc_html_e( 'A storefront calibrated for repeat protocols, not impulse experimentation.', 'azure-synthetics' ); ?></h2>
-			<p><?php esc_html_e( 'Every product page is paired with usage framing, release-level documentation, and continuity signals that make the buying experience feel reliable at scale. The design language stays premium, but the information architecture is clinical and direct.', 'azure-synthetics' ); ?></p>
-			<p class="azure-meta-line"><?php esc_html_e( 'Trust should be legible before checkout.', 'azure-synthetics' ); ?></p>
-		</div>
+			<div class="azure-editorial-section__copy">
+				<p class="azure-kicker"><?php esc_html_e( 'Why buyers stay', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'A storefront calibrated for repeat protocols, not impulse experimentation.', 'azure-synthetics' ); ?></h2>
+				<p><?php esc_html_e( 'Every product page pairs release-level documentation, handling notes, and continuity signals with a clinical, direct buying experience.', 'azure-synthetics' ); ?></p>
+				<p class="azure-meta-line"><?php esc_html_e( 'Trust before checkout.', 'azure-synthetics' ); ?></p>
+			</div>
 		<div class="azure-editorial-section__media">
 			<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/story-lab.png' ) ); ?>" alt="<?php esc_attr_e( 'Laboratory detail', 'azure-synthetics' ); ?>">
 		</div>

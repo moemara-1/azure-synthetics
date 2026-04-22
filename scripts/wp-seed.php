@@ -262,7 +262,7 @@ azure_seed_simple_product(
 		'image_id'          => $bpc_image,
 		'category_ids'      => array( $category_ids['recovery'] ),
 		'short_description' => 'Lyophilized recovery peptide with traceable COA support.',
-		'description'       => 'Built for recovery and repair-oriented research programs that prioritize documentation, packaging stability, and lot continuity over generic catalog merchandising.',
+			'description'       => 'Recovery and repair research support with lot continuity, storage notes, and COA context.',
 		'attributes'        => array(
 			'Vial Size'   => array( '10 mg' ),
 			'Form Factor' => array( 'Lyophilized powder' ),
@@ -302,7 +302,7 @@ azure_seed_simple_product(
 		'image_id'          => $motsc_image,
 		'category_ids'      => array( $category_ids['longevity'] ),
 		'short_description' => 'Mitochondrial research compound with premium cold-chain presentation.',
-		'description'       => 'Positioned for longevity and metabolic support research workflows that value legible technical metadata and repeat-order continuity.',
+			'description'       => 'Longevity and metabolic support research material with traceable release context.',
 		'attributes'        => array(
 			'Vial Size'   => array( '10 mg' ),
 			'Form Factor' => array( 'Lyophilized powder' ),
@@ -337,7 +337,7 @@ $cjc_product_id = azure_seed_variable_product(
 		'image_id'          => $cjcipa_image,
 		'category_ids'      => array( $category_ids['recovery'] ),
 		'short_description' => 'Variable format peptide stack presented with clean protocol metadata.',
-		'description'       => 'A variable product scaffold for vial and kit purchasing, demonstrating WooCommerce-native pack options without custom checkout hacks.',
+			'description'       => 'Dual-vial research kit with selectable pack sizes and paired COA references.',
 		'attributes'        => array(
 			'Pack Size' => array( '1 kit', '2 kits' ),
 			'Vial Size' => array( '5 mg / 5 mg' ),
@@ -375,7 +375,7 @@ $cjc_product_id = azure_seed_variable_product(
 				array(
 					array(
 						'question' => 'Can I purchase multiple kits in one line item?',
-						'answer'   => 'Yes. Use the Pack Size selector to place a WooCommerce-native variation order.',
+							'answer'   => 'Yes. Select the pack size before adding the kit to cart.',
 					),
 				)
 			),
@@ -391,7 +391,7 @@ azure_seed_simple_product(
 		'image_id'          => $glp_image,
 		'category_ids'      => array( $category_ids['bodycomp'] ),
 		'short_description' => 'Body composition research peptide displayed with premium dark-surface merchandising.',
-		'description'       => 'Uses the emphasized card styling from the reference design and demonstrates high-contrast product merchandising for flagship catalog entries.',
+			'description'       => 'Body composition research peptide with purity range, storage notes, and batch context.',
 		'attributes'        => array(
 			'Vial Size'   => array( '15 mg' ),
 			'Form Factor' => array( 'Lyophilized powder' ),

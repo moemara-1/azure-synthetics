@@ -127,7 +127,7 @@ class Compliance {
 							<td><textarea id="azure_synthetics_checkout_ack_label" class="large-text" rows="3" name="azure_synthetics_checkout_ack_label"><?php echo esc_textarea( $this->get_option( 'checkout_ack_label' ) ); ?></textarea></td>
 						</tr>
 						<tr>
-							<th scope="row"><?php esc_html_e( 'Catalog gate scaffold', 'azure-synthetics-core' ); ?></th>
+								<th scope="row"><?php esc_html_e( 'Catalog gate', 'azure-synthetics-core' ); ?></th>
 							<td>
 								<label for="azure_synthetics_catalog_gate_enabled">
 									<input id="azure_synthetics_catalog_gate_enabled" type="checkbox" name="azure_synthetics_catalog_gate_enabled" value="1" <?php checked( (bool) $this->get_option( 'catalog_gate_enabled', false ) ); ?>>

@@ -10,12 +10,12 @@ $science_page = get_page_by_path( 'science' );
 ?>
 <section class="azure-science-grid">
 	<div class="azure-shell azure-science-grid__layout">
-		<div class="azure-science-grid__copy">
-			<p class="azure-kicker"><?php esc_html_e( 'Operational rigor', 'azure-synthetics' ); ?></p>
-			<h2><?php esc_html_e( 'Testing, packaging, and replenishment built into one visual system.', 'azure-synthetics' ); ?></h2>
-			<p><?php esc_html_e( 'The future storefront should make technical quality feel understandable: a buyer can scan the page, grasp the process, and know exactly why the product earns trust.', 'azure-synthetics' ); ?></p>
-			<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'Read the documentation model', 'azure-synthetics' ); ?></a>
-		</div>
+			<div class="azure-science-grid__copy">
+				<p class="azure-kicker"><?php esc_html_e( 'Operational rigor', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'Testing, packaging, and replenishment in one place.', 'azure-synthetics' ); ?></h2>
+				<p><?php esc_html_e( 'Assay context, storage notes, and reorder details stay visible from product discovery through checkout.', 'azure-synthetics' ); ?></p>
+				<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'View science notes', 'azure-synthetics' ); ?></a>
+			</div>
 		<div class="azure-science-grid__cards">
 			<article class="azure-card azure-card--feature">
 				<div class="azure-card__media">

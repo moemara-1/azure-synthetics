@@ -1,6 +1,6 @@
 <?php
 /**
- * Gateway compatibility scaffolding.
+ * Gateway compatibility.
  *
  * @package AzureSyntheticsCore
  */
@@ -36,6 +36,6 @@ class Gateway_Compat {
 	 * @return void
 	 */
 	public function render_gateway_notice() {
-		echo '<p class="azure-gateway-note">' . esc_html__( 'Payment methods remain WooCommerce-native so compatible high-risk or specialist gateways can be integrated later without rewriting the checkout.', 'azure-synthetics-core' ) . '</p>';
+		return;
 	}
 }

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Azure Synthetics Core
  * Plugin URI: https://example.com/azure-synthetics-core
- * Description: Peptide product metadata, compliance settings, checkout acknowledgment, and gateway scaffolding for the Azure Synthetics WooCommerce theme.
+ * Description: Peptide product metadata, compliance settings, checkout acknowledgment, and catalog controls for Azure Synthetics.
  * Version: 1.0.0
  * Author: OpenAI Codex
  * Text Domain: azure-synthetics-core

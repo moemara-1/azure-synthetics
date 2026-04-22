@@ -138,6 +138,68 @@ function azure_synthetics_pantheon_repair_navigation_urls() {
 	}
 }
 
+function azure_synthetics_pantheon_repair_product_copy() {
+	$products = array(
+		'bpc-157' => array(
+			'description' => 'Recovery and repair research support with lot continuity, storage notes, and COA context.',
+			'faqs'        => array(
+				array(
+					'question' => 'How is lot verification surfaced?',
+					'answer'   => 'Each shipment references a lot ID and a supporting COA workflow.',
+				),
+				array(
+					'question' => 'Is the vial pre-mixed?',
+					'answer'   => 'No. The default catalog presentation is lyophilized powder unless noted otherwise.',
+				),
+			),
+		),
+		'mots-c'  => array(
+			'description' => 'Longevity and metabolic support research material with traceable release context.',
+			'faqs'        => array(
+				array(
+					'question' => 'What documentation accompanies the product?',
+					'answer'   => 'Orders include traceability references and supporting assay documentation.',
+				),
+			),
+		),
+		'cjc-ipa' => array(
+			'description' => 'Dual-vial research kit with selectable pack sizes and paired COA references.',
+			'faqs'        => array(
+				array(
+					'question' => 'Can I purchase multiple kits in one line item?',
+					'answer'   => 'Yes. Select the pack size before adding the kit to cart.',
+				),
+			),
+		),
+		'glp-3'   => array(
+			'description' => 'Body composition research peptide with purity range, storage notes, and batch context.',
+			'faqs'        => array(
+				array(
+					'question' => 'Is this positioned as a consumer wellness product?',
+					'answer'   => 'No. Catalog language is restricted to research and laboratory contexts.',
+				),
+			),
+		),
+	);
+
+	foreach ( $products as $slug => $data ) {
+		$product = get_page_by_path( $slug, OBJECT, 'product' );
+
+		if ( ! $product ) {
+			continue;
+		}
+
+		wp_update_post(
+			array(
+				'ID'           => $product->ID,
+				'post_content' => wp_slash( $data['description'] ),
+			)
+		);
+
+		update_post_meta( $product->ID, '_azure_product_faqs', wp_json_encode( $data['faqs'] ) );
+	}
+}
+
 function azure_synthetics_pantheon_clear_cached_pages() {
 	if ( function_exists( 'wp_cache_flush' ) ) {
 		wp_cache_flush();
@@ -157,7 +219,7 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 		return;
 	}
 
-	$content_version = '2026-04-22.3';
+	$content_version = '2026-04-22.4';
 
 	if ( get_option( 'azure_synthetics_pantheon_content_version' ) === $content_version ) {
 		return;
@@ -177,13 +239,13 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 	);
 
 	$terms_id = azure_synthetics_pantheon_upsert_page(
-		'terms-and-conditions',
-		'Terms and Conditions',
-		azure_synthetics_pantheon_page_content(
-			'These terms frame Azure Synthetics as a research-use catalog and should be reviewed before any production launch.',
-			array(
-				'Research-use restriction' => 'Products are offered for laboratory, analytical, and investigational contexts only and are not positioned for diagnosis, treatment, mitigation, cure, or human consumption.',
-				'Orders and accounts'     => 'Azure Synthetics may review, refuse, or cancel orders that appear inconsistent with research-use restrictions, payment controls, or fulfillment requirements.',
+			'terms-and-conditions',
+			'Terms and Conditions',
+			azure_synthetics_pantheon_page_content(
+				'Azure Synthetics operates as a research-use catalog for laboratory and analytical contexts.',
+				array(
+					'Research-use restriction' => 'Products are offered for laboratory, analytical, and investigational contexts only and are not positioned for diagnosis, treatment, mitigation, cure, or human consumption.',
+					'Orders and accounts'     => 'Azure Synthetics may review, refuse, or cancel orders that appear inconsistent with research-use restrictions, payment controls, or fulfillment requirements.',
 				'Product information'     => 'Product pages summarize form factor, storage, shipping, and lot context; buyers remain responsible for verifying suitability for their own internal protocols.',
 			)
 		)
@@ -205,13 +267,13 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 
 	$bulk_id = azure_synthetics_pantheon_upsert_page(
 		'bulk-orders',
-		'Bulk Orders',
-		azure_synthetics_pantheon_page_content(
-			'Bulk and repeat-order conversations are routed through the support desk so documentation, lot context, and fulfillment expectations stay clear.',
-			array(
-				'Preferred pricing' => 'Use this page to start a conversation about recurring demand, pack sizes, and documentation needs.',
-				'What to include'   => 'Send product names, expected order cadence, destination region, and any lot or COA requirements.',
-				'Next step'         => 'Email hello@azuresynthetics.com and include Bulk Order Request in the subject line.',
+			'Bulk Orders',
+			azure_synthetics_pantheon_page_content(
+				'Bulk and repeat-order conversations are routed through the support desk so documentation, lot context, and fulfillment expectations stay clear.',
+				array(
+					'Preferred pricing' => 'Start a conversation about recurring demand, pack sizes, and documentation needs.',
+					'What to include'   => 'Send product names, expected order cadence, destination region, and any lot or COA requirements.',
+					'Next step'         => 'Email hello@azuresynthetics.com and include Bulk Order Request in the subject line.',
 			)
 		)
 	);
@@ -226,6 +288,7 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 
 	azure_synthetics_pantheon_hide_default_content();
 	azure_synthetics_pantheon_repair_navigation_urls();
+	azure_synthetics_pantheon_repair_product_copy();
 
 	update_option(
 		'azure_synthetics_pantheon_launch_page_ids',

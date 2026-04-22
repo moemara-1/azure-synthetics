@@ -170,37 +170,37 @@ function azure_synthetics_get_page_intro() {
 		);
 	}
 
-	if ( is_page_template( 'page-templates/template-faq.php' ) ) {
-		return array(
-			'eyebrow'     => __( 'Need a clearer path?', 'azure-synthetics' ),
-			'title'       => __( 'Frequently asked questions', 'azure-synthetics' ),
-			'description' => __( 'Concise answers on documentation, handling, and how the catalog is structured.', 'azure-synthetics' ),
-		);
-	}
+		if ( is_page_template( 'page-templates/template-faq.php' ) ) {
+			return array(
+				'eyebrow'     => __( 'Need a clearer path?', 'azure-synthetics' ),
+				'title'       => __( 'Frequently asked questions', 'azure-synthetics' ),
+				'description' => __( 'Documentation, handling, and account answers in one place.', 'azure-synthetics' ),
+			);
+		}
 
 	if ( is_page_template( 'page-templates/template-science.php' ) ) {
-		return array(
-			'eyebrow'     => __( 'Science and documentation', 'azure-synthetics' ),
-			'title'       => __( 'A research-use catalog needs proof before persuasion.', 'azure-synthetics' ),
-			'description' => __( 'How Azure Synthetics presents lot integrity, release data, form factors, and handling notes without drifting into consumer health claims.', 'azure-synthetics' ),
-		);
-	}
+			return array(
+				'eyebrow'     => __( 'Science and documentation', 'azure-synthetics' ),
+				'title'       => __( 'A research-use catalog needs proof before persuasion.', 'azure-synthetics' ),
+				'description' => __( 'Lot integrity, release data, form factors, and handling notes for research-use purchasing.', 'azure-synthetics' ),
+			);
+		}
 
 	if ( is_page_template( 'page-templates/template-contact.php' ) ) {
-		return array(
-			'eyebrow'     => __( 'Contact', 'azure-synthetics' ),
-			'title'       => __( 'Talk to the support desk', 'azure-synthetics' ),
-			'description' => __( 'Use this page for account help, documentation requests, shipping questions, and catalog assistance.', 'azure-synthetics' ),
-		);
-	}
+			return array(
+				'eyebrow'     => __( 'Contact', 'azure-synthetics' ),
+				'title'       => __( 'Talk to the support desk', 'azure-synthetics' ),
+				'description' => __( 'Account help, documentation requests, shipping questions, and catalog assistance.', 'azure-synthetics' ),
+			);
+		}
 
 	if ( is_page_template( 'page-templates/template-compliance.php' ) ) {
-		return array(
-			'eyebrow'     => __( 'Research use policy', 'azure-synthetics' ),
-			'title'       => __( 'Compliance and handling', 'azure-synthetics' ),
-			'description' => __( 'Keep legal, storage, and product-positioning language legible across the buying journey.', 'azure-synthetics' ),
-		);
-	}
+			return array(
+				'eyebrow'     => __( 'Research use policy', 'azure-synthetics' ),
+				'title'       => __( 'Compliance and handling', 'azure-synthetics' ),
+				'description' => __( 'Research-use terms, storage notes, and product-positioning language in one place.', 'azure-synthetics' ),
+			);
+		}
 
 	if ( is_singular( 'product' ) ) {
 		global $product;

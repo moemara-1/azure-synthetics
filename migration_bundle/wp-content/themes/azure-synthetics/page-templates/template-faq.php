@@ -28,12 +28,12 @@ get_header();
 						</div>
 						<?php
 					else :
-						?>
-						<div class="azure-faq-guidance__intro">
-							<p class="azure-kicker"><?php esc_html_e( 'Start here', 'azure-synthetics' ); ?></p>
-							<h2><?php esc_html_e( 'Use the FAQ as a quick diligence checklist.', 'azure-synthetics' ); ?></h2>
-							<p><?php esc_html_e( 'These notes keep product form, documentation, handling, and account questions close together so buyers do not have to infer the basics from product copy alone.', 'azure-synthetics' ); ?></p>
-						</div>
+							?>
+							<div class="azure-faq-guidance__intro">
+								<p class="azure-kicker"><?php esc_html_e( 'Start here', 'azure-synthetics' ); ?></p>
+								<h2><?php esc_html_e( 'Quick diligence checklist.', 'azure-synthetics' ); ?></h2>
+								<p><?php esc_html_e( 'Product form, documentation, handling, and account questions together.', 'azure-synthetics' ); ?></p>
+							</div>
 						<div class="azure-faq-guidance__cards">
 							<?php foreach ( azure_synthetics_get_faq_guidance_cards() as $card ) : ?>
 								<article class="azure-card">

@@ -21,101 +21,101 @@ function azure_synthetics_get_contact_details() {
 function azure_synthetics_get_home_metrics() {
 	return array(
 		array(
-			'value' => '99%+',
-			'label' => __( 'Purity target visibility', 'azure-synthetics' ),
-			'copy'  => __( 'Flagship lots are merchandised with assay-first technical detail.', 'azure-synthetics' ),
-		),
-		array(
-			'value' => 'Cold-chain',
-			'label' => __( 'Handling language', 'azure-synthetics' ),
-			'copy'  => __( 'Storage and shipping notes appear before checkout, not after purchase.', 'azure-synthetics' ),
-		),
-		array(
-			'value' => 'Repeat-ready',
-			'label' => __( 'Retention design', 'azure-synthetics' ),
-			'copy'  => __( 'Protocol buyers can reorder quickly without losing compliance context.', 'azure-synthetics' ),
-		),
+				'value' => '99%+',
+				'label' => __( 'Purity target visibility', 'azure-synthetics' ),
+				'copy'  => __( 'Published assay references stay close to each flagship lot.', 'azure-synthetics' ),
+			),
+			array(
+				'value' => 'Cold-chain',
+				'label' => __( 'Handling clarity', 'azure-synthetics' ),
+				'copy'  => __( 'Storage and shipping expectations are visible before checkout.', 'azure-synthetics' ),
+			),
+			array(
+				'value' => 'Repeat-ready',
+				'label' => __( 'Lot continuity', 'azure-synthetics' ),
+				'copy'  => __( 'Repeat buyers keep consistent lot and handling context.', 'azure-synthetics' ),
+			),
 	);
 }
 
 function azure_synthetics_get_story_cards() {
 	return array(
-		array(
-			'title'       => __( 'Protocol-first education', 'azure-synthetics' ),
-			'description' => __( 'Explainers, timing references, and product pairings reduce support friction while increasing buyer confidence.', 'azure-synthetics' ),
-			'tone'        => 'light',
-		),
-		array(
-			'title'       => __( 'Visible lot integrity', 'azure-synthetics' ),
-			'description' => __( 'Lot-linked COAs, cold-chain metadata, and purity ranges appear as first-class purchase information.', 'azure-synthetics' ),
-			'tone'        => 'light',
-		),
-		array(
-			'title'       => __( 'Retention by design', 'azure-synthetics' ),
-			'description' => __( 'Subscribers get protocol refreshes, assay updates, and reorder logic that feels like product infrastructure.', 'azure-synthetics' ),
-			'tone'        => 'dark',
-		),
+			array(
+				'title'       => __( 'Protocol-first education', 'azure-synthetics' ),
+				'description' => __( 'Clear release notes and product pairings help research teams buy with confidence.', 'azure-synthetics' ),
+				'tone'        => 'light',
+			),
+			array(
+				'title'       => __( 'Visible lot integrity', 'azure-synthetics' ),
+				'description' => __( 'COA references, purity ranges, and storage notes stay close to each product.', 'azure-synthetics' ),
+				'tone'        => 'light',
+			),
+			array(
+				'title'       => __( 'Retention by design', 'azure-synthetics' ),
+				'description' => __( 'Reorders keep the same product, lot, and handling context.', 'azure-synthetics' ),
+				'tone'        => 'dark',
+			),
 	);
 }
 
 function azure_synthetics_get_science_cards() {
 	return array(
-		'main'  => array(
-			'title'       => __( 'Release discipline from batch to reorder', 'azure-synthetics' ),
-			'description' => __( 'Every flagship drop is staged around identity testing, purity range visibility, temperature-aware fulfillment, and reorder context that stays research-use only.', 'azure-synthetics' ),
-		),
+			'main'  => array(
+				'title'       => __( 'Release discipline from batch to reorder', 'azure-synthetics' ),
+				'description' => __( 'Identity testing, purity ranges, handling notes, and lot context are presented together for research-use purchasing.', 'azure-synthetics' ),
+			),
 		'cards' => array(
-			array(
-				'title'       => __( 'What gets documented', 'azure-synthetics' ),
-				'description' => __( 'Lot identifiers, assay references, purity bands, storage notes, and form-factor details are kept close to the buying path.', 'azure-synthetics' ),
-				'tone'        => 'dark',
-			),
-			array(
-				'title'       => __( 'How handling is framed', 'azure-synthetics' ),
-				'description' => __( 'Cold-pack cues, inspection guidance, and storage language are written as operational notes, not health or outcome claims.', 'azure-synthetics' ),
-				'tone'        => 'light',
-			),
+				array(
+					'title'       => __( 'What gets documented', 'azure-synthetics' ),
+					'description' => __( 'Lot identifiers, assay references, purity bands, storage notes, and form-factor details.', 'azure-synthetics' ),
+					'tone'        => 'dark',
+				),
+				array(
+					'title'       => __( 'How handling is framed', 'azure-synthetics' ),
+					'description' => __( 'Cold-pack cues, inspection guidance, and storage notes stay operational.', 'azure-synthetics' ),
+					'tone'        => 'light',
+				),
 		),
 	);
 }
 
 function azure_synthetics_get_science_explainers() {
 	return array(
-		array(
-			'title'       => __( 'Identity and purity', 'azure-synthetics' ),
-			'description' => __( 'Product pages reserve space for compound identity, target purity range, assay context, and lot reference details so research teams can evaluate a release without hunting through support copy.', 'azure-synthetics' ),
-			'detail'      => __( 'Use this area for HPLC or MS references, COA links, batch IDs, and any release-specific acceptance criteria your operation publishes.', 'azure-synthetics' ),
-		),
-		array(
-			'title'       => __( 'Form factor and preparation', 'azure-synthetics' ),
-			'description' => __( 'Catalog language separates lyophilized powder, dual-vial kits, pack sizes, and handling prompts from any prohibited use language.', 'azure-synthetics' ),
-			'detail'      => __( 'Variable products stay WooCommerce-native, while research notes clarify what the buyer should verify before adding an item to a protocol inventory.', 'azure-synthetics' ),
-		),
-		array(
-			'title'       => __( 'Storage and transit stability', 'azure-synthetics' ),
-			'description' => __( 'Temperature-sensitive items can carry clear shipping warnings and storage instructions before checkout, where the information is useful.', 'azure-synthetics' ),
-			'detail'      => __( 'The theme supports default shipping notes plus product-specific overrides for cold-chain, inspection, and long-term storage guidance.', 'azure-synthetics' ),
-		),
+			array(
+				'title'       => __( 'Identity and purity', 'azure-synthetics' ),
+				'description' => __( 'Compound identity, target purity range, assay context, and lot references are surfaced before purchase.', 'azure-synthetics' ),
+				'detail'      => '',
+			),
+			array(
+				'title'       => __( 'Format and handling', 'azure-synthetics' ),
+				'description' => __( 'Powder, dual-vial kits, pack sizes, and handling notes stay separate from prohibited-use language.', 'azure-synthetics' ),
+				'detail'      => '',
+			),
+			array(
+				'title'       => __( 'Storage and transit', 'azure-synthetics' ),
+				'description' => __( 'Temperature, inspection, and storage notes are visible before checkout.', 'azure-synthetics' ),
+				'detail'      => '',
+			),
 	);
 }
 
 function azure_synthetics_get_science_process_steps() {
 	return array(
 		array(
-			'label' => __( '01', 'azure-synthetics' ),
-			'title' => __( 'Release screen', 'azure-synthetics' ),
-			'copy'  => __( 'Publish the batch only after identity, purity, and form-factor data are ready to appear beside the product.', 'azure-synthetics' ),
-		),
+				'label' => __( '01', 'azure-synthetics' ),
+				'title' => __( 'Release screen', 'azure-synthetics' ),
+				'copy'  => __( 'Batch data is reviewed before a product is released.', 'azure-synthetics' ),
+			),
 		array(
-			'label' => __( '02', 'azure-synthetics' ),
-			'title' => __( 'Package for handling', 'azure-synthetics' ),
-			'copy'  => __( 'Pair fulfillment notes with storage expectations so buyers see the handling burden before checkout.', 'azure-synthetics' ),
-		),
+				'label' => __( '02', 'azure-synthetics' ),
+				'title' => __( 'Package for handling', 'azure-synthetics' ),
+				'copy'  => __( 'Packaging and storage notes travel with the order.', 'azure-synthetics' ),
+			),
 		array(
-			'label' => __( '03', 'azure-synthetics' ),
-			'title' => __( 'Keep the lot traceable', 'azure-synthetics' ),
-			'copy'  => __( 'Expose batch references, COA context, and reorder notes in the same visual system across product, cart, and support pages.', 'azure-synthetics' ),
-		),
+				'label' => __( '03', 'azure-synthetics' ),
+				'title' => __( 'Keep the lot traceable', 'azure-synthetics' ),
+				'copy'  => __( 'Lot references and COA context remain easy to find.', 'azure-synthetics' ),
+			),
 	);
 }
 
@@ -129,10 +129,10 @@ function azure_synthetics_get_faq_guidance_cards() {
 			'title'       => __( 'After delivery', 'azure-synthetics' ),
 			'description' => __( 'Inspect temperature-sensitive shipments promptly and keep published storage guidance attached to the receiving record.', 'azure-synthetics' ),
 		),
-		array(
-			'title'       => __( 'Need documentation?', 'azure-synthetics' ),
-			'description' => __( 'Use the product FAQ, batch reference fields, and support desk for assay or lot documentation requests.', 'azure-synthetics' ),
-		),
+			array(
+				'title'       => __( 'Need documentation?', 'azure-synthetics' ),
+				'description' => __( 'Product FAQs, batch references, and the support desk cover assay or lot documentation requests.', 'azure-synthetics' ),
+			),
 	);
 }
 
@@ -163,12 +163,12 @@ function azure_synthetics_get_default_faqs() {
 			'answer'   => __( 'Catalog defaults are framed as research-use, lyophilized inventory unless a product explicitly states another form factor.', 'azure-synthetics' ),
 		),
 		array(
-			'question' => __( 'How do you present assay reports and lot verification?', 'azure-synthetics' ),
-			'answer'   => __( 'Each flagship product template reserves space for batch references, purity ranges, and lot-linked COA context.', 'azure-synthetics' ),
-		),
-		array(
-			'question' => __( 'Can clinics set up preferred pricing or bulk reorder flows?', 'azure-synthetics' ),
-			'answer'   => __( 'The storefront foundation is built to remain compatible with future preferred pricing, wholesale, and gateway extensions.', 'azure-synthetics' ),
-		),
+				'question' => __( 'How do you present assay reports and lot verification?', 'azure-synthetics' ),
+				'answer'   => __( 'Each flagship product includes batch references, purity ranges, and lot-linked COA context.', 'azure-synthetics' ),
+			),
+			array(
+				'question' => __( 'Can clinics set up preferred pricing or bulk reorder flows?', 'azure-synthetics' ),
+				'answer'   => __( 'Yes. Contact support for recurring demand, preferred pricing, and documentation needs.', 'azure-synthetics' ),
+			),
 	);
 }
