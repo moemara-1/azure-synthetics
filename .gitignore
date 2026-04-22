@@ -1,6 +1,7 @@
 .npm-cache/
 .tools/
 .tunnel/
+.pantheon/
 exports/
 png_export/
 node_modules/

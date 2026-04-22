@@ -64,6 +64,47 @@
   docker compose down -v
   ```
 
+## Deploying to Pantheon from macOS/Linux
+1. Create a dedicated SSH key if this computer does not already have one:
+   ```sh
+   ssh-keygen -t rsa -b 4096 -C "pantheon-azure-synthetics" -f ~/.ssh/pantheon_azure_synthetics
+   pbcopy < ~/.ssh/pantheon_azure_synthetics.pub
+   ```
+2. Add the copied public key to the target Pantheon site/user.
+3. From the repository root, run:
+   ```sh
+   PANTHEON_SSH_KEY=~/.ssh/pantheon_azure_synthetics ./scripts/deploy-to-pantheon.sh
+   ```
+   If Pantheon already trusts your default SSH key, this also works:
+   ```sh
+   ./scripts/deploy-to-pantheon.sh
+   ```
+4. Import the database export in Pantheon:
+   ```text
+   migration_bundle/azure_synthetics_full_migration.sql
+   ```
+5. After the import, replace the temporary tunnel URL in the database:
+   ```text
+   https://azure-synthetics.loca.lt
+   ```
+   with the Pantheon environment URL or final production domain.
+
+## Deploying to Pantheon from Windows
+1. Add this computer's SSH public key to the target Pantheon site/user.
+2. From the repository root, run:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\scripts\deploy-to-pantheon.ps1
+   ```
+3. Import the database export in Pantheon:
+   ```text
+   migration_bundle/azure_synthetics_full_migration.sql
+   ```
+4. After the import, replace the temporary tunnel URL in the database:
+   ```text
+   https://azure-synthetics.loca.lt
+   ```
+   with the Pantheon environment URL or final production domain.
+
 ## Recommended plugins
 - Required:
   - WooCommerce
