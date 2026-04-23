@@ -169,6 +169,11 @@
 	height: 2px;
 	margin: 6px 0;
 	background: currentColor;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.azure-nav-scrim {
+	display: none;
 }
 
 .azure-front-page section + section {
@@ -683,26 +688,40 @@
 	}
 
 	.azure-nav-toggle {
-		display: block;
+		display: grid;
+		place-items: center;
 		color: inherit;
 		min-width: 44px;
 		min-height: 44px;
+		border-radius: 999px;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		background: rgba(255, 255, 255, 0.04);
+		position: relative;
+		z-index: 82;
 	}
 
 	.azure-site-nav {
 		position: fixed;
-		display: none;
+		display: flex;
 		top: 0;
 		right: 0;
 		bottom: 0;
-		width: min(88vw, 360px);
-		padding: 88px 24px 24px;
+		width: min(86vw, 320px);
+		height: 100dvh;
+		padding: 88px 20px 24px;
 		background: var(--azure-panel-dark);
 		color: var(--azure-white-tint);
-		transform: none;
+		transform: translateX(24px);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: transform 0.24s ease, opacity 0.24s ease, visibility 0.24s ease;
 		flex-direction: column;
 		align-items: flex-start;
 		box-shadow: var(--azure-shadow-dark);
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		z-index: 81;
 	}
 
 	.azure-menu,
@@ -717,12 +736,50 @@
 	.azure-site-nav__link {
 		display: flex;
 		align-items: center;
+		width: 100%;
 		min-height: 44px;
 		font-size: 16px;
 	}
 
+	.azure-site-nav__actions {
+		gap: 10px;
+	}
+
+	.azure-nav-scrim {
+		position: fixed;
+		inset: 0;
+		display: block;
+		background: rgba(8, 20, 26, 0.48);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: opacity 0.24s ease, visibility 0.24s ease;
+		z-index: 80;
+	}
+
 	body.has-nav-open .azure-site-nav {
-		display: flex;
+		transform: translateX(0);
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	body.has-nav-open .azure-nav-scrim {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	body.has-nav-open .azure-nav-toggle span:not(.screen-reader-text):first-of-type {
+		transform: translateY(4px) rotate(45deg);
+	}
+
+	body.has-nav-open .azure-nav-toggle span:not(.screen-reader-text):last-of-type {
+		transform: translateY(-4px) rotate(-45deg);
+	}
+
+	body.has-nav-open {
+		overflow: hidden;
 	}
 
 	.azure-hero__visual {
@@ -772,6 +829,10 @@
 		display: none;
 	}
 
+	.azure-site-header__inner {
+		gap: 12px;
+	}
+
 	.azure-brand__tag {
 		display: none;
 	}
@@ -793,6 +854,11 @@
 	.azure-hero__actions,
 	.azure-inline-form {
 		align-items: stretch;
+	}
+
+	.azure-section-heading__description {
+		font-size: 15px;
+		max-width: 34ch;
 	}
 
 	.azure-hero__actions {

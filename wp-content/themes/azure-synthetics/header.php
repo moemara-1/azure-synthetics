@@ -57,3 +57,4 @@ $cart_count = azure_synthetics_cart_count();
 		</nav>
 	</div>
 </header>
+<div class="azure-nav-scrim" aria-hidden="true"></div>

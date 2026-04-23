@@ -416,6 +416,11 @@
 		grid-template-columns: 1fr;
 	}
 
+	.azure-shop-layout,
+	.azure-catalog-main {
+		min-width: 0;
+	}
+
 	.azure-shop-shell,
 	.azure-product-shell {
 		padding-top: var(--azure-space-32);
@@ -468,6 +473,10 @@
 		padding-top: 20px;
 	}
 
+	.azure-shop-layout {
+		gap: 18px;
+	}
+
 	.azure-shop-shell .azure-page-hero,
 	.azure-shop-shell .azure-page-section {
 		padding-top: 28px;
@@ -491,6 +500,16 @@
 
 	.woocommerce ul.products {
 		gap: var(--azure-space-16);
+	}
+
+	.azure-catalog-toolbar {
+		gap: 10px;
+		margin-bottom: 20px;
+	}
+
+	.azure-shop-shell .azure-section-heading__description {
+		max-width: 32ch;
+		font-size: 15px;
 	}
 
 	.azure-product-card {
