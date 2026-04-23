@@ -64,7 +64,7 @@ $highlights            = array_filter(
 				<?php endif; ?>
 				<?php if ( $proof_surface_label || $documentation_status ) : ?>
 					<div class="azure-product-proof-card">
-						<strong><?php esc_html_e( 'Documentation availability', 'azure-synthetics' ); ?></strong>
+						<strong><?php esc_html_e( 'Batch & documentation', 'azure-synthetics' ); ?></strong>
 						<p><?php echo esc_html( $proof_surface_label ?: $documentation_status ); ?></p>
 					</div>
 				<?php endif; ?>
@@ -90,7 +90,7 @@ $highlights            = array_filter(
 
 		<div class="azure-product-sections">
 			<section class="azure-product-section">
-				<h2><?php esc_html_e( 'Technical overview', 'azure-synthetics' ); ?></h2>
+				<h2><?php esc_html_e( 'Compound overview', 'azure-synthetics' ); ?></h2>
 				<div class="azure-prose">
 					<?php the_content(); ?>
 				</div>
@@ -98,17 +98,17 @@ $highlights            = array_filter(
 
 			<?php if ( $mechanism_summary || $documentation_status ) : ?>
 				<section class="azure-product-section">
-					<h2><?php esc_html_e( 'Research snapshot', 'azure-synthetics' ); ?></h2>
+					<h2><?php esc_html_e( 'Lab notes', 'azure-synthetics' ); ?></h2>
 					<div class="azure-product-insight-grid">
 						<?php if ( $mechanism_summary ) : ?>
 							<article class="azure-product-insight-card">
-								<h3><?php esc_html_e( 'Mechanism summary', 'azure-synthetics' ); ?></h3>
+								<h3><?php esc_html_e( 'Mechanism', 'azure-synthetics' ); ?></h3>
 								<p><?php echo esc_html( $mechanism_summary ); ?></p>
 							</article>
 						<?php endif; ?>
 						<?php if ( $documentation_status ) : ?>
 							<article class="azure-product-insight-card">
-								<h3><?php esc_html_e( 'Documentation status', 'azure-synthetics' ); ?></h3>
+								<h3><?php esc_html_e( 'Documentation', 'azure-synthetics' ); ?></h3>
 								<p><?php echo esc_html( $documentation_status ); ?></p>
 							</article>
 						<?php endif; ?>

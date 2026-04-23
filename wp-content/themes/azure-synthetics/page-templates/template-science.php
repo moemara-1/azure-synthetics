@@ -17,7 +17,7 @@ $evidence_tiers = azure_synthetics_get_science_evidence_tiers();
 			<?php azure_synthetics_render_section_heading( azure_synthetics_get_page_intro() ); ?>
 			<div class="azure-science-page__hero-note">
 				<p class="azure-kicker"><?php esc_html_e( 'Research use only', 'azure-synthetics' ); ?></p>
-				<p><?php esc_html_e( 'Use this guide to compare research peptides by alias, evidence tier, documentation availability, handling notes, and RUO claim boundaries before ordering.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Use this guide to compare research peptides by alias, vial format, evidence tier, purity cues, documentation availability, handling notes, and RUO claim boundaries before ordering.', 'azure-synthetics' ); ?></p>
 			</div>
 		</div>
 	</section>
@@ -29,8 +29,8 @@ $evidence_tiers = azure_synthetics_get_science_evidence_tiers();
 			</div>
 			<div class="azure-prose">
 				<p class="azure-kicker"><?php esc_html_e( 'How to read a flagship page', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Read the details that matter before a peptide goes in the cart.', 'azure-synthetics' ); ?></h2>
-				<p><?php esc_html_e( 'Each flagship product page brings the practical details forward: compound alias, research summary, evidence tier, documentation availability, handling notes, and product-specific FAQ guidance.', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'Read the product facts that matter before a peptide goes in the cart.', 'azure-synthetics' ); ?></h2>
+				<p><?php esc_html_e( 'Each flagship product page brings the practical details forward: compound alias, form factor, evidence tier, purity cue, documentation availability, handling notes, and product-specific FAQ guidance.', 'azure-synthetics' ); ?></p>
 				<p><?php esc_html_e( 'That helps experienced buyers move quickly while giving newer research buyers a safer way to understand what they are comparing.', 'azure-synthetics' ); ?></p>
 			</div>
 		</div>

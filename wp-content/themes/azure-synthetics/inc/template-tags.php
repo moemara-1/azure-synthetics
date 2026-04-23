@@ -82,15 +82,15 @@ function azure_synthetics_get_page_intro() {
 		return array(
 			'eyebrow'     => __( 'Documentation desk', 'azure-synthetics' ),
 			'title'       => __( 'Frequently asked questions', 'azure-synthetics' ),
-			'description' => __( 'A faster route through evidence tiers, handling notes, documentation options, and research-use-only ordering questions.', 'azure-synthetics' ),
+			'description' => __( 'A faster route through evidence tiers, purity cues, documentation options, storage notes, and research-use-only ordering questions.', 'azure-synthetics' ),
 		);
 	}
 
 	if ( is_page_template( 'page-templates/template-science.php' ) ) {
 		return array(
 			'eyebrow'     => __( 'Science and documentation', 'azure-synthetics' ),
-			'title'       => __( 'Compare peptide research signals before you order.', 'azure-synthetics' ),
-			'description' => __( 'Use evidence tiers, product aliases, documentation availability, and handling notes to compare research peptides without unsupported clinical claims.', 'azure-synthetics' ),
+			'title'       => __( 'Compare research peptide details before you order.', 'azure-synthetics' ),
+			'description' => __( 'Use evidence tiers, product aliases, purity cues, documentation availability, and handling notes to compare research peptides without unsupported clinical claims.', 'azure-synthetics' ),
 		);
 	}
 
@@ -124,7 +124,7 @@ function azure_synthetics_get_page_intro() {
 	return array(
 		'eyebrow'     => __( 'Azure Synthetics', 'azure-synthetics' ),
 		'title'       => get_the_title(),
-		'description' => get_the_excerpt() ?: __( 'Research peptides with evidence tiers, documentation options, storage notes, and premium operational clarity.', 'azure-synthetics' ),
+		'description' => get_the_excerpt() ?: __( 'Lab-grade research peptides with evidence tiers, purity cues, documentation support, and storage guidance.', 'azure-synthetics' ),
 	);
 }
 

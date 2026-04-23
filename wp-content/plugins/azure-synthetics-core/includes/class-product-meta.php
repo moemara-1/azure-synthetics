@@ -462,13 +462,13 @@ class Product_Meta {
 			$bpc_profile = array(
 				'title'                  => 'BPC-157',
 				'compound_alias'         => 'Body Protection Compound 157',
-				'subtitle'               => 'Repair-focused research peptide',
+				'subtitle'               => 'Lyophilized repair peptide for lab research',
 				'lab_descriptor'         => 'Recovery / repair',
-				'research_summary'       => 'A recovery-category research peptide for buyers comparing BPC-157 aliases, conservative evidence context, handling notes, and documentation availability before ordering.',
+				'research_summary'       => 'BPC-157 for buyers comparing repair-focused peptides, lyophilized format, purity range, storage notes, and documentation support before ordering.',
 				'evidence_tier'          => 'Tier C',
 				'mechanism_summary'      => 'BPC-157 belongs in an investigational repair context with musculoskeletal and cytoprotective literature references, not promised human outcomes.',
 				'documentation_status'   => 'Available on request',
-				'proof_surface_label'    => 'Batch-linked support and handling notes available through the desk.',
+				'proof_surface_label'    => 'Batch-linked support, purity range, and handling notes are available through the desk.',
 				'purity_percent'         => '99.1%-99.6%',
 				'form_factor'            => 'Lyophilized powder',
 				'vial_amount'            => '10 mg',
@@ -478,7 +478,7 @@ class Product_Meta {
 				'reconstitution_guidance'=> 'Use only validated sterile lab diluent according to your internal protocol.',
 				'research_disclaimer'    => 'For research use only. Not for human consumption.',
 				'seo_focus_keyphrase'    => 'BPC-157 research peptide',
-				'meta_description'       => 'Shop BPC-157 research peptide with evidence-tier guidance, handling notes, documentation options, and RUO-first product details.',
+				'meta_description'       => 'Shop BPC-157 research peptide with lyophilized format, purity cues, handling notes, documentation options, and RUO-first product details.',
 				'faqs'                   => array(
 					array(
 						'question' => 'How should a buyer read this page?',
@@ -494,13 +494,13 @@ class Product_Meta {
 			$motsc_profile = array(
 				'title'                  => 'MOTS-c',
 				'compound_alias'         => 'Mitochondrial-derived peptide MOTS-c',
-				'subtitle'               => 'Mitochondrial signaling research',
+				'subtitle'               => 'Lyophilized mitochondrial research peptide',
 				'lab_descriptor'         => 'Longevity + energy',
-				'research_summary'       => 'A longevity-category research peptide for buyers comparing mitochondrial signaling context, evidence tier, handling notes, and documentation availability.',
+				'research_summary'       => 'MOTS-c for buyers comparing mitochondrial research peptides, lyophilized format, storage notes, documentation support, and evidence tier.',
 				'evidence_tier'          => 'Tier C',
 				'mechanism_summary'      => 'MOTS-c is best understood through metabolic and mitochondrial literature context rather than promises about energy, fat loss, or lifespan outcomes.',
 				'documentation_status'   => 'Available on request',
-				'proof_surface_label'    => 'Research summary and handling guidance shown; deeper documentation supported through the desk.',
+				'proof_surface_label'    => 'Research summary, handling guidance, and batch-support path are shown early; deeper documentation is supported through the desk.',
 				'purity_percent'         => '98.8%-99.4%',
 				'form_factor'            => 'Lyophilized powder',
 				'vial_amount'            => '10 mg',
@@ -510,7 +510,7 @@ class Product_Meta {
 				'reconstitution_guidance'=> 'Follow validated internal handling procedures only.',
 				'research_disclaimer'    => 'For research use only. Not for human consumption.',
 				'seo_focus_keyphrase'    => 'MOTS-c research peptide',
-				'meta_description'       => 'Explore MOTS-c research peptide with mechanism summary, documentation options, handling notes, and RUO-first product guidance.',
+				'meta_description'       => 'Explore MOTS-c research peptide with lyophilized format, mechanism summary, documentation options, storage notes, and RUO-first product guidance.',
 				'faqs'                   => array(
 					array(
 						'question' => 'Why is the language more restrained here?',
@@ -522,13 +522,13 @@ class Product_Meta {
 			$cjc_profile = array(
 				'title'                  => 'CJC-1295 / Ipamorelin',
 				'compound_alias'         => 'CJC-1295 / Ipamorelin stack',
-				'subtitle'               => 'Protocol stack for GH secretagogue research',
+				'subtitle'               => 'Dual-vial GH secretagogue stack',
 				'lab_descriptor'         => 'Recovery + repair',
-				'research_summary'       => 'A variable-format GH secretagogue stack for buyers comparing component identity, format clarity, mechanism context, and documentation availability.',
+				'research_summary'       => 'CJC-1295 / Ipamorelin for buyers comparing dual-vial GH secretagogue stacks, component identity, storage notes, and documentation availability.',
 				'evidence_tier'          => 'Tier B',
 				'mechanism_summary'      => 'The research context can reference endocrine signaling literature and stack architecture while avoiding body-composition, anti-aging, or performance promises.',
 				'documentation_status'   => 'Available on request',
-				'proof_surface_label'    => 'Paired component context and handling guidance available for repeat-buyer support.',
+				'proof_surface_label'    => 'Paired component context, handling guidance, and repeat-buyer support are available through the desk.',
 				'purity_percent'         => '97.9%-99.1%',
 				'form_factor'            => 'Dual-vial kit',
 				'vial_amount'            => '5 mg / 5 mg',
@@ -538,7 +538,7 @@ class Product_Meta {
 				'reconstitution_guidance'=> 'Reference internal SOPs for multi-vial handling.',
 				'research_disclaimer'    => 'For research use only. Not for human consumption.',
 				'seo_focus_keyphrase'    => 'CJC-1295 Ipamorelin research peptide',
-				'meta_description'       => 'View CJC-1295 and Ipamorelin research stack options with variable pack sizes, evidence-tier labeling, and RUO-first product guidance.',
+				'meta_description'       => 'View CJC-1295 and Ipamorelin research stack options with dual-vial format, variable pack sizes, evidence-tier labeling, and RUO-first product guidance.',
 				'faqs'                   => array(
 					array(
 						'question' => 'Can I purchase multiple kits in one line item?',
@@ -554,13 +554,13 @@ class Product_Meta {
 			$retatrutide_profile = array(
 				'title'                  => 'Retatrutide',
 				'compound_alias'         => 'GLP-3 series',
-				'subtitle'               => 'Metabolic flagship research line',
+				'subtitle'               => 'Lyophilized tri-agonist metabolic research peptide',
 				'lab_descriptor'         => 'Body composition',
-				'research_summary'       => 'A metabolic-category research peptide for buyers comparing current obesity-research relevance, tri-agonist mechanism context, refrigerated handling, and documentation availability.',
+				'research_summary'       => 'Retatrutide for buyers comparing high-interest metabolic peptides, lyophilized format, tri-agonist research context, refrigerated handling, and documentation availability.',
 				'evidence_tier'          => 'Tier A',
 				'mechanism_summary'      => 'Retatrutide is a tri-agonist research compound associated with GIP, GLP-1, and glucagon receptor activity in the current literature. Azure keeps the framing investigational and RUO-first.',
 				'documentation_status'   => 'Documented now',
-				'proof_surface_label'    => 'Flagship research summary, handling guidance, and current documentation posture are visible on-page.',
+				'proof_surface_label'    => 'Flagship research summary, purity cue, refrigerated-handling guidance, and documentation availability are visible on-page.',
 				'purity_percent'         => '98.5%-99.2%',
 				'form_factor'            => 'Lyophilized powder',
 				'vial_amount'            => '15 mg',
@@ -570,7 +570,7 @@ class Product_Meta {
 				'reconstitution_guidance'=> 'Reference lab SOPs before handling.',
 				'research_disclaimer'    => 'For research use only. Not for human consumption.',
 				'seo_focus_keyphrase'    => 'Retatrutide research peptide',
-				'meta_description'       => 'Shop Retatrutide research peptide with evidence-tier guidance, tri-agonist literature context, refrigerated-handling notes, and RUO-first product details.',
+				'meta_description'       => 'Shop Retatrutide research peptide with lyophilized format, evidence-tier guidance, tri-agonist literature context, refrigerated-handling notes, and RUO-first product details.',
 				'faqs'                   => array(
 					array(
 						'question' => 'Is this written as a direct-to-consumer weight-loss product?',

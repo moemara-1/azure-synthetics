@@ -25,8 +25,8 @@ $description = ! empty( $profile['description'] ) ? $profile['description'] : ( 
 				<?php endif; ?>
 			</div>
 			<div class="azure-shop-hero__note">
-				<p class="azure-kicker"><?php esc_html_e( 'Before you compare', 'azure-synthetics' ); ?></p>
-				<p><?php esc_html_e( 'Browse by research family, then check evidence tier, documentation availability, storage notes, and support options before adding a peptide to cart.', 'azure-synthetics' ); ?></p>
+				<p class="azure-kicker"><?php esc_html_e( 'What buyers check first', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Compare category fit, vial format, evidence tier, documentation availability, and storage guidance before adding a peptide to cart.', 'azure-synthetics' ); ?></p>
 				<?php if ( ! empty( $profile['proof_status'] ) ) : ?>
 					<p class="azure-meta-line"><?php echo esc_html( $profile['proof_status'] ); ?></p>
 				<?php endif; ?>
@@ -83,8 +83,8 @@ $description = ! empty( $profile['description'] ) ? $profile['description'] : ( 
 					</ul>
 				</div>
 				<div class="azure-sidebar-card">
-					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Documentation posture', 'azure-synthetics' ); ?></h2>
-					<p><?php esc_html_e( 'Flagship products show evidence tiers and documentation availability on the card or product page. Request-based support is clearly labeled.', 'azure-synthetics' ); ?></p>
+					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Batch & document support', 'azure-synthetics' ); ?></h2>
+					<p><?php esc_html_e( 'Flagship products surface evidence tiers, purity range, and documentation availability on the card or product page. Request-based support is clearly labeled.', 'azure-synthetics' ); ?></p>
 				</div>
 				<div class="azure-sidebar-card">
 					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Compliance', 'azure-synthetics' ); ?></h2>

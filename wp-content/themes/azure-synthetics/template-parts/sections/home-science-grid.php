@@ -12,9 +12,9 @@ $science_page = get_page_by_path( 'science' );
 	<div class="azure-shell azure-science-grid__layout">
 		<div class="azure-science-grid__copy">
 			<p class="azure-kicker"><?php esc_html_e( 'Operational rigor', 'azure-synthetics' ); ?></p>
-			<h2><?php esc_html_e( 'Compare the science signal without digging through every product page.', 'azure-synthetics' ); ?></h2>
-			<p><?php esc_html_e( 'Check aliases, evidence tiers, documentation availability, and handling notes before choosing a research peptide for cart or reorder.', 'azure-synthetics' ); ?></p>
-			<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'Read the evidence guide', 'azure-synthetics' ); ?></a>
+			<h2><?php esc_html_e( 'Compare compound identity, purity cues, and documentation without guessing.', 'azure-synthetics' ); ?></h2>
+			<p><?php esc_html_e( 'The strongest peptide sites surface storage, technical context, and support near the buy path. Azure keeps those same decision points visible while staying research-use-only.', 'azure-synthetics' ); ?></p>
+			<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'Read the research guide', 'azure-synthetics' ); ?></a>
 		</div>
 		<div class="azure-science-grid__cards">
 			<article class="azure-card azure-card--feature">

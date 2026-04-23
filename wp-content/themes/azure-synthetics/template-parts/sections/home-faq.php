@@ -12,7 +12,7 @@ $science_page = get_page_by_path( 'science' );
 	<div class="azure-shell azure-home-faq__grid">
 		<div class="azure-home-faq__intro">
 			<h2><?php esc_html_e( 'Need a faster route through the catalog?', 'azure-synthetics' ); ?></h2>
-			<p><?php esc_html_e( 'Use the FAQ to compare evidence tiers, documentation availability, research families, storage notes, and ordering support before you add a peptide to cart.', 'azure-synthetics' ); ?></p>
+			<p><?php esc_html_e( 'Use the FAQ to compare evidence tiers, purity cues, documentation availability, research families, storage notes, and ordering support before you add a peptide to cart.', 'azure-synthetics' ); ?></p>
 		</div>
 		<div class="azure-accordion-list">
 			<?php

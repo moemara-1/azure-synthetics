@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function azure_synthetics_get_seo_description() {
 	if ( is_front_page() ) {
-		return __( 'Shop Azure Synthetics research peptides with evidence tiers, documentation options, storage notes, and RUO guidance for Retatrutide, BPC-157, MOTS-c, and CJC-1295 / Ipamorelin.', 'azure-synthetics' );
+		return __( 'Shop lab-grade research peptides with evidence tiers, purity cues, documentation support, storage notes, and RUO guidance for Retatrutide, BPC-157, MOTS-c, and CJC-1295 / Ipamorelin.', 'azure-synthetics' );
 	}
 
 	if ( is_singular( 'product' ) && function_exists( 'azure_synthetics_get_product_meta_value' ) ) {
@@ -89,7 +89,7 @@ function azure_synthetics_get_seo_image_url() {
 
 function azure_synthetics_filter_document_title_parts( $parts ) {
 	if ( is_front_page() ) {
-		$parts['title'] = __( 'Research Peptides With Evidence Tiers and Documentation Support', 'azure-synthetics' );
+		$parts['title'] = __( 'Lab-Grade Research Peptides With Documentation and Storage Guidance', 'azure-synthetics' );
 		return $parts;
 	}
 
