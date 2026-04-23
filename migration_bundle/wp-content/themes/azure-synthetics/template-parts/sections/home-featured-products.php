@@ -16,7 +16,7 @@ $products = azure_synthetics_home_products_query();
 			</div>
 			<a class="azure-text-link" href="<?php echo esc_url( azure_synthetics_shop_url() ); ?>"><?php esc_html_e( 'Open full catalog', 'azure-synthetics' ); ?></a>
 		</div>
-		<div class="azure-product-grid">
+		<ul class="azure-product-grid">
 			<?php
 			foreach ( $products as $product ) {
 				setup_postdata( $GLOBALS['post'] =& get_post( $product->get_id() ) );
@@ -24,6 +24,6 @@ $products = azure_synthetics_home_products_query();
 			}
 			wp_reset_postdata();
 			?>
-		</div>
+		</ul>
 	</div>
 </section>
