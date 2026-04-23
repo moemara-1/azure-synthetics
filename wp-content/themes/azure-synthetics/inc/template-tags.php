@@ -65,8 +65,8 @@ function azure_synthetics_get_page_intro() {
 	if ( is_search() ) {
 		return array(
 			'eyebrow'     => __( 'Search', 'azure-synthetics' ),
-			'title'       => sprintf( __( 'Results for “%s”', 'azure-synthetics' ), get_search_query() ),
-			'description' => __( 'Find products, compliance resources, and supporting research guidance across the storefront.', 'azure-synthetics' ),
+			'title'       => sprintf( __( 'Results for "%s"', 'azure-synthetics' ), get_search_query() ),
+			'description' => __( 'Find research peptides, documentation options, storage notes, and category guidance across Azure Synthetics.', 'azure-synthetics' ),
 		);
 	}
 
@@ -74,56 +74,57 @@ function azure_synthetics_get_page_intro() {
 		return array(
 			'eyebrow'     => __( 'Lost in the catalog', 'azure-synthetics' ),
 			'title'       => __( 'This route does not exist.', 'azure-synthetics' ),
-			'description' => __( 'Use the catalog, FAQ, or compliance pages to get back on track.', 'azure-synthetics' ),
+			'description' => __( 'Use the catalog, science pages, or documentation desk to get back on track.', 'azure-synthetics' ),
 		);
 	}
 
 	if ( is_page_template( 'page-templates/template-faq.php' ) ) {
 		return array(
-			'eyebrow'     => __( 'Need a clearer path?', 'azure-synthetics' ),
+			'eyebrow'     => __( 'Documentation desk', 'azure-synthetics' ),
 			'title'       => __( 'Frequently asked questions', 'azure-synthetics' ),
-			'description' => __( 'Concise answers on documentation, handling, and how the catalog is structured.', 'azure-synthetics' ),
+			'description' => __( 'A faster route through evidence tiers, handling notes, documentation options, and research-use-only ordering questions.', 'azure-synthetics' ),
 		);
 	}
 
 	if ( is_page_template( 'page-templates/template-science.php' ) ) {
 		return array(
 			'eyebrow'     => __( 'Science and documentation', 'azure-synthetics' ),
-			'title'       => __( 'A research-use catalog needs proof before persuasion.', 'azure-synthetics' ),
-			'description' => __( 'How Azure Synthetics presents lot integrity, release data, form factors, and handling notes without drifting into consumer health claims.', 'azure-synthetics' ),
+			'title'       => __( 'Compare peptide research signals before you order.', 'azure-synthetics' ),
+			'description' => __( 'Use evidence tiers, product aliases, documentation availability, and handling notes to compare research peptides without unsupported clinical claims.', 'azure-synthetics' ),
 		);
 	}
 
 	if ( is_page_template( 'page-templates/template-contact.php' ) ) {
 		return array(
-			'eyebrow'     => __( 'Contact', 'azure-synthetics' ),
-			'title'       => __( 'Talk to the support desk', 'azure-synthetics' ),
-			'description' => __( 'Use this page for account help, documentation requests, shipping questions, and catalog assistance.', 'azure-synthetics' ),
+			'eyebrow'     => __( 'Support desk', 'azure-synthetics' ),
+			'title'       => __( 'Talk to Azure Synthetics', 'azure-synthetics' ),
+			'description' => __( 'Use this page for documentation requests, order support, handling questions, and repeat-buyer conversations.', 'azure-synthetics' ),
 		);
 	}
 
 	if ( is_page_template( 'page-templates/template-compliance.php' ) ) {
 		return array(
 			'eyebrow'     => __( 'Research use policy', 'azure-synthetics' ),
-			'title'       => __( 'Compliance and handling', 'azure-synthetics' ),
-			'description' => __( 'Keep legal, storage, and product-positioning language legible across the buying journey.', 'azure-synthetics' ),
+			'title'       => __( 'Compliance, handling, and public-claim discipline', 'azure-synthetics' ),
+			'description' => __( 'Review research-use-only boundaries, documentation availability, and handling guidance across the full buying journey.', 'azure-synthetics' ),
 		);
 	}
 
 	if ( is_singular( 'product' ) ) {
 		global $product;
+		$product_id = $product ? $product->get_id() : get_the_ID();
 
 		return array(
 			'eyebrow'     => __( 'Research catalog', 'azure-synthetics' ),
-			'title'       => $product ? $product->get_name() : get_the_title(),
-			'description' => function_exists( 'azure_synthetics_get_product_meta_value' ) && $product ? azure_synthetics_get_product_meta_value( $product->get_id(), 'subtitle', '' ) : '',
+			'title'       => function_exists( 'azure_synthetics_get_product_display_title' ) && $product_id ? azure_synthetics_get_product_display_title( $product_id ) : ( $product ? $product->get_name() : get_the_title() ),
+			'description' => function_exists( 'azure_synthetics_get_product_meta_value' ) && $product_id ? azure_synthetics_get_product_meta_value( $product_id, 'subtitle', '' ) : '',
 		);
 	}
 
 	return array(
 		'eyebrow'     => __( 'Azure Synthetics', 'azure-synthetics' ),
 		'title'       => get_the_title(),
-		'description' => get_the_excerpt(),
+		'description' => get_the_excerpt() ?: __( 'Research peptides with evidence tiers, documentation options, storage notes, and premium operational clarity.', 'azure-synthetics' ),
 	);
 }
 

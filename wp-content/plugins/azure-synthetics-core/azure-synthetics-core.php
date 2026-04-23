@@ -40,6 +40,10 @@ function azure_synthetics_get_product_meta_value( $product_id, $key, $default = 
 	return azure_synthetics_core()->product_meta->get_value( $product_id, $key, $default );
 }
 
+function azure_synthetics_get_product_display_title( $product_id ) {
+	return azure_synthetics_core()->product_meta->get_display_name( $product_id );
+}
+
 function azure_synthetics_get_product_sections( $product_id ) {
 	return azure_synthetics_core()->product_meta->get_sections( $product_id );
 }

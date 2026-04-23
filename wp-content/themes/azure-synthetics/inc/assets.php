@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function azure_synthetics_fonts_url() {
 	return add_query_arg(
 		array(
-			'family'  => 'Geist:wght@400;500;600;700;800|Geist Mono:wght@400;500;600;700|Funnel Sans:wght@400;500;600;700;800',
+			'family'  => 'Familjen+Grotesk:wght@500;600;700;800|Manrope:wght@400;500;600;700;800|Azeret+Mono:wght@400;500;600;700',
 			'display' => 'swap',
 		),
 		'https://fonts.googleapis.com/css'
@@ -55,7 +55,7 @@ function azure_synthetics_enqueue_assets() {
 		);
 	}
 
-	$scripts = array( 'navigation', 'faq', 'filters', 'compliance' );
+	$scripts = array( 'navigation', 'faq', 'filters', 'motion', 'compliance' );
 
 	foreach ( $scripts as $script ) {
 		$path = AZURE_SYNTHETICS_THEME_DIR . '/assets/js/' . $script . '.js';

@@ -38,6 +38,8 @@ fi
 
 wp option update blogname "$SITE_TITLE" --allow-root
 wp option update blogdescription "Clinical-grade peptide storefront" --allow-root
+wp option update home "$SITE_URL" --allow-root
+wp option update siteurl "$SITE_URL" --allow-root
 wp option update permalink_structure "/%postname%/" --allow-root
 wp rewrite flush --allow-root
 

@@ -9,18 +9,26 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-$subtitle    = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'subtitle', '' ) : '';
-$descriptor  = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'lab_descriptor', '' ) : '';
-$disclaimer  = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'research_disclaimer', azure_synthetics_get_option_value( 'default_product_disclaimer', azure_synthetics_get_footer_disclaimer() ) ) : azure_synthetics_get_footer_disclaimer();
-$sections    = function_exists( 'azure_synthetics_get_product_sections' ) ? azure_synthetics_get_product_sections( $product->get_id() ) : array();
-$faqs        = function_exists( 'azure_synthetics_get_product_faqs' ) ? azure_synthetics_get_product_faqs( $product->get_id() ) : array();
-$highlights  = array_filter(
+$product_id            = $product->get_id();
+$alias                 = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'compound_alias', '' ) : '';
+$subtitle              = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'subtitle', '' ) : '';
+$descriptor            = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'lab_descriptor', '' ) : '';
+$research_summary      = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'research_summary', '' ) : '';
+$evidence_tier         = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'evidence_tier', '' ) : '';
+$mechanism_summary     = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'mechanism_summary', '' ) : '';
+$documentation_status  = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'documentation_status', '' ) : '';
+$proof_surface_label   = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'proof_surface_label', '' ) : '';
+$disclaimer            = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'research_disclaimer', azure_synthetics_get_option_value( 'default_product_disclaimer', azure_synthetics_get_footer_disclaimer() ) ) : azure_synthetics_get_footer_disclaimer();
+$sections              = function_exists( 'azure_synthetics_get_product_sections' ) ? azure_synthetics_get_product_sections( $product_id ) : array();
+$faqs                  = function_exists( 'azure_synthetics_get_product_faqs' ) ? azure_synthetics_get_product_faqs( $product_id ) : array();
+$title                 = function_exists( 'azure_synthetics_get_product_display_title' ) ? azure_synthetics_get_product_display_title( $product_id ) : get_the_title( $product_id );
+$highlights            = array_filter(
 	array(
-		__( 'For research use only', 'azure-synthetics' ),
-		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'purity_percent', '' ) : '',
-		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'form_factor', '' ) : '',
-		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'vial_amount', '' ) : '',
-		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'batch_reference', '' ) : '',
+		$evidence_tier,
+		$documentation_status,
+		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'purity_percent', '' ) : '',
+		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'form_factor', '' ) : '',
+		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'vial_amount', '' ) : '',
 	)
 );
 ?>
@@ -33,9 +41,15 @@ $highlights  = array_filter(
 			</div>
 			<div class="azure-product-summary-card">
 				<p class="azure-kicker"><?php echo esc_html( $descriptor ?: __( 'Research catalog', 'azure-synthetics' ) ); ?></p>
-				<h1><?php the_title(); ?></h1>
+				<h1><?php echo esc_html( $title ); ?></h1>
+				<?php if ( $alias ) : ?>
+					<p class="azure-product-alias"><?php echo esc_html( $alias ); ?></p>
+				<?php endif; ?>
 				<?php if ( $subtitle ) : ?>
 					<p class="azure-section-heading__description"><?php echo esc_html( $subtitle ); ?></p>
+				<?php endif; ?>
+				<?php if ( $research_summary ) : ?>
+					<p class="azure-product-summary-card__lead"><?php echo esc_html( $research_summary ); ?></p>
 				<?php endif; ?>
 				<div class="price"><?php echo wp_kses_post( $product->get_price_html() ); ?></div>
 				<?php if ( has_excerpt() ) : ?>
@@ -46,6 +60,12 @@ $highlights  = array_filter(
 						<?php foreach ( $highlights as $highlight ) : ?>
 							<span class="azure-badge"><?php echo esc_html( $highlight ); ?></span>
 						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+				<?php if ( $proof_surface_label || $documentation_status ) : ?>
+					<div class="azure-product-proof-card">
+						<strong><?php esc_html_e( 'Documentation availability', 'azure-synthetics' ); ?></strong>
+						<p><?php echo esc_html( $proof_surface_label ?: $documentation_status ); ?></p>
 					</div>
 				<?php endif; ?>
 				<div class="azure-product-compliance">
@@ -75,6 +95,26 @@ $highlights  = array_filter(
 					<?php the_content(); ?>
 				</div>
 			</section>
+
+			<?php if ( $mechanism_summary || $documentation_status ) : ?>
+				<section class="azure-product-section">
+					<h2><?php esc_html_e( 'Research snapshot', 'azure-synthetics' ); ?></h2>
+					<div class="azure-product-insight-grid">
+						<?php if ( $mechanism_summary ) : ?>
+							<article class="azure-product-insight-card">
+								<h3><?php esc_html_e( 'Mechanism summary', 'azure-synthetics' ); ?></h3>
+								<p><?php echo esc_html( $mechanism_summary ); ?></p>
+							</article>
+						<?php endif; ?>
+						<?php if ( $documentation_status ) : ?>
+							<article class="azure-product-insight-card">
+								<h3><?php esc_html_e( 'Documentation status', 'azure-synthetics' ); ?></h3>
+								<p><?php echo esc_html( $documentation_status ); ?></p>
+							</article>
+						<?php endif; ?>
+					</div>
+				</section>
+			<?php endif; ?>
 
 			<?php if ( $faqs ) : ?>
 				<section class="azure-product-section azure-product-section--dark">

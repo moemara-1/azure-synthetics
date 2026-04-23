@@ -33,6 +33,16 @@ get_header();
 			</div>
 		</div>
 	</section>
+	<section class="azure-page-section">
+		<div class="azure-shell azure-science-explainer-grid">
+			<?php foreach ( azure_synthetics_get_compliance_principles() as $principle ) : ?>
+				<article class="azure-science-explainer">
+					<h3><?php echo esc_html( $principle['title'] ); ?></h3>
+					<p><?php echo esc_html( $principle['description'] ); ?></p>
+				</article>
+			<?php endforeach; ?>
+		</div>
+	</section>
 </main>
 <?php
 get_footer();

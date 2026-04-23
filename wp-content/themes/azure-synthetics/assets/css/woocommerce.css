@@ -100,6 +100,30 @@
 	font-size: 14px;
 }
 
+.azure-product-card__alias {
+	margin: -8px 0 0;
+	color: rgba(231, 212, 171, 0.86);
+	font-family: var(--azure-font-mono);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.azure-product-card__summary {
+	margin: 0;
+	color: rgba(244, 250, 249, 0.82);
+	font-size: 14px;
+	line-height: 1.64;
+}
+
+.azure-product-card__proof {
+	margin: 0;
+	color: rgba(231, 212, 171, 0.88);
+	font-family: var(--azure-font-mono);
+	font-size: 12px;
+}
+
 .azure-product-card .price {
 	color: var(--azure-gold-soft);
 	font-weight: 700;
@@ -179,6 +203,23 @@
 	font-size: 1.5rem;
 	font-weight: 700;
 	color: var(--azure-ink);
+}
+
+.azure-product-summary-card__lead {
+	margin: 0;
+	color: var(--azure-ink);
+	font-size: 1.05rem;
+	line-height: 1.72;
+}
+
+.azure-product-alias {
+	margin: -10px 0 0;
+	color: var(--azure-teal-strong);
+	font-family: var(--azure-font-mono);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
 .azure-product-chip-list {
@@ -329,6 +370,42 @@
 	color: var(--azure-ink);
 }
 
+.azure-product-proof-card {
+	padding: 18px 20px;
+	border-radius: 18px;
+	background: rgba(15, 26, 31, 0.05);
+	border: 1px solid rgba(15, 26, 31, 0.08);
+}
+
+.azure-product-proof-card strong {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.azure-product-proof-card p {
+	margin: 0;
+	color: var(--azure-ink-soft);
+}
+
+.azure-product-insight-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--azure-space-24);
+}
+
+.azure-product-insight-card {
+	padding: 22px;
+	border-radius: 22px;
+	background: rgba(15, 26, 31, 0.04);
+	border: 1px solid rgba(15, 26, 31, 0.08);
+}
+
+.azure-product-insight-card h3 {
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 1rem;
+}
+
 .azure-sidebar-card {
 	display: grid;
 	gap: 12px;
@@ -383,7 +460,8 @@
 
 @media (max-width: 820px) {
 	.woocommerce ul.products,
-	.azure-product-tech-grid {
+	.azure-product-tech-grid,
+	.azure-product-insight-grid {
 		grid-template-columns: 1fr;
 	}
 

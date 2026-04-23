@@ -11,12 +11,12 @@ $cards = azure_synthetics_get_story_cards();
 	<div class="azure-shell azure-editorial-section__grid">
 		<div class="azure-editorial-section__copy">
 			<p class="azure-kicker"><?php esc_html_e( 'Why buyers stay', 'azure-synthetics' ); ?></p>
-			<h2><?php esc_html_e( 'A storefront calibrated for repeat protocols, not impulse experimentation.', 'azure-synthetics' ); ?></h2>
-			<p><?php esc_html_e( 'Every product page is paired with usage framing, release-level documentation, and continuity signals that make the buying experience feel reliable at scale. The design language stays premium, but the information architecture is clinical and direct.', 'azure-synthetics' ); ?></p>
-			<p class="azure-meta-line"><?php esc_html_e( 'Trust should be legible before checkout.', 'azure-synthetics' ); ?></p>
+			<h2><?php esc_html_e( 'A catalog for buyers comparing peptides, paperwork, and shipping risk in one pass.', 'azure-synthetics' ); ?></h2>
+			<p><?php esc_html_e( 'Move from compound search to cart with alias clarity, evidence tiers, storage expectations, and documentation support visible before checkout.', 'azure-synthetics' ); ?></p>
+			<p class="azure-meta-line"><?php esc_html_e( 'Trust gets easier when the details are visible early.', 'azure-synthetics' ); ?></p>
 		</div>
 		<div class="azure-editorial-section__media">
-			<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/story-lab.png' ) ); ?>" alt="<?php esc_attr_e( 'Laboratory detail', 'azure-synthetics' ); ?>">
+			<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/story-branded-vials.png' ) ); ?>" alt="<?php esc_attr_e( 'Azure Synthetics branded peptide vial lineup', 'azure-synthetics' ); ?>">
 		</div>
 	</div>
 	<div class="azure-shell azure-story-grid">

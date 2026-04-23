@@ -1,5 +1,7 @@
 .npm-cache/
 .tools/
+.pantheon-ssh/
+pantheon_deploy_tmp/
 .tunnel/
 exports/
 png_export/

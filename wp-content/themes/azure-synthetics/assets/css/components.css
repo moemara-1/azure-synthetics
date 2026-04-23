@@ -42,7 +42,7 @@
 .azure-accordion {
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 22px;
-	background: rgba(23, 37, 47, 0.96);
+	background: rgba(19, 32, 41, 0.96);
 	overflow: hidden;
 }
 
@@ -109,6 +109,11 @@
 .azure-badge--sale {
 	background: rgba(233, 210, 160, 0.18);
 	color: var(--azure-gold);
+}
+
+.azure-badge--soft {
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--azure-white-tint);
 }
 
 .azure-section-heading--split {

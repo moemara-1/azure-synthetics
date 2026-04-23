@@ -10,20 +10,60 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $title       = woocommerce_page_title( false );
-$description = is_tax( 'product_cat' ) ? term_description() : get_post_field( 'post_content', wc_get_page_id( 'shop' ) );
+$term        = is_tax( 'product_cat' ) ? get_queried_object() : null;
+$profile     = $term ? azure_synthetics_get_collection_profile( $term->slug ) : array();
+$description = ! empty( $profile['description'] ) ? $profile['description'] : ( is_tax( 'product_cat' ) ? term_description() : get_post_field( 'post_content', wc_get_page_id( 'shop' ) ) );
 ?>
 <main class="azure-shop-shell">
-	<section class="azure-page-hero">
-		<div class="azure-shell">
+	<section class="azure-page-hero azure-page-hero--catalog">
+		<div class="azure-shell azure-shop-hero">
 			<div class="azure-section-heading">
-				<p class="azure-kicker"><?php echo is_tax( 'product_cat' ) ? esc_html__( 'Product category', 'azure-synthetics' ) : esc_html__( 'Shop', 'azure-synthetics' ); ?></p>
+				<p class="azure-kicker"><?php echo is_tax( 'product_cat' ) ? esc_html__( 'Research family', 'azure-synthetics' ) : esc_html__( 'Shop', 'azure-synthetics' ); ?></p>
 				<h1><?php echo esc_html( $title ); ?></h1>
 				<?php if ( $description ) : ?>
-					<p class="azure-section-heading__description"><?php echo wp_kses_post( wp_trim_words( wp_strip_all_tags( $description ), 28 ) ); ?></p>
+					<p class="azure-section-heading__description"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $description ), 34 ) ); ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="azure-shop-hero__note">
+				<p class="azure-kicker"><?php esc_html_e( 'Before you compare', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Browse by research family, then check evidence tier, documentation availability, storage notes, and support options before adding a peptide to cart.', 'azure-synthetics' ); ?></p>
+				<?php if ( ! empty( $profile['proof_status'] ) ) : ?>
+					<p class="azure-meta-line"><?php echo esc_html( $profile['proof_status'] ); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>
+		<div class="azure-shell azure-shop-highlight-grid">
+			<?php foreach ( azure_synthetics_get_shop_highlights() as $highlight ) : ?>
+				<article class="azure-card azure-card--minimal">
+					<h2><?php echo esc_html( $highlight['title'] ); ?></h2>
+					<p><?php echo esc_html( $highlight['description'] ); ?></p>
+				</article>
+			<?php endforeach; ?>
+		</div>
 	</section>
+
+	<?php if ( $profile ) : ?>
+		<section class="azure-page-section azure-collection-spotlight">
+			<div class="azure-shell azure-collection-spotlight__grid">
+				<div class="azure-card__media azure-card__media--tall">
+					<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/' . $profile['image'] ) ); ?>" alt="<?php echo esc_attr( $profile['title'] ); ?>">
+				</div>
+				<div class="azure-collection-spotlight__copy">
+					<p class="azure-kicker"><?php esc_html_e( 'Collection posture', 'azure-synthetics' ); ?></p>
+					<h2><?php echo esc_html( $profile['title'] ); ?></h2>
+					<p><?php echo esc_html( $profile['trust_copy'] ); ?></p>
+					<div class="azure-product-chip-list">
+						<span class="azure-badge"><?php echo esc_html( $profile['proof_status'] ); ?></span>
+					</div>
+					<ul class="azure-collection-spotlight__bullets">
+						<?php foreach ( $profile['bullets'] as $bullet ) : ?>
+							<li><?php echo esc_html( $bullet ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
 
 	<section class="azure-page-section">
 		<div class="azure-shell azure-shop-layout">
@@ -41,6 +81,10 @@ $description = is_tax( 'product_cat' ) ? term_description() : get_post_field( 'p
 						);
 						?>
 					</ul>
+				</div>
+				<div class="azure-sidebar-card">
+					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Documentation posture', 'azure-synthetics' ); ?></h2>
+					<p><?php esc_html_e( 'Flagship products show evidence tiers and documentation availability on the card or product page. Request-based support is clearly labeled.', 'azure-synthetics' ); ?></p>
 				</div>
 				<div class="azure-sidebar-card">
 					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Compliance', 'azure-synthetics' ); ?></h2>
@@ -79,6 +123,25 @@ $description = is_tax( 'product_cat' ) ? term_description() : get_post_field( 'p
 			</div>
 		</div>
 	</section>
+
+	<?php if ( ! empty( $profile['faqs'] ) ) : ?>
+		<section class="azure-page-section">
+			<div class="azure-shell azure-two-column">
+				<div class="azure-prose">
+					<p class="azure-kicker"><?php esc_html_e( 'Collection FAQ', 'azure-synthetics' ); ?></p>
+					<h2><?php esc_html_e( 'What serious buyers usually check before comparing SKUs.', 'azure-synthetics' ); ?></h2>
+					<p><?php esc_html_e( 'Use these answers to understand the collection, then review the product page for compound-specific documentation, storage, and RUO guidance.', 'azure-synthetics' ); ?></p>
+				</div>
+				<div class="azure-accordion-list">
+					<?php
+					foreach ( $profile['faqs'] as $faq ) {
+						get_template_part( 'template-parts/components/accordion', null, $faq );
+					}
+					?>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
 </main>
 <?php
 get_footer();

@@ -31,8 +31,8 @@ get_header();
 						?>
 						<div class="azure-faq-guidance__intro">
 							<p class="azure-kicker"><?php esc_html_e( 'Start here', 'azure-synthetics' ); ?></p>
-							<h2><?php esc_html_e( 'Use the FAQ as a quick diligence checklist.', 'azure-synthetics' ); ?></h2>
-							<p><?php esc_html_e( 'These notes keep product form, documentation, handling, and account questions close together so buyers do not have to infer the basics from product copy alone.', 'azure-synthetics' ); ?></p>
+							<h2><?php esc_html_e( 'Use the FAQ to choose, verify, and reorder with fewer unknowns.', 'azure-synthetics' ); ?></h2>
+							<p><?php esc_html_e( 'Find quick answers on evidence tiers, documentation availability, product handling, research-use-only boundaries, and where to ask for more before you order.', 'azure-synthetics' ); ?></p>
 						</div>
 						<div class="azure-faq-guidance__cards">
 							<?php foreach ( azure_synthetics_get_faq_guidance_cards() as $card ) : ?>

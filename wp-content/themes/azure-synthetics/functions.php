@@ -18,16 +18,26 @@ function azure_synthetics_request_origin() {
 
 	$host = trim( explode( ',', $host )[0] );
 
-	if ( preg_match( '/^(localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/i', $host ) ) {
-		return null;
-	}
-
 	$forwarded_proto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
 	$scheme          = is_string( $forwarded_proto ) && '' !== $forwarded_proto
 		? trim( explode( ',', $forwarded_proto )[0] )
 		: ( ( ! empty( $_SERVER['HTTPS'] ) && 'off' !== strtolower( (string) $_SERVER['HTTPS'] ) ) ? 'https' : 'http' );
 
 	return $scheme . '://' . $host;
+}
+
+function azure_synthetics_is_runtime_host( $host ) {
+	if ( ! is_string( $host ) || '' === $host ) {
+		return false;
+	}
+
+	$host = strtolower( trim( $host, '[]' ) );
+
+	if ( in_array( $host, array( 'localhost', '127.0.0.1', '::1' ), true ) ) {
+		return true;
+	}
+
+	return (bool) preg_match( '/(^|\.)((loca\.lt)|(trycloudflare\.com)|(ngrok(-free)?\.(app|io))|(pantheonsite\.io))$/', $host );
 }
 
 function azure_synthetics_apply_origin( $url, $origin = null ) {
@@ -48,7 +58,10 @@ function azure_synthetics_apply_origin( $url, $origin = null ) {
 		return $url;
 	}
 
-	if ( ! in_array( strtolower( $url_parts['host'] ), array( 'localhost', '127.0.0.1', '::1' ), true ) ) {
+	$url_host    = strtolower( trim( $url_parts['host'], '[]' ) );
+	$origin_host = strtolower( trim( $origin_parts['host'], '[]' ) );
+
+	if ( $url_host !== $origin_host && ! azure_synthetics_is_runtime_host( $url_host ) ) {
 		return $url;
 	}
 
@@ -81,6 +94,7 @@ $azure_synthetics_includes = array(
 	'inc/runtime-urls.php',
 	'inc/assets.php',
 	'inc/template-tags.php',
+	'inc/seo.php',
 	'inc/queries.php',
 	'inc/schema.php',
 	'inc/block-support.php',

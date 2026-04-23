@@ -58,6 +58,7 @@
 	font-family: var(--azure-font-display);
 	font-size: 18px;
 	font-weight: 700;
+	letter-spacing: -0.03em;
 }
 
 .azure-brand__tag {
@@ -177,8 +178,9 @@
 
 .azure-hero {
 	background:
-		radial-gradient(circle at 78% 18%, rgba(112, 201, 191, 0.4), rgba(112, 201, 191, 0) 38%),
-		linear-gradient(135deg, #09141a 0%, #102532 56%, #08141a 100%);
+		radial-gradient(circle at 78% 18%, rgba(120, 207, 198, 0.36), rgba(120, 207, 198, 0) 36%),
+		radial-gradient(circle at 18% 12%, rgba(231, 212, 171, 0.16), rgba(231, 212, 171, 0) 28%),
+		linear-gradient(135deg, #081318 0%, #10242c 54%, #091319 100%);
 	color: var(--azure-white-tint);
 	padding: 48px 0 64px;
 }
@@ -195,9 +197,10 @@
 }
 
 .azure-hero__body {
-	max-width: 460px;
-	color: rgba(244, 250, 249, 0.76);
-	font-size: 16px;
+	max-width: 54ch;
+	color: rgba(244, 250, 249, 0.82);
+	font-size: 17px;
+	line-height: 1.72;
 }
 
 .azure-hero__actions {
@@ -229,14 +232,41 @@
 	box-shadow: 0 0 0 5px rgba(215, 180, 109, 0.16);
 }
 
+.azure-hero__proof-list {
+	display: grid;
+	gap: 10px;
+	padding: 0;
+	margin: 0 0 var(--azure-space-24);
+	list-style: none;
+}
+
+.azure-hero__proof-list li {
+	position: relative;
+	padding-left: 20px;
+	color: rgba(244, 250, 249, 0.84);
+	font-size: 14px;
+}
+
+.azure-hero__proof-list li::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 0;
+	width: 8px;
+	height: 8px;
+	border-radius: 999px;
+	background: var(--azure-gold-soft);
+	box-shadow: 0 0 0 5px rgba(231, 212, 171, 0.12);
+}
+
 .azure-hero__visual {
 	position: relative;
 	min-height: 620px;
 	padding: var(--azure-space-32);
 	border-radius: var(--azure-radius-xl);
 	background:
-		radial-gradient(circle at 75% 20%, rgba(112, 201, 191, 0.44), rgba(112, 201, 191, 0) 34%),
-		linear-gradient(130deg, #11212a 0%, #173443 60%, #0e171d 100%);
+		radial-gradient(circle at 75% 20%, rgba(120, 207, 198, 0.42), rgba(120, 207, 198, 0) 34%),
+		linear-gradient(130deg, #102028 0%, #163743 60%, #0d171d 100%);
 	box-shadow: var(--azure-shadow-dark);
 }
 
@@ -324,7 +354,7 @@
 .azure-editorial-section__media,
 .azure-collections__visual,
 .azure-card__media {
-	min-height: 360px;
+	min-height: 380px;
 }
 
 .azure-card--feature {
@@ -432,6 +462,9 @@
 	align-items: center;
 	margin-top: var(--azure-space-48);
 	color: var(--azure-ink);
+	background:
+		radial-gradient(circle at top right, rgba(120, 207, 198, 0.12), rgba(120, 207, 198, 0) 36%),
+		var(--azure-bg-soft);
 }
 
 .azure-newsletter-card p {
@@ -592,6 +625,60 @@
 	list-style: none;
 }
 
+.azure-shop-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.7fr);
+	gap: var(--azure-space-32);
+	align-items: end;
+}
+
+.azure-shop-hero__note {
+	padding: clamp(20px, 3vw, 28px);
+	border-radius: var(--azure-radius-card);
+	background: rgba(255, 255, 255, 0.66);
+	border: 1px solid rgba(15, 26, 31, 0.08);
+	box-shadow: var(--azure-shadow-soft);
+}
+
+.azure-shop-hero__note p:last-child {
+	margin-bottom: 0;
+}
+
+.azure-shop-highlight-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--azure-space-24);
+	margin-top: var(--azure-space-32);
+}
+
+.azure-collection-spotlight__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+	gap: var(--azure-space-48);
+	align-items: center;
+}
+
+.azure-card__media--tall {
+	min-height: 460px;
+}
+
+.azure-collection-spotlight__copy {
+	display: grid;
+	gap: var(--azure-space-24);
+}
+
+.azure-collection-spotlight__copy h2 {
+	font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+.azure-collection-spotlight__bullets {
+	display: grid;
+	gap: 10px;
+	padding-left: 1.15rem;
+	margin: 0;
+	color: var(--azure-ink-soft);
+}
+
 @media (max-width: 1024px) {
 	.azure-hero__grid,
 	.azure-editorial-section__grid,
@@ -603,7 +690,10 @@
 	.azure-two-column,
 	.azure-site-footer__grid,
 	.azure-newsletter-card,
-	.azure-promo-banner__grid {
+	.azure-promo-banner__grid,
+	.azure-shop-hero,
+	.azure-collection-spotlight__grid,
+	.azure-shop-highlight-grid {
 		grid-template-columns: 1fr;
 	}
 
@@ -698,7 +788,8 @@
 	.azure-editorial-section__media,
 	.azure-collections__visual,
 	.azure-card__media,
-	.azure-promo-banner__visual {
+	.azure-promo-banner__visual,
+	.azure-card__media--tall {
 		min-height: 280px;
 	}
 

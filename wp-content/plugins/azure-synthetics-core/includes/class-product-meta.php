@@ -20,6 +20,11 @@ class Product_Meta {
 	 * @var array<string, array<string, string>>
 	 */
 	private $fields = array(
+		'compound_alias'          => array(
+			'meta_key' => '_azure_compound_alias',
+			'label'    => 'Compound alias',
+			'type'     => 'text',
+		),
 		'subtitle'                => array(
 			'meta_key' => '_azure_subtitle',
 			'label'    => 'Subtitle',
@@ -45,6 +50,31 @@ class Product_Meta {
 			'label'    => 'Vial amount',
 			'type'     => 'text',
 		),
+		'research_summary'        => array(
+			'meta_key' => '_azure_research_summary',
+			'label'    => 'Research summary',
+			'type'     => 'textarea',
+		),
+		'evidence_tier'           => array(
+			'meta_key' => '_azure_evidence_tier',
+			'label'    => 'Evidence tier',
+			'type'     => 'text',
+		),
+		'mechanism_summary'       => array(
+			'meta_key' => '_azure_mechanism_summary',
+			'label'    => 'Mechanism summary',
+			'type'     => 'textarea',
+		),
+		'documentation_status'    => array(
+			'meta_key' => '_azure_documentation_status',
+			'label'    => 'Documentation status',
+			'type'     => 'text',
+		),
+		'proof_surface_label'     => array(
+			'meta_key' => '_azure_proof_surface_label',
+			'label'    => 'Proof surface label',
+			'type'     => 'text',
+		),
 		'storage_instructions'    => array(
 			'meta_key' => '_azure_storage_instructions',
 			'label'    => 'Storage instructions',
@@ -68,6 +98,16 @@ class Product_Meta {
 		'research_disclaimer'     => array(
 			'meta_key' => '_azure_research_disclaimer',
 			'label'    => 'Research disclaimer',
+			'type'     => 'textarea',
+		),
+		'seo_focus_keyphrase'     => array(
+			'meta_key' => '_azure_seo_focus_keyphrase',
+			'label'    => 'SEO focus keyphrase',
+			'type'     => 'text',
+		),
+		'meta_description'        => array(
+			'meta_key' => '_azure_meta_description',
+			'label'    => 'Meta description',
 			'type'     => 'textarea',
 		),
 	);
@@ -96,7 +136,7 @@ class Product_Meta {
 					'type'              => 'string',
 					'single'            => true,
 					'show_in_rest'      => true,
-					'sanitize_callback' => 'sanitize_textarea_field',
+					'sanitize_callback' => 'textarea' === $field['type'] ? 'sanitize_textarea_field' : 'sanitize_text_field',
 				)
 			);
 		}
@@ -159,7 +199,7 @@ class Product_Meta {
 				</label>
 			<?php endforeach; ?>
 		</div>
-		<p class="description"><?php esc_html_e( 'Use WooCommerce attributes for filterable options like vial size, quantity, and pack size. These fields handle descriptive, compliance, and content-block data.', 'azure-synthetics-core' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Use WooCommerce attributes for filterable options like vial size, quantity, and pack size. These fields handle research details, SEO, compliance, and product-story data.', 'azure-synthetics-core' ); ?></p>
 		<?php
 	}
 
@@ -321,7 +361,35 @@ class Product_Meta {
 			return $this->get_attribute_fallback( $product, array( 'pa_vial-size', 'Vial Size' ) ) ?: $default;
 		}
 
+		$profile = $this->get_product_profile_defaults( $product_id );
+
+		if ( isset( $profile[ $key ] ) && '' !== $profile[ $key ] ) {
+			return $profile[ $key ];
+		}
+
 		return $default;
+	}
+
+	/**
+	 * Return the preferred storefront title for a product.
+	 *
+	 * @param int $product_id Product ID.
+	 * @return string
+	 */
+	public function get_display_name( $product_id ) {
+		$profile = $this->get_product_profile_defaults( $product_id );
+
+		if ( ! empty( $profile['title'] ) ) {
+			return $profile['title'];
+		}
+
+		$product = wc_get_product( $product_id );
+
+		if ( $product instanceof WC_Product ) {
+			return $product->get_name();
+		}
+
+		return get_the_title( $product_id );
 	}
 
 	/**
@@ -332,6 +400,9 @@ class Product_Meta {
 	 */
 	public function get_sections( $product_id ) {
 		$map = array(
+			'evidence_tier'           => __( 'Evidence tier', 'azure-synthetics-core' ),
+			'documentation_status'    => __( 'Documentation status', 'azure-synthetics-core' ),
+			'proof_surface_label'     => __( 'Proof surface', 'azure-synthetics-core' ),
 			'purity_percent'          => __( 'Purity', 'azure-synthetics-core' ),
 			'storage_instructions'    => __( 'Storage', 'azure-synthetics-core' ),
 			'reconstitution_guidance' => __( 'Reconstitution', 'azure-synthetics-core' ),
@@ -369,12 +440,182 @@ class Product_Meta {
 		$raw = get_post_meta( $product_id, '_azure_product_faqs', true );
 
 		if ( ! $raw ) {
-			return array();
+			$profile = $this->get_product_profile_defaults( $product_id );
+			return ! empty( $profile['faqs'] ) && is_array( $profile['faqs'] ) ? $profile['faqs'] : array();
 		}
 
 		$decoded = json_decode( $raw, true );
 
 		return is_array( $decoded ) ? $decoded : array();
+	}
+
+	/**
+	 * Return curated storefront defaults for known demo products when the DB is stale.
+	 *
+	 * @param int $product_id Product ID.
+	 * @return array<string, mixed>
+	 */
+	private function get_product_profile_defaults( $product_id ) {
+		static $profiles = null;
+
+		if ( null === $profiles ) {
+			$bpc_profile = array(
+				'title'                  => 'BPC-157',
+				'compound_alias'         => 'Body Protection Compound 157',
+				'subtitle'               => 'Repair-focused research peptide',
+				'lab_descriptor'         => 'Recovery / repair',
+				'research_summary'       => 'A recovery-category research peptide for buyers comparing BPC-157 aliases, conservative evidence context, handling notes, and documentation availability before ordering.',
+				'evidence_tier'          => 'Tier C',
+				'mechanism_summary'      => 'BPC-157 belongs in an investigational repair context with musculoskeletal and cytoprotective literature references, not promised human outcomes.',
+				'documentation_status'   => 'Available on request',
+				'proof_surface_label'    => 'Batch-linked support and handling notes available through the desk.',
+				'purity_percent'         => '99.1%-99.6%',
+				'form_factor'            => 'Lyophilized powder',
+				'vial_amount'            => '10 mg',
+				'storage_instructions'   => 'Store frozen for long-term stability; refrigerate after reconstitution when applicable.',
+				'shipping_warning'       => 'Cold-chain stabilizing pack included on every order.',
+				'batch_reference'        => 'Lot-linked support language available through the desk.',
+				'reconstitution_guidance'=> 'Use only validated sterile lab diluent according to your internal protocol.',
+				'research_disclaimer'    => 'For research use only. Not for human consumption.',
+				'seo_focus_keyphrase'    => 'BPC-157 research peptide',
+				'meta_description'       => 'Shop BPC-157 research peptide with evidence-tier guidance, handling notes, documentation options, and RUO-first product details.',
+				'faqs'                   => array(
+					array(
+						'question' => 'How should a buyer read this page?',
+						'answer'   => 'Start with the evidence tier and documentation availability. This SKU is intentionally centered on research context and handling discipline rather than outcome promises.',
+					),
+					array(
+						'question' => 'Is the vial pre-mixed?',
+						'answer'   => 'No. The default catalog presentation is lyophilized powder unless a product explicitly states another form factor.',
+					),
+				),
+			);
+
+			$motsc_profile = array(
+				'title'                  => 'MOTS-c',
+				'compound_alias'         => 'Mitochondrial-derived peptide MOTS-c',
+				'subtitle'               => 'Mitochondrial signaling research',
+				'lab_descriptor'         => 'Longevity + energy',
+				'research_summary'       => 'A longevity-category research peptide for buyers comparing mitochondrial signaling context, evidence tier, handling notes, and documentation availability.',
+				'evidence_tier'          => 'Tier C',
+				'mechanism_summary'      => 'MOTS-c is best understood through metabolic and mitochondrial literature context rather than promises about energy, fat loss, or lifespan outcomes.',
+				'documentation_status'   => 'Available on request',
+				'proof_surface_label'    => 'Research summary and handling guidance shown; deeper documentation supported through the desk.',
+				'purity_percent'         => '98.8%-99.4%',
+				'form_factor'            => 'Lyophilized powder',
+				'vial_amount'            => '10 mg',
+				'storage_instructions'   => 'Freeze unopened inventory and minimize repeated temperature cycling.',
+				'shipping_warning'       => 'Insulated packaging used for transit stability.',
+				'batch_reference'        => 'Lot-linked analytical release context available on request.',
+				'reconstitution_guidance'=> 'Follow validated internal handling procedures only.',
+				'research_disclaimer'    => 'For research use only. Not for human consumption.',
+				'seo_focus_keyphrase'    => 'MOTS-c research peptide',
+				'meta_description'       => 'Explore MOTS-c research peptide with mechanism summary, documentation options, handling notes, and RUO-first product guidance.',
+				'faqs'                   => array(
+					array(
+						'question' => 'Why is the language more restrained here?',
+						'answer'   => 'This category has meaningful mechanistic and preclinical literature, but product language still avoids direct human outcome promises.',
+					),
+				),
+			);
+
+			$cjc_profile = array(
+				'title'                  => 'CJC-1295 / Ipamorelin',
+				'compound_alias'         => 'CJC-1295 / Ipamorelin stack',
+				'subtitle'               => 'Protocol stack for GH secretagogue research',
+				'lab_descriptor'         => 'Recovery + repair',
+				'research_summary'       => 'A variable-format GH secretagogue stack for buyers comparing component identity, format clarity, mechanism context, and documentation availability.',
+				'evidence_tier'          => 'Tier B',
+				'mechanism_summary'      => 'The research context can reference endocrine signaling literature and stack architecture while avoiding body-composition, anti-aging, or performance promises.',
+				'documentation_status'   => 'Available on request',
+				'proof_surface_label'    => 'Paired component context and handling guidance available for repeat-buyer support.',
+				'purity_percent'         => '97.9%-99.1%',
+				'form_factor'            => 'Dual-vial kit',
+				'vial_amount'            => '5 mg / 5 mg',
+				'storage_instructions'   => 'Store at frozen temperatures until validated use.',
+				'shipping_warning'       => 'Ships in insulated kit packaging.',
+				'batch_reference'        => 'Paired analytical context available on request.',
+				'reconstitution_guidance'=> 'Reference internal SOPs for multi-vial handling.',
+				'research_disclaimer'    => 'For research use only. Not for human consumption.',
+				'seo_focus_keyphrase'    => 'CJC-1295 Ipamorelin research peptide',
+				'meta_description'       => 'View CJC-1295 and Ipamorelin research stack options with variable pack sizes, evidence-tier labeling, and RUO-first product guidance.',
+				'faqs'                   => array(
+					array(
+						'question' => 'Can I purchase multiple kits in one line item?',
+						'answer'   => 'Yes. Use the Pack Size selector to place a WooCommerce-native variation order.',
+					),
+					array(
+						'question' => 'Why is this listed as Tier B instead of Tier A?',
+						'answer'   => 'Human signaling literature exists, but the public evidence base is narrower and older than current flagship metabolic compounds.',
+					),
+				),
+			);
+
+			$retatrutide_profile = array(
+				'title'                  => 'Retatrutide',
+				'compound_alias'         => 'GLP-3 series',
+				'subtitle'               => 'Metabolic flagship research line',
+				'lab_descriptor'         => 'Body composition',
+				'research_summary'       => 'A metabolic-category research peptide for buyers comparing current obesity-research relevance, tri-agonist mechanism context, refrigerated handling, and documentation availability.',
+				'evidence_tier'          => 'Tier A',
+				'mechanism_summary'      => 'Retatrutide is a tri-agonist research compound associated with GIP, GLP-1, and glucagon receptor activity in the current literature. Azure keeps the framing investigational and RUO-first.',
+				'documentation_status'   => 'Documented now',
+				'proof_surface_label'    => 'Flagship research summary, handling guidance, and current documentation posture are visible on-page.',
+				'purity_percent'         => '98.5%-99.2%',
+				'form_factor'            => 'Lyophilized powder',
+				'vial_amount'            => '15 mg',
+				'storage_instructions'   => 'Frozen storage recommended; avoid heat exposure during staging.',
+				'shipping_warning'       => 'Priority handling recommended for warm-weather routes.',
+				'batch_reference'        => 'Batch archive language available through the desk.',
+				'reconstitution_guidance'=> 'Reference lab SOPs before handling.',
+				'research_disclaimer'    => 'For research use only. Not for human consumption.',
+				'seo_focus_keyphrase'    => 'Retatrutide research peptide',
+				'meta_description'       => 'Shop Retatrutide research peptide with evidence-tier guidance, tri-agonist literature context, refrigerated-handling notes, and RUO-first product details.',
+				'faqs'                   => array(
+					array(
+						'question' => 'Is this written as a direct-to-consumer weight-loss product?',
+						'answer'   => 'No. The product page is restricted to research and laboratory context, current literature signal, and handling discipline.',
+					),
+					array(
+						'question' => 'Why does this read differently from recovery-category SKUs?',
+						'answer'   => 'Because the current human evidence signal in metabolic research is materially stronger, which allows sharper public language while still remaining RUO-first.',
+					),
+				),
+			);
+
+			$profiles = array(
+				'bpc-157'             => $bpc_profile,
+				'mots-c'              => $motsc_profile,
+				'cjc-ipa'             => $cjc_profile,
+				'cjc-1295-ipamorelin' => $cjc_profile,
+				'glp-3'               => $retatrutide_profile,
+				'retatrutide'         => $retatrutide_profile,
+			);
+		}
+
+		$product = wc_get_product( $product_id );
+
+		if ( ! $product instanceof WC_Product ) {
+			return array();
+		}
+
+		$slug = $product->get_slug();
+
+		if ( isset( $profiles[ $slug ] ) ) {
+			return $profiles[ $slug ];
+		}
+
+		$sku = $product->get_sku();
+
+		if ( 'AZ-GLP3-15' === $sku ) {
+			return $profiles['glp-3'];
+		}
+
+		if ( 'AZ-CJCIPA' === $sku ) {
+			return $profiles['cjc-ipa'];
+		}
+
+		return array();
 	}
 
 	/**

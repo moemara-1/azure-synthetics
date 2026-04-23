@@ -56,6 +56,45 @@
 	margin-top: var(--azure-space-32);
 }
 
+.azure-science-tier-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: var(--azure-space-24);
+	margin-top: var(--azure-space-32);
+}
+
+.azure-science-tier-card {
+	display: grid;
+	gap: 12px;
+	padding: clamp(20px, 3vw, 28px);
+	border-radius: var(--azure-radius-card);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.9));
+	border: 1px solid rgba(15, 25, 33, 0.08);
+	box-shadow: var(--azure-shadow-soft);
+}
+
+.azure-science-tier-card span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	min-height: 30px;
+	padding: 0 12px;
+	border-radius: 999px;
+	background: rgba(120, 207, 198, 0.18);
+	color: var(--azure-teal-strong);
+	font-family: var(--azure-font-mono);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.azure-science-tier-card h3 {
+	margin-top: 0;
+	font-size: clamp(1.35rem, 2vw, 1.7rem);
+}
+
 .azure-science-explainer,
 .azure-science-process-step {
 	padding: clamp(20px, 3vw, 28px);
@@ -123,7 +162,8 @@
 
 @media (max-width: 1024px) {
 	.azure-science-page__hero-grid,
-	.azure-science-explainer-grid {
+	.azure-science-explainer-grid,
+	.azure-science-tier-grid {
 		grid-template-columns: 1fr;
 	}
 }
