@@ -213,6 +213,37 @@
 	margin: var(--azure-space-32) 0 var(--azure-space-24);
 }
 
+.azure-hero__actions .azure-button--light {
+	min-width: min(100%, 220px);
+}
+
+.azure-hero__proof-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 10px;
+	color: rgba(244, 250, 249, 0.92);
+}
+
+.azure-hero__proof-list li {
+	position: relative;
+	padding-left: 18px;
+	line-height: 1.55;
+}
+
+.azure-hero__proof-list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.65em;
+	width: 7px;
+	height: 7px;
+	border-radius: 999px;
+	background: var(--azure-teal);
+	box-shadow: 0 0 0 4px rgba(112, 201, 191, 0.14);
+}
+
 .azure-pill-note {
 	display: inline-flex;
 	align-items: center;
@@ -383,6 +414,28 @@
 	align-self: start;
 }
 
+.azure-featured-products .azure-text-link,
+.azure-hero .azure-text-link,
+.azure-site-footer .azure-text-link,
+.azure-story-card--dark .azure-text-link,
+.azure-product-section--dark .azure-text-link {
+	color: var(--azure-white-tint);
+	text-decoration-color: rgba(112, 201, 191, 0.48);
+}
+
+.azure-featured-products .azure-text-link:hover,
+.azure-featured-products .azure-text-link:focus-visible,
+.azure-hero .azure-text-link:hover,
+.azure-hero .azure-text-link:focus-visible,
+.azure-site-footer .azure-text-link:hover,
+.azure-site-footer .azure-text-link:focus-visible,
+.azure-story-card--dark .azure-text-link:hover,
+.azure-story-card--dark .azure-text-link:focus-visible,
+.azure-product-section--dark .azure-text-link:hover,
+.azure-product-section--dark .azure-text-link:focus-visible {
+	color: var(--azure-teal);
+}
+
 .azure-section-heading--split {
 	display: flex;
 	justify-content: space-between;
@@ -419,6 +472,13 @@
 
 .azure-science-grid__copy .azure-text-link {
 	margin-top: var(--azure-space-16);
+}
+
+.azure-hero .azure-meta-line,
+.azure-site-footer .azure-meta-line,
+.azure-story-card--dark .azure-meta-line,
+.azure-product-section--dark .azure-meta-line {
+	color: rgba(244, 250, 249, 0.82);
 }
 
 .azure-science-grid__cards {
@@ -881,6 +941,24 @@
 
 	.azure-hero__body {
 		font-size: 15px;
+	}
+
+	.azure-hero__actions {
+		gap: 10px;
+	}
+
+	.azure-hero__actions .azure-button,
+	.azure-hero__actions .azure-button--light {
+		width: 100%;
+	}
+
+	.azure-hero__proof-list {
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.azure-hero__proof-list li {
+		padding-left: 16px;
 	}
 
 	.azure-section-heading h2 {

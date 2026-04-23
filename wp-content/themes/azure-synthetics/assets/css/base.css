@@ -155,6 +155,20 @@ input[type="submit"] {
 	box-shadow: none;
 }
 
+.azure-button--light {
+	background: rgba(244, 250, 249, 0.08);
+	color: var(--azure-white-tint);
+	border-color: rgba(244, 250, 249, 0.2);
+	box-shadow: 0 12px 28px rgba(6, 16, 22, 0.2);
+}
+
+.azure-button--light:hover,
+.azure-button--light:focus-visible {
+	background: rgba(112, 201, 191, 0.18);
+	color: var(--azure-white-tint);
+	border-color: rgba(112, 201, 191, 0.36);
+}
+
 .azure-button[disabled],
 .azure-button:disabled {
 	cursor: not-allowed;
@@ -167,8 +181,22 @@ input[type="submit"] {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	color: var(--azure-teal);
-	font-weight: 600;
+	color: var(--azure-teal-strong);
+	font-weight: 700;
+	text-decoration: underline;
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 0.22em;
+	text-decoration-color: rgba(47, 134, 152, 0.35);
+}
+
+.azure-text-link:hover,
+.azure-text-link:focus-visible {
+	color: var(--azure-ink);
+	text-decoration-color: currentColor;
+}
+
+.azure-text-link--dark {
+	color: var(--azure-teal-strong);
 }
 
 .azure-detail-list {
@@ -189,7 +217,8 @@ input[type="submit"] {
 
 .azure-meta-line {
 	margin: 0;
-	color: var(--azure-muted);
+	color: var(--azure-ink-soft);
 	font-family: var(--azure-font-mono);
 	font-size: 12px;
+	line-height: 1.5;
 }
