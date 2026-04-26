@@ -7,6 +7,20 @@
 
 $science      = azure_synthetics_get_science_cards();
 $science_page = get_page_by_path( 'science' );
+$lab_images   = array(
+	array(
+		'path' => 'images/science-assay.png',
+		'alt'  => __( 'Assay and documentation workspace', 'azure-synthetics' ),
+	),
+	array(
+		'path' => 'images/lab-equipment-review.png',
+		'alt'  => __( 'Laboratory equipment review during peptide handling workflow', 'azure-synthetics' ),
+	),
+	array(
+		'path' => 'images/lab-sample-rack.png',
+		'alt'  => __( 'Laboratory sample rack used as peptide research workflow imagery', 'azure-synthetics' ),
+	),
+);
 ?>
 <section class="azure-science-grid">
 	<div class="azure-shell azure-science-grid__layout">
@@ -18,8 +32,10 @@ $science_page = get_page_by_path( 'science' );
 		</div>
 		<div class="azure-science-grid__cards">
 			<article class="azure-card azure-card--feature">
-				<div class="azure-card__media">
-					<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/science-assay.png' ) ); ?>" alt="<?php esc_attr_e( 'Assay and documentation workspace', 'azure-synthetics' ); ?>">
+				<div class="azure-card__media azure-lab-gallery">
+					<?php foreach ( $lab_images as $lab_image ) : ?>
+						<img src="<?php echo esc_url( azure_synthetics_asset_url( $lab_image['path'] ) ); ?>" alt="<?php echo esc_attr( $lab_image['alt'] ); ?>">
+					<?php endforeach; ?>
 				</div>
 				<div class="azure-card__body">
 					<h3><?php echo esc_html( $science['main']['title'] ); ?></h3>

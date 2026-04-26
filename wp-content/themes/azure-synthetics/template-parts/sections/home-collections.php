@@ -4,6 +4,29 @@
  *
  * @package AzureSynthetics
  */
+
+$catalog_images = array(
+	array(
+		'slug' => 'bpc-157',
+		'path' => 'images/products/bpc-157.png',
+		'alt'  => __( 'Azure Synthetics BPC-157 research vial', 'azure-synthetics' ),
+	),
+	array(
+		'slug' => 'bpc-157-tb-500-blend',
+		'path' => 'images/products/bpc-157-tb-500-blend.png',
+		'alt'  => __( 'Azure Synthetics BPC-157 and TB-500 research vial', 'azure-synthetics' ),
+	),
+	array(
+		'slug' => 'mots-c',
+		'path' => 'images/products/mots-c.png',
+		'alt'  => __( 'Azure Synthetics MOTS-C research vial', 'azure-synthetics' ),
+	),
+	array(
+		'slug' => 'retatrutide',
+		'path' => 'images/products/retatrutide.png',
+		'alt'  => __( 'Azure Synthetics Retatrutide research vial', 'azure-synthetics' ),
+	),
+);
 ?>
 <section class="azure-collections">
 	<div class="azure-shell azure-collections__grid">
@@ -23,8 +46,18 @@
 				<?php endforeach; ?>
 			</div>
 		</div>
-		<div class="azure-collections__visual">
-			<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/metabolic-retatrutide.png' ) ); ?>" alt="<?php esc_attr_e( 'Azure Synthetics metabolic flagship vial render', 'azure-synthetics' ); ?>">
+		<div class="azure-collections__visual azure-collections__visual--catalog">
+			<div class="azure-catalog-collage">
+				<?php foreach ( $catalog_images as $catalog_image ) : ?>
+					<?php
+					$product_post = get_page_by_path( $catalog_image['slug'], OBJECT, 'product' );
+					$product_url  = $product_post ? get_permalink( $product_post ) : azure_synthetics_shop_url();
+					?>
+					<a href="<?php echo esc_url( $product_url ); ?>">
+						<img src="<?php echo esc_url( azure_synthetics_asset_url( $catalog_image['path'] ) ); ?>" alt="<?php echo esc_attr( $catalog_image['alt'] ); ?>">
+					</a>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 </section>

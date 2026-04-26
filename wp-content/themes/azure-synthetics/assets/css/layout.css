@@ -377,6 +377,45 @@
 	min-height: 300px;
 }
 
+.azure-catalog-collage,
+.azure-lab-gallery {
+	display: grid;
+	gap: var(--azure-space-12);
+}
+
+.azure-catalog-collage {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	height: 100%;
+}
+
+.azure-catalog-collage a {
+	display: block;
+	min-width: 0;
+	overflow: hidden;
+	aspect-ratio: 1;
+	border-radius: var(--azure-radius-card);
+}
+
+.azure-catalog-collage img,
+.azure-lab-gallery img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.azure-catalog-collage img {
+	aspect-ratio: 1;
+}
+
+.azure-lab-gallery {
+	grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+	grid-auto-rows: minmax(120px, 1fr);
+}
+
+.azure-lab-gallery img:first-child {
+	grid-row: span 2;
+}
+
 .azure-story-grid,
 .azure-product-grid,
 .azure-science-grid__subcards,
@@ -887,6 +926,15 @@
 	.azure-promo-banner__visual,
 	.azure-card__media--tall {
 		min-height: 280px;
+	}
+
+	.azure-catalog-collage,
+	.azure-lab-gallery {
+		grid-template-columns: 1fr;
+	}
+
+	.azure-lab-gallery img:first-child {
+		grid-row: auto;
 	}
 
 	.azure-site-footer__base {
