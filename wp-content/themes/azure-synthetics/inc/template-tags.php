@@ -15,12 +15,12 @@ function azure_synthetics_asset_url( $path ) {
 
 function azure_synthetics_get_product_asset_map() {
 	return array(
-		'bpc-157'              => 'card-bpc157.png',
-		'mots-c'               => 'card-motsc.png',
-		'cjc-1295-ipamorelin'  => 'card-cjcipa.png',
-		'retatrutide'          => 'card-glp3.png',
-		'glp-3'                => 'card-glp3.png',
-		'cjc-ipa'              => 'card-cjcipa.png',
+		'bpc-157'             => 'products/bpc-157.png',
+		'mots-c'              => 'products/mots-c.png',
+		'cjc-1295-ipamorelin' => 'products/cjc-1295-ipamorelin.png',
+		'retatrutide'         => 'products/retatrutide.png',
+		'glp-3'               => 'products/retatrutide.png',
+		'cjc-ipa'             => 'products/cjc-1295-ipamorelin.png',
 	);
 }
 
