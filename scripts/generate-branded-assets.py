@@ -15,6 +15,7 @@ LOGO_PATH = THEME_IMAGES / "azure-logo-transparent.png"
 
 INK = (9, 36, 52)
 LABEL_CENTER_X = 512
+LABEL_SAFE_BOX = (384, 416, 640, 780)
 
 
 @dataclass(frozen=True)
@@ -165,22 +166,23 @@ def fit_product_title(title: str, max_width: int) -> tuple[ImageFont.FreeTypeFon
 
 def add_label_art(base: Image.Image, spec: ProductSpec) -> Image.Image:
     img = base.copy()
-    draw = ImageDraw.Draw(img, "RGBA")
+    label_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(label_layer, "RGBA")
 
-    mark = logo_mark(112)
-    img.alpha_composite(mark, (LABEL_CENTER_X - mark.width // 2, 392))
+    mark = logo_mark(86)
+    label_layer.alpha_composite(mark, (LABEL_CENTER_X - mark.width // 2, 428))
 
-    azure_font = font("segoeui.ttf", 50)
-    synth_font = font("seguisb.ttf", 25)
-    draw_tracked_center(draw, 512, "AZURE", azure_font, tracking=4)
-    draw_tracked_center(draw, 568, "SYNTHETICS", synth_font, tracking=2)
+    azure_font = font("segoeui.ttf", 44)
+    synth_font = font("seguisb.ttf", 22)
+    draw_tracked_center(draw, 510, "AZURE", azure_font, tracking=4)
+    draw_tracked_center(draw, 560, "SYNTHETICS", synth_font, tracking=2)
 
     title_font, lines = fit_product_title(spec.label_title or spec.title, 245)
-    subtitle_font = font("segoeui.ttf", 22)
+    subtitle_font = font("segoeui.ttf", 20)
     title_height = sum(text_bbox(line, title_font)[1] for line in lines) + 4 * max(0, len(lines) - 1)
     subtitle_height = text_bbox(spec.label_subtitle, subtitle_font)[1]
-    block_height = title_height + subtitle_height + 14
-    y = 625 + max(0, (122 - block_height) // 2)
+    block_height = title_height + subtitle_height + 12
+    y = 632 + max(0, (102 - block_height) // 2)
 
     for line in lines:
         y = draw_center(draw, y, line, title_font)
@@ -188,6 +190,11 @@ def add_label_art(base: Image.Image, spec: ProductSpec) -> Image.Image:
 
     y += 8
     draw_center(draw, y, spec.label_subtitle, subtitle_font)
+
+    clip = Image.new("L", img.size, 0)
+    clip_draw = ImageDraw.Draw(clip)
+    clip_draw.rounded_rectangle(LABEL_SAFE_BOX, radius=8, fill=255)
+    img.alpha_composite(Image.composite(label_layer, Image.new("RGBA", img.size, (0, 0, 0, 0)), clip))
 
     return img
 
