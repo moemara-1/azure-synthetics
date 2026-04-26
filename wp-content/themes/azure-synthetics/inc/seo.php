@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function azure_synthetics_get_seo_description() {
 	if ( is_front_page() ) {
-		return __( 'Shop lab-grade research peptides with evidence tiers, purity cues, documentation support, storage notes, and RUO guidance for Retatrutide, BPC-157, MOTS-c, and CJC-1295 / Ipamorelin.', 'azure-synthetics' );
+		return __( 'Shop research peptides with compound identity, evidence tiers, documentation support, storage notes, and RUO guidance for Retatrutide, BPC-157, MOTS-c, and CJC-1295 / Ipamorelin.', 'azure-synthetics' );
 	}
 
 	if ( is_singular( 'product' ) && function_exists( 'azure_synthetics_get_product_meta_value' ) ) {
@@ -58,6 +58,14 @@ function azure_synthetics_get_seo_image_url() {
 	if ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
 		$product = wc_get_product( get_queried_object_id() );
 
+		if ( function_exists( 'azure_synthetics_get_product_asset_url' ) ) {
+			$asset_url = azure_synthetics_get_product_asset_url( $product );
+
+			if ( $asset_url ) {
+				return $asset_url;
+			}
+		}
+
 		if ( $product && $product->get_image_id() ) {
 			$image = wp_get_attachment_image_url( $product->get_image_id(), 'full' );
 
@@ -84,12 +92,12 @@ function azure_synthetics_get_seo_image_url() {
 		}
 	}
 
-	return azure_synthetics_asset_url( 'images/story-branded-vials.png' );
+	return azure_synthetics_asset_url( 'images/promo-vials.png' );
 }
 
 function azure_synthetics_filter_document_title_parts( $parts ) {
 	if ( is_front_page() ) {
-		$parts['title'] = __( 'Lab-Grade Research Peptides With Documentation and Storage Guidance', 'azure-synthetics' );
+		$parts['title'] = __( 'Research Peptides With Documentation and Storage Guidance', 'azure-synthetics' );
 		return $parts;
 	}
 

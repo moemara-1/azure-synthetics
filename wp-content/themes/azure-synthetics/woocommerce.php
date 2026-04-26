@@ -5,9 +5,12 @@
  * @package AzureSynthetics
  */
 
+$is_catalog_view = is_shop() || is_product_taxonomy();
+
 get_header();
 ?>
-<main class="azure-page-shell azure-shop-shell">
+<main class="azure-page-shell azure-shop-shell<?php echo $is_catalog_view ? ' azure-shop-shell--catalog' : ''; ?>">
+	<?php if ( ! $is_catalog_view ) : ?>
 	<section class="azure-page-hero">
 		<div class="azure-shell">
 			<div class="azure-section-heading">
@@ -19,6 +22,7 @@ get_header();
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 	<section class="azure-page-section">
 		<div class="azure-shell">
 			<?php woocommerce_content(); ?>

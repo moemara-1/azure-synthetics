@@ -27,10 +27,10 @@ class Compliance {
 	 */
 	public static function defaults() {
 		return array(
-			'footer_disclaimer'         => 'For research use only. Not for human consumption.',
-			'default_product_disclaimer'=> 'For research use only. Not for human consumption. Handle and store according to the published product guidance.',
+			'footer_disclaimer'         => 'For laboratory research use only. Not for human or veterinary use.',
+			'default_product_disclaimer'=> 'For laboratory research use only. Not for human or veterinary use. Handle and store according to the published product guidance.',
 			'default_shipping_note'     => 'Temperature-sensitive inventory is packed to reduce transit instability; inspect product immediately upon delivery.',
-			'checkout_ack_label'        => 'I confirm this order is placed for lawful laboratory or research use only, and not for human consumption.',
+			'checkout_ack_label'        => 'I confirm this order is placed for lawful laboratory research use only, and not for human or veterinary use.',
 			'catalog_gate_enabled'      => false,
 		);
 	}

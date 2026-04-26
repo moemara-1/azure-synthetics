@@ -11,10 +11,10 @@ $products = azure_synthetics_home_products_query();
 	<div class="azure-shell">
 		<div class="azure-section-heading azure-section-heading--split">
 			<div>
-				<p class="azure-kicker azure-kicker--gold"><?php esc_html_e( 'Featured formulations', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Precision formulas in demand', 'azure-synthetics' ); ?></h2>
+				<p class="azure-kicker azure-kicker--gold"><?php esc_html_e( 'Featured research peptides', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'Compare the flagship SKUs without decoding the catalog.', 'azure-synthetics' ); ?></h2>
 			</div>
-			<a class="azure-text-link" href="<?php echo esc_url( azure_synthetics_shop_url() ); ?>"><?php esc_html_e( 'Open full catalog', 'azure-synthetics' ); ?></a>
+			<a class="azure-text-link" href="<?php echo esc_url( azure_synthetics_shop_url() ); ?>"><?php esc_html_e( 'Open Catalog', 'azure-synthetics' ); ?></a>
 		</div>
 		<div class="azure-product-grid">
 			<?php

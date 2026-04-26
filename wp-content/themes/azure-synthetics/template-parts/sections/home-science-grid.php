@@ -11,10 +11,10 @@ $science_page = get_page_by_path( 'science' );
 <section class="azure-science-grid">
 	<div class="azure-shell azure-science-grid__layout">
 		<div class="azure-science-grid__copy">
-			<p class="azure-kicker"><?php esc_html_e( 'Operational rigor', 'azure-synthetics' ); ?></p>
-			<h2><?php esc_html_e( 'Compare compound identity, purity cues, and documentation without guessing.', 'azure-synthetics' ); ?></h2>
-			<p><?php esc_html_e( 'The strongest peptide sites surface storage, technical context, and support near the buy path. Azure keeps those same decision points visible while staying research-use-only.', 'azure-synthetics' ); ?></p>
-			<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'Read the research guide', 'azure-synthetics' ); ?></a>
+			<p class="azure-kicker"><?php esc_html_e( 'Proof-led browsing', 'azure-synthetics' ); ?></p>
+			<h2><?php esc_html_e( 'Use evidence posture, handling notes, and document status to compare SKUs.', 'azure-synthetics' ); ?></h2>
+			<p><?php esc_html_e( 'The strongest research-commerce pages make the verification path obvious: what the compound is, what the page can substantiate, what needs support, and what the product is not for.', 'azure-synthetics' ); ?></p>
+			<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'Read the Standards', 'azure-synthetics' ); ?></a>
 		</div>
 		<div class="azure-science-grid__cards">
 			<article class="azure-card azure-card--feature">

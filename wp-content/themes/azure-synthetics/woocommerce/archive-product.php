@@ -26,7 +26,7 @@ $description = ! empty( $profile['description'] ) ? $profile['description'] : ( 
 			</div>
 			<div class="azure-shop-hero__note">
 				<p class="azure-kicker"><?php esc_html_e( 'What buyers check first', 'azure-synthetics' ); ?></p>
-				<p><?php esc_html_e( 'Compare category fit, vial format, evidence tier, documentation availability, and storage guidance before adding a peptide to cart.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Compare category fit, vial amount, evidence tier, documentation status, and storage guidance before adding a peptide to cart.', 'azure-synthetics' ); ?></p>
 				<?php if ( ! empty( $profile['proof_status'] ) ) : ?>
 					<p class="azure-meta-line"><?php echo esc_html( $profile['proof_status'] ); ?></p>
 				<?php endif; ?>
@@ -83,8 +83,8 @@ $description = ! empty( $profile['description'] ) ? $profile['description'] : ( 
 					</ul>
 				</div>
 				<div class="azure-sidebar-card">
-					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Batch & document support', 'azure-synthetics' ); ?></h2>
-					<p><?php esc_html_e( 'Flagship products surface evidence tiers, purity range, and documentation availability on the card or product page. Request-based support is clearly labeled.', 'azure-synthetics' ); ?></p>
+					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Document Support', 'azure-synthetics' ); ?></h2>
+					<p><?php esc_html_e( 'Flagship products surface evidence tiers, amount, format, and documentation availability on the card or product page. Request-based support is clearly labeled.', 'azure-synthetics' ); ?></p>
 				</div>
 				<div class="azure-sidebar-card">
 					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Compliance', 'azure-synthetics' ); ?></h2>
@@ -129,7 +129,7 @@ $description = ! empty( $profile['description'] ) ? $profile['description'] : ( 
 			<div class="azure-shell azure-two-column">
 				<div class="azure-prose">
 					<p class="azure-kicker"><?php esc_html_e( 'Collection FAQ', 'azure-synthetics' ); ?></p>
-					<h2><?php esc_html_e( 'What serious buyers usually check before comparing SKUs.', 'azure-synthetics' ); ?></h2>
+					<h2><?php esc_html_e( 'What serious buyers check before comparing SKUs.', 'azure-synthetics' ); ?></h2>
 					<p><?php esc_html_e( 'Use these answers to understand the collection, then review the product page for compound-specific documentation, storage, and RUO guidance.', 'azure-synthetics' ); ?></p>
 				</div>
 				<div class="azure-accordion-list">

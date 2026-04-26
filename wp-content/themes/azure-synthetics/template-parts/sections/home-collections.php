@@ -9,7 +9,7 @@
 	<div class="azure-shell azure-collections__grid">
 		<div class="azure-collections__copy">
 			<p class="azure-kicker"><?php esc_html_e( 'Browse by research family', 'azure-synthetics' ); ?></p>
-			<h2><?php esc_html_e( 'Collections organized around evidence posture, product logic, and buyer intent.', 'azure-synthetics' ); ?></h2>
+			<h2><?php esc_html_e( 'Start with the research question, then compare the product details.', 'azure-synthetics' ); ?></h2>
 			<div class="azure-collections__list">
 				<?php foreach ( azure_synthetics_get_collection_cards() as $collection ) : ?>
 					<?php $term = get_term_by( 'slug', $collection['slug'], 'product_cat' ); ?>

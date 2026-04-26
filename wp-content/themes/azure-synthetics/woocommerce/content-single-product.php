@@ -37,7 +37,15 @@ $highlights            = array_filter(
 		<?php woocommerce_breadcrumb(); ?>
 		<div class="azure-product-layout">
 			<div class="azure-product-gallery">
-				<?php do_action( 'woocommerce_before_single_product_summary' ); ?>
+				<?php
+				$asset_image = function_exists( 'azure_synthetics_render_product_asset_image' ) ? azure_synthetics_render_product_asset_image( $product, 'hero' ) : '';
+
+				if ( $asset_image ) {
+					echo '<div class="azure-product-gallery__branded-image">' . wp_kses_post( $asset_image ) . '</div>';
+				} else {
+					do_action( 'woocommerce_before_single_product_summary' );
+				}
+				?>
 			</div>
 			<div class="azure-product-summary-card">
 				<p class="azure-kicker"><?php echo esc_html( $descriptor ?: __( 'Research catalog', 'azure-synthetics' ) ); ?></p>
@@ -64,7 +72,7 @@ $highlights            = array_filter(
 				<?php endif; ?>
 				<?php if ( $proof_surface_label || $documentation_status ) : ?>
 					<div class="azure-product-proof-card">
-						<strong><?php esc_html_e( 'Batch & documentation', 'azure-synthetics' ); ?></strong>
+						<strong><?php esc_html_e( 'Batch and Documentation', 'azure-synthetics' ); ?></strong>
 						<p><?php echo esc_html( $proof_surface_label ?: $documentation_status ); ?></p>
 					</div>
 				<?php endif; ?>
@@ -133,7 +141,7 @@ $highlights            = array_filter(
 		<section class="azure-page-section">
 			<div class="azure-section-heading">
 				<p class="azure-kicker"><?php esc_html_e( 'Continue browsing', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Related formulations', 'azure-synthetics' ); ?></h2>
+				<h2><?php esc_html_e( 'Related SKUs', 'azure-synthetics' ); ?></h2>
 			</div>
 			<?php woocommerce_upsell_display(); ?>
 			<?php woocommerce_output_related_products(); ?>

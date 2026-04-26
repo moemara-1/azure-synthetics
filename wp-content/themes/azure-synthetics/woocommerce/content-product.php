@@ -27,7 +27,10 @@ $card_mod             = $product->is_featured() ? ' azure-product-card--feature'
 			<?php woocommerce_show_product_loop_sale_flash(); ?>
 		<?php endif; ?>
 		<a class="azure-product-card__image" href="<?php the_permalink(); ?>">
-			<?php echo woocommerce_get_product_thumbnail( 'azure-product-card' ); ?>
+			<?php
+			$asset_image = function_exists( 'azure_synthetics_render_product_asset_image' ) ? azure_synthetics_render_product_asset_image( $product ) : '';
+			echo $asset_image ? wp_kses_post( $asset_image ) : woocommerce_get_product_thumbnail( 'azure-product-card' );
+			?>
 		</a>
 		<div class="azure-product-card__meta">
 			<?php if ( $product->is_featured() ) : ?>

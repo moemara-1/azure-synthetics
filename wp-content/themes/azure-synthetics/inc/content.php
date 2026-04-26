@@ -14,27 +14,27 @@ function azure_synthetics_get_contact_details() {
 		'email'         => 'support@azuresynthetics.com',
 		'phone'         => '+49 30 5555 9090',
 		'hours'         => 'Mon-Fri 09:00-18:00 CET',
-		'address'       => 'Berlin research support desk',
-		'response_time' => 'Documentation and order questions are usually answered within one business day.',
+		'address'       => 'Azure Synthetics support desk',
+		'response_time' => 'Most documentation, storage, and order questions are answered within one business day.',
 	);
 }
 
 function azure_synthetics_get_home_metrics() {
 	return array(
 		array(
-			'value' => __( 'Vial and purity cues', 'azure-synthetics' ),
-			'label' => __( 'Know the format', 'azure-synthetics' ),
-			'copy'  => __( 'Check form factor, vial amount, and purity range before opening every product page.', 'azure-synthetics' ),
+			'value' => __( 'Identity first', 'azure-synthetics' ),
+			'label' => __( 'Confirm the SKU', 'azure-synthetics' ),
+			'copy'  => __( 'Match the product name, alias, amount, and format before comparing price or adding to cart.', 'azure-synthetics' ),
 		),
 		array(
-			'value' => __( 'Batch support path', 'azure-synthetics' ),
-			'label' => __( 'Request documents', 'azure-synthetics' ),
-			'copy'  => __( 'Know whether documentation is visible now or handled through the support desk before you order.', 'azure-synthetics' ),
+			'value' => __( 'Proof status', 'azure-synthetics' ),
+			'label' => __( 'Know what is visible', 'azure-synthetics' ),
+			'copy'  => __( 'See whether documentation is shown on-page, available through support, or not publicly listed.', 'azure-synthetics' ),
 		),
 		array(
-			'value' => __( 'Storage guidance', 'azure-synthetics' ),
-			'label' => __( 'Plan the route', 'azure-synthetics' ),
-			'copy'  => __( 'Check storage, packaging, and inspection notes before checkout.', 'azure-synthetics' ),
+			'value' => __( 'Handling notes', 'azure-synthetics' ),
+			'label' => __( 'Plan storage early', 'azure-synthetics' ),
+			'copy'  => __( 'Review route, inspection, and storage expectations before checkout.', 'azure-synthetics' ),
 		),
 	);
 }
@@ -42,18 +42,18 @@ function azure_synthetics_get_home_metrics() {
 function azure_synthetics_get_story_cards() {
 	return array(
 		array(
-			'title'       => __( 'Compare compounds without tab overload', 'azure-synthetics' ),
-			'description' => __( 'Sort metabolic, recovery, and longevity research peptides by alias, vial size, and evidence tier in one pass.', 'azure-synthetics' ),
+			'title'       => __( 'Find the right compound faster', 'azure-synthetics' ),
+			'description' => __( 'Browse by research family, then confirm alias, amount, format, and evidence tier without opening five disconnected pages.', 'azure-synthetics' ),
 			'tone'        => 'light',
 		),
 		array(
-			'title'       => __( 'See batch and document support early', 'azure-synthetics' ),
-			'description' => __( 'Flagship product pages tell you whether supporting documentation is visible now or handled through the support desk.', 'azure-synthetics' ),
+			'title'       => __( 'Separate proof from promise', 'azure-synthetics' ),
+			'description' => __( 'Each product shows whether documentation is visible, request-based, or not publicly listed, so quality language stays specific.', 'azure-synthetics' ),
 			'tone'        => 'light',
 		),
 		array(
-			'title'       => __( 'Reorder with less friction', 'azure-synthetics' ),
-			'description' => __( 'Form factor, storage range, and support language stay consistent from collection page to cart.', 'azure-synthetics' ),
+			'title'       => __( 'Ask support with context', 'azure-synthetics' ),
+			'description' => __( 'The support path captures topic, order reference, and research-use acknowledgment so the team can answer the right question.', 'azure-synthetics' ),
 			'tone'        => 'dark',
 		),
 	);
@@ -62,17 +62,17 @@ function azure_synthetics_get_story_cards() {
 function azure_synthetics_get_science_cards() {
 	return array(
 		'main'  => array(
-			'title'       => __( 'Know what is in the vial before you click add to cart.', 'azure-synthetics' ),
-			'description' => __( 'Azure Synthetics organizes research peptides by compound identity, alias, evidence tier, purity range, documentation availability, and handling requirements so buyers can evaluate fit quickly.', 'azure-synthetics' ),
+			'title'       => __( 'Know what the page can prove before you add to cart.', 'azure-synthetics' ),
+			'description' => __( 'Azure Synthetics organizes research peptides by compound identity, alias, evidence tier, documentation availability, vial amount, and handling requirements so buyers can evaluate fit quickly.', 'azure-synthetics' ),
 		),
 		'cards' => array(
 			array(
-				'title'       => __( 'Evidence tiers', 'azure-synthetics' ),
+				'title'       => __( 'Evidence Tiers', 'azure-synthetics' ),
 				'description' => __( 'Retatrutide, CJC-1295 / Ipamorelin, MOTS-c, and BPC-157 are labeled by literature maturity so shoppers can compare research context at a glance.', 'azure-synthetics' ),
 				'tone'        => 'dark',
 			),
 			array(
-				'title'       => __( 'Batch and document support', 'azure-synthetics' ),
+				'title'       => __( 'Document Status', 'azure-synthetics' ),
 				'description' => __( 'Product pages distinguish between information shown now, support-desk documentation, and assets that are not currently public.', 'azure-synthetics' ),
 				'tone'        => 'light',
 			),
@@ -83,24 +83,24 @@ function azure_synthetics_get_science_cards() {
 function azure_synthetics_get_science_explainers() {
 	return array(
 		array(
-			'title'       => __( 'Compound names, aliases, and format', 'azure-synthetics' ),
-			'description' => __( 'Search by the name buyers actually use, then confirm the canonical compound identity, vial format, and amount before adding a peptide to cart.', 'azure-synthetics' ),
-			'detail'      => __( 'Alias clarity helps buyers compare Retatrutide, BPC-157, MOTS-c, and CJC-1295 / Ipamorelin without confusing similar naming conventions.', 'azure-synthetics' ),
+			'title'       => __( 'Start With Identity', 'azure-synthetics' ),
+			'description' => __( 'Search the name you know, then confirm the canonical identity, common aliases, vial format, and amount before adding a research peptide to cart.', 'azure-synthetics' ),
+			'detail'      => __( 'Example: Retatrutide is presented under its compound name so the catalog does not depend on loose market nicknames.', 'azure-synthetics' ),
 		),
 		array(
-			'title'       => __( 'Evidence tier, purity, and mechanism', 'azure-synthetics' ),
-			'description' => __( 'Evidence tiers show whether a product has current human clinical signal, narrower human literature, or a mostly preclinical research base.', 'azure-synthetics' ),
-			'detail'      => __( 'Purity cues and mechanism summaries give scientific context while keeping the page focused on research use, not human outcomes or dosing claims.', 'azure-synthetics' ),
+			'title'       => __( 'Read Evidence Before Claims', 'azure-synthetics' ),
+			'description' => __( 'Each flagship SKU is framed by literature maturity: later-stage evidence, focused pharmacology, or preclinical-heavy mechanism research.', 'azure-synthetics' ),
+			'detail'      => __( 'That keeps Retatrutide, CJC-1295 / Ipamorelin, MOTS-c, and BPC-157 easy to compare without benefit promises.', 'azure-synthetics' ),
 		),
 		array(
-			'title'       => __( 'Documentation and batch support', 'azure-synthetics' ),
-			'description' => __( 'Before checkout, buyers can see whether documentation is visible now, available through the support desk, or not publicly shown.', 'azure-synthetics' ),
-			'detail'      => __( 'That distinction keeps quality questions practical instead of forcing buyers to infer what proof exists.', 'azure-synthetics' ),
+			'title'       => __( 'Check Proof Status Early', 'azure-synthetics' ),
+			'description' => __( 'Before checkout, the product path should make it clear whether documentation is shown now, available through support, or not publicly listed.', 'azure-synthetics' ),
+			'detail'      => __( 'The site uses proof-status language instead of decorative badges or invented batch claims.', 'azure-synthetics' ),
 		),
 		array(
-			'title'       => __( 'Handling and logistics', 'azure-synthetics' ),
-			'description' => __( 'Storage, shipping, and inspection notes stay close to the product and cart path so operational questions are visible before checkout.', 'azure-synthetics' ),
-			'detail'      => __( 'Cold-chain language, packaging cues, and product-format notes help serious buyers plan reorders with fewer surprises.', 'azure-synthetics' ),
+			'title'       => __( 'Confirm Handling Before Reorder', 'azure-synthetics' ),
+			'description' => __( 'Storage, shipping, and inspection notes stay close to product selection so operational questions are answered before checkout.', 'azure-synthetics' ),
+			'detail'      => __( 'Route and format notes help buyers plan orders without searching through hidden policy pages.', 'azure-synthetics' ),
 		),
 	);
 }
@@ -109,23 +109,23 @@ function azure_synthetics_get_science_process_steps() {
 	return array(
 		array(
 			'label' => __( '01', 'azure-synthetics' ),
-			'title' => __( 'Search by compound family', 'azure-synthetics' ),
-			'copy'  => __( 'Start with metabolic, recovery, or longevity categories, then narrow by compound name and alias.', 'azure-synthetics' ),
+			'title' => __( 'Search by family or alias', 'azure-synthetics' ),
+			'copy'  => __( 'Start with recovery, metabolic, or mitochondrial categories, then confirm the searched name against the canonical compound.', 'azure-synthetics' ),
 		),
 		array(
 			'label' => __( '02', 'azure-synthetics' ),
-			'title' => __( 'Compare the evidence tier and purity cue', 'azure-synthetics' ),
-			'copy'  => __( 'Use the tier label, purity range, and mechanism summary to understand how mature the research context is for each product.', 'azure-synthetics' ),
+			'title' => __( 'Compare evidence maturity', 'azure-synthetics' ),
+			'copy'  => __( 'Use the tier label and research summary to see whether the page is supported by later-stage literature, focused pharmacology, or mostly preclinical context.', 'azure-synthetics' ),
 		),
 		array(
 			'label' => __( '03', 'azure-synthetics' ),
-			'title' => __( 'Check documentation availability', 'azure-synthetics' ),
-			'copy'  => __( 'Look for what is visible now and use the support desk when batch paperwork or additional documentation is needed.', 'azure-synthetics' ),
+			'title' => __( 'Match documents to the order path', 'azure-synthetics' ),
+			'copy'  => __( 'Check whether supporting information is visible, available by request, or not public before treating a SKU as reorder-ready.', 'azure-synthetics' ),
 		),
 		array(
 			'label' => __( '04', 'azure-synthetics' ),
 			'title' => __( 'Review storage and route', 'azure-synthetics' ),
-			'copy'  => __( 'Confirm cold-chain, storage, and inspection notes before moving a research peptide into a repeat-order workflow.', 'azure-synthetics' ),
+			'copy'  => __( 'Confirm storage, route, and inspection notes while the product is still in view, not after the cart is already built.', 'azure-synthetics' ),
 		),
 	);
 }
@@ -151,12 +151,12 @@ function azure_synthetics_get_collection_profiles() {
 	return array(
 		'recovery-repair' => array(
 			'title'        => __( 'Recovery + Repair', 'azure-synthetics' ),
-			'description'  => __( 'BPC-157 and repair-focused research peptides for buyers who want alias clarity, lyophilized-format context, storage notes, and a conservative evidence view before ordering.', 'azure-synthetics' ),
-			'trust_copy'   => __( 'Recovery peptides attract heavy buyer interest, but much of the literature remains preclinical or translational. Azure keeps the product language useful without stretching into unsupported outcomes.', 'azure-synthetics' ),
+			'description'  => __( 'BPC-157 and repair-category research peptides for buyers who want alias clarity, lyophilized-format context, storage notes, and conservative evidence framing before ordering.', 'azure-synthetics' ),
+			'trust_copy'   => __( 'Recovery-category peptides attract heavy buyer interest, but much of the literature remains preclinical or translational. Azure keeps the product language useful without stretching into unsupported outcomes.', 'azure-synthetics' ),
 			'image'        => 'recovery-stack.png',
 			'proof_status' => __( 'Available on request', 'azure-synthetics' ),
 			'bullets'      => array(
-				__( 'Useful for BPC-157 and repair-focused research searches', 'azure-synthetics' ),
+				__( 'Useful for BPC-157 and repair-category research searches', 'azure-synthetics' ),
 				__( 'Storage and documentation questions are easy to check before checkout', 'azure-synthetics' ),
 				__( 'Biological claims stay narrow because the evidence base is still developing', 'azure-synthetics' ),
 			),
@@ -172,7 +172,7 @@ function azure_synthetics_get_collection_profiles() {
 			),
 		),
 		'body-composition' => array(
-			'title'        => __( 'Body Composition', 'azure-synthetics' ),
+			'title'        => __( 'Metabolic Research', 'azure-synthetics' ),
 			'description'  => __( 'Retatrutide-led metabolic research peptides for buyers comparing incretin-adjacent compounds, vial format, documentation availability, and refrigerated handling.', 'azure-synthetics' ),
 			'trust_copy'   => __( 'Metabolic research peptides draw the strongest search demand and the highest scrutiny. Azure keeps the research context current, direct, and clearly marked for RUO purchase decisions.', 'azure-synthetics' ),
 			'image'        => 'metabolic-retatrutide.png',
@@ -194,9 +194,9 @@ function azure_synthetics_get_collection_profiles() {
 			),
 		),
 		'longevity-energy' => array(
-			'title'        => __( 'Longevity + Energy', 'azure-synthetics' ),
-			'description'  => __( 'MOTS-c and mitochondrial research peptides for buyers comparing longevity-oriented compounds with careful mechanism summaries, storage notes, and RUO boundaries.', 'azure-synthetics' ),
-			'trust_copy'   => __( 'Buyer interest in this family is often concept-driven, so Azure separates useful research context from speculative longevity claims.', 'azure-synthetics' ),
+			'title'        => __( 'Mitochondrial Research', 'azure-synthetics' ),
+			'description'  => __( 'MOTS-c and mitochondrial research peptides for buyers comparing mechanism summaries, storage notes, documentation status, and RUO boundaries.', 'azure-synthetics' ),
+			'trust_copy'   => __( 'Buyer interest in this family is often concept-driven, so Azure separates useful research context from speculative longevity or energy claims.', 'azure-synthetics' ),
 			'image'        => 'longevity-motsc.png',
 			'proof_status' => __( 'Available on request', 'azure-synthetics' ),
 			'bullets'      => array(
@@ -234,7 +234,7 @@ function azure_synthetics_get_collection_cards() {
 	return array(
 		array(
 			'title'       => $profiles['recovery-repair']['title'],
-			'description' => __( 'BPC-157 and repair-focused research peptides with conservative evidence notes and clear handling expectations.', 'azure-synthetics' ),
+			'description' => __( 'BPC-157 and repair-category research peptides with conservative evidence notes and clear handling expectations.', 'azure-synthetics' ),
 			'slug'        => 'recovery-repair',
 		),
 		array(
@@ -244,7 +244,7 @@ function azure_synthetics_get_collection_cards() {
 		),
 		array(
 			'title'       => $profiles['longevity-energy']['title'],
-			'description' => __( 'MOTS-c and mitochondrial research compounds with mechanism summaries, storage notes, and restrained longevity language.', 'azure-synthetics' ),
+			'description' => __( 'MOTS-c and mitochondrial research compounds with mechanism summaries, storage notes, and restrained claims.', 'azure-synthetics' ),
 			'slug'        => 'longevity-energy',
 		),
 	);
@@ -254,11 +254,11 @@ function azure_synthetics_get_default_faqs() {
 	return array(
 		array(
 			'question' => __( 'How should I compare research evidence on product pages?', 'azure-synthetics' ),
-			'answer'   => __( 'Start with the evidence tier, then read the mechanism summary, purity cue, and documentation availability. That gives you a practical view of the research context before ordering.', 'azure-synthetics' ),
+			'answer'   => __( 'Start with the evidence tier, then read the mechanism summary, vial amount, format, and documentation availability. That gives you a practical view of the research context before ordering.', 'azure-synthetics' ),
 		),
 		array(
 			'question' => __( 'What does the documentation status actually mean?', 'azure-synthetics' ),
-			'answer'   => __( 'Documented now means supporting information is visible on the product experience. Available on request means the support desk can help directly. Not publicly shown means the asset is not currently available on the site.', 'azure-synthetics' ),
+			'answer'   => __( 'Documented now means supporting information is visible on-page. Available on request means the support desk can help directly. Not publicly shown means the asset is not currently available on the site.', 'azure-synthetics' ),
 		),
 		array(
 			'question' => __( 'Are these products for human use?', 'azure-synthetics' ),
@@ -266,7 +266,7 @@ function azure_synthetics_get_default_faqs() {
 		),
 		array(
 			'question' => __( 'Why do some product families read more cautiously than others?', 'azure-synthetics' ),
-			'answer'   => __( 'Because the current literature is uneven across peptide categories. Retatrutide has a stronger current human research signal than many repair or longevity compounds, so those pages stay more conservative.', 'azure-synthetics' ),
+			'answer'   => __( 'Because the current literature is uneven across peptide categories. Retatrutide has a later-stage evidence record than many repair or mitochondrial compounds, so the earlier-stage pages stay more conservative.', 'azure-synthetics' ),
 		),
 	);
 }
@@ -275,15 +275,15 @@ function azure_synthetics_get_shop_highlights() {
 	return array(
 		array(
 			'title'       => __( 'Shop by research family', 'azure-synthetics' ),
-			'description' => __( 'Browse metabolic, recovery, and longevity peptides with evidence context close to the product cards.', 'azure-synthetics' ),
+			'description' => __( 'Browse metabolic, recovery, and mitochondrial peptides with evidence context close to the product cards.', 'azure-synthetics' ),
 		),
 		array(
-			'title'       => __( 'Batch & documentation', 'azure-synthetics' ),
+			'title'       => __( 'Documents and proof status', 'azure-synthetics' ),
 			'description' => __( 'See whether support information is shown now, available by request, or not publicly listed.', 'azure-synthetics' ),
 		),
 		array(
 			'title'       => __( 'Handling-aware checkout path', 'azure-synthetics' ),
-			'description' => __( 'Cold-chain notes, storage expectations, and product format stay close to the add-to-cart path.', 'azure-synthetics' ),
+			'description' => __( 'Storage expectations, route notes, and product format stay close to the add-to-cart path.', 'azure-synthetics' ),
 		),
 	);
 }
@@ -292,18 +292,18 @@ function azure_synthetics_get_science_evidence_tiers() {
 	return array(
 		array(
 			'label'       => __( 'Tier A', 'azure-synthetics' ),
-			'title'       => __( 'Current human clinical signal', 'azure-synthetics' ),
-			'description' => __( 'Used for compounds with contemporary and commercially relevant human evidence. Product pages can be more direct while staying RUO-first and non-therapeutic.', 'azure-synthetics' ),
+			'title'       => __( 'Later-stage evidence record', 'azure-synthetics' ),
+			'description' => __( 'Reserved for compounds with contemporary, commercially relevant research. Copy can be direct about evidence maturity while staying RUO-first and non-therapeutic.', 'azure-synthetics' ),
 		),
 		array(
 			'label'       => __( 'Tier B', 'azure-synthetics' ),
-			'title'       => __( 'Human signal with narrower scope', 'azure-synthetics' ),
-			'description' => __( 'Useful for endocrine or translational compounds where human literature exists, but not at the strength or freshness of modern obesity-trial leaders.', 'azure-synthetics' ),
+			'title'       => __( 'Focused pharmacology record', 'azure-synthetics' ),
+			'description' => __( 'Useful for endocrine or translational compounds where the public copy should stay narrower than modern metabolic trial leaders.', 'azure-synthetics' ),
 		),
 		array(
 			'label'       => __( 'Tier C', 'azure-synthetics' ),
-			'title'       => __( 'Preclinical-heavy with limited human data', 'azure-synthetics' ),
-			'description' => __( 'These pages lean on mechanism summaries, handling discipline, and investigational context instead of benefits language.', 'azure-synthetics' ),
+			'title'       => __( 'Preclinical-heavy context', 'azure-synthetics' ),
+			'description' => __( 'These pages lean on mechanism summaries, handling discipline, and investigational context instead of direct outcome or benefit language.', 'azure-synthetics' ),
 		),
 		array(
 			'label'       => __( 'Tier D', 'azure-synthetics' ),
@@ -313,11 +313,105 @@ function azure_synthetics_get_science_evidence_tiers() {
 	);
 }
 
+function azure_synthetics_get_science_research_dossiers() {
+	return array(
+		array(
+			'tier'       => __( 'Tier A', 'azure-synthetics' ),
+			'title'      => __( 'Retatrutide', 'azure-synthetics' ),
+			'category'   => __( 'Metabolic / incretin research', 'azure-synthetics' ),
+			'summary'    => __( 'Retatrutide has the strongest current evidence signal in this catalog: a published phase 2 human obesity trial and an active late-stage research program. Azure treats GLP-3 naming as Retatrutide so buyers can compare the actual compound, not a loose market nickname.', 'azure-synthetics' ),
+			'boundary'   => __( 'Storefront copy can discuss trial maturity, receptor-class context, handling, and documentation status. It must not become dosing, therapeutic, or human-use guidance.', 'azure-synthetics' ),
+			'sources'    => array(
+				array(
+					'label' => __( 'PubMed: phase 2 trial', 'azure-synthetics' ),
+					'url'   => 'https://pubmed.ncbi.nlm.nih.gov/37366315/',
+				),
+				array(
+					'label' => __( 'ClinicalTrials.gov: TRIUMPH-1', 'azure-synthetics' ),
+					'url'   => 'https://clinicaltrials.gov/study/NCT05929066',
+				),
+			),
+		),
+		array(
+			'tier'       => __( 'Tier B', 'azure-synthetics' ),
+			'title'      => __( 'CJC-1295 / Ipamorelin', 'azure-synthetics' ),
+			'category'   => __( 'GH secretagogue / endocrine research', 'azure-synthetics' ),
+			'summary'    => __( 'CJC-1295 sits in a narrower endocrine-research lane with human pharmacology literature around growth-hormone axis signaling. Ipamorelin is best presented as a paired secretagogue research context, not as a broad body-composition promise.', 'azure-synthetics' ),
+			'boundary'   => __( 'Use mechanism, alias, format, and documentation language. Avoid anti-aging, performance, or transformation claims.', 'azure-synthetics' ),
+			'sources'    => array(
+				array(
+					'label' => __( 'PubMed: CJC-1295 pharmacology', 'azure-synthetics' ),
+					'url'   => 'https://pubmed.ncbi.nlm.nih.gov/16352683/',
+				),
+				array(
+					'label' => __( 'PubMed: Ipamorelin pharmacology', 'azure-synthetics' ),
+					'url'   => 'https://pubmed.ncbi.nlm.nih.gov/9849822/',
+				),
+			),
+		),
+		array(
+			'tier'       => __( 'Tier C', 'azure-synthetics' ),
+			'title'      => __( 'MOTS-c', 'azure-synthetics' ),
+			'category'   => __( 'Mitochondrial-derived peptide research', 'azure-synthetics' ),
+			'summary'    => __( 'MOTS-c is usually searched through the lens of mitochondrial signaling, metabolism, and cellular stress adaptation. The literature is active, but product language should stay mechanism-led because clinical translation is still developing.', 'azure-synthetics' ),
+			'boundary'   => __( 'Useful copy explains mitochondrial-derived peptide context, refrigerated handling, and RUO status. It should not promise longevity, energy, or metabolic outcomes.', 'azure-synthetics' ),
+			'sources'    => array(
+				array(
+					'label' => __( 'PubMed: MOTS-c review', 'azure-synthetics' ),
+					'url'   => 'https://pubmed.ncbi.nlm.nih.gov/36761202/',
+				),
+				array(
+					'label' => __( 'PubMed: systematic review', 'azure-synthetics' ),
+					'url'   => 'https://pubmed.ncbi.nlm.nih.gov/39160573/',
+				),
+			),
+		),
+		array(
+			'tier'       => __( 'Tier C', 'azure-synthetics' ),
+			'title'      => __( 'BPC-157', 'azure-synthetics' ),
+			'category'   => __( 'Recovery / repair research', 'azure-synthetics' ),
+			'summary'    => __( 'BPC-157 has strong market demand and a broad preclinical literature footprint, but recent reviews still describe the human evidence base as limited and investigational. That makes it a trust-and-documentation SKU, not a claim-heavy SKU.', 'azure-synthetics' ),
+			'boundary'   => __( 'Public copy can mention repair-category research interest and conservative evidence context. It must not claim healing, injury treatment, or clinical benefit.', 'azure-synthetics' ),
+			'sources'    => array(
+				array(
+					'label' => __( 'PubMed: literature review', 'azure-synthetics' ),
+					'url'   => 'https://pubmed.ncbi.nlm.nih.gov/40005999/',
+				),
+				array(
+					'label' => __( 'PubMed: narrative review', 'azure-synthetics' ),
+					'url'   => 'https://pubmed.ncbi.nlm.nih.gov/40789979/',
+				),
+			),
+		),
+	);
+}
+
+function azure_synthetics_get_science_source_cards() {
+	return array(
+		array(
+			'title'       => __( 'Alias Clarity', 'azure-synthetics' ),
+			'description' => __( 'The catalog supports how buyers actually search while still returning to the canonical compound name, category, and format before checkout.', 'azure-synthetics' ),
+		),
+		array(
+			'title'       => __( 'Research Context', 'azure-synthetics' ),
+			'description' => __( 'Research summaries tell buyers what kind of literature exists and where the claim boundary sits, especially for preclinical-heavy peptides.', 'azure-synthetics' ),
+		),
+		array(
+			'title'       => __( 'Proof Status', 'azure-synthetics' ),
+			'description' => __( 'Documented now, available on request, and not publicly shown are clearer than generic quality badges that do not say what a buyer can inspect.', 'azure-synthetics' ),
+		),
+		array(
+			'title'       => __( 'Storage Readiness', 'azure-synthetics' ),
+			'description' => __( 'Handling notes stay close to the product path so serious buyers can plan storage, inspection, and repeat ordering with fewer surprises.', 'azure-synthetics' ),
+		),
+	);
+}
+
 function azure_synthetics_get_contact_request_topics() {
 	return array(
 		array(
 			'title'       => __( 'Documentation requests', 'azure-synthetics' ),
-			'description' => __( 'Use the desk for batch paperwork questions, documentation requests, or clarification on what is shown versus available on request.', 'azure-synthetics' ),
+			'description' => __( 'Ask for batch paperwork, documentation status, or clarification on what is shown versus available by request.', 'azure-synthetics' ),
 		),
 		array(
 			'title'       => __( 'Order and handling support', 'azure-synthetics' ),
@@ -341,8 +435,8 @@ function azure_synthetics_get_compliance_principles() {
 			'description' => __( 'If documentation is not public, the page says so. Trust is stronger when buyers can distinguish visible information from request-based support.', 'azure-synthetics' ),
 		),
 		array(
-			'title'       => __( 'Handling before persuasion', 'azure-synthetics' ),
-			'description' => __( 'Storage, cold-chain, and inspection notes are part of the buying experience because they influence whether a serious buyer can reorder confidently.', 'azure-synthetics' ),
+			'title'       => __( 'Handling before claims', 'azure-synthetics' ),
+			'description' => __( 'Storage, route, and inspection notes are part of the buying experience because they influence whether a serious buyer can reorder confidently.', 'azure-synthetics' ),
 		),
 	);
 }

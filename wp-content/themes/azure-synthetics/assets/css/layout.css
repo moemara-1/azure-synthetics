@@ -192,6 +192,10 @@
 	align-items: center;
 }
 
+.azure-hero__grid > * {
+	min-width: 0;
+}
+
 .azure-hero__copy h1 {
 	font-size: clamp(3.2rem, 6vw, 4.8rem);
 }
@@ -271,6 +275,7 @@
 }
 
 .azure-hero__visual img {
+	width: 100%;
 	max-width: 420px;
 	margin: 0 auto;
 }
@@ -517,6 +522,92 @@
 	align-items: start;
 }
 
+.azure-contact-form-card {
+	display: grid;
+	gap: var(--azure-space-24);
+}
+
+.azure-contact-form {
+	display: grid;
+	gap: var(--azure-space-16);
+}
+
+.azure-form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--azure-space-16);
+}
+
+.azure-contact-form label {
+	display: grid;
+	gap: 8px;
+	color: var(--azure-ink);
+	font-weight: 700;
+}
+
+.azure-contact-form input,
+.azure-contact-form select,
+.azure-contact-form textarea {
+	width: 100%;
+	min-height: 52px;
+	padding: 0 16px;
+	border: 1px solid rgba(15, 25, 33, 0.12);
+	border-radius: 16px;
+	background: #fff;
+	color: var(--azure-ink);
+	font: inherit;
+}
+
+.azure-contact-form textarea {
+	min-height: 150px;
+	padding-top: 14px;
+	resize: vertical;
+}
+
+.azure-contact-form input:focus-visible,
+.azure-contact-form select:focus-visible,
+.azure-contact-form textarea:focus-visible {
+	outline: 3px solid rgba(47, 134, 152, 0.25);
+	outline-offset: 2px;
+	border-color: rgba(47, 134, 152, 0.55);
+}
+
+.azure-checkbox-row {
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: start;
+	font-weight: 600;
+}
+
+.azure-checkbox-row input {
+	width: 18px;
+	min-height: 18px;
+	margin-top: 4px;
+}
+
+.azure-form-notice {
+	padding: 14px 16px;
+	border-radius: 16px;
+	font-weight: 700;
+}
+
+.azure-form-notice--success {
+	background: rgba(112, 201, 191, 0.16);
+	color: var(--azure-ink);
+}
+
+.azure-form-notice--error {
+	background: #fff0ef;
+	color: #8a2b23;
+}
+
+.azure-honeypot {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
 .azure-promo-banner {
 	padding: var(--azure-space-64) 0 0;
 	overflow: hidden;
@@ -734,6 +825,7 @@
 	}
 
 	.azure-site-nav {
+		display: none;
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -742,11 +834,10 @@
 		padding: 104px 24px 24px;
 		background: var(--azure-panel-dark);
 		color: var(--azure-white-tint);
-		transform: translateX(100%);
-		transition: transform 0.25s ease;
 		flex-direction: column;
 		align-items: flex-start;
 		box-shadow: var(--azure-shadow-dark);
+		pointer-events: none;
 	}
 
 	.azure-menu,
@@ -756,7 +847,8 @@
 	}
 
 	body.has-nav-open .azure-site-nav {
-		transform: translateX(0);
+		display: flex;
+		pointer-events: auto;
 	}
 
 	.azure-hero__visual {
@@ -778,6 +870,10 @@
 	}
 
 	.azure-inline-form {
+		grid-template-columns: 1fr;
+	}
+
+	.azure-form-grid {
 		grid-template-columns: 1fr;
 	}
 

@@ -91,6 +91,7 @@ define( 'AZURE_SYNTHETICS_THEME_URI', azure_synthetics_apply_origin( get_templat
 $azure_synthetics_includes = array(
 	'inc/setup.php',
 	'inc/content.php',
+	'inc/contact-form.php',
 	'inc/runtime-urls.php',
 	'inc/assets.php',
 	'inc/template-tags.php',

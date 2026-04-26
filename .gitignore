@@ -2,9 +2,13 @@
 .tools/
 .pantheon-ssh/
 pantheon_deploy_tmp/
+pantheon_deploy_science_tmp/
+pantheon_deploy_science_work/
+pantheon_git_science_dir/
 .tunnel/
 exports/
 png_export/
+scripts/__pycache__/
 node_modules/
 .DS_Store
 *.log
