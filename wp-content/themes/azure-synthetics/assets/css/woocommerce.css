@@ -272,6 +272,77 @@
 	color: var(--azure-ink);
 }
 
+.woocommerce div.product form.cart {
+	display: grid;
+	justify-items: center;
+	gap: 14px;
+	width: 100%;
+}
+
+.woocommerce div.product form.cart table.variations {
+	width: min(100%, 520px);
+	margin: 0 auto;
+	border-spacing: 0 12px;
+}
+
+.woocommerce div.product form.cart table.variations tr {
+	display: grid;
+	gap: 8px;
+}
+
+.woocommerce div.product form.cart table.variations td {
+	padding: 0;
+	text-align: center;
+}
+
+.woocommerce div.product form.cart table.variations label {
+	display: inline-flex;
+	justify-content: center;
+	width: 100%;
+	font-weight: 800;
+	color: var(--azure-ink);
+}
+
+.woocommerce div.product form.cart table.variations select {
+	width: min(100%, 420px);
+	margin-inline: auto;
+	text-align: center;
+	text-align-last: center;
+}
+
+.woocommerce div.product form.cart table.variations .reset_variations {
+	display: inline-flex;
+	justify-content: center;
+	margin-top: 8px;
+	color: var(--azure-teal-strong);
+	font-weight: 700;
+	text-align: center;
+}
+
+.woocommerce div.product form.cart .single_variation_wrap {
+	display: grid;
+	justify-items: center;
+	width: 100%;
+	gap: 14px;
+}
+
+.woocommerce div.product form.cart .woocommerce-variation,
+.woocommerce div.product form.cart .woocommerce-variation-add-to-cart {
+	width: min(100%, 520px);
+}
+
+.woocommerce div.product form.cart .woocommerce-variation-add-to-cart {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.woocommerce div.product form.cart .quantity .qty {
+	text-align: center;
+}
+
 .azure-product-chip-list {
 	display: flex;
 	flex-wrap: wrap;

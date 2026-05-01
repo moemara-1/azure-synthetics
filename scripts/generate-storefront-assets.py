@@ -15,6 +15,7 @@ CATALOG_DATA = ROOT / "wp-content" / "themes" / "azure-synthetics" / "inc" / "ca
 PRODUCT_DIR = THEME_IMAGES / "products"
 LOGO_PATH = THEME_IMAGES / "azure-logo-transparent.png"
 SOURCE_IMAGE_DIR = ROOT / "images"
+HERO_VIAL_BASE = SOURCE_IMAGE_DIR / "hero_vial.png"
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -214,35 +215,31 @@ def amount_summary(product: dict[str, object]) -> str:
 
 
 def base_image_for_product(product: dict[str, object]) -> tuple[Path, dict[str, object]]:
-    name = str(product["name"])
-    category = str(product.get("category", "peptide-support"))
-    bases = {
-        "glp-1-metabolic": ("card_glp3.png", (326, 389, 704, 879), 0.42, 0.63),
-        "recovery-repair": ("card_bpc157.png", (354, 381, 674, 810), 0.36, 0.69),
-        "growth-hormone-axis": ("card_cjcipa.png", (366, 435, 656, 814), 0.36, 0.70),
-        "longevity-anti-aging": ("card_motsc.png", (369, 397, 657, 787), 0.37, 0.70),
-    }
-    fallback_options = [
-        ("card_cjcipa.png", (366, 435, 656, 814), 0.36, 0.70),
-        ("card_bpc157.png", (354, 381, 674, 810), 0.36, 0.69),
-        ("card_glp3.png", (326, 389, 704, 879), 0.42, 0.63),
-        ("card_motsc.png", (369, 397, 657, 787), 0.37, 0.70),
-    ]
-    chosen = bases.get(category) or fallback_options[stable_index(slugify(name), len(fallback_options))]
-    filename, label_box, logo_y, title_y = chosen
-
-    return SOURCE_IMAGE_DIR / filename, {
-        "label_box": label_box,
-        "logo_y": logo_y,
-        "title_y": title_y,
+    return HERO_VIAL_BASE, {
+        "label_box": (375, 438, 646, 808),
+        "logo_y": 0.205,
+        "title_y": 0.615,
     }
 
 
-def feathered_label_mask(size: tuple[int, int], radius: int = 8) -> Image.Image:
+def feathered_label_mask(size: tuple[int, int], radius: int = 10) -> Image.Image:
+    width, height = size
     mask = Image.new("L", size, 0)
     mask_draw = ImageDraw.Draw(mask)
-    mask_draw.rounded_rectangle((0, 0, size[0], size[1]), radius=radius, fill=255)
-    return mask.filter(ImageFilter.GaussianBlur(0.7))
+    mask_draw.rounded_rectangle((0, 0, width, height), radius=radius, fill=255)
+
+    # The reference vial has a very slight cylindrical wrap. The soft edge mask lets
+    # the original glass/label boundary remain visible instead of reading as a flat sticker.
+    pixels = mask.load()
+    edge_fade = max(16, int(width * 0.08))
+    for y in range(height):
+        vertical = min(1.0, y / max(1, edge_fade), (height - 1 - y) / max(1, edge_fade))
+        for x in range(width):
+            horizontal = min(1.0, x / max(1, edge_fade), (width - 1 - x) / max(1, edge_fade))
+            wrap = min(horizontal, vertical) ** 0.55
+            pixels[x, y] = int(pixels[x, y] * (0.72 + 0.28 * wrap))
+
+    return mask.filter(ImageFilter.GaussianBlur(0.45))
 
 
 def draw_centered(draw: ImageDraw.ImageDraw, y: int, text: str, fnt: ImageFont.ImageFont, fill, width: int) -> None:
@@ -278,34 +275,34 @@ def build_printed_label(product: dict[str, object], logo: Image.Image, size: tup
     draw = ImageDraw.Draw(label, "RGBA")
 
     logo_mark = logo.copy()
-    logo_mark.thumbnail((int(canvas_w * 0.28), int(canvas_h * 0.28)), Image.Resampling.LANCZOS)
+    logo_mark.thumbnail((int(canvas_w * 0.32), int(canvas_h * 0.32)), Image.Resampling.LANCZOS)
     logo_x = (canvas_w - logo_mark.width) // 2
     label.alpha_composite(logo_mark, (logo_x, int(canvas_h * logo_y) - logo_mark.height // 2))
 
-    azure_font = font(max(28, int(canvas_w * 0.145)), True)
-    synth_font = font(max(12, int(canvas_w * 0.055)), True)
-    draw_centered(draw, int(canvas_h * (logo_y + 0.115)), "AZURE", azure_font, (28, 76, 94, 245), canvas_w)
-    draw_centered(draw, int(canvas_h * (logo_y + 0.215)), "SYNTHETICS", synth_font, (28, 76, 94, 232), canvas_w)
+    azure_font = font(max(28, int(canvas_w * 0.155)), True)
+    synth_font = font(max(12, int(canvas_w * 0.057)), True)
+    draw_centered(draw, int(canvas_h * (logo_y + 0.145)), "AZURE", azure_font, (24, 72, 91, 246), canvas_w)
+    draw_centered(draw, int(canvas_h * (logo_y + 0.265)), "SYNTHETICS", synth_font, (24, 72, 91, 236), canvas_w)
 
     product_name = product_label_name(str(product["name"]))
     title_box = (
         int(canvas_w * 0.075),
         int(canvas_h * title_y),
         int(canvas_w * 0.925),
-        int(canvas_h * (title_y + 0.142)),
+        int(canvas_h * (title_y + 0.165)),
     )
-    draw_centered_text(draw, title_box, product_name, max(38, int(canvas_w * 0.092)), max(15, int(canvas_w * 0.039)), (24, 75, 92, 246))
+    draw_centered_text(draw, title_box, product_name, max(38, int(canvas_w * 0.102)), max(15, int(canvas_w * 0.039)), (18, 47, 66, 248))
 
     detail = amount_summary(product)
     if "Bacteriostatic Water" == str(product["name"]):
         detail = "Lab Diluent | 10ml"
     detail_box = (
         int(canvas_w * 0.095),
-        int(canvas_h * (title_y + 0.155)),
+        int(canvas_h * (title_y + 0.178)),
         int(canvas_w * 0.905),
-        int(canvas_h * (title_y + 0.215)),
+        int(canvas_h * (title_y + 0.248)),
     )
-    draw_centered_text(draw, detail_box, detail, max(15, int(canvas_w * 0.041)), max(9, int(canvas_w * 0.025)), (34, 56, 62, 228))
+    draw_centered_text(draw, detail_box, detail, max(15, int(canvas_w * 0.039)), max(9, int(canvas_w * 0.024)), (32, 50, 57, 226))
 
     notice_box = (
         int(canvas_w * 0.13),
@@ -313,7 +310,7 @@ def build_printed_label(product: dict[str, object], logo: Image.Image, size: tup
         int(canvas_w * 0.87),
         int(canvas_h * 0.962),
     )
-    draw_centered_text(draw, notice_box, "FOR RESEARCH USE ONLY", max(12, int(canvas_w * 0.030)), max(8, int(canvas_w * 0.020)), (142, 111, 50, 185))
+    draw_centered_text(draw, notice_box, "FOR RESEARCH USE ONLY", max(12, int(canvas_w * 0.029)), max(8, int(canvas_w * 0.019)), (130, 100, 42, 168))
 
     label = label.resize(size, Image.Resampling.LANCZOS)
     alpha = feathered_label_mask(size)
@@ -325,19 +322,42 @@ def apply_vial_lighting(label: Image.Image, source_crop: Image.Image) -> Image.I
     """Use the original label's broad light falloff so new print sits inside the vial scene."""
     lum = ImageOps.grayscale(source_crop.convert("RGB")).filter(ImageFilter.GaussianBlur(20))
     lum = ImageEnhance.Contrast(lum).enhance(0.72)
-    light = lum.point(lambda p: max(188, min(255, int(214 + (p - 176) * 0.38))))
+    light = lum.point(lambda p: max(180, min(255, int(211 + (p - 176) * 0.44))))
     rgb = ImageChops.multiply(label.convert("RGB"), Image.merge("RGB", (light, light, light)))
     integrated = rgb.convert("RGBA")
     integrated.putalpha(label.getchannel("A"))
 
-    shade = Image.new("RGBA", label.size, (0, 0, 0, 0))
-    draw = ImageDraw.Draw(shade, "RGBA")
     width, height = label.size
-    draw.rectangle((0, 0, max(1, int(width * 0.035)), height), fill=(7, 25, 30, 24))
-    draw.rectangle((int(width * 0.965), 0, width, height), fill=(7, 25, 30, 32))
-    draw.rectangle((int(width * 0.82), 0, int(width * 0.88), height), fill=(5, 24, 30, 10))
-    draw.rectangle((int(width * 0.17), 0, int(width * 0.24), height), fill=(255, 255, 255, 18))
-    return Image.alpha_composite(integrated, shade)
+    wrap = Image.new("RGBA", label.size, (0, 0, 0, 0))
+    pixels = wrap.load()
+    for y in range(height):
+        for x in range(width):
+            edge = abs((x / max(1, width - 1)) - 0.5) * 2
+            side_alpha = int((edge ** 2.35) * 58)
+            pixels[x, y] = (4, 20, 27, side_alpha)
+
+    highlight = Image.new("RGBA", label.size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(highlight, "RGBA")
+    draw.rounded_rectangle(
+        (int(width * 0.19), int(height * 0.04), int(width * 0.31), int(height * 0.96)),
+        radius=max(8, int(width * 0.035)),
+        fill=(255, 255, 255, 24),
+    )
+    draw.rounded_rectangle(
+        (int(width * 0.76), int(height * 0.04), int(width * 0.84), int(height * 0.96)),
+        radius=max(8, int(width * 0.035)),
+        fill=(255, 255, 255, 12),
+    )
+    highlight = highlight.filter(ImageFilter.GaussianBlur(max(2, int(width * 0.02))))
+
+    source_highlights = ImageOps.grayscale(source_crop.convert("RGB")).filter(ImageFilter.GaussianBlur(2))
+    source_highlights = source_highlights.point(lambda p: max(0, min(48, int((p - 202) * 0.6))))
+    glints = Image.new("RGBA", label.size, (255, 255, 255, 0))
+    glints.putalpha(source_highlights)
+
+    integrated = Image.alpha_composite(integrated, wrap)
+    integrated = Image.alpha_composite(integrated, highlight)
+    return Image.alpha_composite(integrated, glints)
 
 
 def product_image(product: dict[str, object], logo: Image.Image) -> Image.Image:
