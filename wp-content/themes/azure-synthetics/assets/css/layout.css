@@ -230,28 +230,65 @@
 }
 
 .azure-hero {
-	background:
-		radial-gradient(circle at 78% 18%, rgba(112, 201, 191, 0.4), rgba(112, 201, 191, 0) 38%),
-		linear-gradient(135deg, #09141a 0%, #102532 56%, #08141a 100%);
+	position: relative;
+	isolation: isolate;
+	display: grid;
+	align-items: center;
+	min-height: clamp(580px, calc(100svh - 168px), 760px);
+	overflow: hidden;
+	background: #071116;
 	color: var(--azure-white-tint);
-	padding: 48px 0 64px;
+	padding: clamp(56px, 8vw, 104px) 0 clamp(72px, 8vw, 112px);
 }
 
-.azure-hero__grid {
-	display: grid;
-	grid-template-columns: minmax(0, 500px) minmax(0, 1fr);
-	gap: 40px;
+.azure-hero__media,
+.azure-hero__media img,
+.azure-hero__scrim {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.azure-hero__media {
+	z-index: -3;
+}
+
+.azure-hero__media img {
+	display: block;
+	object-fit: cover;
+	object-position: center;
+}
+
+.azure-hero__scrim {
+	z-index: -2;
+	background:
+		linear-gradient(90deg, rgba(3, 11, 15, 0.94) 0%, rgba(3, 14, 19, 0.84) 33%, rgba(3, 16, 21, 0.28) 58%, rgba(3, 12, 16, 0.5) 100%),
+		linear-gradient(0deg, rgba(4, 12, 16, 0.82) 0%, rgba(4, 12, 16, 0) 38%, rgba(4, 12, 16, 0.34) 100%);
+	pointer-events: none;
+}
+
+.azure-hero__inner {
+	position: relative;
+	z-index: 1;
+	display: flex;
 	align-items: center;
+	min-height: inherit;
 }
 
 .azure-hero__copy h1 {
-	font-size: clamp(3.2rem, 6vw, 4.8rem);
+	max-width: 820px;
+	font-size: clamp(3.4rem, 7.2vw, 6.8rem);
+	line-height: 0.96;
+	text-wrap: balance;
+	letter-spacing: 0;
 }
 
 .azure-hero__body {
-	max-width: 460px;
-	color: rgba(244, 250, 249, 0.76);
-	font-size: 16px;
+	max-width: 560px;
+	color: rgba(244, 250, 249, 0.8);
+	font-size: clamp(1rem, 1.45vw, 1.22rem);
+	line-height: 1.7;
 }
 
 .azure-hero__actions {
@@ -266,13 +303,31 @@
 	min-width: min(100%, 220px);
 }
 
+.azure-hero__proof-chips,
 .azure-hero__proof-list {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	display: grid;
+	display: flex;
+	flex-wrap: wrap;
 	gap: 10px;
 	color: rgba(244, 250, 249, 0.92);
+}
+
+.azure-hero__proof-chips li {
+	display: inline-flex;
+	align-items: center;
+	min-height: 42px;
+	padding: 0 14px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 999px;
+	background: rgba(244, 250, 249, 0.08);
+	color: rgba(244, 250, 249, 0.9);
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	backdrop-filter: blur(10px);
 }
 
 .azure-hero__proof-list li {
@@ -312,47 +367,6 @@
 	border-radius: 999px;
 	background: var(--azure-gold-soft);
 	box-shadow: 0 0 0 5px rgba(215, 180, 109, 0.16);
-}
-
-.azure-hero__visual {
-	position: relative;
-	min-height: 620px;
-	padding: var(--azure-space-32);
-	border-radius: var(--azure-radius-xl);
-	background:
-		radial-gradient(circle at 75% 20%, rgba(112, 201, 191, 0.44), rgba(112, 201, 191, 0) 34%),
-		linear-gradient(130deg, #11212a 0%, #173443 60%, #0e171d 100%);
-	box-shadow: var(--azure-shadow-dark);
-}
-
-.azure-hero__visual img {
-	width: min(100%, 420px);
-	max-width: 100%;
-	margin: 0 auto;
-}
-
-.azure-hero-card {
-	position: absolute;
-	max-width: 280px;
-	padding: 18px;
-	border-radius: 24px;
-	box-shadow: var(--azure-shadow-soft);
-}
-
-.azure-hero-card--dark {
-	top: 36px;
-	left: 36px;
-	max-width: 190px;
-	background: rgba(11, 23, 29, 0.86);
-	border: 1px solid rgba(255, 255, 255, 0.08);
-	color: var(--azure-white-tint);
-}
-
-.azure-hero-card--light {
-	right: 42px;
-	bottom: 40px;
-	background: rgba(245, 249, 248, 0.95);
-	color: var(--azure-ink);
 }
 
 .azure-credibility-rail {
@@ -721,7 +735,6 @@
 }
 
 @media (max-width: 1024px) {
-	.azure-hero__grid,
 	.azure-editorial-section__grid,
 	.azure-collections__grid,
 	.azure-home-faq__grid,
@@ -735,14 +748,9 @@
 		grid-template-columns: 1fr;
 	}
 
-	.azure-hero__grid {
-		grid-template-columns: minmax(0, 1fr);
-	}
-
-	.azure-hero__copy,
-	.azure-hero__visual {
+	.azure-hero__copy {
 		min-width: 0;
-		width: 100%;
+		width: min(100%, 620px);
 	}
 
 	.azure-story-grid,
@@ -949,17 +957,6 @@
 		overflow: hidden;
 	}
 
-	.azure-hero__visual {
-		min-height: auto;
-	}
-
-	.azure-hero-card {
-		position: relative;
-		inset: auto;
-		max-width: none;
-		margin-top: var(--azure-space-16);
-	}
-
 	.azure-story-grid,
 	.azure-product-grid,
 	.azure-search-grid,
@@ -1026,7 +1023,22 @@
 	}
 
 	.azure-hero {
-		padding: 36px 0 44px;
+		min-height: clamp(610px, calc(100svh - 142px), 720px);
+		padding: 42px 0 56px;
+	}
+
+	.azure-hero__scrim {
+		background:
+			linear-gradient(180deg, rgba(3, 11, 15, 0.9) 0%, rgba(3, 14, 19, 0.76) 42%, rgba(3, 12, 16, 0.58) 100%),
+			linear-gradient(90deg, rgba(3, 11, 15, 0.86) 0%, rgba(3, 14, 19, 0.38) 100%);
+	}
+
+	.azure-hero__inner {
+		align-items: start;
+	}
+
+	.azure-hero__copy {
+		padding-top: 8px;
 	}
 
 	.azure-hero__copy h1,
@@ -1043,12 +1055,9 @@
 		text-wrap: balance;
 	}
 
-	.azure-hero__grid {
-		gap: 28px;
-	}
-
 	.azure-hero__body {
 		font-size: 15px;
+		max-width: 38ch;
 	}
 
 	.azure-hero__actions {
@@ -1060,9 +1069,16 @@
 		width: 100%;
 	}
 
+	.azure-hero__proof-chips,
 	.azure-hero__proof-list {
 		gap: 8px;
 		font-size: 14px;
+	}
+
+	.azure-hero__proof-chips li {
+		min-height: 38px;
+		padding-inline: 12px;
+		font-size: 11px;
 	}
 
 	.azure-hero__proof-list li {
@@ -1098,16 +1114,6 @@
 		justify-content: center;
 		border-radius: 18px;
 		text-align: center;
-	}
-
-	.azure-hero__visual {
-		overflow: hidden;
-		padding: 20px;
-		border-radius: 24px;
-	}
-
-	.azure-hero-card {
-		width: 100%;
 	}
 
 	.azure-editorial-section,
@@ -1174,6 +1180,21 @@ html[dir="rtl"] .azure-site-header__inner {
 html[dir="rtl"] .azure-brand {
 	direction: ltr;
 	text-align: left;
+}
+
+html[dir="rtl"] .azure-hero__copy {
+	margin-right: auto;
+	text-align: right;
+}
+
+html[dir="rtl"] .azure-hero__body {
+	margin-right: auto;
+}
+
+html[dir="rtl"] .azure-hero__scrim {
+	background:
+		linear-gradient(270deg, rgba(3, 11, 15, 0.94) 0%, rgba(3, 14, 19, 0.84) 33%, rgba(3, 16, 21, 0.34) 58%, rgba(3, 12, 16, 0.44) 100%),
+		linear-gradient(0deg, rgba(4, 12, 16, 0.82) 0%, rgba(4, 12, 16, 0) 38%, rgba(4, 12, 16, 0.34) 100%);
 }
 
 html[dir="rtl"] .azure-kicker,

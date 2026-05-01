@@ -16,6 +16,7 @@ PRODUCT_DIR = THEME_IMAGES / "products"
 LOGO_PATH = THEME_IMAGES / "azure-logo-transparent.png"
 SOURCE_IMAGE_DIR = ROOT / "images"
 HERO_VIAL_BASE = SOURCE_IMAGE_DIR / "hero_vial.png"
+HOME_HERO_GENERATED = SOURCE_IMAGE_DIR / "hero_home_generated.png"
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -114,6 +115,40 @@ def azure_grade(img: Image.Image, vignette_strength: float = 0.46) -> Image.Imag
     graded = Image.alpha_composite(graded, shadow)
 
     return graded.convert("RGB")
+
+
+def home_hero_scene(size: tuple[int, int], rtl: bool = False) -> Image.Image:
+    """Crop the generated commercial hero into responsive homepage assets."""
+    width, height = size
+    source = HOME_HERO_GENERATED if HOME_HERO_GENERATED.exists() else HERO_VIAL_BASE
+    focal = (0.73, 0.54) if width <= height else (0.50, 0.50)
+    scene = cover_crop(source, size, focal).convert("RGBA")
+
+    scene = ImageEnhance.Color(scene).enhance(0.94)
+    scene = ImageEnhance.Contrast(scene).enhance(1.04)
+
+    # Keep the eventual text side calm in the bitmap; CSS overlays add final legibility.
+    calm = Image.new("RGBA", size, (0, 8, 12, 0))
+    calm_draw = ImageDraw.Draw(calm, "RGBA")
+    if not rtl:
+        calm_draw.rectangle((0, 0, int(width * 0.48), height), fill=(0, 10, 14, 58))
+    else:
+        calm_draw.rectangle((int(width * 0.52), 0, width, height), fill=(0, 10, 14, 58))
+    scene = Image.alpha_composite(scene, calm.filter(ImageFilter.GaussianBlur(max(18, width // 80))))
+
+    vignette = Image.new("L", size, 0)
+    pixels = vignette.load()
+    for y in range(height):
+        ny = (y - height / 2) / (height / 2)
+        for x in range(width):
+            nx = (x - width / 2) / (width / 2)
+            distance = (nx * nx + ny * ny) ** 0.5
+            pixels[x, y] = int(max(0, min(1, (distance - 0.36) / 0.78)) ** 1.8 * 142)
+    shade = Image.new("RGBA", size, (0, 7, 10, 0))
+    shade.putalpha(vignette)
+    scene = Image.alpha_composite(scene, shade)
+
+    return ImageEnhance.Sharpness(scene.convert("RGB")).enhance(1.02)
 
 
 def wide_vial_scene(path: Path, size: tuple[int, int]) -> Image.Image:
@@ -382,6 +417,14 @@ def generate_site_images() -> None:
     }
 
     azure_grade(wide_vial_scene(SOURCE_IMAGE_DIR / "hero_vial.png", (1408, 768)), 0.28).save(THEME_IMAGES / "hero-vial.png", quality=94)
+    hero_sizes = {
+        "desktop": (2560, 1440),
+        "tablet": (1800, 1200),
+        "mobile": (1080, 1500),
+    }
+    for label, hero_size in hero_sizes.items():
+        home_hero_scene(hero_size, rtl=False).save(THEME_IMAGES / f"hero-home-{label}.jpg", quality=92, optimize=True)
+        home_hero_scene(hero_size, rtl=True).save(THEME_IMAGES / f"hero-home-{label}-rtl.jpg", quality=92, optimize=True)
 
     fallback = SOURCE_IMAGE_DIR / "generated-1776561351087.png"
     for filename, (source, focal, vignette) in specs.items():
