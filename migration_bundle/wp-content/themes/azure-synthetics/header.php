@@ -27,24 +27,29 @@ $cart_count = azure_synthetics_cart_count();
 </div>
 <header class="azure-site-header <?php echo $is_dark ? 'azure-site-header--dark' : 'azure-site-header--light'; ?>">
 	<div class="azure-shell azure-site-header__inner">
-		<a class="azure-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<?php $brand_url = function_exists( 'azure_synthetics_preserve_language_url' ) ? azure_synthetics_preserve_language_url( home_url( '/' ) ) : home_url( '/' ); ?>
+		<a class="azure-brand" href="<?php echo esc_url( $brand_url ); ?>">
 			<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/azure-logo-transparent.png' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>">
 			<span class="azure-brand__copy">
 				<span class="azure-brand__name"><?php bloginfo( 'name' ); ?></span>
-				<span class="azure-brand__tag"><?php bloginfo( 'description' ); ?></span>
+				<span class="azure-brand__tag"><?php echo esc_html( azure_synthetics_get_site_tagline() ); ?></span>
 			</span>
 		</a>
-		<button class="azure-nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+		<input class="azure-nav-state" type="checkbox" id="azure-nav-state" aria-hidden="true" tabindex="-1">
+		<label class="azure-nav-toggle" for="azure-nav-state" role="button" tabindex="0" aria-expanded="false" aria-controls="site-navigation">
 			<span class="screen-reader-text"><?php esc_html_e( 'Toggle navigation', 'azure-synthetics' ); ?></span>
 			<span></span><span></span>
-		</button>
+		</label>
 		<nav class="azure-site-nav" id="site-navigation" aria-label="<?php esc_attr_e( 'Primary navigation', 'azure-synthetics' ); ?>">
 			<?php
 			azure_synthetics_render_navigation( 'primary', 'azure-menu' );
 			?>
 			<div class="azure-site-nav__actions">
-				<a class="azure-site-nav__link" href="<?php echo esc_url( azure_synthetics_account_url() ); ?>"><?php esc_html_e( 'Account', 'azure-synthetics' ); ?></a>
-				<a class="azure-site-nav__cart" href="<?php echo esc_url( azure_synthetics_cart_url() ); ?>" aria-label="<?php echo esc_attr( sprintf( _n( 'View cart, %d item', 'View cart, %d items', $cart_count, 'azure-synthetics' ), $cart_count ) ); ?>" data-cart-count="<?php echo esc_attr( $cart_count ); ?>">
+				<?php azure_synthetics_render_language_switcher(); ?>
+				<?php $account_url = function_exists( 'azure_synthetics_preserve_language_url' ) ? azure_synthetics_preserve_language_url( azure_synthetics_account_url() ) : azure_synthetics_account_url(); ?>
+				<?php $cart_url = function_exists( 'azure_synthetics_preserve_language_url' ) ? azure_synthetics_preserve_language_url( azure_synthetics_cart_url() ) : azure_synthetics_cart_url(); ?>
+				<a class="azure-site-nav__link" href="<?php echo esc_url( $account_url ); ?>"><?php esc_html_e( 'Account', 'azure-synthetics' ); ?></a>
+				<a class="azure-site-nav__cart" href="<?php echo esc_url( $cart_url ); ?>" aria-label="<?php echo esc_attr( sprintf( _n( 'View cart, %d item', 'View cart, %d items', $cart_count, 'azure-synthetics' ), $cart_count ) ); ?>" data-cart-count="<?php echo esc_attr( $cart_count ); ?>">
 					<span class="azure-site-nav__cart-icon" aria-hidden="true">
 						<svg viewBox="0 0 24 24" focusable="false">
 							<path d="M8.25 9.25V8.5a3.75 3.75 0 0 1 7.5 0v.75" />

@@ -21,7 +21,7 @@ $contact = azure_synthetics_get_contact_details();
 				<ul class="azure-detail-list">
 					<li><strong><?php esc_html_e( 'Email', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( $contact['email'] ); ?></span></li>
 					<li><strong><?php esc_html_e( 'Phone', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( $contact['phone'] ); ?></span></li>
-					<li><strong><?php esc_html_e( 'Hours', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( $contact['hours'] ); ?></span></li>
+					<li><strong><?php esc_html_e( 'Hours', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( azure_synthetics_translate_string( $contact['hours'] ) ); ?></span></li>
 				</ul>
 			</div>
 			<div class="azure-contact-card azure-prose">

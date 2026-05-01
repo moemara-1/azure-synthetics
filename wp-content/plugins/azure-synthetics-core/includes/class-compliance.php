@@ -28,8 +28,8 @@ class Compliance {
 	public static function defaults() {
 		return array(
 			'footer_disclaimer'         => 'For research use only. Not for human consumption.',
-			'default_product_disclaimer'=> 'For research use only. Not for human consumption. Handle and store according to the published product guidance.',
-			'default_shipping_note'     => 'Temperature-sensitive inventory is packed to reduce transit instability; inspect product immediately upon delivery.',
+			'default_product_disclaimer'=> 'For research use only. Not for human or veterinary use. Not for diagnosis, treatment, injection, or consumption. Handle and store according to the published product guidance.',
+			'default_shipping_note'     => 'EU cold-chain shipping is included for catalog orders. Inspect temperature-sensitive inventory immediately upon delivery and reconcile the lot reference with the supplied CoA.',
 			'checkout_ack_label'        => 'I confirm this order is placed for lawful laboratory or research use only, and not for human consumption.',
 			'catalog_gate_enabled'      => false,
 		);

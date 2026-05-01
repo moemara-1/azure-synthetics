@@ -10,8 +10,13 @@ defined( 'ABSPATH' ) || exit;
 global $product;
 
 $subtitle    = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'subtitle', '' ) : '';
+$subtitle    = azure_synthetics_get_localized_product_meta( $product->get_id(), 'subtitle', $subtitle );
 $descriptor  = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'lab_descriptor', '' ) : '';
+$descriptor  = azure_synthetics_get_localized_product_meta( $product->get_id(), 'lab_descriptor', $descriptor );
 $disclaimer  = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'research_disclaimer', azure_synthetics_get_option_value( 'default_product_disclaimer', azure_synthetics_get_footer_disclaimer() ) ) : azure_synthetics_get_footer_disclaimer();
+$disclaimer  = azure_synthetics_translate_string( $disclaimer );
+$short_copy  = azure_synthetics_get_localized_product_meta( $product->get_id(), 'short_description', get_the_excerpt() );
+$long_copy   = azure_synthetics_get_localized_product_meta( $product->get_id(), 'description', get_the_content() );
 $sections    = function_exists( 'azure_synthetics_get_product_sections' ) ? azure_synthetics_get_product_sections( $product->get_id() ) : array();
 $faqs        = function_exists( 'azure_synthetics_get_product_faqs' ) ? azure_synthetics_get_product_faqs( $product->get_id() ) : array();
 $highlights  = array_filter(
@@ -23,6 +28,21 @@ $highlights  = array_filter(
 		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'batch_reference', '' ) : '',
 	)
 );
+
+$highlights = array_map( 'azure_synthetics_translate_string', $highlights );
+
+if ( 'ar' === azure_synthetics_current_language() ) {
+	$faqs = array(
+		array(
+			'question' => 'ما المعلومات التي يجب مراجعتها قبل الطلب؟',
+			'answer'   => 'راجع الكمية، حجم العبوة، مسار التوثيق، توقعات التخزين، وتنبيه الاستخدام البحثي قبل إتمام الطلب.',
+		),
+		array(
+			'question' => 'هل يتضمن المنتج توثيق الدفعة؟',
+			'answer'   => 'تم تنظيم منتجات الكتالوج حول مسار CoA لكل دفعة مع توفير مراجع الدفعة أثناء التجهيز.',
+		),
+	);
+}
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 	<div class="azure-shell">
@@ -38,8 +58,8 @@ $highlights  = array_filter(
 					<p class="azure-section-heading__description"><?php echo esc_html( $subtitle ); ?></p>
 				<?php endif; ?>
 				<div class="price"><?php echo wp_kses_post( $product->get_price_html() ); ?></div>
-				<?php if ( has_excerpt() ) : ?>
-					<p><?php echo esc_html( get_the_excerpt() ); ?></p>
+				<?php if ( $short_copy ) : ?>
+					<p><?php echo esc_html( wp_strip_all_tags( $short_copy ) ); ?></p>
 				<?php endif; ?>
 				<?php if ( $highlights ) : ?>
 					<div class="azure-product-chip-list">
@@ -62,7 +82,7 @@ $highlights  = array_filter(
 				<?php foreach ( $sections as $section ) : ?>
 					<article class="azure-product-tech-card">
 						<h3><?php echo esc_html( $section['label'] ); ?></h3>
-						<p><?php echo esc_html( $section['value'] ); ?></p>
+						<p><?php echo esc_html( azure_synthetics_translate_string( $section['value'] ) ); ?></p>
 					</article>
 				<?php endforeach; ?>
 			</div>
@@ -72,7 +92,7 @@ $highlights  = array_filter(
 			<section class="azure-product-section">
 				<h2><?php esc_html_e( 'Technical overview', 'azure-synthetics' ); ?></h2>
 				<div class="azure-prose">
-					<?php the_content(); ?>
+					<p><?php echo esc_html( wp_strip_all_tags( $long_copy ) ); ?></p>
 				</div>
 			</section>
 

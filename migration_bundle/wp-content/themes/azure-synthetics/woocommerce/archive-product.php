@@ -11,6 +11,26 @@ get_header();
 
 $title       = woocommerce_page_title( false );
 $description = is_tax( 'product_cat' ) ? term_description() : get_post_field( 'post_content', wc_get_page_id( 'shop' ) );
+
+if ( is_tax( 'product_cat' ) ) {
+	$term       = get_queried_object();
+	$categories = azure_synthetics_get_catalog_categories();
+
+	if ( $term && ! empty( $categories[ $term->slug ] ) ) {
+		$title       = azure_synthetics_localized_catalog_category_field( $categories[ $term->slug ], 'name' );
+		$description = azure_synthetics_localized_catalog_category_field( $categories[ $term->slug ], 'description' );
+	}
+}
+
+if ( ! $description && ! is_tax( 'product_cat' ) ) {
+	$description = 'ar' === azure_synthetics_current_language()
+		? 'ببتيدات بحثية مجففة بالتجميد مع مسار CoA لكل دفعة، وشحن أوروبي مبرد، وتسعير الكميات والصناديق ظاهر قبل الدفع.'
+		: __( 'Lyophilized research peptides with CoA-per-batch workflow, EU cold-chain shipping, and amount/box pricing visible before checkout.', 'azure-synthetics' );
+}
+
+if ( ! is_tax( 'product_cat' ) && 'ar' === azure_synthetics_current_language() ) {
+	$title = 'المتجر';
+}
 ?>
 <main class="azure-shop-shell">
 	<section class="azure-page-hero">
@@ -31,24 +51,27 @@ $description = is_tax( 'product_cat' ) ? term_description() : get_post_field( 'p
 				<div class="azure-sidebar-card">
 					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Collections', 'azure-synthetics' ); ?></h2>
 					<ul class="azure-term-list">
-						<?php
-						wp_list_categories(
-							array(
-								'taxonomy'   => 'product_cat',
-								'title_li'   => '',
-								'show_count' => false,
-							)
-						);
-						?>
+						<?php foreach ( azure_synthetics_get_collection_cards() as $collection ) : ?>
+							<?php $term = get_term_by( 'slug', $collection['slug'], 'product_cat' ); ?>
+							<?php if ( $term && ! is_wp_error( $term ) ) : ?>
+								<li><a href="<?php echo esc_url( get_term_link( $term ) ); ?>"><?php echo esc_html( $collection['title'] ); ?></a></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 				<div class="azure-sidebar-card">
 					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Compliance', 'azure-synthetics' ); ?></h2>
 					<p><?php echo esc_html( azure_synthetics_get_footer_disclaimer() ); ?></p>
 				</div>
-				<?php if ( is_active_sidebar( 'shop-sidebar' ) ) : ?>
-					<?php dynamic_sidebar( 'shop-sidebar' ); ?>
-				<?php endif; ?>
+				<div class="azure-sidebar-card">
+					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Search', 'azure-synthetics' ); ?></h2>
+					<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<label class="screen-reader-text" for="azure-product-search"><?php esc_html_e( 'Search products', 'azure-synthetics' ); ?></label>
+						<input id="azure-product-search" type="search" name="s" value="<?php echo esc_attr( get_search_query() ); ?>">
+						<input type="hidden" name="post_type" value="product">
+						<button type="submit"><?php esc_html_e( 'Search', 'azure-synthetics' ); ?></button>
+					</form>
+				</div>
 			</aside>
 
 			<div class="azure-catalog-main">

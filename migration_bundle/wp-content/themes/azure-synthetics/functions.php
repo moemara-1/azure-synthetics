@@ -80,6 +80,8 @@ define( 'AZURE_SYNTHETICS_THEME_URI', azure_synthetics_apply_origin( get_templat
 
 $azure_synthetics_includes = array(
 	'inc/setup.php',
+	'inc/i18n.php',
+	'inc/catalog-data.php',
 	'inc/content.php',
 	'inc/runtime-urls.php',
 	'inc/assets.php',

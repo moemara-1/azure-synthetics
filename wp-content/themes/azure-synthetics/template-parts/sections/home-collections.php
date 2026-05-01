@@ -8,8 +8,8 @@
 <section class="azure-collections">
 	<div class="azure-shell azure-collections__grid">
 		<div class="azure-collections__copy">
-			<p class="azure-kicker"><?php esc_html_e( 'Shop by goal', 'azure-synthetics' ); ?></p>
-			<h2><?php esc_html_e( 'Collections organized around outcomes, not SKU chaos.', 'azure-synthetics' ); ?></h2>
+			<p class="azure-kicker"><?php esc_html_e( 'Shop by research area', 'azure-synthetics' ); ?></p>
+			<h2><?php esc_html_e( 'Find the right research material faster.', 'azure-synthetics' ); ?></h2>
 			<div class="azure-collections__list">
 				<?php foreach ( azure_synthetics_get_collection_cards() as $collection ) : ?>
 					<?php $term = get_term_by( 'slug', $collection['slug'], 'product_cat' ); ?>

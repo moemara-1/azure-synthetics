@@ -71,6 +71,9 @@ if [[ -d "$BUNDLE_DIR/wp-content/mu-plugins" ]]; then
 	cp -R "$BUNDLE_DIR/wp-content/mu-plugins/." wp-content/mu-plugins/
 fi
 
+mkdir -p scripts
+cp "$REPO_ROOT/scripts/wp-seed.php" scripts/wp-seed.php
+
 if [[ -d "$BUNDLE_DIR/wp-content/plugins/woocommerce" ]]; then
 	cp -R "$BUNDLE_DIR/wp-content/plugins/woocommerce" wp-content/plugins/
 else
@@ -92,6 +95,7 @@ DEPLOY_PATHS=(
 	wp-content/themes/azure-synthetics
 	wp-content/plugins/azure-synthetics-core
 	wp-content/plugins/woocommerce
+	scripts/wp-seed.php
 )
 
 if [[ -d wp-content/mu-plugins ]]; then

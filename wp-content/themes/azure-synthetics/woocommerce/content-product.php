@@ -14,6 +14,7 @@ if ( ! $product || ! $product->is_visible() ) {
 }
 
 $subtitle = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'lab_descriptor', '' ) : '';
+$subtitle = azure_synthetics_get_localized_product_meta( $product->get_id(), 'lab_descriptor', $subtitle );
 $card_mod = $product->is_featured() ? ' azure-product-card--feature' : '';
 ?>
 <li <?php wc_product_class( 'azure-product-grid__item', $product ); ?>>

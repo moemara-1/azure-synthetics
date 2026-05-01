@@ -19,12 +19,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return array<string,string>
  */
 function azure_synthetics_product_image_fallbacks() {
-	return array(
+	$fallbacks = array(
 		'card-bpc157' => 'images/card-bpc157.png',
 		'card-cjcipa' => 'images/card-cjcipa.png',
 		'card-glp3'   => 'images/card-glp3.png',
 		'card-motsc'  => 'images/card-motsc.png',
 	);
+
+	if ( function_exists( 'azure_synthetics_get_catalog_products' ) && function_exists( 'azure_synthetics_catalog_slug' ) && function_exists( 'azure_synthetics_catalog_image_filename' ) ) {
+		foreach ( azure_synthetics_get_catalog_products() as $product ) {
+			$fallbacks[ azure_synthetics_catalog_slug( $product['name'] ) ] = 'images/' . azure_synthetics_catalog_image_filename( $product );
+		}
+	}
+
+	return $fallbacks;
 }
 
 /**

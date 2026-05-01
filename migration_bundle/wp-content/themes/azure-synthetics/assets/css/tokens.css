@@ -32,3 +32,9 @@
 	--azure-font-display: "Funnel Sans", "Avenir Next", "Segoe UI", sans-serif;
 	--azure-font-mono: "Geist Mono", "SFMono-Regular", Consolas, monospace;
 }
+
+html[dir="rtl"] {
+	--azure-font-body: "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
+	--azure-font-display: "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
+	--azure-font-mono: "Noto Sans Arabic", "SFMono-Regular", Consolas, monospace;
+}

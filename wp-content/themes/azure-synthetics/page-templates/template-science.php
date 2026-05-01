@@ -16,7 +16,7 @@ $steps      = azure_synthetics_get_science_process_steps();
 				<?php azure_synthetics_render_section_heading( azure_synthetics_get_page_intro() ); ?>
 				<div class="azure-science-page__hero-note">
 					<p class="azure-kicker"><?php esc_html_e( 'Research use only', 'azure-synthetics' ); ?></p>
-					<p><?php esc_html_e( 'No diagnosis, treatment, mitigation, cure, or human-use claims.', 'azure-synthetics' ); ?></p>
+					<p><?php esc_html_e( 'No diagnosis, treatment, mitigation, cure, human-use, or veterinary-use claims.', 'azure-synthetics' ); ?></p>
 				</div>
 			</div>
 		</section>

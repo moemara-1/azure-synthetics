@@ -17,7 +17,7 @@ $contact = azure_synthetics_get_contact_details();
 			<img src="<?php echo esc_url( azure_synthetics_asset_url( 'images/azure-logo-transparent.png' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>">
 			<div>
 				<h2><?php bloginfo( 'name' ); ?></h2>
-				<p><?php bloginfo( 'description' ); ?></p>
+				<p><?php echo esc_html( azure_synthetics_get_site_tagline() ); ?></p>
 			</div>
 		</div>
 		<div class="azure-site-footer__nav">
@@ -28,14 +28,14 @@ $contact = azure_synthetics_get_contact_details();
 		</div>
 		<div class="azure-site-footer__contact">
 			<h3><?php esc_html_e( 'Support desk', 'azure-synthetics' ); ?></h3>
-			<p><?php echo esc_html( $contact['hours'] ); ?></p>
+			<p><?php echo esc_html( azure_synthetics_translate_string( $contact['hours'] ) ); ?></p>
 			<p><a href="mailto:<?php echo esc_attr( $contact['email'] ); ?>"><?php echo esc_html( $contact['email'] ); ?></a></p>
 			<p><a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $contact['phone'] ) ); ?>"><?php echo esc_html( $contact['phone'] ); ?></a></p>
 		</div>
 	</div>
 	<div class="azure-shell azure-site-footer__base">
 		<p><?php echo esc_html( azure_synthetics_get_footer_disclaimer() ); ?></p>
-		<p><?php esc_html_e( 'Designed for protocol-driven buyers and laboratory inventory teams.', 'azure-synthetics' ); ?></p>
+		<p><?php esc_html_e( 'Designed for qualified labs, inventory teams, and documentation-first buyers.', 'azure-synthetics' ); ?></p>
 	</div>
 </footer>
 <?php wp_footer(); ?>

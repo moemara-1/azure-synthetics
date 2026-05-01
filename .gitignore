@@ -5,5 +5,8 @@
 exports/
 png_export/
 node_modules/
+tmp/
+__pycache__/
+scripts/__pycache__/
 .DS_Store
 *.log

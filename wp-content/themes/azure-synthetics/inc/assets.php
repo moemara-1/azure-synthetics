@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function azure_synthetics_fonts_url() {
 	return add_query_arg(
 		array(
-			'family'  => 'Geist:wght@400;500;600;700;800|Geist Mono:wght@400;500;600;700|Funnel Sans:wght@400;500;600;700;800',
+			'family'  => 'Geist:wght@400;500;600;700;800|Geist Mono:wght@400;500;600;700|Funnel Sans:wght@400;500;600;700;800|Noto Sans Arabic:wght@400;500;600;700;800',
 			'display' => 'swap',
 		),
 		'https://fonts.googleapis.com/css'

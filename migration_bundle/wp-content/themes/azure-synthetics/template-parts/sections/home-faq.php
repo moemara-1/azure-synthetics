@@ -23,7 +23,7 @@
 		<div class="azure-newsletter-card">
 				<div>
 					<h3><?php esc_html_e( 'Get release updates without inbox noise.', 'azure-synthetics' ); ?></h3>
-					<p><?php esc_html_e( 'Flagship drops, pricing windows, and protocol notes.', 'azure-synthetics' ); ?></p>
+					<p><?php esc_html_e( 'Batch releases, CoA availability, cold-chain notices, and preferred reorder windows.', 'azure-synthetics' ); ?></p>
 				</div>
 			<form class="azure-inline-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
 				<label for="azure-newsletter-email" class="screen-reader-text"><?php esc_html_e( 'Email address', 'azure-synthetics' ); ?></label>

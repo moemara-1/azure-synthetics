@@ -22,7 +22,9 @@ function azure_synthetics_get_option_value( $key, $default = '' ) {
 }
 
 function azure_synthetics_get_footer_disclaimer() {
-	return azure_synthetics_get_option_value( 'footer_disclaimer', __( 'For research use only. Not for human consumption.', 'azure-synthetics' ) );
+	$value = azure_synthetics_get_option_value( 'footer_disclaimer', __( 'For research use only. Not for human consumption.', 'azure-synthetics' ) );
+
+	return function_exists( 'azure_synthetics_translate_string' ) ? azure_synthetics_translate_string( $value ) : $value;
 }
 
 /**
@@ -144,7 +146,8 @@ function azure_synthetics_render_navigation( $location = 'primary', $class_name 
 		<?php foreach ( $items as $key => $item ) : ?>
 			<?php $is_current = azure_synthetics_is_navigation_item_current( $key ); ?>
 			<li class="<?php echo esc_attr( $is_current ? 'current-menu-item' : '' ); ?>">
-				<a href="<?php echo esc_url( $item['url'] ); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>>
+				<?php $item_url = function_exists( 'azure_synthetics_preserve_language_url' ) ? azure_synthetics_preserve_language_url( $item['url'] ) : $item['url']; ?>
+				<a href="<?php echo esc_url( $item_url ); ?>"<?php echo $is_current ? ' aria-current="page"' : ''; ?>>
 					<?php echo esc_html( $item['label'] ); ?>
 				</a>
 			</li>
@@ -158,7 +161,7 @@ function azure_synthetics_get_page_intro() {
 		return array(
 			'eyebrow'     => __( 'Search', 'azure-synthetics' ),
 			'title'       => sprintf( __( 'Results for “%s”', 'azure-synthetics' ), get_search_query() ),
-			'description' => __( 'Find products, compliance resources, and supporting research guidance across the storefront.', 'azure-synthetics' ),
+			'description' => __( 'Find catalog products, compliance resources, and documentation guidance across the storefront.', 'azure-synthetics' ),
 		);
 	}
 
@@ -174,14 +177,14 @@ function azure_synthetics_get_page_intro() {
 			return array(
 				'eyebrow'     => __( 'Need a clearer path?', 'azure-synthetics' ),
 				'title'       => __( 'Frequently asked questions', 'azure-synthetics' ),
-				'description' => __( 'Documentation, handling, and account answers in one place.', 'azure-synthetics' ),
+				'description' => __( 'Documentation, handling, shipping, and account answers in one place.', 'azure-synthetics' ),
 			);
 		}
 
 	if ( is_page_template( 'page-templates/template-science.php' ) ) {
 			return array(
 				'eyebrow'     => __( 'Science and documentation', 'azure-synthetics' ),
-				'title'       => __( 'A research-use catalog needs proof before persuasion.', 'azure-synthetics' ),
+				'title'       => __( 'A research-use catalog needs documentation before persuasion.', 'azure-synthetics' ),
 				'description' => __( 'Lot integrity, release data, form factors, and handling notes for research-use purchasing.', 'azure-synthetics' ),
 			);
 		}
@@ -190,7 +193,7 @@ function azure_synthetics_get_page_intro() {
 			return array(
 				'eyebrow'     => __( 'Contact', 'azure-synthetics' ),
 				'title'       => __( 'Talk to the support desk', 'azure-synthetics' ),
-				'description' => __( 'Account help, documentation requests, shipping questions, and catalog assistance.', 'azure-synthetics' ),
+				'description' => __( 'Bulk pricing, documentation requests, shipping questions, and catalog assistance.', 'azure-synthetics' ),
 			);
 		}
 
@@ -198,7 +201,7 @@ function azure_synthetics_get_page_intro() {
 			return array(
 				'eyebrow'     => __( 'Research use policy', 'azure-synthetics' ),
 				'title'       => __( 'Compliance and handling', 'azure-synthetics' ),
-				'description' => __( 'Research-use terms, storage notes, and product-positioning language in one place.', 'azure-synthetics' ),
+				'description' => __( 'Research-use terms, storage notes, and product-positioning rules in one place.', 'azure-synthetics' ),
 			);
 		}
 
