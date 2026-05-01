@@ -35,11 +35,10 @@ $cart_count = azure_synthetics_cart_count();
 				<span class="azure-brand__tag"><?php echo esc_html( azure_synthetics_get_site_tagline() ); ?></span>
 			</span>
 		</a>
-		<input class="azure-nav-state" type="checkbox" id="azure-nav-state" aria-hidden="true" tabindex="-1">
-		<label class="azure-nav-toggle" for="azure-nav-state" role="button" tabindex="0" aria-expanded="false" aria-controls="site-navigation">
+		<button class="azure-nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
 			<span class="screen-reader-text"><?php esc_html_e( 'Toggle navigation', 'azure-synthetics' ); ?></span>
 			<span></span><span></span>
-		</label>
+		</button>
 		<nav class="azure-site-nav" id="site-navigation" aria-label="<?php esc_attr_e( 'Primary navigation', 'azure-synthetics' ); ?>">
 			<?php
 			azure_synthetics_render_navigation( 'primary', 'azure-menu' );

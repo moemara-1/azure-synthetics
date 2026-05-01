@@ -11,10 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function azure_synthetics_get_contact_details() {
 	return array(
-		'email'   => 'hello@azuresynthetics.com',
-		'phone'   => '+49 30 5555 9090',
+		'email'   => 'orders@azuresynthetics.com',
+		'phone'   => '',
 		'hours'   => 'Mon-Fri 09:00-18:00',
-		'address' => 'Berlin research support desk',
+		'address' => 'Azure Synthetics research support desk',
 	);
 }
 

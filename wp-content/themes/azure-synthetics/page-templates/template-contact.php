@@ -20,7 +20,9 @@ $contact = azure_synthetics_get_contact_details();
 				<h2><?php esc_html_e( 'Reach the team', 'azure-synthetics' ); ?></h2>
 				<ul class="azure-detail-list">
 					<li><strong><?php esc_html_e( 'Email', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( $contact['email'] ); ?></span></li>
-					<li><strong><?php esc_html_e( 'Phone', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( $contact['phone'] ); ?></span></li>
+					<?php if ( ! empty( $contact['phone'] ) ) : ?>
+						<li><strong><?php esc_html_e( 'Phone', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( $contact['phone'] ); ?></span></li>
+					<?php endif; ?>
 					<li><strong><?php esc_html_e( 'Hours', 'azure-synthetics' ); ?></strong><span><?php echo esc_html( azure_synthetics_translate_string( $contact['hours'] ) ); ?></span></li>
 				</ul>
 			</div>

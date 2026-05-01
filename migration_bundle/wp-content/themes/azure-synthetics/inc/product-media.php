@@ -110,6 +110,27 @@ function azure_synthetics_get_product_image_fallback( $attachment_id ) {
 	return null;
 }
 
+function azure_synthetics_get_product_image_srcset( array $fallback ) {
+	$source_key     = azure_synthetics_normalize_media_key( $fallback['path'] ?? $fallback['url'] ?? '' );
+	$responsive_dir = AZURE_SYNTHETICS_THEME_DIR . '/assets/images/products/responsive/';
+	$responsive_url = AZURE_SYNTHETICS_THEME_URI . '/assets/images/products/responsive/';
+	$candidates     = array();
+
+	foreach ( array( 480, 768 ) as $width ) {
+		$file = $responsive_dir . $source_key . '-' . $width . '.jpg';
+
+		if ( file_exists( $file ) ) {
+			$candidates[] = esc_url_raw( $responsive_url . $source_key . '-' . $width . '.jpg' ) . ' ' . $width . 'w';
+		}
+	}
+
+	if ( ! empty( $fallback['url'] ) && ! empty( $fallback['width'] ) ) {
+		$candidates[] = esc_url_raw( $fallback['url'] ) . ' ' . absint( $fallback['width'] ) . 'w';
+	}
+
+	return implode( ', ', array_unique( $candidates ) );
+}
+
 /**
  * Use theme assets when imported attachment URLs point to missing uploads.
  *
@@ -172,7 +193,14 @@ function azure_synthetics_filter_product_image_attributes( $attr, $attachment ) 
 	$attr['decoding'] = $attr['decoding'] ?? 'async';
 	$attr['loading']  = $attr['loading'] ?? 'lazy';
 
-	unset( $attr['srcset'], $attr['sizes'] );
+	$srcset = azure_synthetics_get_product_image_srcset( $fallback );
+
+	if ( $srcset ) {
+		$attr['srcset'] = $srcset;
+		$attr['sizes']  = '(max-width: 700px) 92vw, (max-width: 1100px) 45vw, 33vw';
+	} else {
+		unset( $attr['srcset'], $attr['sizes'] );
+	}
 
 	return $attr;
 }

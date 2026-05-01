@@ -112,3 +112,65 @@
   - SEO plugin of your choice for metadata management
   - WooCommerce payment gateway plugin compatible with your processor
   - Layered nav/filter plugin if you want richer archive filtering than the base category sidebar
+
+## Hetzner launch operations
+The live Hetzner WordPress root is:
+
+```sh
+/var/www/azuresynthetics/public
+```
+
+Before changing live product or WooCommerce settings, create a database backup:
+
+```sh
+ssh -i ~/.ssh/azure_synthetics_codex_setup root@178.105.69.197 \
+  'cd /var/www/azuresynthetics/public && mkdir -p /var/backups/azuresynthetics && wp db export /var/backups/azuresynthetics/pre-change-$(date +%Y%m%d-%H%M%S).sql --allow-root'
+```
+
+Deploy theme/plugin code from the repository root:
+
+```sh
+rsync -az --delete -e "ssh -i ~/.ssh/azure_synthetics_codex_setup" \
+  wp-content/themes/azure-synthetics/ \
+  root@178.105.69.197:/var/www/azuresynthetics/public/wp-content/themes/azure-synthetics/
+
+rsync -az --delete -e "ssh -i ~/.ssh/azure_synthetics_codex_setup" \
+  wp-content/plugins/azure-synthetics-core/ \
+  root@178.105.69.197:/var/www/azuresynthetics/public/wp-content/plugins/azure-synthetics-core/
+```
+
+Deploy and run the catalog/launch scripts:
+
+```sh
+rsync -az -e "ssh -i ~/.ssh/azure_synthetics_codex_setup" \
+  scripts/wp-seed.php scripts/wp-configure-launch.php \
+  root@178.105.69.197:/var/www/azuresynthetics/scripts/
+
+ssh -i ~/.ssh/azure_synthetics_codex_setup root@178.105.69.197 \
+  'cd /var/www/azuresynthetics/public && wp eval-file /var/www/azuresynthetics/scripts/wp-seed.php --allow-root'
+
+ssh -i ~/.ssh/azure_synthetics_codex_setup root@178.105.69.197 \
+  'cd /var/www/azuresynthetics/public && wp eval-file /var/www/azuresynthetics/scripts/wp-configure-launch.php --allow-root && wp cache flush --allow-root'
+```
+
+The launch config script sets:
+- Store/admin sender defaults to `orders@azuresynthetics.com`.
+- Store currency to USD.
+- Manual invoice review as the enabled checkout payment method.
+- US and Egypt shipping zones with `Shipping quoted after review`.
+- Rest-of-world shipping unavailable until explicitly configured.
+
+Live server jobs already configured:
+- `/etc/cron.d/azure-wp-cron` runs due WP-Cron events every 5 minutes.
+- `/etc/cron.d/azure-synthetics-backup` runs the daily backup script.
+
+Final launch dependency:
+- Configure real transactional email delivery. The server currently has no `/usr/sbin/sendmail`, so WooCommerce can save sender settings but cannot reliably send order emails until SMTP, a transactional provider, or an MTA is configured.
+
+Minimum live smoke checks:
+
+```sh
+curl -I https://azuresynthetics.com/
+curl -L -s -o /dev/null -w '%{http_code}\n' https://azuresynthetics.com/compliance/
+curl -s https://azuresynthetics.com/wp-json/wc/store/v1/products?per_page=100
+```

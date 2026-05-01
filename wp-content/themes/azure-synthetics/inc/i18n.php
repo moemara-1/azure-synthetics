@@ -90,7 +90,7 @@ function azure_synthetics_ar_translations() {
 		'Terms and Conditions' => 'الشروط والأحكام',
 		'Research Use Policy' => 'سياسة الاستخدام البحثي',
 		'For research use only. Not for human consumption.' => 'للاستخدام البحثي فقط. غير مخصص للاستهلاك البشري.',
-		'For research use only. Not for human consumption. Handle and store according to the published product guidance.' => 'للاستخدام البحثي فقط. غير مخصص للاستهلاك البشري. يتم التعامل والتخزين حسب إرشادات المنتج المنشورة.',
+		'For research use only. Not for human or veterinary use. Not for diagnosis, treatment, injection, or consumption. Handle and store according to the published product guidance.' => 'للاستخدام البحثي فقط. غير مخصص للاستخدام البشري أو البيطري أو التشخيص أو العلاج أو الحقن أو الاستهلاك. يتم التعامل والتخزين حسب إرشادات المنتج المنشورة.',
 		'I confirm this order is placed for lawful laboratory or research use only, and not for human consumption.' => 'أؤكد أن هذا الطلب مخصص لاستخدام مختبري أو بحثي قانوني فقط، وليس للاستهلاك البشري.',
 		'Research-use peptides' => 'ببتيدات للاستخدام البحثي',
 		'Research peptides with documentation your lab can trust.' => 'ببتيدات بحثية بتوثيق يثق به مختبرك.',
@@ -102,7 +102,6 @@ function azure_synthetics_ar_translations() {
 		'Azure Synthetics helps qualified labs source lyophilized research peptides with lot-aware CoA context, clear vial formats, and storage notes visible before checkout.' => 'تساعد Azure Synthetics المختبرات المؤهلة على شراء ببتيدات بحثية مجففة بالتجميد مع سياق CoA حسب الدفعة، وصيغ فيالات واضحة، وملاحظات تخزين ظاهرة قبل إتمام الطلب.',
 		'Shop research catalog' => 'تصفح الكتالوج البحثي',
 		'CoA, purity range, and handling notes on flagship lots.' => 'CoA ونطاق النقاء وملاحظات التعامل للدفعات الرئيسية.',
-		'For laboratory, analytical, and investigational use only. Not for human or veterinary use.' => 'للاستخدام المختبري والتحليلي والبحثي فقط. غير مخصص للاستخدام البشري أو البيطري.',
 		'Lot visibility' => 'وضوح الدفعة',
 		'Batch references, assay method notes, and storage profile stay close to each vial.' => 'تظل مراجع الدفعة وملاحظات طريقة الفحص وملف التخزين قريبة من كل فيال.',
 		'Designed for faster reorder decisions: purity range, format, amount, and handling notes in one view.' => 'مصمم لتسريع قرارات إعادة الطلب: نطاق النقاء والصيغة والكمية وملاحظات التعامل في عرض واحد.',
@@ -156,6 +155,12 @@ function azure_synthetics_ar_translations() {
 		'Choose an option' => 'اختر خيارا',
 		'Add to cart' => 'أضف إلى السلة',
 		'Select options' => 'اختر الخيارات',
+		'View cart' => 'عرض السلة',
+		'View cart, %d item' => 'عرض السلة، عنصر واحد',
+		'View cart, %d items' => 'عرض السلة، %d عناصر',
+		'Toggle navigation' => 'فتح وإغلاق التنقل',
+		'Primary navigation' => 'التنقل الرئيسي',
+		'Research Peptide Catalog' => 'كتالوج الببتيدات البحثية',
 		'%s quantity' => 'كمية %s',
 		'Default sorting' => 'الترتيب الافتراضي',
 		'Showing all %d results' => 'عرض كل النتائج (%d)',
@@ -231,6 +236,7 @@ function azure_synthetics_ar_translations() {
 		'Lyophilized research material' => 'مادة بحثية مجففة بالتجميد',
 		'CoA per batch; lot reference supplied on fulfillment.' => 'CoA لكل دفعة؛ يتم توفير مرجع الدفعة عند التجهيز.',
 		'EU cold-chain shipping included for catalog orders. Inspect promptly and reconcile lot/CoA references on receipt.' => 'الشحن الأوروبي المبرد مشمول لطلبات الكتالوج. افحص الشحنة بسرعة وطابق مراجع الدفعة و CoA عند الاستلام.',
+		'Cold-chain shipping is reviewed for each qualified order. Inspect temperature-sensitive inventory immediately upon delivery and reconcile the lot reference with the supplied CoA.' => 'تتم مراجعة الشحن المبرد لكل طلب مؤهل. افحص المخزون الحساس للحرارة فور التسليم وطابق مرجع الدفعة مع CoA المرفق.',
 		'Store unopened lyophilized material frozen at -20°C or according to the lot CoA/SDS. Protect from light and moisture and minimize temperature cycling.' => 'تخزن المادة المجففة غير المفتوحة عند -20°C أو حسب CoA/SDS للدفعة. احمها من الضوء والرطوبة وقلل دورات تغير الحرارة.',
 		'Reference validated laboratory SOPs only. Not for human or veterinary use, diagnosis, treatment, injection, or consumption.' => 'ارجع فقط إلى إجراءات تشغيل مختبرية موثقة. غير مخصص للاستخدام البشري أو البيطري أو التشخيص أو العلاج أو الحقن أو الاستهلاك.',
 		'For research use only. Not for human or veterinary use. Not for diagnosis, treatment, injection, or consumption.' => 'للاستخدام البحثي فقط. غير مخصص للاستخدام البشري أو البيطري أو التشخيص أو العلاج أو الحقن أو الاستهلاك.',
@@ -354,6 +360,9 @@ function azure_synthetics_attribute_label( $label, $name, $product ) {
 	$labels = array(
 		'Amount'    => 'الكمية',
 		'Pack Size' => 'حجم العبوة',
+		'amount'    => 'الكمية',
+		'pack-size' => 'حجم العبوة',
+		'Pack size' => 'حجم العبوة',
 	);
 
 	return $labels[ $label ] ?? $label;
@@ -390,3 +399,22 @@ function azure_synthetics_woocommerce_breadcrumbs( $crumbs ) {
 	return $crumbs;
 }
 add_filter( 'woocommerce_get_breadcrumb', 'azure_synthetics_woocommerce_breadcrumbs' );
+
+function azure_synthetics_loop_add_to_cart_link_aria( $html, $product, $args = array() ) {
+	if ( 'ar' !== azure_synthetics_current_language() || ! $product instanceof WC_Product ) {
+		return $html;
+	}
+
+	$label = sprintf( 'اختر خيارات %s', $product->get_name() );
+
+	if ( $product->is_type( 'simple' ) ) {
+		$label = sprintf( 'أضف %s إلى السلة', $product->get_name() );
+	}
+
+	if ( preg_match( '/aria-label="[^"]*"/', $html ) ) {
+		return preg_replace( '/aria-label="[^"]*"/', 'aria-label="' . esc_attr( $label ) . '"', $html, 1 );
+	}
+
+	return preg_replace( '/<a\b/', '<a aria-label="' . esc_attr( $label ) . '"', $html, 1 );
+}
+add_filter( 'woocommerce_loop_add_to_cart_link', 'azure_synthetics_loop_add_to_cart_link_aria', 20, 3 );

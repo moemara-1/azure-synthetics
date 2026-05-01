@@ -85,6 +85,8 @@ $azure_synthetics_includes = array(
 	'inc/content.php',
 	'inc/runtime-urls.php',
 	'inc/assets.php',
+	'inc/security.php',
+	'inc/seo.php',
 	'inc/template-tags.php',
 	'inc/product-media.php',
 	'inc/queries.php',

@@ -68,12 +68,18 @@ function azure_synthetics_enqueue_assets() {
 		);
 	}
 
+	$compliance_disclaimer = function_exists( 'azure_synthetics_get_option' ) ? azure_synthetics_get_option( 'default_product_disclaimer', '' ) : '';
+
+	if ( function_exists( 'azure_synthetics_translate_string' ) ) {
+		$compliance_disclaimer = azure_synthetics_translate_string( $compliance_disclaimer );
+	}
+
 	wp_localize_script(
 		'azure-synthetics-compliance',
 		'azureSyntheticsCompliance',
 		array(
 			'catalogGateEnabled' => function_exists( 'azure_synthetics_get_option' ) ? (bool) azure_synthetics_get_option( 'catalog_gate_enabled', false ) : false,
-			'disclaimer'         => function_exists( 'azure_synthetics_get_option' ) ? azure_synthetics_get_option( 'default_product_disclaimer', '' ) : '',
+			'disclaimer'         => $compliance_disclaimer,
 		)
 	);
 }

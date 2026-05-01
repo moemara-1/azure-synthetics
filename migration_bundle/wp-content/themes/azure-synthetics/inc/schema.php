@@ -19,8 +19,11 @@ function azure_synthetics_output_schema() {
 		'description' => get_bloginfo( 'description' ),
 		'url'         => home_url( '/' ),
 		'email'       => $contact['email'],
-		'telephone'   => $contact['phone'],
 	);
+
+	if ( ! empty( $contact['phone'] ) ) {
+		$organization['telephone'] = $contact['phone'];
+	}
 
 	echo '<script type="application/ld+json">' . wp_json_encode( $organization ) . '</script>';
 

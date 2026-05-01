@@ -30,7 +30,9 @@ $contact = azure_synthetics_get_contact_details();
 			<h3><?php esc_html_e( 'Support desk', 'azure-synthetics' ); ?></h3>
 			<p><?php echo esc_html( azure_synthetics_translate_string( $contact['hours'] ) ); ?></p>
 			<p><a href="mailto:<?php echo esc_attr( $contact['email'] ); ?>"><?php echo esc_html( $contact['email'] ); ?></a></p>
-			<p><a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $contact['phone'] ) ); ?>"><?php echo esc_html( $contact['phone'] ); ?></a></p>
+			<?php if ( ! empty( $contact['phone'] ) ) : ?>
+				<p><a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $contact['phone'] ) ); ?>"><?php echo esc_html( $contact['phone'] ); ?></a></p>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div class="azure-shell azure-site-footer__base">

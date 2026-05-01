@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	const toggle = document.querySelector('.azure-nav-toggle');
 	const nav = document.querySelector('.azure-site-nav');
 	const scrim = document.querySelector('.azure-nav-scrim');
-	const navState = document.querySelector('.azure-nav-state');
 	const mobileQuery = window.matchMedia('(max-width: 820px)');
 
 	if (!toggle || !nav) {
@@ -12,10 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	const closeNavigation = function () {
 		toggle.setAttribute('aria-expanded', 'false');
 		document.body.classList.remove('has-nav-open');
-
-		if (navState) {
-			navState.checked = false;
-		}
 
 		if (mobileQuery.matches) {
 			nav.setAttribute('aria-hidden', 'true');
@@ -28,10 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		toggle.setAttribute('aria-expanded', 'true');
 		document.body.classList.add('has-nav-open');
 		nav.setAttribute('aria-hidden', 'false');
-
-		if (navState) {
-			navState.checked = true;
-		}
 	};
 
 	const syncNavigationState = function (forceClosed) {
@@ -70,16 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		scrim.addEventListener('click', closeNavigation);
 	}
 
-	if (navState) {
-		navState.addEventListener('change', function () {
-			if (navState.checked) {
-				openNavigation();
-			} else {
-				closeNavigation();
-			}
-		});
-	}
-
 	const handleViewportChange = function () {
 		closeNavigation();
 	};
@@ -105,23 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			return;
 		}
 
-		if (navState) {
-			return;
-		}
-
 		const expanded = toggle.getAttribute('aria-expanded') === 'true';
 
 		toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
 		syncNavigationState(false);
-	});
-
-	toggle.addEventListener('keydown', function (event) {
-		if (!navState || (event.key !== 'Enter' && event.key !== ' ')) {
-			return;
-		}
-
-		event.preventDefault();
-		navState.checked = !navState.checked;
-		navState.dispatchEvent(new Event('change', { bubbles: true }));
 	});
 });

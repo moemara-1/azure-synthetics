@@ -193,7 +193,7 @@ function azure_seed_product_attributes( WC_Product $product, array $attributes )
 
 	foreach ( $attributes as $name => $terms ) {
 		$attribute = new WC_Product_Attribute();
-		$attribute->set_name( $name );
+		$attribute->set_name( azure_seed_attribute_slug( $name ) );
 		$attribute->set_options( $terms );
 		$attribute->set_position( count( $product_attributes ) );
 		$attribute->set_visible( true );
@@ -202,6 +202,22 @@ function azure_seed_product_attributes( WC_Product $product, array $attributes )
 	}
 
 	$product->set_attributes( $product_attributes );
+}
+
+function azure_seed_attribute_slug( $name ) {
+	$slug = sanitize_title( $name );
+
+	return $slug ? $slug : (string) $name;
+}
+
+function azure_seed_variation_attributes( array $attributes ) {
+	$normalized = array();
+
+	foreach ( $attributes as $name => $value ) {
+		$normalized[ azure_seed_attribute_slug( $name ) ] = (string) $value;
+	}
+
+	return $normalized;
 }
 
 function azure_seed_force_product_type( $product_id, $type ) {
@@ -295,10 +311,28 @@ function azure_seed_variable_product( array $definition ) {
 		$variation->set_parent_id( $product->get_id() );
 		$variation->set_regular_price( (string) $variation_definition['price'] );
 		$variation->set_sku( $variation_definition['sku'] );
-		$variation->set_attributes( $variation_definition['attributes'] );
+		$variation->set_attributes( azure_seed_variation_attributes( $variation_definition['attributes'] ) );
 		$variation->set_manage_stock( false );
+		$variation->set_virtual( false );
 		$variation->set_status( 'publish' );
 		$variation->save();
+
+		foreach ( array( 'amount', 'pack-size' ) as $required_attribute ) {
+			if ( '' === (string) $variation->get_attribute( $required_attribute ) ) {
+				$message = sprintf(
+					'Variation %s saved without %s for %s.',
+					$variation->get_sku(),
+					$required_attribute,
+					$product->get_name()
+				);
+
+				if ( class_exists( 'WP_CLI' ) ) {
+					WP_CLI::warning( $message );
+				} else {
+					error_log( $message );
+				}
+			}
+		}
 	}
 
 	WC_Product_Variable::sync( $product->get_id() );
@@ -587,11 +621,16 @@ $account   = azure_seed_upsert_page( 'My Account', '<!-- wp:woocommerce/my-accou
 $science   = azure_seed_upsert_page( 'Science', '', 'page-templates/template-science.php' );
 $faq_page  = azure_seed_upsert_page( 'FAQ', '', 'page-templates/template-faq.php' );
 $contact   = azure_seed_upsert_page( 'Contact', '', 'page-templates/template-contact.php' );
-$policy    = azure_seed_upsert_page(
-	'Research Use Policy',
-	'For research use only. Not for human consumption. Azure Synthetics products are sold exclusively for laboratory, analytical, and investigational environments. Do not market, position, or rely on this catalog for diagnosis, treatment, mitigation, or cure claims.',
+$compliance = azure_seed_upsert_page(
+	'Compliance',
+	'Research-use purchasing requires clear boundaries before a product reaches the cart. Azure Synthetics products are supplied only for lawful laboratory, analytical, and investigational use. They are not for human or veterinary use, injection, diagnosis, treatment, mitigation, cure, or consumption.',
 	'page-templates/template-compliance.php'
 );
+	$policy    = azure_seed_upsert_page(
+		'Research Use Policy',
+		'Azure Synthetics products are sold exclusively for laboratory, analytical, and investigational environments. Do not market, position, or rely on this catalog for diagnosis, treatment, mitigation, or cure claims.',
+		'page-templates/template-compliance.php'
+	);
 
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $home_page );
@@ -600,12 +639,12 @@ update_option( 'woocommerce_cart_page_id', $cart_page );
 update_option( 'woocommerce_checkout_page_id', $checkout );
 update_option( 'woocommerce_myaccount_page_id', $account );
 update_option( 'woocommerce_terms_page_id', $policy );
-update_option( 'woocommerce_currency', 'EUR' );
+update_option( 'woocommerce_currency', 'USD' );
 update_option( 'woocommerce_price_decimal_sep', '.' );
 update_option( 'woocommerce_price_thousand_sep', ',' );
-update_option( 'azure_synthetics_footer_disclaimer', 'For research use only. Not for human consumption.' );
+update_option( 'azure_synthetics_footer_disclaimer', '' );
 update_option( 'azure_synthetics_checkout_ack_label', 'I confirm this order is placed for lawful laboratory or research use only, and not for human consumption.' );
-update_option( 'azure_synthetics_default_shipping_note', 'EU cold-chain shipping is included for catalog orders. Inspect temperature-sensitive inventory immediately upon delivery and reconcile the lot reference with the supplied CoA.' );
+update_option( 'azure_synthetics_default_shipping_note', 'Cold-chain shipping is reviewed for each qualified order. Inspect temperature-sensitive inventory immediately upon delivery and reconcile the lot reference with the supplied CoA.' );
 update_option( 'azure_synthetics_default_product_disclaimer', 'For research use only. Not for human or veterinary use. Not for diagnosis, treatment, injection, or consumption. Handle and store according to the published product guidance.' );
 
 $category_ids = array();
