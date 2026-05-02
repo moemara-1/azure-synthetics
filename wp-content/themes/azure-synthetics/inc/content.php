@@ -286,7 +286,7 @@ function azure_synthetics_get_science_compound_profiles() {
 			'evidence' => __( 'Investigational clinical literature', 'azure-synthetics' ),
 			'signals'  => array(
 				__( 'Triple-agonist research around A1C, body weight, and metabolic markers.', 'azure-synthetics' ),
-				__( 'Studied as an investigational molecule; no approved-use or treatment claim is made here.', 'azure-synthetics' ),
+				__( 'Studied as an investigational molecule; no approved-use claim is made here.', 'azure-synthetics' ),
 			),
 			'bars'     => array( 99, 95, 90 ),
 			'bar_copy' => array(

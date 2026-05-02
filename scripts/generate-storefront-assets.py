@@ -371,27 +371,23 @@ def apply_vial_lighting(label: Image.Image, source_crop: Image.Image) -> Image.I
             side_alpha = int((edge ** 2.35) * 58)
             pixels[x, y] = (4, 20, 27, side_alpha)
 
-    highlight = Image.new("RGBA", label.size, (0, 0, 0, 0))
-    draw = ImageDraw.Draw(highlight, "RGBA")
-    draw.rounded_rectangle(
-        (int(width * 0.19), int(height * 0.04), int(width * 0.31), int(height * 0.96)),
-        radius=max(8, int(width * 0.035)),
-        fill=(255, 255, 255, 24),
-    )
-    draw.rounded_rectangle(
-        (int(width * 0.76), int(height * 0.04), int(width * 0.84), int(height * 0.96)),
-        radius=max(8, int(width * 0.035)),
-        fill=(255, 255, 255, 12),
-    )
-    highlight = highlight.filter(ImageFilter.GaussianBlur(max(2, int(width * 0.02))))
+    sheen = Image.new("RGBA", label.size, (0, 0, 0, 0))
+    sheen_pixels = sheen.load()
+    for y in range(height):
+        vertical = 1 - abs((y / max(1, height - 1)) - 0.5) * 0.42
+        for x in range(width):
+            position = x / max(1, width - 1)
+            broad = max(0, 1 - abs(position - 0.43) / 0.46)
+            sheen_pixels[x, y] = (255, 255, 255, int((broad ** 2) * vertical * 8))
+    sheen = sheen.filter(ImageFilter.GaussianBlur(max(8, int(width * 0.075))))
 
     source_highlights = ImageOps.grayscale(source_crop.convert("RGB")).filter(ImageFilter.GaussianBlur(2))
-    source_highlights = source_highlights.point(lambda p: max(0, min(48, int((p - 202) * 0.6))))
+    source_highlights = source_highlights.point(lambda p: max(0, min(16, int((p - 220) * 0.22))))
     glints = Image.new("RGBA", label.size, (255, 255, 255, 0))
     glints.putalpha(source_highlights)
 
     integrated = Image.alpha_composite(integrated, wrap)
-    integrated = Image.alpha_composite(integrated, highlight)
+    integrated = Image.alpha_composite(integrated, sheen)
     return Image.alpha_composite(integrated, glints)
 
 

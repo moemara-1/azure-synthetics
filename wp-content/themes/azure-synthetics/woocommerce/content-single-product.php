@@ -19,6 +19,15 @@ $short_copy  = azure_synthetics_get_localized_product_meta( $product->get_id(), 
 $long_copy   = azure_synthetics_get_localized_product_meta( $product->get_id(), 'description', get_the_content() );
 $sections    = function_exists( 'azure_synthetics_get_product_sections' ) ? azure_synthetics_get_product_sections( $product->get_id() ) : array();
 $faqs        = function_exists( 'azure_synthetics_get_product_faqs' ) ? azure_synthetics_get_product_faqs( $product->get_id() ) : array();
+$signals     = function_exists( 'azure_synthetics_get_product_research_signals' ) ? azure_synthetics_get_product_research_signals( $product->get_id() ) : array();
+$spec_rows   = array(
+	__( 'Vial amount', 'azure-synthetics' )        => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'vial_amount', '' ) : '',
+	__( 'Purity', 'azure-synthetics' )             => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'purity_percent', '' ) : '',
+	__( 'Form', 'azure-synthetics' )               => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'form_factor', '' ) : '',
+	__( 'Storage', 'azure-synthetics' )            => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'storage_instructions', '' ) : '',
+	__( 'Mechanism', 'azure-synthetics' )          => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'mechanism_summary', '' ) : '',
+	__( 'Verification route', 'azure-synthetics' ) => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'verification_route', '' ) : '',
+);
 $highlights  = array_filter(
 	array(
 		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'purity_percent', '' ) : '',
@@ -29,6 +38,11 @@ $highlights  = array_filter(
 );
 
 $highlights = array_map( 'azure_synthetics_translate_string', $highlights );
+$spec_rows  = array_filter( $spec_rows );
+
+foreach ( $spec_rows as $spec_label => $spec_value ) {
+	$spec_rows[ $spec_label ] = azure_synthetics_translate_string( $spec_value );
+}
 
 if ( 'ar' === azure_synthetics_current_language() ) {
 	$faqs = array(
@@ -67,6 +81,16 @@ if ( 'ar' === azure_synthetics_current_language() ) {
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>
+				<?php if ( $spec_rows ) : ?>
+					<dl class="azure-product-spec-list">
+						<?php foreach ( $spec_rows as $spec_label => $spec_value ) : ?>
+							<div>
+								<dt><?php echo esc_html( $spec_label ); ?></dt>
+								<dd><?php echo esc_html( $spec_value ); ?></dd>
+							</div>
+						<?php endforeach; ?>
+					</dl>
+				<?php endif; ?>
 				<div class="azure-product-compliance">
 					<strong><?php esc_html_e( 'Research use', 'azure-synthetics' ); ?></strong>
 					<p><?php echo esc_html( $disclaimer ); ?></p>
@@ -94,6 +118,20 @@ if ( 'ar' === azure_synthetics_current_language() ) {
 					<p><?php echo esc_html( wp_strip_all_tags( $long_copy ) ); ?></p>
 				</div>
 			</section>
+
+			<?php if ( $signals ) : ?>
+				<section class="azure-product-section">
+					<h2><?php esc_html_e( 'Researched possible therapeutic effects', 'azure-synthetics' ); ?></h2>
+					<div class="azure-prose">
+						<p><?php esc_html_e( 'Literature-context signals buyers often compare before choosing a research supplier. These are research themes, not stated effects of this catalog material.', 'azure-synthetics' ); ?></p>
+					</div>
+					<ul class="azure-product-signal-list">
+						<?php foreach ( $signals as $signal ) : ?>
+							<li><?php echo esc_html( azure_synthetics_translate_string( $signal ) ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</section>
+			<?php endif; ?>
 
 			<?php if ( $faqs ) : ?>
 				<section class="azure-product-section azure-product-section--dark">

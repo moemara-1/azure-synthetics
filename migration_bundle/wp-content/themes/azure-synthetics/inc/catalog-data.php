@@ -187,3 +187,372 @@ function azure_synthetics_catalog_product_copy( array $product, $field = 'descri
 		$amounts
 	);
 }
+
+function azure_synthetics_catalog_product_profiles() {
+	return array(
+		'Tirzepatide' => array(
+			'mechanism' => 'Dual GIP and GLP-1 receptor agonist literature is used to compare incretin signaling, glucose-handling markers, appetite-pathway models, and metabolic endpoint design.',
+			'signals'  => array(
+				'Metabolic research literature studies glucose regulation, insulin-response markers, and body-weight endpoints in the incretin drug class.',
+				'Buyer context: high-comparison material where amount ladder, price, purity target, and COA path need to be visible before checkout.',
+			),
+		),
+		'Retatrutide' => array(
+			'mechanism' => 'Triple agonist literature compares GLP-1, GIP, and glucagon receptor signaling in metabolic-marker and energy-balance research models.',
+			'signals'  => array(
+				'Investigational literature centers on A1C, body-weight, lipid, and liver-fat endpoints across metabolic research designs.',
+				'Positioned as a research-context molecule only; no approved-use claim is made for catalog material.',
+			),
+		),
+		'Mazdutide' => array(
+			'mechanism' => 'Dual GLP-1 and glucagon receptor agonist literature is used to compare incretin signaling, energy-expenditure models, and metabolic biomarker endpoints.',
+			'signals'  => array(
+				'Research literature explores glucose-handling, weight-related, and hepatic/metabolic marker endpoints.',
+				'Useful for comparing higher-value metabolic research formats beside purity, COA, and storage data.',
+			),
+		),
+		'BPC-157' => array(
+			'mechanism' => 'Stable gastric pentadecapeptide research is used to compare angiogenesis, fibroblast migration, cytoprotection, and tissue-repair pathway models.',
+			'signals'  => array(
+				'Preclinical literature explores tendon, ligament, muscle, gut-barrier, wound-repair, and cytoprotective pathways.',
+				'Human evidence remains limited, so the listing frames possible therapeutic effects as literature signals rather than product outcomes.',
+			),
+		),
+		'TB-500' => array(
+			'mechanism' => 'Thymosin beta-4 fragment literature is used to compare actin binding, cell migration, angiogenesis, and tissue-remodeling assay models.',
+			'signals'  => array(
+				'Preclinical literature studies cell migration, wound-repair, inflammation-resolution, and connective-tissue remodeling pathways.',
+				'Pairs naturally with COA, purity, and storage visibility because repeat research buyers often compare it against BPC-157 formats.',
+			),
+		),
+		'BPC-157 + TB-500 Blend' => array(
+			'mechanism' => 'Blend literature context compares BPC-157 repair-pathway models with thymosin beta-4 fragment cell-migration and remodeling models.',
+			'signals'  => array(
+				'Research interest centers on paired angiogenesis, fibroblast migration, connective-tissue, and wound-repair pathway models.',
+				'The blend format is presented for comparative lab workflows, not as a combined protocol.',
+			),
+		),
+		'KLOW Blend' => array(
+			'mechanism' => 'Multi-component blend context is used for comparing inventory planning, pathway overlap, and batch-documentation needs across a larger research format.',
+			'signals'  => array(
+				'Research value is framed around multi-compound comparison, bulk economics, and repeat-order planning.',
+				'Best suited to buyers checking amount, box value, storage, and verification route before support review.',
+			),
+		),
+		'CJC-1295 (No DAC)' => array(
+			'mechanism' => 'GHRH analog literature without DAC is used to compare shorter GH-axis pulse models and IGF-1 biomarker workflows.',
+			'signals'  => array(
+				'Endocrine research literature explores GH and IGF-1 axis biomarkers, pituitary signaling, and secretagogue comparison models.',
+				'Shown as assay and biomarker context only, without performance or body-effect promises.',
+			),
+		),
+		'CJC-1295 with DAC' => array(
+			'mechanism' => 'DAC-modified GHRH analog literature is used to compare extended half-life design, GH-axis biomarkers, and IGF-1 signaling models.',
+			'signals'  => array(
+				'Research literature studies longer-acting GHRH analog exposure and endocrine biomarker response patterns.',
+				'Useful for comparing no-DAC and DAC formats beside purity, amount, and COA route.',
+			),
+		),
+		'Ipamorelin' => array(
+			'mechanism' => 'Growth hormone secretagogue receptor literature is used to compare ghrelin-receptor signaling and GH-axis biomarker models.',
+			'signals'  => array(
+				'Endocrine research studies GH release markers, IGF-1 context, and selective secretagogue pathway models.',
+				'Often compared with CJC formats for companion inventory planning and lab workflow design.',
+			),
+		),
+		'GHRP-2' => array(
+			'mechanism' => 'GHRP secretagogue literature is used to compare ghrelin-receptor signaling, GH-axis biomarker response, and appetite-pathway assay models.',
+			'signals'  => array(
+				'Research literature explores GH release markers, IGF-1 context, and endocrine signaling pathways.',
+				'Catalog value comes from fast comparison of amount, price, storage, and proof route.',
+			),
+		),
+		'GHRP-6' => array(
+			'mechanism' => 'GHRP-6 literature is used to compare ghrelin-receptor signaling, GH-axis biomarkers, and appetite-related research models.',
+			'signals'  => array(
+				'Endocrine literature studies GH/IGF-1 markers and ghrelin-pathway response models.',
+				'Presented as pathway context for research buyers, not as an appetite or performance claim.',
+			),
+		),
+		'Hexarelin' => array(
+			'mechanism' => 'Hexapeptide secretagogue literature is used to compare GHS-R signaling, GH-axis biomarkers, and receptor-response assay models.',
+			'signals'  => array(
+				'Research literature studies GH release markers, pituitary signaling, and receptor-selectivity comparisons.',
+				'Single-format listing keeps amount, purity, and COA route quick to scan.',
+			),
+		),
+		'Sermorelin' => array(
+			'mechanism' => 'GHRH analog literature is used to compare pituitary GHRH receptor signaling, GH pulse models, and IGF-1 biomarker workflows.',
+			'signals'  => array(
+				'Endocrine research studies GH-axis biomarkers, pituitary signaling, and analog comparison models.',
+				'Listing copy keeps mechanism, amount, and proof details close to the price.',
+			),
+		),
+		'Tesamorelin' => array(
+			'mechanism' => 'Stabilized GHRH analog literature is used to compare GH-axis signaling, IGF-1 markers, and visceral-adiposity research endpoints.',
+			'signals'  => array(
+				'Clinical and endocrine literature includes GH/IGF-1 markers and body-composition research endpoints.',
+				'Shown as literature context only; the catalog page does not make therapeutic or body-effect claims.',
+			),
+		),
+		'HGH' => array(
+			'mechanism' => 'Somatotropin reference-material context is used to compare GH receptor signaling, IGF-1 marker workflows, and assay-control planning.',
+			'signals'  => array(
+				'Research use centers on endocrine assay design, receptor-signaling context, and reference-material comparison.',
+				'The listing focuses on amount, storage, and verification route rather than clinical-use positioning.',
+			),
+		),
+		'GHK-Cu' => array(
+			'mechanism' => 'Copper peptide literature is used to compare matrix remodeling, collagen signaling, wound-repair, antioxidant, and inflammation-pathway models.',
+			'signals'  => array(
+				'Research literature explores skin regeneration, wound repair, collagen expression, matrix remodeling, and antioxidant defense pathways.',
+				'Presented as research literature context, not a cosmetic, wound-care, or medical claim.',
+			),
+		),
+		'Epitalon' => array(
+			'mechanism' => 'Tetrapeptide aging-biology literature is used to compare telomerase, pineal peptide, circadian, and cellular-senescence research models.',
+			'signals'  => array(
+				'Longevity literature explores telomere biology, cellular aging markers, circadian signaling, and oxidative-stress models.',
+				'The listing frames these as research signals and keeps proof, amount, and storage details visible.',
+			),
+		),
+		'NAD+' => array(
+			'mechanism' => 'NAD+ cofactor literature is used to compare sirtuin, PARP, redox, mitochondrial, and cellular-energy assay workflows.',
+			'signals'  => array(
+				'Research literature explores redox balance, mitochondrial metabolism, DNA-repair enzyme context, and cellular-energy markers.',
+				'The product is positioned as research material with storage and verification details, not as supplementation copy.',
+			),
+		),
+		'MOTS-C' => array(
+			'mechanism' => 'Mitochondrial-derived peptide literature is used to compare AMPK signaling, metabolic homeostasis, inflammation, and aging-biology models.',
+			'signals'  => array(
+				'Translational literature explores insulin-resistance models, metabolic stress, inflammation, and exercise-mimetic signaling.',
+				'These are researched possible therapeutic signals from the literature, not stated effects of any Azure product.',
+			),
+		),
+		'SS-31 (Elamipretide)' => array(
+			'mechanism' => 'Mitochondria-targeted tetrapeptide literature is used to compare cardiolipin binding, cristae stability, oxidative stress, and bioenergetic models.',
+			'signals'  => array(
+				'Research literature explores mitochondrial dysfunction, oxidative-stress, cardiac, renal, and skeletal-muscle pathway models.',
+				'Listed as research context for proof comparison, not as a disease or organ-function claim.',
+			),
+		),
+		'SLU-PP-332' => array(
+			'mechanism' => 'ERR agonist literature is used to compare transcriptional signaling, energy metabolism, mitochondrial biogenesis, and endurance-pathway models.',
+			'signals'  => array(
+				'Research literature explores metabolic programming, mitochondrial markers, and exercise-mimetic pathway models.',
+				'The listing avoids performance claims and keeps the focus on pathway research and proof visibility.',
+			),
+		),
+		'Thymosin Alpha-1' => array(
+			'mechanism' => 'Immune-signaling peptide literature is used to compare T-cell maturation, toll-like receptor context, cytokine markers, and immune-response models.',
+			'signals'  => array(
+				'Research literature studies immune modulation, T-cell signaling, viral-response models, and inflammation markers.',
+				'Presented as immunology research context, not as immune-support positioning.',
+			),
+		),
+		'Glutathione' => array(
+			'mechanism' => 'Tripeptide redox literature is used to compare antioxidant capacity, oxidative-stress markers, detoxification enzymes, and cellular-protection assays.',
+			'signals'  => array(
+				'Research literature explores oxidative stress, mitochondrial redox balance, detoxification pathways, and inflammation markers.',
+				'The listing positions it as redox assay material with visible storage and proof details.',
+			),
+		),
+		'Selank' => array(
+			'mechanism' => 'Neuropeptide analog literature is used to compare GABAergic signaling, neuroimmune pathways, stress-response models, and cognitive markers.',
+			'signals'  => array(
+				'Research literature explores anxiety-like behavior models, stress response, cognition, and neuroimmune signaling.',
+				'Shown as neuroscience literature context only, not as an anxiolytic or cognitive-use claim.',
+			),
+		),
+		'Semax' => array(
+			'mechanism' => 'ACTH fragment analog literature is used to compare BDNF/NGF expression, monoamine signaling, neuroprotection, and cognition models.',
+			'signals'  => array(
+				'Research literature explores neuroprotection, ischemia models, learning/memory markers, BDNF, and NGF pathways.',
+				'The listing keeps possible therapeutic effects framed as literature signals, not product promises.',
+			),
+		),
+		'DSIP' => array(
+			'mechanism' => 'Delta sleep-inducing peptide literature is used to compare sleep architecture, stress-axis, opioid-peptide, and neuroendocrine research models.',
+			'signals'  => array(
+				'Research literature explores sleep-state markers, stress response, pain models, and neuroendocrine signaling.',
+				'Presented as research context, not as sleep, pain, or wellness positioning.',
+			),
+		),
+		'VIP (Vasoactive Intestinal Peptide)' => array(
+			'mechanism' => 'VIP receptor literature is used to compare VPAC signaling, neuroimmune modulation, vascular signaling, and inflammatory pathway models.',
+			'signals'  => array(
+				'Research literature explores immune modulation, vasodilation pathways, pulmonary and gut-barrier models, and inflammation markers.',
+				'The product page frames these as pathway signals only, without therapeutic claims.',
+			),
+		),
+		'AOD-9604' => array(
+			'mechanism' => 'HGH fragment 177-191 literature is used to compare lipid metabolism, adipocyte signaling, and body-composition research models.',
+			'signals'  => array(
+				'Research literature explores lipolysis, fat-metabolism markers, and body-composition endpoints.',
+				'Listed as body-composition research context, not as weight-loss positioning.',
+			),
+		),
+		'IGF-1 LR3' => array(
+			'mechanism' => 'Long-acting IGF-1 analog literature is used to compare IGF-1 receptor signaling, cellular growth, differentiation, and anabolic pathway models.',
+			'signals'  => array(
+				'Research literature explores IGF-1 receptor activity, protein synthesis markers, cell proliferation, and tissue-development models.',
+				'The listing avoids performance claims and focuses on assay context, amount, and verification.',
+			),
+		),
+		'FOXO4-DRI' => array(
+			'mechanism' => 'FOXO4-p53 interaction literature is used to compare senescence, apoptosis-signaling, DNA-damage response, and cellular-aging models.',
+			'signals'  => array(
+				'Research literature explores senescent-cell models, p53 pathway interaction, tissue-aging markers, and cell-survival signaling.',
+				'Presented as cellular-aging research context, not as an anti-aging therapeutic claim.',
+			),
+		),
+		'Adipotide' => array(
+			'mechanism' => 'Prohibitin-targeting peptide literature is used to compare vascular targeting, adipose-tissue models, and body-composition research endpoints.',
+			'signals'  => array(
+				'Preclinical literature explores adipose vasculature, body-composition endpoints, and metabolic-marker models.',
+				'The listing does not imply weight-loss use; it keeps the context in research-model language.',
+			),
+		),
+		'AICAR' => array(
+			'mechanism' => 'AMPK-pathway literature is used to compare cellular energy sensing, glucose uptake models, mitochondrial signaling, and endurance biology.',
+			'signals'  => array(
+				'Research literature explores AMPK activation, metabolic stress, glucose-handling markers, and exercise-mimetic models.',
+				'Presented as pathway research material, not as performance or metabolic-outcome copy.',
+			),
+		),
+		'Melanotan 1' => array(
+			'mechanism' => 'Melanocortin receptor literature is used to compare MC1R signaling, pigmentation-pathway models, and photobiology research endpoints.',
+			'signals'  => array(
+				'Research literature explores melanogenesis, pigmentation models, and photoprotection pathway signals.',
+				'The listing avoids tanning or cosmetic-use claims and keeps the focus on receptor research.',
+			),
+		),
+		'Melanotan 2' => array(
+			'mechanism' => 'Melanocortin agonist literature is used to compare MC1R, MC3R, and MC4R signaling across pigmentation and central-pathway models.',
+			'signals'  => array(
+				'Research literature explores melanogenesis, melanocortin receptor signaling, appetite-pathway models, and sexual-function research endpoints.',
+				'Presented as receptor research context only, not as cosmetic-use positioning.',
+			),
+		),
+		'PT-141' => array(
+			'mechanism' => 'Bremelanotide melanocortin receptor literature is used to compare MC4R signaling, central arousal pathways, and neuroendocrine models.',
+			'signals'  => array(
+				'Research literature explores melanocortin signaling, sexual-function endpoints, and CNS pathway models.',
+				'The listing states research context only and does not present a libido or clinical-use claim.',
+			),
+		),
+		'Kisspeptin-10' => array(
+			'mechanism' => 'KISS1R/GPR54 agonist literature is used to compare GnRH neuron signaling, LH/FSH biomarkers, and reproductive-axis research models.',
+			'signals'  => array(
+				'Endocrine literature explores HPG-axis signaling, puberty/fertility research models, and gonadotropin biomarker response.',
+				'Presented as receptor and biomarker context only, not as reproductive-use positioning.',
+			),
+		),
+		'Gonadorelin' => array(
+			'mechanism' => 'Synthetic GnRH literature is used to compare pituitary receptor signaling, LH/FSH biomarker response, and HPG-axis research workflows.',
+			'signals'  => array(
+				'Endocrine research explores GnRH receptor signaling, gonadotropin markers, and reproductive-axis assay models.',
+				'The listing keeps the emphasis on reference-material and verification details.',
+			),
+		),
+		'LL-37' => array(
+			'mechanism' => 'Cathelicidin peptide literature is used to compare antimicrobial, innate-immune, wound-repair, and inflammation pathway models.',
+			'signals'  => array(
+				'Research literature explores host-defense peptides, biofilm models, wound repair, and immune-signaling pathways.',
+				'Presented as innate-immunity research context, not as antimicrobial or wound-care positioning.',
+			),
+		),
+		'KPV' => array(
+			'mechanism' => 'Alpha-MSH tripeptide fragment literature is used to compare melanocortin-linked anti-inflammatory, gut-barrier, and cytokine pathway models.',
+			'signals'  => array(
+				'Research literature explores NF-kB signaling, cytokine markers, gut epithelial models, and inflammation pathways.',
+				'The listing keeps these as researched possible therapeutic signals, not product outcomes.',
+			),
+		),
+		'SNAP-8' => array(
+			'mechanism' => 'Acetyl octapeptide literature is used to compare SNARE-complex interference, neuromuscular signaling, and cosmetic-biochemistry models.',
+			'signals'  => array(
+				'Research literature explores neurotransmitter-release models, expression-line signaling, and cosmetic peptide assay endpoints.',
+				'Presented as biochemical research context, not as a cosmetic effect claim.',
+			),
+		),
+		'PEG-MGF' => array(
+			'mechanism' => 'PEGylated mechano-growth factor analog literature is used to compare IGF-1 splice-variant signaling, muscle-cell, and repair-model workflows.',
+			'signals'  => array(
+				'Research literature explores muscle-cell repair models, satellite-cell signaling, and tissue-remodeling markers.',
+				'The listing avoids performance claims and keeps the focus on pathway research and proof route.',
+			),
+		),
+		'Bacteriostatic Water' => array(
+			'mechanism' => 'Laboratory diluent support material used to compare preparation workflow, sterile handling context, storage, and companion-order planning.',
+			'signals'  => array(
+				'No therapeutic effect is claimed; the listing is support-material context for validated research workflows.',
+				'Buyer value is practical: clear volume, storage, companion-order fit, and fulfillment review.',
+			),
+		),
+	);
+}
+
+function azure_synthetics_catalog_product_profile( array $product, $lang = 'en' ) {
+	$amounts = azure_synthetics_catalog_amount_summary( $product );
+
+	if ( 'ar' === $lang ) {
+		$focus = $product['focus_ar'] ?? $product['focus'];
+
+		return array(
+			'mechanism'    => sprintf( 'سياق بحثي حول %s مع مقارنة الكمية، هدف النقاء، ومسار COA قبل الطلب.', $focus ),
+			'verification' => 'هدف نقاء 99%+ مع مسار COA ومرجع دفعة عند التجهيز.',
+			'fulfillment'  => 'تتم مراجعة التوفر، الوجهة، الشحن، واحتياجات التوثيق قبل التجهيز.',
+			'signals'      => array(
+				sprintf( 'تستعرض الأدبيات البحثية إشارات محتملة مرتبطة بسياق %s دون تقديم وعد علاجي.', $focus ),
+				sprintf( 'القيمة الشرائية واضحة: %s، سعر الفيال، قيمة الصندوق، التخزين، ومسار الإثبات.', $amounts ),
+			),
+		);
+	}
+
+	$profiles = azure_synthetics_catalog_product_profiles();
+	$profile  = $profiles[ $product['name'] ] ?? array(
+		'mechanism' => sprintf( 'Research literature is used to compare %s beside amount, purity target, storage, and verification route.', $product['focus'] ),
+		'signals'  => array(
+			sprintf( 'Research literature explores pathway signals related to %s.', $product['focus'] ),
+			'The listing keeps possible therapeutic effects framed as literature context, not stated effects of catalog material.',
+		),
+	);
+
+	$profile['verification'] = '99%+ target purity with COA, lot-reference handoff, and HPLC/MS identity context reviewed before fulfillment.';
+	$profile['fulfillment']  = 'Availability, destination, shipping method, temperature handling, payment route, and document needs are reviewed before fulfillment.';
+
+	return $profile;
+}
+
+function azure_synthetics_catalog_product_by_slug( $slug ) {
+	foreach ( azure_synthetics_get_catalog_products() as $product ) {
+		if ( $slug === azure_synthetics_catalog_slug( $product['name'] ) ) {
+			return $product;
+		}
+	}
+
+	return array();
+}
+
+function azure_synthetics_catalog_product_profile_for_product_id( $product_id, $lang = '' ) {
+	$product_id = absint( $product_id );
+	$lang       = $lang ?: ( function_exists( 'azure_synthetics_current_language' ) ? azure_synthetics_current_language() : 'en' );
+	$slug       = get_post_meta( $product_id, '_azure_catalog_slug', true );
+	$slug       = $slug ?: get_post_field( 'post_name', $product_id );
+	$product    = $slug ? azure_synthetics_catalog_product_by_slug( $slug ) : array();
+
+	if ( empty( $product ) ) {
+		$post_title = get_the_title( $product_id );
+
+		foreach ( azure_synthetics_get_catalog_products() as $candidate ) {
+			if ( $post_title === $candidate['name'] ) {
+				$product = $candidate;
+				break;
+			}
+		}
+	}
+
+	return empty( $product ) ? array() : azure_synthetics_catalog_product_profile( $product, $lang );
+}

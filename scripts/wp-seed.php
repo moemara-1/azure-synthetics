@@ -683,6 +683,12 @@ foreach ( $azure_seed_catalog_products as $catalog_product ) {
 	$pack_sizes     = array( '1 vial', 'Box (5 vials)' );
 	$variations     = array();
 	$parent_sku     = azure_synthetics_catalog_sku( $catalog_product['name'] );
+	$product_profile    = azure_synthetics_catalog_product_profile( $catalog_product );
+	$product_profile_ar = azure_synthetics_catalog_product_profile( $catalog_product, 'ar' );
+	$form_factor        = 'Bacteriostatic Water' === $catalog_product['name'] ? 'Sterile solution' : 'Lyophilized material';
+	$storage_profile    = 'Bacteriostatic Water' === $catalog_product['name']
+		? 'Store according to the lot label/SDS. Keep sealed and protected from excess heat and light.'
+		: 'Store unopened lyophilized material frozen at -20°C or according to the lot CoA/SDS. Protect from light and moisture and minimize temperature cycling.';
 
 	foreach ( $catalog_product['amounts'] as $row ) {
 		foreach ( array( 'vial' => '1 vial', 'box' => 'Box (5 vials)' ) as $price_key => $pack_size ) {
@@ -720,12 +726,21 @@ foreach ( $azure_seed_catalog_products as $catalog_product ) {
 				'_azure_short_description_ar'     => azure_synthetics_catalog_product_copy( $catalog_product, 'short', 'ar' ),
 				'_azure_description_ar'           => azure_synthetics_catalog_product_copy( $catalog_product, 'description', 'ar' ),
 				'_azure_purity_percent'           => '99%+ target purity',
-				'_azure_form_factor'              => 'Lyophilized material',
+				'_azure_form_factor'              => $form_factor,
+				'_azure_form_factor_ar'           => 'Bacteriostatic Water' === $catalog_product['name'] ? 'محلول معقم' : 'مادة مجففة بالتجميد',
 				'_azure_vial_amount'              => azure_synthetics_catalog_amount_summary( $catalog_product ),
-				'_azure_storage_instructions'     => 'Store unopened lyophilized material frozen at -20°C or according to the lot CoA/SDS. Protect from light and moisture and minimize temperature cycling.',
+				'_azure_storage_instructions'     => $storage_profile,
 				'_azure_shipping_warning'         => 'Shipping method and temperature handling are confirmed during order review.',
 				'_azure_batch_reference'          => 'COA and lot reference supplied on fulfillment.',
 				'_azure_reconstitution_guidance'  => 'Use validated laboratory SOPs for handling and preparation.',
+				'_azure_mechanism_summary'        => $product_profile['mechanism'],
+				'_azure_mechanism_summary_ar'     => $product_profile_ar['mechanism'],
+				'_azure_verification_route'       => $product_profile['verification'],
+				'_azure_verification_route_ar'    => $product_profile_ar['verification'],
+				'_azure_fulfillment_note'         => $product_profile['fulfillment'],
+				'_azure_fulfillment_note_ar'      => $product_profile_ar['fulfillment'],
+				'_azure_research_signals'         => implode( "\n", $product_profile['signals'] ),
+				'_azure_research_signals_ar'      => implode( "\n", $product_profile_ar['signals'] ),
 				'_azure_research_disclaimer'      => 'For research purposes only.',
 				'_azure_product_faqs'             => wp_json_encode(
 					array(

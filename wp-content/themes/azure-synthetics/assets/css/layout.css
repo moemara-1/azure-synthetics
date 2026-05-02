@@ -1203,6 +1203,16 @@ html[dir="rtl"] .woocommerce form .form-row select {
 	text-align: right;
 }
 
+html[dir="rtl"] .azure-product-signal-list li {
+	padding-left: 0;
+	padding-right: 24px;
+}
+
+html[dir="rtl"] .azure-product-signal-list li::before {
+	left: auto;
+	right: 0;
+}
+
 @media (max-width: 1024px) {
 	html[dir="rtl"] .azure-metric-card {
 		padding-right: 0;

@@ -25,6 +25,7 @@ require_once AZURE_SYNTHETICS_CORE_DIR . 'includes/class-compliance.php';
 require_once AZURE_SYNTHETICS_CORE_DIR . 'includes/class-checkout.php';
 require_once AZURE_SYNTHETICS_CORE_DIR . 'includes/class-gateway-compat.php';
 require_once AZURE_SYNTHETICS_CORE_DIR . 'includes/class-email-branding.php';
+require_once AZURE_SYNTHETICS_CORE_DIR . 'includes/class-contact.php';
 
 function azure_synthetics_core() {
 	return AzureSynthetics\Core\Plugin::instance();
@@ -46,4 +47,12 @@ function azure_synthetics_get_product_sections( $product_id ) {
 
 function azure_synthetics_get_product_faqs( $product_id ) {
 	return azure_synthetics_core()->product_meta->get_faqs( $product_id );
+}
+
+function azure_synthetics_get_product_research_signals( $product_id ) {
+	return azure_synthetics_core()->product_meta->get_research_signals( $product_id );
+}
+
+function azure_synthetics_contact_topics() {
+	return AzureSynthetics\Core\Contact::topics();
 }

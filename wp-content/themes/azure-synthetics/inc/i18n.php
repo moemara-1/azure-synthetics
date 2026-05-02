@@ -441,7 +441,7 @@ function azure_synthetics_ar_translations() {
 		'Clinical trial literature for approved tirzepatide medicines; not a claim about this catalog material.' => 'أدبيات تجارب سريرية لأدوية تيرزيباتيد المعتمدة؛ وليس ادعاء حول مادة هذا الكتالوج.',
 		'Investigational clinical literature' => 'أدبيات سريرية استقصائية',
 		'Triple-agonist research around A1C, body weight, and metabolic markers.' => 'أبحاث الناهض الثلاثي حول A1C ووزن الجسم والمؤشرات الأيضية.',
-		'Studied as an investigational molecule; no approved-use or treatment claim is made here.' => 'تتم دراسته كجزيء استقصائي؛ ولا يوجد هنا ادعاء استخدام معتمد أو علاج.',
+		'Studied as an investigational molecule; no approved-use claim is made here.' => 'تتم دراسته كجزيء استقصائي؛ ولا يوجد هنا ادعاء استخدام معتمد.',
 		'Preclinical-heavy literature' => 'أدبيات يغلب عليها ما قبل السريري',
 		'Animal and cell-model literature explores tissue-repair, tendon, ligament, and cytoprotective pathways.' => 'تستكشف أدبيات النماذج الحيوانية والخلوية مسارات إصلاح الأنسجة والأوتار والأربطة والحماية الخلوية.',
 		'Human evidence remains limited; this is a research-context summary, not therapeutic positioning.' => 'تبقى الأدلة البشرية محدودة؛ هذا ملخص سياق بحثي وليس تموضعا علاجيا.',
@@ -454,6 +454,39 @@ function azure_synthetics_ar_translations() {
 		'Translational metabolism literature' => 'أدبيات أيضية انتقالية',
 		'Mitochondrial-derived peptide literature explores metabolic homeostasis, insulin-resistance models, inflammation, and aging biology.' => 'تستكشف أدبيات الببتيدات المشتقة من الميتوكوندريا الاتزان الأيضي ونماذج مقاومة الإنسولين والالتهاب وبيولوجيا الشيخوخة.',
 		'These are research signals from the literature, not stated effects of any Azure product.' => 'هذه إشارات بحثية من الأدبيات، وليست تأثيرات معلنة لأي منتج من Azure.',
+		'Send a message' => 'أرسل رسالة',
+		'Ask about COA availability, a product, bulk pricing, payment route, or shipping review. The message is saved first, then emailed to the support desk.' => 'اسأل عن توفر COA أو منتج أو تسعير الجملة أو مسار الدفع أو مراجعة الشحن. يتم حفظ الرسالة أولا ثم إرسالها إلى مكتب الدعم.',
+		'Message received. The support desk has your request.' => 'تم استلام الرسالة. أصبح طلبك لدى مكتب الدعم.',
+		'Please wait a moment before sending another message.' => 'يرجى الانتظار قليلا قبل إرسال رسالة أخرى.',
+		'Please complete the required fields with a valid email address.' => 'يرجى إكمال الحقول المطلوبة باستخدام بريد إلكتروني صالح.',
+		'The message could not be sent. Please check the fields and try again.' => 'تعذر إرسال الرسالة. يرجى التحقق من الحقول والمحاولة مرة أخرى.',
+		'Name' => 'الاسم',
+		'Topic' => 'الموضوع',
+		'Order or product reference' => 'مرجع الطلب أو المنتج',
+		'Optional' => 'اختياري',
+		'Message' => 'الرسالة',
+		'Company' => 'الشركة',
+		'Send message' => 'إرسال الرسالة',
+		'Order support' => 'دعم الطلب',
+		'Product question' => 'سؤال عن منتج',
+		'COA or lot documents' => 'COA أو وثائق الدفعة',
+		'Bulk or reorder pricing' => 'تسعير الجملة أو إعادة الطلب',
+		'Shipping review' => 'مراجعة الشحن',
+		'Payment route' => 'مسار الدفع',
+		'Other' => 'أخرى',
+		'Amount' => 'الكمية',
+		'Pack size' => 'حجم العبوة',
+		'Proof' => 'الإثبات',
+		'Vial amount' => 'كمية الفيال',
+		'Form' => 'الصيغة',
+		'Mechanism' => 'الآلية',
+		'Verification route' => 'مسار التحقق',
+		'Researched possible therapeutic effects' => 'تأثيرات علاجية محتملة قيد البحث',
+		'Sterile solution' => 'محلول معقم',
+		'Store according to the lot label/SDS. Keep sealed and protected from excess heat and light.' => 'يخزن حسب ملصق الدفعة أو SDS. يحفظ مغلقا ومحميًا من الحرارة الزائدة والضوء.',
+		'99%+ target purity with COA, lot-reference handoff, and HPLC/MS identity context reviewed before fulfillment.' => 'هدف نقاء 99%+ مع COA وتسليم مرجع الدفعة وسياق هوية HPLC/MS تتم مراجعته قبل التجهيز.',
+		'Availability, destination, shipping method, temperature handling, payment route, and document needs are reviewed before fulfillment.' => 'تتم مراجعة التوفر والوجهة وطريقة الشحن والتعامل الحراري ومسار الدفع واحتياجات الوثائق قبل التجهيز.',
+		'Literature-context signals buyers often compare before choosing a research supplier. These are research themes, not stated effects of this catalog material.' => 'إشارات من سياق الأدبيات يقارنها المشترون عادة قبل اختيار مورد بحثي. هذه موضوعات بحثية، وليست تأثيرات معلنة لهذه المادة في الكتالوج.',
 		'Order review' => 'مراجعة الطلب',
 	);
 }
@@ -555,19 +588,13 @@ function azure_synthetics_get_localized_product_meta( $product_id, $key, $fallba
 }
 
 function azure_synthetics_attribute_label( $label, $name, $product ) {
-	if ( 'ar' !== azure_synthetics_current_language() ) {
-		return $label;
-	}
-
+	$key    = sanitize_title( $name ?: $label );
 	$labels = array(
-		'Amount'    => 'الكمية',
-		'Pack Size' => 'حجم العبوة',
-		'amount'    => 'الكمية',
-		'pack-size' => 'حجم العبوة',
-		'Pack size' => 'حجم العبوة',
+		'amount'    => __( 'Amount', 'azure-synthetics' ),
+		'pack-size' => __( 'Pack size', 'azure-synthetics' ),
 	);
 
-	return $labels[ $label ] ?? $label;
+	return $labels[ $key ] ?? $label;
 }
 add_filter( 'woocommerce_attribute_label', 'azure_synthetics_attribute_label', 20, 3 );
 

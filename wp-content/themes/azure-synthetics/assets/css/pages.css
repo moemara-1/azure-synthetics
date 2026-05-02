@@ -11,6 +11,84 @@
 	gap: var(--azure-space-24);
 }
 
+.azure-contact-form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--azure-space-16);
+	margin-top: var(--azure-space-24);
+}
+
+.azure-contact-form__field,
+.azure-contact-form__field--full,
+.azure-contact-form__trap {
+	display: grid;
+	gap: 8px;
+}
+
+.azure-contact-form__field--full {
+	grid-column: 1 / -1;
+}
+
+.azure-contact-form__field span {
+	color: var(--azure-ink);
+	font-size: 13px;
+	font-weight: 800;
+}
+
+.azure-contact-form input,
+.azure-contact-form select,
+.azure-contact-form textarea {
+	width: 100%;
+	border: 1px solid rgba(15, 25, 33, 0.12);
+	border-radius: 18px;
+	background: #fff;
+	color: var(--azure-ink);
+	box-shadow: inset 0 1px 0 rgba(15, 25, 33, 0.03);
+}
+
+.azure-contact-form input,
+.azure-contact-form select {
+	min-height: 52px;
+	padding: 0 16px;
+}
+
+.azure-contact-form textarea {
+	min-height: 160px;
+	padding: 16px;
+	resize: vertical;
+}
+
+.azure-contact-form__trap {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.azure-contact-form .azure-button {
+	justify-self: start;
+}
+
+.azure-form-message {
+	margin-top: var(--azure-space-16);
+	padding: 14px 16px;
+	border-radius: 16px;
+	font-weight: 800;
+}
+
+.azure-form-message--success {
+	border: 1px solid rgba(112, 201, 191, 0.42);
+	background: rgba(112, 201, 191, 0.14);
+	color: var(--azure-teal-strong);
+}
+
+.azure-form-message--error {
+	border: 1px solid rgba(158, 68, 55, 0.24);
+	background: rgba(158, 68, 55, 0.1);
+	color: #7c2e25;
+}
+
 .azure-faq-guidance__intro h2,
 .azure-science-page h2,
 .azure-assay-panel h3,
@@ -672,6 +750,7 @@
 
 @media (max-width: 700px) {
 	.azure-science-metric-grid,
+	.azure-contact-form,
 	.azure-science-profile-tabs,
 	.azure-science-profile-stat-grid,
 	.azure-science-document-grid,

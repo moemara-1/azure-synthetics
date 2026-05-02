@@ -55,6 +55,13 @@ class Plugin {
 	public $email_branding;
 
 	/**
+	 * Contact form manager.
+	 *
+	 * @var Contact
+	 */
+	public $contact;
+
+	/**
 	 * Return the singleton instance.
 	 *
 	 * @return Plugin
@@ -76,6 +83,7 @@ class Plugin {
 		$this->checkout       = new Checkout( $this->compliance );
 		$this->gateway_compat = new Gateway_Compat( $this->compliance );
 		$this->email_branding = new Email_Branding( $this->compliance );
+		$this->contact        = new Contact();
 
 		register_activation_hook( AZURE_SYNTHETICS_CORE_FILE, array( __CLASS__, 'activate' ) );
 	}

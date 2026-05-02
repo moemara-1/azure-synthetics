@@ -16,6 +16,13 @@ if ( ! $product || ! $product->is_visible() ) {
 $subtitle = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'lab_descriptor', '' ) : '';
 $subtitle = azure_synthetics_get_localized_product_meta( $product->get_id(), 'lab_descriptor', $subtitle );
 $purity   = function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'purity_percent', '' ) : '';
+$card_specs = array_filter(
+	array(
+		__( 'Amount', 'azure-synthetics' ) => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'vial_amount', '' ) : '',
+		__( 'Form', 'azure-synthetics' )   => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'form_factor', '' ) : '',
+		__( 'Proof', 'azure-synthetics' )  => function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'batch_reference', '' ) : '',
+	)
+);
 $card_mod = $product->is_featured() ? ' azure-product-card--feature' : '';
 ?>
 <li <?php wc_product_class( 'azure-product-grid__item', $product ); ?>>
@@ -39,6 +46,16 @@ $card_mod = $product->is_featured() ? ' azure-product-card--feature' : '';
 		</div>
 		<h2 class="azure-product-card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 		<p class="azure-product-card__subtitle"><?php echo esc_html( $subtitle ?: wp_strip_all_tags( wc_get_product_category_list( $product->get_id(), ', ' ) ) ); ?></p>
+		<?php if ( $card_specs ) : ?>
+			<dl class="azure-product-card__specs">
+				<?php foreach ( $card_specs as $spec_label => $spec_value ) : ?>
+					<div>
+						<dt><?php echo esc_html( $spec_label ); ?></dt>
+						<dd><?php echo esc_html( azure_synthetics_translate_string( $spec_value ) ); ?></dd>
+					</div>
+				<?php endforeach; ?>
+			</dl>
+		<?php endif; ?>
 		<div class="price"><?php echo wp_kses_post( $product->get_price_html() ); ?></div>
 		<?php woocommerce_template_loop_add_to_cart(); ?>
 	</article>

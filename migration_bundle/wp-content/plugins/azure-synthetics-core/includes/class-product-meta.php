@@ -65,6 +65,26 @@ class Product_Meta {
 			'label'    => 'Lab handling guidance',
 			'type'     => 'textarea',
 		),
+		'mechanism_summary'       => array(
+			'meta_key' => '_azure_mechanism_summary',
+			'label'    => 'Mechanism summary',
+			'type'     => 'textarea',
+		),
+		'verification_route'      => array(
+			'meta_key' => '_azure_verification_route',
+			'label'    => 'Verification route',
+			'type'     => 'textarea',
+		),
+		'fulfillment_note'        => array(
+			'meta_key' => '_azure_fulfillment_note',
+			'label'    => 'Fulfillment note',
+			'type'     => 'textarea',
+		),
+		'research_signals'        => array(
+			'meta_key' => '_azure_research_signals',
+			'label'    => 'Researched possible therapeutic effects',
+			'type'     => 'textarea',
+		),
 		'research_disclaimer'     => array(
 			'meta_key' => '_azure_research_disclaimer',
 			'label'    => 'Research use notice',
@@ -301,10 +321,32 @@ class Product_Meta {
 			return $default;
 		}
 
+		if ( function_exists( 'azure_synthetics_current_language' ) && 'ar' === azure_synthetics_current_language() ) {
+			$localized = get_post_meta( $product_id, '_azure_' . $key . '_ar', true );
+
+			if ( '' !== $localized ) {
+				return $localized;
+			}
+		}
+
 		$value = get_post_meta( $product_id, $this->fields[ $key ]['meta_key'], true );
 
 		if ( $value ) {
 			return $value;
+		}
+
+		if ( function_exists( 'azure_synthetics_catalog_product_profile_for_product_id' ) ) {
+			$profile = azure_synthetics_catalog_product_profile_for_product_id( $product_id );
+			$map     = array(
+				'mechanism_summary'  => 'mechanism',
+				'verification_route' => 'verification',
+				'fulfillment_note'   => 'fulfillment',
+				'research_signals'   => 'signals',
+			);
+
+			if ( isset( $map[ $key ], $profile[ $map[ $key ] ] ) ) {
+				return is_array( $profile[ $map[ $key ] ] ) ? implode( "\n", $profile[ $map[ $key ] ] ) : (string) $profile[ $map[ $key ] ];
+			}
 		}
 
 		$product = wc_get_product( $product_id );
@@ -333,10 +375,15 @@ class Product_Meta {
 	public function get_sections( $product_id ) {
 		$map = array(
 			'purity_percent'          => __( 'Purity', 'azure-synthetics-core' ),
+			'form_factor'             => __( 'Form', 'azure-synthetics-core' ),
+			'vial_amount'             => __( 'Vial amount', 'azure-synthetics-core' ),
 			'storage_instructions'    => __( 'Storage', 'azure-synthetics-core' ),
+			'mechanism_summary'       => __( 'Mechanism', 'azure-synthetics-core' ),
+			'verification_route'      => __( 'Verification route', 'azure-synthetics-core' ),
 			'reconstitution_guidance' => __( 'Lab handling', 'azure-synthetics-core' ),
 			'shipping_warning'        => __( 'Shipping notes', 'azure-synthetics-core' ),
 			'batch_reference'         => __( 'Batch reference', 'azure-synthetics-core' ),
+			'fulfillment_note'        => __( 'Fulfillment review', 'azure-synthetics-core' ),
 		);
 
 		$sections = array();
@@ -356,6 +403,26 @@ class Product_Meta {
 		}
 
 		return $sections;
+	}
+
+	/**
+	 * Return product research signal bullets.
+	 *
+	 * @param int $product_id Product ID.
+	 * @return array<int, string>
+	 */
+	public function get_research_signals( $product_id ) {
+		$raw = $this->get_value( $product_id, 'research_signals', '' );
+
+		if ( '' === $raw ) {
+			return array();
+		}
+
+		$signals = preg_split( '/\r\n|\r|\n/', $raw );
+		$signals = array_map( 'trim', is_array( $signals ) ? $signals : array() );
+		$signals = array_filter( $signals );
+
+		return array_values( $signals );
 	}
 
 	/**
