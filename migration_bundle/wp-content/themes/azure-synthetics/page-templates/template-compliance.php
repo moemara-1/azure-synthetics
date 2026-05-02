@@ -16,11 +16,11 @@ get_header();
 	<section class="azure-page-section">
 		<div class="azure-shell azure-compliance-grid">
 			<div class="azure-compliance-card">
-				<h2><?php esc_html_e( 'Core disclaimer', 'azure-synthetics' ); ?></h2>
+				<h2><?php esc_html_e( 'Research use', 'azure-synthetics' ); ?></h2>
 				<p><?php echo esc_html( azure_synthetics_get_option_value( 'default_product_disclaimer', azure_synthetics_get_footer_disclaimer() ) ); ?></p>
 			</div>
 			<div class="azure-compliance-card">
-				<h2><?php esc_html_e( 'Shipping note', 'azure-synthetics' ); ?></h2>
+				<h2><?php esc_html_e( 'Fulfillment review', 'azure-synthetics' ); ?></h2>
 				<p><?php echo esc_html( azure_synthetics_get_option_value( 'default_shipping_note', '' ) ); ?></p>
 			</div>
 			<div class="azure-compliance-card azure-prose">

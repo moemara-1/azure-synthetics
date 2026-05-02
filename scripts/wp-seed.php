@@ -621,16 +621,16 @@ $account   = azure_seed_upsert_page( 'My Account', '<!-- wp:woocommerce/my-accou
 $science   = azure_seed_upsert_page( 'Science', '', 'page-templates/template-science.php' );
 $faq_page  = azure_seed_upsert_page( 'FAQ', '', 'page-templates/template-faq.php' );
 $contact   = azure_seed_upsert_page( 'Contact', '', 'page-templates/template-contact.php' );
-$compliance = azure_seed_upsert_page(
+$compliance  = azure_seed_upsert_page(
 	'Compliance',
-	'Research-use purchasing requires clear boundaries before a product reaches the cart. Azure Synthetics products are supplied only for lawful laboratory, analytical, and investigational use. They are not for human or veterinary use, injection, diagnosis, treatment, mitigation, cure, or consumption.',
+	'For research purposes only. Azure Synthetics reviews availability, documentation, shipping, and payment details before final fulfillment.',
 	'page-templates/template-compliance.php'
 );
-	$policy    = azure_seed_upsert_page(
-		'Research Use Policy',
-		'Azure Synthetics products are sold exclusively for laboratory, analytical, and investigational environments. Do not market, position, or rely on this catalog for diagnosis, treatment, mitigation, or cure claims.',
-		'page-templates/template-compliance.php'
-	);
+$policy      = azure_seed_upsert_page(
+	'Research Use Policy',
+	'For research purposes only. Orders are reviewed for availability, documentation, destination, shipping method, and final invoice details before fulfillment.',
+	'page-templates/template-compliance.php'
+);
 
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $home_page );
@@ -642,10 +642,10 @@ update_option( 'woocommerce_terms_page_id', $policy );
 update_option( 'woocommerce_currency', 'USD' );
 update_option( 'woocommerce_price_decimal_sep', '.' );
 update_option( 'woocommerce_price_thousand_sep', ',' );
-update_option( 'azure_synthetics_footer_disclaimer', '' );
-update_option( 'azure_synthetics_checkout_ack_label', 'I confirm this order is placed for lawful laboratory or research use only, and not for human consumption.' );
-update_option( 'azure_synthetics_default_shipping_note', 'Cold-chain shipping is reviewed for each qualified order. Inspect temperature-sensitive inventory immediately upon delivery and reconcile the lot reference with the supplied CoA.' );
-update_option( 'azure_synthetics_default_product_disclaimer', 'For research use only. Not for human or veterinary use. Not for diagnosis, treatment, injection, or consumption. Handle and store according to the published product guidance.' );
+update_option( 'azure_synthetics_footer_disclaimer', 'For research purposes only.' );
+update_option( 'azure_synthetics_checkout_ack_label', 'I confirm this order is for lawful research purposes only.' );
+update_option( 'azure_synthetics_default_shipping_note', 'Shipping method, temperature handling, and destination availability are confirmed during order review.' );
+update_option( 'azure_synthetics_default_product_disclaimer', 'For research purposes only.' );
 
 $category_ids = array();
 
@@ -719,23 +719,23 @@ foreach ( $azure_seed_catalog_products as $catalog_product ) {
 				'_azure_lab_descriptor_ar'        => azure_synthetics_catalog_product_copy( $catalog_product, 'descriptor', 'ar' ),
 				'_azure_short_description_ar'     => azure_synthetics_catalog_product_copy( $catalog_product, 'short', 'ar' ),
 				'_azure_description_ar'           => azure_synthetics_catalog_product_copy( $catalog_product, 'description', 'ar' ),
-				'_azure_purity_percent'           => '>=99%',
-				'_azure_form_factor'              => 'Lyophilized research material',
+				'_azure_purity_percent'           => '99%+ target purity',
+				'_azure_form_factor'              => 'Lyophilized material',
 				'_azure_vial_amount'              => azure_synthetics_catalog_amount_summary( $catalog_product ),
 				'_azure_storage_instructions'     => 'Store unopened lyophilized material frozen at -20°C or according to the lot CoA/SDS. Protect from light and moisture and minimize temperature cycling.',
-				'_azure_shipping_warning'         => 'EU cold-chain shipping included for catalog orders. Inspect promptly and reconcile lot/CoA references on receipt.',
-				'_azure_batch_reference'          => 'CoA per batch; lot reference supplied on fulfillment.',
-				'_azure_reconstitution_guidance'  => 'Reference validated laboratory SOPs only. Not for human or veterinary use, diagnosis, treatment, injection, or consumption.',
-				'_azure_research_disclaimer'      => 'For research use only. Not for human or veterinary use. Not for diagnosis, treatment, injection, or consumption.',
+				'_azure_shipping_warning'         => 'Shipping method and temperature handling are confirmed during order review.',
+				'_azure_batch_reference'          => 'COA and lot reference supplied on fulfillment.',
+				'_azure_reconstitution_guidance'  => 'Use validated laboratory SOPs for handling and preparation.',
+				'_azure_research_disclaimer'      => 'For research purposes only.',
 				'_azure_product_faqs'             => wp_json_encode(
 					array(
 						array(
 							'question' => 'What information should be checked before ordering?',
-							'answer'   => 'Review the amount, pack size, lot documentation workflow, storage expectations, and research-use restriction before checkout.',
+							'answer'   => 'Review amount, pack size, price, target purity, COA workflow, and shipping review before checkout.',
 						),
 						array(
 							'question' => 'Does the product include batch documentation?',
-							'answer'   => 'Catalog products are structured around a CoA-per-batch workflow with lot references supplied during fulfillment.',
+							'answer'   => 'Catalog products are structured around a COA and lot workflow with references supplied during fulfillment.',
 						),
 					)
 				),

@@ -36,8 +36,7 @@ $contact = azure_synthetics_get_contact_details();
 		</div>
 	</div>
 	<div class="azure-shell azure-site-footer__base">
-		<p><?php echo esc_html( azure_synthetics_get_footer_disclaimer() ); ?></p>
-		<p><?php esc_html_e( 'Designed for qualified labs, inventory teams, and documentation-first buyers.', 'azure-synthetics' ); ?></p>
+		<p><?php esc_html_e( 'Built for fast comparison: price, purity target, COA path, lot context, and support before checkout.', 'azure-synthetics' ); ?></p>
 	</div>
 </footer>
 <?php wp_footer(); ?>

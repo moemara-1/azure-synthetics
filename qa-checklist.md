@@ -17,7 +17,7 @@
 - Confirm the Cart block page loads and updates quantities correctly.
 - Confirm coupon apply/remove works on the Cart page.
 - Confirm the Checkout block page loads without broken styling.
-- Confirm the required research-use acknowledgment checkbox blocks checkout until checked.
+- Confirm the required research-purpose acknowledgment checkbox blocks checkout until checked.
 - Confirm payment areas remain WooCommerce-native and do not assume a specific gateway.
 
 ## Account

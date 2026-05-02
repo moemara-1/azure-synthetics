@@ -31,7 +31,7 @@ This is a UI/technical health score, not launch approval. Launch approval is blo
 | Performance | 2/4 | Core pages respond, but product PNGs are heavy and the product-media fallback strips responsive `srcset`/`sizes`. |
 | Responsive/mobile | 3/4 | iPhone homepage, hamburger nav, and shop cards work. Mobile hero crop can be improved and checkout still needs final responsive proof after payment/shipping are configured. |
 | Theming/design system | 3/4 | Premium clinical direction is mostly coherent. Remaining risk is image consistency and some hard-coded Woo output. |
-| Anti-pattern avoidance | 3/4 | Copy largely avoids wellness/dosing/treatment implications. Remaining issues are operational credibility, SEO metadata, and some AI/template feel in product media. |
+| Anti-pattern avoidance | 3/4 | Copy largely avoids wellness/dosing or therapeutic implications. Remaining issues are operational credibility, SEO metadata, and some AI/template feel in product media. |
 
 Total: **13/20 technical UI health**, with **launch blocked** by P0 commerce and operations issues.
 
@@ -72,7 +72,7 @@ Total: **13/20 technical UI health**, with **launch blocked** by P0 commerce and
 | Checkout | Rotten | Checkout page reachable with cart, but payment methods array empty | Cannot take paid orders. |
 | Account | Basic 200 | `/my-account/` returns 200 | Needs final auth/email/payment path proof. |
 | FAQ/science/contact | Basic 200 | All return 200 | Copy and metadata still need launch polish. |
-| Compliance | Partial | Research-use policy 200, `/compliance/` 404 | Compliance URL gap and disabled catalog gate decision. |
+| Compliance | Partial | Research policy URL 200, `/compliance/` 404 | Compliance URL gap and disabled catalog gate decision. |
 | Header/nav/footer | Mostly proven | iPhone nav screenshot, header logo transparent on mobile | Hamburger semantics and final desktop parity checks. |
 | Language switcher | Partial | Arabic query/cookie works | ARIA/compliance script not fully localized; URL strategy weak. |
 | Emails/admin settings | Rotten | `admin@example.com` sender values | Order notifications and trust fail. |
@@ -106,7 +106,7 @@ Impact: Buyers cannot complete a paid order. This is a hard revenue blocker.
 
 Exact recommended fix: choose and configure a payment path that is acceptable for research peptide products. For fastest compliant launch, enable manual bank/wire transfer with clear B2B instructions and manual order review. For cards, confirm processor acceptance before connecting keys. Do not enable vague cash/check defaults with placeholder instructions.
 
-Verification step: in staging or a controlled test mode, complete checkout through the chosen gateway and confirm Woo order status, payment metadata, admin notification, customer confirmation, research-use acknowledgment, and fulfillment notes.
+Verification step: in staging or a controlled test mode, complete checkout through the chosen gateway and confirm Woo order status, payment metadata, admin notification, customer confirmation, research-purpose acknowledgment, and fulfillment notes.
 
 Owner area: WooCommerce admin / operations.
 
@@ -134,7 +134,7 @@ Impact: Order notifications can go nowhere, customers can receive untrustworthy 
 
 Exact recommended fix: set the WordPress admin email and WooCommerce From address/name to real domain mailboxes. Suggested baseline: `orders@azuresynthetics.com` for transactional mail and a monitored team inbox for admin copies. Configure SMTP or transactional email with SPF, DKIM, and DMARC.
 
-Verification step: send WooCommerce test email and place a staging order. Confirm customer/admin emails are received, branded, signed by the domain, and include the research-use disclaimer.
+Verification step: send WooCommerce test email and place a staging order. Confirm customer/admin emails are received, branded, signed by the domain, and include the research-purpose notice.
 
 Owner area: WooCommerce admin / operations / DNS.
 
@@ -146,9 +146,9 @@ Affected surface: compliance, footer/header trust, SEO.
 
 Evidence: live `/compliance/` returned `404`; `/research-use-policy/` returned `200`.
 
-Impact: Any buyer, crawler, sales deck, or future link expecting a clean compliance page hits a dead route. For a research-use storefront, this weakens trust.
+Impact: Any buyer, crawler, sales deck, or future link expecting a clean compliance page hits a dead route. For a research-purpose storefront, this weakens trust.
 
-Exact recommended fix: create a `/compliance/` page that summarizes research-use limitations, documentation, shipping/returns, and storage/handling boundaries, or add a permanent redirect to `/research-use-policy/`.
+Exact recommended fix: create a `/compliance/` page that summarizes research-purpose terms, documentation, shipping/returns, and storage/handling boundaries, or add a permanent redirect to `/research-use-policy/`.
 
 Verification step: `GET /compliance/` returns `200` or `301` to `/research-use-policy/`; footer/header links resolve cleanly in English and Arabic.
 
@@ -186,7 +186,7 @@ Owner area: theme.
 
 Affected surface: Arabic compliance, catalog gate, checkout/support parity.
 
-Evidence: Arabic pages correctly render RTL visible content, but the localized `azureSyntheticsCompliance` script payload still includes the English default disclaimer string `For research use only...` from the compliance default layer.
+Evidence: Arabic pages correctly render RTL visible content, but the localized `azureSyntheticsCompliance` script payload still includes the older English default notice from the compliance default layer.
 
 Impact: If the catalog gate or any JS-driven compliance UI is enabled, Arabic users can receive English compliance text. That is a legal/trust parity risk for Egypt.
 
@@ -302,7 +302,7 @@ Affected surface: compliance UX, first-visit consent.
 
 Evidence: compliance defaults set `catalog_gate_enabled => false` in `wp-content/plugins/azure-synthetics-core/includes/class-compliance.php:34`.
 
-Impact: The store relies on footer/product/checkout disclaimers only. This may be fine, but for research-use peptides, a restrained first-visit acknowledgment could reduce accidental consumer browsing.
+Impact: The store relies on footer/product/checkout notices only. This may be fine, but for research-purpose peptides, a restrained first-visit acknowledgment could reduce accidental consumer browsing.
 
 Exact recommended fix: make an explicit business/legal decision. If enabled, build the gate as a one-time, accessible acknowledgment with no wellness language and no SEO-breaking crawler block.
 

@@ -37,6 +37,8 @@ class Email_Branding {
 	 * @return string
 	 */
 	public function filter_footer_text( $footer ) {
-		return $footer . ' | ' . $this->compliance->get_option( 'footer_disclaimer' );
+		$notice = $this->compliance->get_option( 'footer_disclaimer' );
+
+		return $notice ? $footer . ' | ' . $notice : $footer;
 	}
 }

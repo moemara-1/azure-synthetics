@@ -1,10 +1,10 @@
 # Content Map
 
-## Compliance and disclaimer text
-- Site-wide footer disclaimer:
-  - `WooCommerce → Azure Synthetics → Footer disclaimer`
-- Default product disclaimer fallback:
-  - `WooCommerce → Azure Synthetics → Default product disclaimer`
+## Compliance and research notice text
+- Site-wide research notice:
+  - `WooCommerce → Azure Synthetics → Site research notice`
+- Default product research notice fallback:
+  - `WooCommerce → Azure Synthetics → Default research notice`
 - Default shipping note fallback:
   - `WooCommerce → Azure Synthetics → Default shipping note`
 - Checkout acknowledgment checkbox label:
@@ -33,8 +33,8 @@
   - Product edit screen → `Azure research data` → `Batch/testing reference`
 - Reconstitution guidance:
   - Product edit screen → `Azure research data` → `Reconstitution guidance`
-- Research disclaimer override:
-  - Product edit screen → `Azure research data` → `Research disclaimer`
+- Research use notice override:
+  - Product edit screen → `Azure research data` → `Research use notice`
 - Product FAQ accordion:
   - Product edit screen → `Product FAQ accordion`
 

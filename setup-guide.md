@@ -158,7 +158,7 @@ The launch config script sets:
 - Store currency to USD.
 - Manual invoice review as the enabled checkout payment method.
 - US and Egypt shipping zones with `Shipping quoted after review`.
-- Rest-of-world shipping unavailable until explicitly configured.
+- Rest-of-world shipping with `International shipping quoted after review`.
 
 Live server jobs already configured:
 - `/etc/cron.d/azure-wp-cron` runs due WP-Cron events every 5 minutes.

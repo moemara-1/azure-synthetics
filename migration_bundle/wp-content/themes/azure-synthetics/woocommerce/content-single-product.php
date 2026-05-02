@@ -21,7 +21,6 @@ $sections    = function_exists( 'azure_synthetics_get_product_sections' ) ? azur
 $faqs        = function_exists( 'azure_synthetics_get_product_faqs' ) ? azure_synthetics_get_product_faqs( $product->get_id() ) : array();
 $highlights  = array_filter(
 	array(
-		__( 'For research use only', 'azure-synthetics' ),
 		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'purity_percent', '' ) : '',
 		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'form_factor', '' ) : '',
 		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product->get_id(), 'vial_amount', '' ) : '',
@@ -35,11 +34,11 @@ if ( 'ar' === azure_synthetics_current_language() ) {
 	$faqs = array(
 		array(
 			'question' => 'ما المعلومات التي يجب مراجعتها قبل الطلب؟',
-			'answer'   => 'راجع الكمية، حجم العبوة، مسار التوثيق، توقعات التخزين، وتنبيه الاستخدام البحثي قبل إتمام الطلب.',
+			'answer'   => 'راجع الكمية، حجم العبوة، السعر، هدف النقاء، مسار COA والدفعة، ومراجعة الشحن قبل الدفع.',
 		),
 		array(
 			'question' => 'هل يتضمن المنتج توثيق الدفعة؟',
-			'answer'   => 'تم تنظيم منتجات الكتالوج حول مسار CoA لكل دفعة مع توفير مراجع الدفعة أثناء التجهيز.',
+			'answer'   => 'تم تنظيم منتجات الكتالوج حول مسار COA والدفعة مع توفير مرجع الدفعة أثناء التجهيز.',
 		),
 	);
 }
@@ -69,7 +68,7 @@ if ( 'ar' === azure_synthetics_current_language() ) {
 					</div>
 				<?php endif; ?>
 				<div class="azure-product-compliance">
-					<strong><?php esc_html_e( 'Research notice', 'azure-synthetics' ); ?></strong>
+					<strong><?php esc_html_e( 'Research use', 'azure-synthetics' ); ?></strong>
 					<p><?php echo esc_html( $disclaimer ); ?></p>
 				</div>
 				<?php do_action( 'azure_synthetics_before_payment_methods' ); ?>
@@ -90,7 +89,7 @@ if ( 'ar' === azure_synthetics_current_language() ) {
 
 		<div class="azure-product-sections">
 			<section class="azure-product-section">
-				<h2><?php esc_html_e( 'Technical overview', 'azure-synthetics' ); ?></h2>
+				<h2><?php esc_html_e( 'Proof at a glance', 'azure-synthetics' ); ?></h2>
 				<div class="azure-prose">
 					<p><?php echo esc_html( wp_strip_all_tags( $long_copy ) ); ?></p>
 				</div>
@@ -98,7 +97,7 @@ if ( 'ar' === azure_synthetics_current_language() ) {
 
 			<?php if ( $faqs ) : ?>
 				<section class="azure-product-section azure-product-section--dark">
-					<h2><?php esc_html_e( 'Product FAQ', 'azure-synthetics' ); ?></h2>
+					<h2><?php esc_html_e( 'Buyer FAQ', 'azure-synthetics' ); ?></h2>
 					<div class="azure-product-faqs">
 						<?php
 						foreach ( $faqs as $faq ) {
@@ -113,7 +112,7 @@ if ( 'ar' === azure_synthetics_current_language() ) {
 		<section class="azure-page-section">
 			<div class="azure-section-heading">
 				<p class="azure-kicker"><?php esc_html_e( 'Continue browsing', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Related formulations', 'azure-synthetics' ); ?></h2>
+				<h2><?php esc_html_e( 'Related compounds', 'azure-synthetics' ); ?></h2>
 			</div>
 			<?php woocommerce_upsell_display(); ?>
 			<?php woocommerce_output_related_products(); ?>

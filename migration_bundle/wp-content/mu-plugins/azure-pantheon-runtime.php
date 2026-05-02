@@ -550,7 +550,7 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 		return;
 	}
 
-	$content_version = '2026-04-29.4';
+	$content_version = '2026-05-02.1';
 
 	if ( get_option( 'azure_synthetics_pantheon_content_version' ) === $content_version ) {
 		return;
@@ -560,7 +560,7 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 		'privacy-policy',
 		'Privacy Policy',
 		azure_synthetics_pantheon_page_content(
-			'Azure Synthetics handles account, order, support, and fulfillment information for a research-use storefront.',
+			'Azure Synthetics handles account, order, support, and fulfillment information for a research peptide storefront.',
 			array(
 				'Information we collect' => 'We collect information needed to process accounts, orders, support requests, fraud prevention, and compliance acknowledgments.',
 				'How information is used' => 'Store data is used for order fulfillment, customer support, operational record keeping, site security, and required platform services.',
@@ -570,13 +570,13 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 	);
 
 	$terms_id = azure_synthetics_pantheon_upsert_page(
-			'terms-and-conditions',
-			'Terms and Conditions',
-			azure_synthetics_pantheon_page_content(
-				'Azure Synthetics operates as a research-use catalog for laboratory and analytical contexts.',
-				array(
-					'Research-use restriction' => 'Products are offered for laboratory, analytical, and investigational contexts only and are not positioned for diagnosis, treatment, mitigation, cure, or human consumption.',
-					'Orders and accounts'     => 'Azure Synthetics may review, refuse, or cancel orders that appear inconsistent with research-use restrictions, payment controls, or fulfillment requirements.',
+		'terms-and-conditions',
+		'Terms and Conditions',
+		azure_synthetics_pantheon_page_content(
+			'Azure Synthetics operates as a research materials catalog for laboratory and analytical buyers.',
+			array(
+				'Research-purpose notice' => 'Products are offered for lawful research purposes only. Azure Synthetics reviews orders for documentation, payment, and fulfillment fit before release.',
+				'Orders and accounts'     => 'Azure Synthetics may review, refuse, or cancel orders that appear inconsistent with the research-purpose notice, payment controls, or fulfillment requirements.',
 				'Product information'     => 'Product pages summarize form factor, storage, shipping, and lot context; buyers remain responsible for verifying suitability for their own internal protocols.',
 			)
 		)
@@ -586,10 +586,10 @@ function azure_synthetics_pantheon_ensure_launch_pages() {
 		'shipping-returns',
 		'Shipping and Returns',
 		azure_synthetics_pantheon_page_content(
-			'Shipping and returns are handled around temperature-aware fulfillment, inspection timing, and research-use compliance.',
+			'Shipping and returns are handled around temperature-aware fulfillment, inspection timing, and order review.',
 			array(
 				'Shipping handling' => 'Cold-chain or stabilizing packaging may be used when product handling notes call for it. Inspect shipments promptly after delivery.',
-				'Returns'           => 'Because research-use materials can be temperature-sensitive, return eligibility depends on order status, handling history, and support review.',
+				'Returns'           => 'Because materials can be temperature-sensitive, return eligibility depends on order status, handling history, and support review.',
 				'Support'           => 'Contact the support desk with order numbers, lot references, and delivery photos when requesting fulfillment help.',
 			)
 		),

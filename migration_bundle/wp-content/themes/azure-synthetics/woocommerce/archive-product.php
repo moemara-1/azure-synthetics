@@ -24,8 +24,8 @@ if ( is_tax( 'product_cat' ) ) {
 
 if ( ! $description && ! is_tax( 'product_cat' ) ) {
 	$description = 'ar' === azure_synthetics_current_language()
-		? 'ببتيدات بحثية مجففة بالتجميد مع مسار CoA لكل دفعة، وشحن أوروبي مبرد، وتسعير الكميات والصناديق ظاهر قبل الدفع.'
-		: __( 'Lyophilized research peptides with CoA-per-batch workflow, EU cold-chain shipping, and amount/box pricing visible before checkout.', 'azure-synthetics' );
+		? 'قارن الببتيدات البحثية حسب هدف نقاء 99%+، مسار COA والدفعة، تسعير الفيال، وقيمة الصناديق قبل الدفع.'
+		: __( 'Compare research peptides by 99%+ target purity, COA and lot workflow, vial pricing, and box value before checkout.', 'azure-synthetics' );
 }
 
 if ( ! is_tax( 'product_cat' ) && 'ar' === azure_synthetics_current_language() ) {
@@ -60,10 +60,6 @@ if ( ! is_tax( 'product_cat' ) && 'ar' === azure_synthetics_current_language() )
 					</ul>
 				</div>
 				<div class="azure-sidebar-card">
-					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Compliance', 'azure-synthetics' ); ?></h2>
-					<p><?php echo esc_html( azure_synthetics_get_footer_disclaimer() ); ?></p>
-				</div>
-				<div class="azure-sidebar-card">
 					<h2 class="azure-sidebar-card__title"><?php esc_html_e( 'Search', 'azure-synthetics' ); ?></h2>
 					<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<label class="screen-reader-text" for="azure-product-search"><?php esc_html_e( 'Search products', 'azure-synthetics' ); ?></label>
@@ -96,7 +92,7 @@ if ( ! is_tax( 'product_cat' ) && 'ar' === azure_synthetics_current_language() )
 				<?php else : ?>
 					<div class="azure-empty-state">
 						<h2><?php esc_html_e( 'No products found.', 'azure-synthetics' ); ?></h2>
-						<p><?php esc_html_e( 'Adjust your filters or return later when the next release batch is published.', 'azure-synthetics' ); ?></p>
+						<p><?php esc_html_e( 'Adjust your filters or check back when the next batch is published.', 'azure-synthetics' ); ?></p>
 					</div>
 				<?php endif; ?>
 			</div>

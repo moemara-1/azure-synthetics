@@ -9,8 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$is_dark    = is_front_page() || is_singular( 'product' );
-$cart_count = azure_synthetics_cart_count();
+$is_dark     = is_front_page() || is_singular( 'product' );
+$cart_count  = azure_synthetics_cart_count();
+$site_notice = azure_synthetics_get_footer_disclaimer();
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -20,11 +21,13 @@ $cart_count = azure_synthetics_cart_count();
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div class="azure-compliance-strip">
-	<div class="azure-shell">
-		<p><?php echo esc_html( azure_synthetics_get_footer_disclaimer() ); ?></p>
+<?php if ( $site_notice ) : ?>
+	<div class="azure-compliance-strip">
+		<div class="azure-shell">
+			<p><?php echo esc_html( $site_notice ); ?></p>
+		</div>
 	</div>
-</div>
+<?php endif; ?>
 <header class="azure-site-header <?php echo $is_dark ? 'azure-site-header--dark' : 'azure-site-header--light'; ?>">
 	<div class="azure-shell azure-site-header__inner">
 		<?php $brand_url = function_exists( 'azure_synthetics_preserve_language_url' ) ? azure_synthetics_preserve_language_url( home_url( '/' ) ) : home_url( '/' ); ?>

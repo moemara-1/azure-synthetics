@@ -12,46 +12,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 function azure_synthetics_get_catalog_categories() {
 	return array(
 		'glp-1-metabolic'     => array(
-			'name'        => __( 'GLP-1 / Metabolic Research', 'azure-synthetics' ),
-			'name_ar'     => 'أبحاث GLP-1 والتمثيل الغذائي',
-			'description' => __( 'Lyophilized research materials for incretin and metabolic-pathway assay workflows.', 'azure-synthetics' ),
-			'description_ar' => 'مواد بحثية مجففة بالتجميد لسير عمل فحوصات الإنكريتين ومسارات التمثيل الغذائي.',
+			'name'           => __( 'GLP-1 / Metabolic Research', 'azure-synthetics' ),
+			'name_ar'        => 'أبحاث GLP-1 والتمثيل الغذائي',
+			'description'    => __( 'Incretin-pathway materials with amount, box value, and COA path visible up front.', 'azure-synthetics' ),
+			'description_ar' => 'مواد لمسارات الإنكريتين مع الكمية وقيمة الصناديق ومسار COA بوضوح مسبق.',
 		),
 		'recovery-repair'     => array(
-			'name'        => __( 'Recovery & Repair Research', 'azure-synthetics' ),
-			'name_ar'     => 'أبحاث التعافي والإصلاح',
-			'description' => __( 'Peptide research materials organized for tissue-signaling, cell-migration, and comparative assay workflows.', 'azure-synthetics' ),
-			'description_ar' => 'مواد بحثية ببتيدية منظمة لفحوصات إشارات الأنسجة وهجرة الخلايا والمقارنة المعملية.',
+			'name'           => __( 'Recovery & Repair Research', 'azure-synthetics' ),
+			'name_ar'        => 'أبحاث التعافي والإصلاح',
+			'description'    => __( 'Repair-pathway materials organized for fast comparison and repeat ordering.', 'azure-synthetics' ),
+			'description_ar' => 'مواد لمسارات الإصلاح مرتبة للمقارنة السريعة وإعادة الطلب.',
 		),
 		'growth-hormone-axis' => array(
-			'name'        => __( 'Growth Hormone Axis Research', 'azure-synthetics' ),
-			'name_ar'     => 'أبحاث محور هرمون النمو',
-			'description' => __( 'Research peptides for GHRH, secretagogue receptor, and related laboratory pathway studies.', 'azure-synthetics' ),
-			'description_ar' => 'ببتيدات بحثية لدراسات GHRH ومستقبلات محفزات الإفراز والمسارات المعملية ذات الصلة.',
+			'name'           => __( 'Growth Hormone Axis Research', 'azure-synthetics' ),
+			'name_ar'        => 'أبحاث محور هرمون النمو',
+			'description'    => __( 'GHRH and secretagogue-axis materials with concise proof and format details.', 'azure-synthetics' ),
+			'description_ar' => 'مواد محور GHRH ومحفزات الإفراز مع إثبات مختصر وتفاصيل الصيغة.',
 		),
-		'longevity-anti-aging'=> array(
-			'name'        => __( 'Longevity Research', 'azure-synthetics' ),
-			'name_ar'     => 'أبحاث طول العمر',
-			'description' => __( 'Research materials for mitochondrial, redox, copper-peptide, and cellular-aging assay contexts.', 'azure-synthetics' ),
-			'description_ar' => 'مواد بحثية لسياقات فحوصات الميتوكوندريا والأكسدة والاختزال وببتيدات النحاس وشيخوخة الخلايا.',
+		'longevity-anti-aging' => array(
+			'name'           => __( 'Longevity Research', 'azure-synthetics' ),
+			'name_ar'        => 'أبحاث طول العمر',
+			'description'    => __( 'Mitochondrial, redox, copper-peptide, and cellular-aging research materials in one shelf.', 'azure-synthetics' ),
+			'description_ar' => 'مواد بحثية للميتوكوندريا والأكسدة والاختزال وببتيدات النحاس والشيخوخة الخلوية في رف واحد.',
 		),
 		'cognitive-nootropic' => array(
-			'name'        => __( 'Cognitive & Nootropic Research', 'azure-synthetics' ),
-			'name_ar'     => 'أبحاث الإدراك والنوتروبيك',
-			'description' => __( 'Neuropeptide research materials supplied with documentation-first purchasing context.', 'azure-synthetics' ),
-			'description_ar' => 'مواد بحثية للببتيدات العصبية مع سياق شراء قائم على التوثيق أولا.',
+			'name'           => __( 'Cognitive & Nootropic Research', 'azure-synthetics' ),
+			'name_ar'        => 'أبحاث الإدراك والنوتروبيك',
+			'description'    => __( 'Neuropeptide materials with clean pricing, amount, and documentation cues.', 'azure-synthetics' ),
+			'description_ar' => 'مواد ببتيدية عصبية مع تسعير وكمية وإشارات توثيق واضحة.',
 		),
 		'body-composition'    => array(
-			'name'        => __( 'Body Composition Research', 'azure-synthetics' ),
-			'name_ar'     => 'أبحاث تكوين الجسم',
-			'description' => __( 'Research materials for receptor, pathway, and body-composition assay models.', 'azure-synthetics' ),
-			'description_ar' => 'مواد بحثية لنماذج فحوصات المستقبلات والمسارات وتكوين الجسم.',
+			'name'           => __( 'Body Composition Research', 'azure-synthetics' ),
+			'name_ar'        => 'أبحاث تكوين الجسم',
+			'description'    => __( 'Receptor and pathway materials for body-composition research comparisons.', 'azure-synthetics' ),
+			'description_ar' => 'مواد مستقبلات ومسارات لمقارنات أبحاث تكوين الجسم.',
 		),
 		'peptide-support'     => array(
-			'name'        => __( 'Peptide Support Research', 'azure-synthetics' ),
-			'name_ar'     => 'مواد داعمة لأبحاث الببتيدات',
-			'description' => __( 'Supporting peptide materials and lab-use accessories for validated research workflows.', 'azure-synthetics' ),
-			'description_ar' => 'مواد داعمة وملحقات مختبرية لسير عمل بحثي موثق.',
+			'name'           => __( 'Peptide Support Research', 'azure-synthetics' ),
+			'name_ar'        => 'مواد داعمة لأبحاث الببتيدات',
+			'description'    => __( 'Support materials and supplies that round out peptide orders.', 'azure-synthetics' ),
+			'description_ar' => 'مواد داعمة ومستلزمات تكمل طلبات الببتيدات.',
 		),
 	);
 }
@@ -148,7 +148,7 @@ function azure_synthetics_catalog_product_copy( array $product, $field = 'descri
 		$focus         = $product['focus_ar'] ?? $product['focus'];
 
 		if ( 'short' === $field ) {
-			return sprintf( '%s مادة بحثية موثقة مع CoA لكل دفعة وشحن أوروبي مبرد.', $amounts );
+			return sprintf( '%s مع هدف نقاء 99%%+ ومسار COA للدفعة وتسعير واضح.', $amounts );
 		}
 
 		if ( 'subtitle' === $field ) {
@@ -160,7 +160,7 @@ function azure_synthetics_catalog_product_copy( array $product, $field = 'descri
 		}
 
 		return sprintf(
-			'%1$s متاح للاستخدام المختبري والتحليلي فقط كمادة ليوفيليزد. صممت صفحة المنتج لتسهيل الشراء القائم على التوثيق: الكمية المختارة، سعر الفيال الواحد أو صندوق الخمس فيالات، مسار CoA المرتبط بالدفعة، هدف نقاء لا يقل عن 99%%، ومعلومات الشحن المبرد داخل أوروبا تظهر قبل إتمام الطلب. سياق البحث: %2$s. غير مخصص للاستخدام البشري أو البيطري أو التشخيصي أو العلاجي أو للحقن أو الاستهلاك.',
+			'%1$s مادة بحثية مجففة بالتجميد لسياق %2$s. قارن الكمية، سعر الفيال، قيمة صندوق الخمس فيالات، هدف النقاء 99%%+، مسار COA، ملف التخزين، ومراجعة الشحن قبل الدفع.',
 			$product['name'],
 			$focus
 		);
@@ -169,7 +169,7 @@ function azure_synthetics_catalog_product_copy( array $product, $field = 'descri
 	$category_name = $category['name'];
 
 	if ( 'short' === $field ) {
-		return sprintf( '%s research material with CoA-per-batch workflow and EU cold-chain shipping.', $amounts );
+		return sprintf( '%s with 99%%+ target purity, COA and lot workflow, and clear pricing.', $amounts );
 	}
 
 	if ( 'subtitle' === $field ) {
@@ -181,8 +181,9 @@ function azure_synthetics_catalog_product_copy( array $product, $field = 'descri
 	}
 
 	return sprintf(
-		'%1$s is supplied for laboratory research and analytical use only as lyophilized material. This catalog entry is built for documentation-first purchasing: selected amount, one-vial or five-vial box pricing, lot-linked CoA workflow, >=99%% purity target, and EU cold-chain shipping context remain visible before checkout. Research context: %2$s. Not for human or veterinary use, diagnostic use, therapeutic use, injection, or consumption.',
+		'%1$s is listed for %2$s with %3$s formats. Compare vial price, five-vial box value, 99%%+ target purity, COA and lot workflow, storage profile, and shipping review before checkout.',
 		$product['name'],
-		$product['focus']
+		$product['focus'],
+		$amounts
 	);
 }

@@ -31,8 +31,8 @@ if ( ! is_array( $bacs_settings ) ) {
 
 $bacs_settings['enabled']      = 'yes';
 $bacs_settings['title']        = 'Manual invoice review';
-$bacs_settings['description']  = 'Submit your research-use order for documentation, compliance, payment, and shipping review. Azure Synthetics will confirm availability and issue final payment instructions before fulfillment.';
-$bacs_settings['instructions'] = 'Your order has been received for manual review. Do not send payment until Azure Synthetics confirms the lot, documentation, shipping method, and final invoice.';
+$bacs_settings['description']  = 'Submit your order for availability, documentation, payment, and shipping review. Azure Synthetics will confirm final payment instructions before fulfillment.';
+$bacs_settings['instructions'] = 'Your order has been received for manual review. Do not send payment until Azure Synthetics confirms the lot reference, documentation path, shipping method, and final invoice.';
 
 update_option( 'woocommerce_bacs_settings', $bacs_settings );
 
@@ -57,16 +57,7 @@ function azure_launch_find_shipping_zone_id( $zone_name ) {
 	return 0;
 }
 
-function azure_launch_configure_shipping_zone( $zone_name, $country_code, $order ) {
-	$zone_id = azure_launch_find_shipping_zone_id( $zone_name );
-	$zone    = $zone_id ? new WC_Shipping_Zone( $zone_id ) : new WC_Shipping_Zone();
-
-	$zone->set_zone_name( $zone_name );
-	$zone->set_zone_order( $order );
-	$zone->clear_locations();
-	$zone->add_location( $country_code, 'country' );
-	$zone->save();
-
+function azure_launch_configure_flat_rate_method( WC_Shipping_Zone $zone, $title, $cost = '0' ) {
 	foreach ( $zone->get_shipping_methods( true ) as $method ) {
 		if ( 'flat_rate' !== $method->id ) {
 			$zone->delete_shipping_method( $method->instance_id );
@@ -87,29 +78,41 @@ function azure_launch_configure_shipping_zone( $zone_name, $country_code, $order
 		$flat_rate   = WC_Shipping_Zones::get_shipping_method( $instance_id );
 	}
 
-	if ( $flat_rate ) {
-		$settings = get_option( $flat_rate->get_instance_option_key(), array() );
-
-		if ( ! is_array( $settings ) ) {
-			$settings = array();
-		}
-
-		$settings['title']      = 'Shipping quoted after review';
-		$settings['tax_status'] = 'none';
-		$settings['cost']       = '0';
-
-		update_option( $flat_rate->get_instance_option_key(), $settings );
+	if ( ! $flat_rate ) {
+		return;
 	}
+
+	$settings = get_option( $flat_rate->get_instance_option_key(), array() );
+
+	if ( ! is_array( $settings ) ) {
+		$settings = array();
+	}
+
+	$settings['title']      = $title;
+	$settings['tax_status'] = 'none';
+	$settings['cost']       = $cost;
+
+	update_option( $flat_rate->get_instance_option_key(), $settings );
+}
+
+function azure_launch_configure_shipping_zone( $zone_name, $country_code, $order ) {
+	$zone_id = azure_launch_find_shipping_zone_id( $zone_name );
+	$zone    = $zone_id ? new WC_Shipping_Zone( $zone_id ) : new WC_Shipping_Zone();
+
+	$zone->set_zone_name( $zone_name );
+	$zone->set_zone_order( $order );
+	$zone->clear_locations();
+	$zone->add_location( $country_code, 'country' );
+	$zone->save();
+
+	azure_launch_configure_flat_rate_method( $zone, 'Shipping quoted after review' );
 }
 
 azure_launch_configure_shipping_zone( 'United States research shipments', 'US', 1 );
 azure_launch_configure_shipping_zone( 'Egypt research shipments', 'EG', 2 );
 
 $rest_zone = new WC_Shipping_Zone( 0 );
-
-foreach ( $rest_zone->get_shipping_methods( true ) as $method ) {
-	$rest_zone->delete_shipping_method( $method->instance_id );
-}
+azure_launch_configure_flat_rate_method( $rest_zone, 'International shipping quoted after review' );
 
 if ( function_exists( 'wc_delete_product_transients' ) ) {
 	wc_delete_product_transients();

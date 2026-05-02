@@ -11,10 +11,10 @@ $science_page = get_page_by_path( 'science' );
 <section class="azure-science-grid">
 	<div class="azure-shell azure-science-grid__layout">
 			<div class="azure-science-grid__copy">
-				<p class="azure-kicker"><?php esc_html_e( 'Operational rigor', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Testing, packaging, and replenishment in one place.', 'azure-synthetics' ); ?></h2>
-				<p><?php esc_html_e( 'Assay context, storage notes, and reorder details stay visible from product discovery through checkout.', 'azure-synthetics' ); ?></p>
-				<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'View science notes', 'azure-synthetics' ); ?></a>
+				<p class="azure-kicker"><?php esc_html_e( 'Proof without drag', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'Proof should not feel like homework.', 'azure-synthetics' ); ?></h2>
+				<p><?php esc_html_e( 'Purity target, COA path, form factor, storage profile, and reorder support stay visible from product discovery through checkout.', 'azure-synthetics' ); ?></p>
+				<a class="azure-text-link azure-text-link--dark" href="<?php echo esc_url( $science_page ? get_permalink( $science_page ) : home_url( '/science/' ) ); ?>"><?php esc_html_e( 'View proof dashboard', 'azure-synthetics' ); ?></a>
 			</div>
 		<div class="azure-science-grid__cards">
 			<article class="azure-card azure-card--feature">

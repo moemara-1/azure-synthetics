@@ -11,8 +11,8 @@ $products = azure_synthetics_home_products_query();
 	<div class="azure-shell">
 		<div class="azure-section-heading azure-section-heading--split">
 			<div>
-				<p class="azure-kicker azure-kicker--gold"><?php esc_html_e( 'Flagship research materials', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Popular catalog entries', 'azure-synthetics' ); ?></h2>
+				<p class="azure-kicker azure-kicker--gold"><?php esc_html_e( 'High-intent picks', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'Products buyers compare first', 'azure-synthetics' ); ?></h2>
 			</div>
 			<a class="azure-text-link" href="<?php echo esc_url( azure_synthetics_shop_url() ); ?>"><?php esc_html_e( 'Open full catalog', 'azure-synthetics' ); ?></a>
 		</div>

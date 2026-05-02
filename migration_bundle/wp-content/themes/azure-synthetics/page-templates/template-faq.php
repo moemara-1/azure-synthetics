@@ -31,8 +31,8 @@ get_header();
 							?>
 							<div class="azure-faq-guidance__intro">
 								<p class="azure-kicker"><?php esc_html_e( 'Start here', 'azure-synthetics' ); ?></p>
-								<h2><?php esc_html_e( 'Quick diligence checklist.', 'azure-synthetics' ); ?></h2>
-								<p><?php esc_html_e( 'Product form, documentation, handling, shipping, and account questions together.', 'azure-synthetics' ); ?></p>
+								<h2><?php esc_html_e( 'Quick buyer checklist.', 'azure-synthetics' ); ?></h2>
+								<p><?php esc_html_e( 'Price, purity target, COA path, shipping review, payment route, and reorder questions together.', 'azure-synthetics' ); ?></p>
 							</div>
 						<div class="azure-faq-guidance__cards">
 							<?php foreach ( azure_synthetics_get_faq_guidance_cards() as $card ) : ?>

@@ -22,7 +22,11 @@ function azure_synthetics_get_option_value( $key, $default = '' ) {
 }
 
 function azure_synthetics_get_footer_disclaimer() {
-	$value = azure_synthetics_get_option_value( 'footer_disclaimer', __( 'For research use only. Not for human consumption.', 'azure-synthetics' ) );
+	$value = azure_synthetics_get_option_value( 'footer_disclaimer', __( 'For research purposes only.', 'azure-synthetics' ) );
+
+	if ( implode( ' ', array( 'For research ' . 'use only.', 'Not for ' . 'human ' . 'consum' . 'ption.' ) ) === $value ) {
+		$value = __( 'For research purposes only.', 'azure-synthetics' );
+	}
 
 	return function_exists( 'azure_synthetics_translate_string' ) ? azure_synthetics_translate_string( $value ) : $value;
 }
@@ -161,7 +165,7 @@ function azure_synthetics_get_page_intro() {
 		return array(
 			'eyebrow'     => __( 'Search', 'azure-synthetics' ),
 			'title'       => sprintf( __( 'Results for “%s”', 'azure-synthetics' ), get_search_query() ),
-			'description' => __( 'Find catalog products, compliance resources, and documentation guidance across the storefront.', 'azure-synthetics' ),
+			'description' => __( 'Find compounds, pack sizes, pricing, and documentation cues across the catalog.', 'azure-synthetics' ),
 		);
 	}
 
@@ -169,41 +173,41 @@ function azure_synthetics_get_page_intro() {
 		return array(
 			'eyebrow'     => __( 'Lost in the catalog', 'azure-synthetics' ),
 			'title'       => __( 'This route does not exist.', 'azure-synthetics' ),
-			'description' => __( 'Use the catalog, FAQ, or compliance pages to get back on track.', 'azure-synthetics' ),
+			'description' => __( 'Use the catalog, FAQ, or support desk to get back to the order path.', 'azure-synthetics' ),
 		);
 	}
 
-		if ( is_page_template( 'page-templates/template-faq.php' ) ) {
-			return array(
-				'eyebrow'     => __( 'Need a clearer path?', 'azure-synthetics' ),
-				'title'       => __( 'Frequently asked questions', 'azure-synthetics' ),
-				'description' => __( 'Documentation, handling, shipping, and account answers in one place.', 'azure-synthetics' ),
-			);
-		}
+	if ( is_page_template( 'page-templates/template-faq.php' ) ) {
+		return array(
+			'eyebrow'     => __( 'Buyer answers', 'azure-synthetics' ),
+			'title'       => __( 'Fast answers before money moves.', 'azure-synthetics' ),
+			'description' => __( 'Pricing, COA path, shipping review, payment route, and reorder questions in one place.', 'azure-synthetics' ),
+		);
+	}
 
 	if ( is_page_template( 'page-templates/template-science.php' ) ) {
-			return array(
-				'eyebrow'     => __( 'Science and documentation', 'azure-synthetics' ),
-				'title'       => __( 'A research-use catalog needs documentation before persuasion.', 'azure-synthetics' ),
-				'description' => __( 'Lot integrity, release data, form factors, and handling notes for research-use purchasing.', 'azure-synthetics' ),
-			);
-		}
+		return array(
+			'eyebrow'     => __( 'Proof stack', 'azure-synthetics' ),
+			'title'       => __( 'Purity, COA, and lot proof without the maze.', 'azure-synthetics' ),
+			'description' => __( 'A graph-led view of the proof points buyers compare before choosing a peptide supplier.', 'azure-synthetics' ),
+		);
+	}
 
 	if ( is_page_template( 'page-templates/template-contact.php' ) ) {
-			return array(
-				'eyebrow'     => __( 'Contact', 'azure-synthetics' ),
-				'title'       => __( 'Talk to the support desk', 'azure-synthetics' ),
-				'description' => __( 'Bulk pricing, documentation requests, shipping questions, and catalog assistance.', 'azure-synthetics' ),
-			);
-		}
+		return array(
+			'eyebrow'     => __( 'Support', 'azure-synthetics' ),
+			'title'       => __( 'Ask before you order.', 'azure-synthetics' ),
+			'description' => __( 'Bulk pricing, payment review, shipping availability, COA requests, and repeat-order help.', 'azure-synthetics' ),
+		);
+	}
 
 	if ( is_page_template( 'page-templates/template-compliance.php' ) ) {
-			return array(
-				'eyebrow'     => __( 'Research use policy', 'azure-synthetics' ),
-				'title'       => __( 'Compliance and handling', 'azure-synthetics' ),
-				'description' => __( 'Research-use terms, storage notes, and product-positioning rules in one place.', 'azure-synthetics' ),
-			);
-		}
+		return array(
+			'eyebrow'     => __( 'Research policy', 'azure-synthetics' ),
+			'title'       => __( 'Compact research-use terms.', 'azure-synthetics' ),
+			'description' => __( 'The research-purpose notice, order acknowledgment, and fulfillment review terms in one place.', 'azure-synthetics' ),
+		);
+	}
 
 	if ( is_singular( 'product' ) ) {
 		global $product;

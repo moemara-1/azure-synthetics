@@ -37,7 +37,7 @@ if ! wp plugin is-active azure-synthetics-core --allow-root >/dev/null 2>&1; the
 fi
 
 wp option update blogname "$SITE_TITLE" --allow-root
-wp option update blogdescription "Lab-grade research peptides with documentation and storage guidance" --allow-root
+wp option update blogdescription "Research peptides with price, purity target, and proof up front" --allow-root
 wp option update permalink_structure "/%postname%/" --allow-root
 wp rewrite flush --allow-root
 

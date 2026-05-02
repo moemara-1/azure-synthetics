@@ -58,11 +58,11 @@ function azure_synthetics_meta_image_url() {
 
 function azure_synthetics_meta_description() {
 	if ( is_front_page() ) {
-		return __( 'Research-use peptides with lot-aware CoA context, clear vial formats, storage guidance, and documentation-first purchasing for qualified laboratories.', 'azure-synthetics' );
+		return __( 'Research peptides with 99%+ target purity, COA and lot workflow, clear vial and box pricing, and order review before fulfillment.', 'azure-synthetics' );
 	}
 
 	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
-		return __( 'Browse Azure Synthetics research-use peptides by research area, amount, pack size, documentation context, and storage guidance before checkout.', 'azure-synthetics' );
+		return __( 'Browse Azure Synthetics by compound, amount, pack size, target purity, COA path, lot handoff, and box value before checkout.', 'azure-synthetics' );
 	}
 
 	if ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
@@ -90,7 +90,7 @@ function azure_synthetics_meta_description() {
 
 function azure_synthetics_meta_title() {
 	if ( is_front_page() ) {
-		return get_bloginfo( 'name' ) . ' | ' . __( 'Research peptides with documentation your lab can trust.', 'azure-synthetics' );
+		return get_bloginfo( 'name' ) . ' | ' . __( 'Research peptides with price, purity target, and proof up front.', 'azure-synthetics' );
 	}
 
 	if ( is_singular( 'product' ) ) {

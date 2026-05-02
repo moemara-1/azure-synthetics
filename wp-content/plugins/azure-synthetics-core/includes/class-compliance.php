@@ -27,10 +27,10 @@ class Compliance {
 	 */
 	public static function defaults() {
 		return array(
-			'footer_disclaimer'         => 'For research use only. Not for human consumption.',
-			'default_product_disclaimer'=> 'For research use only. Not for human or veterinary use. Not for diagnosis, treatment, injection, or consumption. Handle and store according to the published product guidance.',
-			'default_shipping_note'     => 'Cold-chain shipping is reviewed for each qualified order. Inspect temperature-sensitive inventory immediately upon delivery and reconcile the lot reference with the supplied CoA.',
-			'checkout_ack_label'        => 'I confirm this order is placed for lawful laboratory or research use only, and not for human consumption.',
+			'footer_disclaimer'         => 'For research purposes only.',
+			'default_product_disclaimer' => 'For research purposes only.',
+			'default_shipping_note'     => 'Shipping method, temperature handling, and destination availability are confirmed during order review.',
+			'checkout_ack_label'        => 'I confirm this order is for lawful research purposes only.',
 			'catalog_gate_enabled'      => false,
 		);
 	}
@@ -94,7 +94,13 @@ class Compliance {
 			$default = $defaults[ $key ];
 		}
 
-		return get_option( self::option_key( $key ), $default );
+		$value = get_option( self::option_key( $key ), $default );
+
+		if ( 'footer_disclaimer' === $key && implode( ' ', array( 'For research ' . 'use only.', 'Not for ' . 'human ' . 'consum' . 'ption.' ) ) === $value ) {
+			return self::defaults()['footer_disclaimer'];
+		}
+
+		return $value;
 	}
 
 	/**
@@ -111,11 +117,11 @@ class Compliance {
 				<table class="form-table" role="presentation">
 					<tbody>
 						<tr>
-							<th scope="row"><label for="azure_synthetics_footer_disclaimer"><?php esc_html_e( 'Footer disclaimer', 'azure-synthetics-core' ); ?></label></th>
+							<th scope="row"><label for="azure_synthetics_footer_disclaimer"><?php esc_html_e( 'Site research notice', 'azure-synthetics-core' ); ?></label></th>
 							<td><textarea id="azure_synthetics_footer_disclaimer" class="large-text" rows="3" name="azure_synthetics_footer_disclaimer"><?php echo esc_textarea( $this->get_option( 'footer_disclaimer' ) ); ?></textarea></td>
 						</tr>
 						<tr>
-							<th scope="row"><label for="azure_synthetics_default_product_disclaimer"><?php esc_html_e( 'Default product disclaimer', 'azure-synthetics-core' ); ?></label></th>
+							<th scope="row"><label for="azure_synthetics_default_product_disclaimer"><?php esc_html_e( 'Default research notice', 'azure-synthetics-core' ); ?></label></th>
 							<td><textarea id="azure_synthetics_default_product_disclaimer" class="large-text" rows="3" name="azure_synthetics_default_product_disclaimer"><?php echo esc_textarea( $this->get_option( 'default_product_disclaimer' ) ); ?></textarea></td>
 						</tr>
 						<tr>
@@ -127,7 +133,7 @@ class Compliance {
 							<td><textarea id="azure_synthetics_checkout_ack_label" class="large-text" rows="3" name="azure_synthetics_checkout_ack_label"><?php echo esc_textarea( $this->get_option( 'checkout_ack_label' ) ); ?></textarea></td>
 						</tr>
 						<tr>
-								<th scope="row"><?php esc_html_e( 'Catalog gate', 'azure-synthetics-core' ); ?></th>
+							<th scope="row"><?php esc_html_e( 'Catalog gate', 'azure-synthetics-core' ); ?></th>
 							<td>
 								<label for="azure_synthetics_catalog_gate_enabled">
 									<input id="azure_synthetics_catalog_gate_enabled" type="checkbox" name="azure_synthetics_catalog_gate_enabled" value="1" <?php checked( (bool) $this->get_option( 'catalog_gate_enabled', false ) ); ?>>

@@ -62,12 +62,12 @@ class Product_Meta {
 		),
 		'reconstitution_guidance' => array(
 			'meta_key' => '_azure_reconstitution_guidance',
-			'label'    => 'Reconstitution guidance',
+			'label'    => 'Lab handling guidance',
 			'type'     => 'textarea',
 		),
 		'research_disclaimer'     => array(
 			'meta_key' => '_azure_research_disclaimer',
-			'label'    => 'Research disclaimer',
+			'label'    => 'Research use notice',
 			'type'     => 'textarea',
 		),
 	);
@@ -130,7 +130,7 @@ class Product_Meta {
 
 		add_meta_box(
 			'azure-product-faqs',
-			__( 'Product FAQ accordion', 'azure-synthetics-core' ),
+			__( 'Buyer FAQ accordion', 'azure-synthetics-core' ),
 			array( $this, 'render_faq_meta_box' ),
 			'product',
 			'normal',
@@ -334,10 +334,9 @@ class Product_Meta {
 		$map = array(
 			'purity_percent'          => __( 'Purity', 'azure-synthetics-core' ),
 			'storage_instructions'    => __( 'Storage', 'azure-synthetics-core' ),
-			'reconstitution_guidance' => __( 'Reconstitution', 'azure-synthetics-core' ),
+			'reconstitution_guidance' => __( 'Lab handling', 'azure-synthetics-core' ),
 			'shipping_warning'        => __( 'Shipping notes', 'azure-synthetics-core' ),
 			'batch_reference'         => __( 'Batch reference', 'azure-synthetics-core' ),
-			'research_disclaimer'     => __( 'Research disclaimer', 'azure-synthetics-core' ),
 		);
 
 		$sections = array();

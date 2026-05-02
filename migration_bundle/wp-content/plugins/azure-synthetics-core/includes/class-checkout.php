@@ -92,7 +92,7 @@ class Checkout {
 	 */
 	public function validate_classic_field() {
 		if ( ! isset( $_POST['azure_research_acknowledgment'] ) ) {
-			wc_add_notice( __( 'You must confirm the research-use acknowledgment before checkout.', 'azure-synthetics-core' ), 'error' );
+			wc_add_notice( __( 'Confirm the research-purpose acknowledgment before checkout.', 'azure-synthetics-core' ), 'error' );
 		}
 	}
 
@@ -138,7 +138,7 @@ class Checkout {
 			return;
 		}
 		?>
-		<p><strong><?php esc_html_e( 'Research acknowledgment:', 'azure-synthetics-core' ); ?></strong> <?php echo esc_html( ucfirst( $value ) ); ?></p>
+		<p><strong><?php esc_html_e( 'Research-purpose acknowledgment:', 'azure-synthetics-core' ); ?></strong> <?php echo esc_html( ucfirst( $value ) ); ?></p>
 		<?php
 	}
 

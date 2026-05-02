@@ -9,7 +9,7 @@
 - Mobile and tablet layouts were inferred from the desktop composition and the existing spacing/radius system.
 - Archive grids collapse from 4-up on desktop to 2-up on tablet and 1-up on phone.
 - Product pages collapse to a single column on tablet/phone, with gallery first and purchase panel second.
-- Shop filters use an off-canvas sidebar on smaller screens because the `.pen` file did not provide a mobile filter treatment.
+- Shop filters use an off-canvas sidebar on smaller screens because the `.pen` file did not provide a mobile filter behavior.
 
 ## States and interactions
 - Hover/focus/disabled/loading/empty/error states were derived from the existing palette and card system because the `.pen` file did not include explicit state boards.
