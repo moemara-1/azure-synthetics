@@ -22,6 +22,12 @@ update_option( 'woocommerce_currency', 'USD' );
 update_option( 'woocommerce_default_country', 'US:CA' );
 update_option( 'woocommerce_calc_shipping', 'yes' );
 update_option( 'woocommerce_ship_to_destination', 'shipping' );
+update_option( 'users_can_register', 1 );
+update_option( 'woocommerce_enable_myaccount_registration', 'yes' );
+update_option( 'woocommerce_enable_signup_and_login_from_checkout', 'yes' );
+update_option( 'woocommerce_enable_checkout_login_reminder', 'yes' );
+update_option( 'woocommerce_registration_generate_username', 'yes' );
+update_option( 'woocommerce_registration_generate_password', 'no' );
 
 $bacs_settings = get_option( 'woocommerce_bacs_settings', array() );
 
