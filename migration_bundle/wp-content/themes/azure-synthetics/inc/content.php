@@ -264,6 +264,11 @@ function azure_synthetics_get_science_compound_profiles() {
 			'doc'      => __( 'COA and lot handoff before fulfillment', 'azure-synthetics' ),
 			'storage'  => __( 'Frozen storage by lot CoA/SDS', 'azure-synthetics' ),
 			'copy'     => __( 'A high-comparison profile for buyers checking amount ladder, vial cost, box value, and document path fast.', 'azure-synthetics' ),
+			'evidence' => __( 'Clinical drug-class literature', 'azure-synthetics' ),
+			'signals'  => array(
+				__( 'Incretin-pathway research around glucose regulation and body-weight endpoints.', 'azure-synthetics' ),
+				__( 'Clinical trial literature for approved tirzepatide medicines; not a claim about this catalog material.', 'azure-synthetics' ),
+			),
 			'bars'     => array( 99, 96, 92 ),
 			'bar_copy' => array(
 				__( 'Three amount options make price comparison clearer.', 'azure-synthetics' ),
@@ -278,6 +283,11 @@ function azure_synthetics_get_science_compound_profiles() {
 			'doc'      => __( 'COA, lot, and support notes linked to order', 'azure-synthetics' ),
 			'storage'  => __( 'Temperature handling reviewed by route', 'azure-synthetics' ),
 			'copy'     => __( 'Built for buyers comparing higher-value formats where box economics and documentation confidence matter.', 'azure-synthetics' ),
+			'evidence' => __( 'Investigational clinical literature', 'azure-synthetics' ),
+			'signals'  => array(
+				__( 'Triple-agonist research around A1C, body weight, and metabolic markers.', 'azure-synthetics' ),
+				__( 'Studied as an investigational molecule; no approved-use or treatment claim is made here.', 'azure-synthetics' ),
+			),
 			'bars'     => array( 99, 95, 90 ),
 			'bar_copy' => array(
 				__( 'Large-format ladder keeps vial and box decisions together.', 'azure-synthetics' ),
@@ -292,6 +302,11 @@ function azure_synthetics_get_science_compound_profiles() {
 			'doc'      => __( 'COA workflow plus batch reference', 'azure-synthetics' ),
 			'storage'  => __( 'Frozen, dry, light-protected storage profile', 'azure-synthetics' ),
 			'copy'     => __( 'A fast-read profile for buyers comparing low-friction reorder value, familiar format sizes, and proof access.', 'azure-synthetics' ),
+			'evidence' => __( 'Preclinical-heavy literature', 'azure-synthetics' ),
+			'signals'  => array(
+				__( 'Animal and cell-model literature explores tissue-repair, tendon, ligament, and cytoprotective pathways.', 'azure-synthetics' ),
+				__( 'Human evidence remains limited; this is a research-context summary, not therapeutic positioning.', 'azure-synthetics' ),
+			),
 			'bars'     => array( 99, 94, 97 ),
 			'bar_copy' => array(
 				__( 'Two common amount options keep the decision simple.', 'azure-synthetics' ),
@@ -306,6 +321,11 @@ function azure_synthetics_get_science_compound_profiles() {
 			'doc'      => __( 'COA route with paired support context', 'azure-synthetics' ),
 			'storage'  => __( 'Frozen storage with minimized temperature cycling', 'azure-synthetics' ),
 			'copy'     => __( 'A profile for buyers who compare format, companion inventory, and repeat kit logic before checkout.', 'azure-synthetics' ),
+			'evidence' => __( 'Endocrine biomarker literature', 'azure-synthetics' ),
+			'signals'  => array(
+				__( 'GHRH-analog research around GH and IGF-1 axis signaling.', 'azure-synthetics' ),
+				__( 'The science page frames biomarkers and release data only; it does not imply performance outcomes.', 'azure-synthetics' ),
+			),
 			'bars'     => array( 99, 91, 93 ),
 			'bar_copy' => array(
 				__( 'Format range supports single-vial or repeat-order planning.', 'azure-synthetics' ),
@@ -320,6 +340,11 @@ function azure_synthetics_get_science_compound_profiles() {
 			'doc'      => __( 'COA path and storage record tracked together', 'azure-synthetics' ),
 			'storage'  => __( 'Moisture-aware frozen storage profile', 'azure-synthetics' ),
 			'copy'     => __( 'A profile for shoppers comparing larger vial amounts, box savings, and storage expectations in one pass.', 'azure-synthetics' ),
+			'evidence' => __( 'Regeneration-pathway literature', 'azure-synthetics' ),
+			'signals'  => array(
+				__( 'Copper-peptide literature explores skin regeneration, wound-repair, collagen, and matrix-remodeling pathways.', 'azure-synthetics' ),
+				__( 'Presented as literature context for research buyers, not as a cosmetic or medical claim.', 'azure-synthetics' ),
+			),
 			'bars'     => array( 99, 93, 96 ),
 			'bar_copy' => array(
 				__( 'Higher amount formats make unit economics easy to scan.', 'azure-synthetics' ),
@@ -334,6 +359,11 @@ function azure_synthetics_get_science_compound_profiles() {
 			'doc'      => __( 'Lot record, COA path, and reorder notes', 'azure-synthetics' ),
 			'storage'  => __( 'Frozen storage and transit review', 'azure-synthetics' ),
 			'copy'     => __( 'A proof-heavy profile for buyers comparing specialty pricing, amount spread, and lot continuity.', 'azure-synthetics' ),
+			'evidence' => __( 'Translational metabolism literature', 'azure-synthetics' ),
+			'signals'  => array(
+				__( 'Mitochondrial-derived peptide literature explores metabolic homeostasis, insulin-resistance models, inflammation, and aging biology.', 'azure-synthetics' ),
+				__( 'These are research signals from the literature, not stated effects of any Azure product.', 'azure-synthetics' ),
+			),
 			'bars'     => array( 99, 92, 94 ),
 			'bar_copy' => array(
 				__( 'Specialty amount spread makes the catalog feel less generic.', 'azure-synthetics' ),
@@ -360,6 +390,8 @@ function azure_synthetics_get_science_compound_profiles() {
 			'assay'    => $spec['assay'],
 			'doc'      => $spec['doc'],
 			'storage'  => $spec['storage'],
+			'evidence' => $spec['evidence'],
+			'signals'  => $spec['signals'],
 			'amounts'  => azure_synthetics_catalog_amount_summary( $product ),
 			'vial'     => azure_synthetics_science_price_range( $product, 'vial' ),
 			'box'      => azure_synthetics_science_price_range( $product, 'box' ),

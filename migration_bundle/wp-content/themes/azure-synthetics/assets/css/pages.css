@@ -356,6 +356,18 @@
 	margin-top: var(--azure-space-8);
 }
 
+.azure-science-profile-panel__copy .azure-button--light {
+	background: var(--azure-panel-dark);
+	color: var(--azure-white-tint);
+	box-shadow: 0 14px 30px rgba(6, 16, 22, 0.16);
+}
+
+.azure-science-profile-panel__copy .azure-button--light:hover,
+.azure-science-profile-panel__copy .azure-button--light:focus-visible {
+	background: var(--azure-teal);
+	color: var(--azure-ink);
+}
+
 .azure-science-profile-panel__stats {
 	display: grid;
 	gap: var(--azure-space-24);
@@ -388,6 +400,33 @@
 	margin: 0;
 	color: var(--azure-ink);
 	font-weight: 800;
+}
+
+.azure-science-profile-signals {
+	padding: var(--azure-space-24);
+	border: 1px solid rgba(16, 124, 116, 0.16);
+	border-radius: var(--azure-radius-card);
+	background: rgba(244, 250, 249, 0.72);
+}
+
+.azure-science-profile-signals h4 {
+	margin: 0 0 var(--azure-space-12);
+	font-family: var(--azure-font-display);
+	font-size: 1.35rem;
+	line-height: 1.1;
+	color: var(--azure-ink);
+}
+
+.azure-science-profile-signals ul {
+	display: grid;
+	gap: var(--azure-space-8);
+	margin: 0;
+	padding-inline-start: 1.1rem;
+	color: var(--azure-ink-soft);
+}
+
+.azure-science-profile-signals li::marker {
+	color: var(--azure-teal-strong);
 }
 
 .azure-science-profile-bars {

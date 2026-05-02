@@ -151,7 +151,19 @@ $steps         = azure_synthetics_get_science_process_steps();
 											<dt><?php esc_html_e( 'Storage', 'azure-synthetics' ); ?></dt>
 											<dd><?php echo esc_html( $profile['storage'] ); ?></dd>
 										</div>
+										<div>
+											<dt><?php esc_html_e( 'Evidence context', 'azure-synthetics' ); ?></dt>
+											<dd><?php echo esc_html( $profile['evidence'] ); ?></dd>
+										</div>
 									</dl>
+									<div class="azure-science-profile-signals">
+										<h4><?php esc_html_e( 'Researched therapeutic signals', 'azure-synthetics' ); ?></h4>
+										<ul>
+											<?php foreach ( $profile['signals'] as $signal ) : ?>
+												<li><?php echo esc_html( $signal ); ?></li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
 									<div class="azure-science-profile-bars">
 										<?php foreach ( $profile['bars'] as $bar ) : ?>
 											<div class="azure-science-profile-bar" style="--azure-profile-width: <?php echo esc_attr( max( 0, min( 100, (int) $bar['percent'] ) ) ); ?>%;">
