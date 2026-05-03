@@ -13,7 +13,7 @@ get_header();
 			<div>
 				<p class="opt-section-kicker"><?php esc_html_e( 'Azure Synthetics', 'azure-synthetics' ); ?></p>
 				<h1 class="opt-display"><?php single_post_title(); ?></h1>
-				<p><?php esc_html_e( 'Research-use content for fitness, self-care, and evidence-aware optimization buyers.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Research-use content, product details, and support information.', 'azure-synthetics' ); ?></p>
 			</div>
 			<?php azure_opt_render_research_notice(); ?>
 		</div>

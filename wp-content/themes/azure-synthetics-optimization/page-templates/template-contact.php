@@ -16,7 +16,7 @@ $contact_status = isset( $_GET['contact_status'] ) ? sanitize_key( wp_unslash( $
 			<div>
 				<p class="opt-section-kicker"><?php esc_html_e( 'Contact', 'azure-synthetics' ); ?></p>
 				<h1 class="opt-display"><?php esc_html_e( 'Contact Azure', 'azure-synthetics' ); ?></h1>
-				<p><?php esc_html_e( 'Certificate requests, wholesale setup, storage questions, order support, and repeat-buyer help.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Order support, certificates, wholesale setup, and storage questions.', 'azure-synthetics' ); ?></p>
 			</div>
 			<div class="opt-specimen-panel">
 				<div class="opt-panel-head">
@@ -43,7 +43,7 @@ $contact_status = isset( $_GET['contact_status'] ) ? sanitize_key( wp_unslash( $
 			</div>
 			<div class="opt-form-card opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( 'Support request', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Send the details once', 'azure-synthetics' ); ?></h2>
+				<h2><?php esc_html_e( 'Send a request', 'azure-synthetics' ); ?></h2>
 				<?php if ( 'sent' === $contact_status ) : ?>
 					<div class="opt-form-notice opt-form-notice--success" role="status"><?php esc_html_e( 'Request sent. The support desk will reply by email.', 'azure-synthetics' ); ?></div>
 				<?php elseif ( 'missing' === $contact_status ) : ?>
@@ -77,7 +77,7 @@ $contact_status = isset( $_GET['contact_status'] ) ? sanitize_key( wp_unslash( $
 					</div>
 					<label><span><?php esc_html_e( 'Order or batch reference', 'azure-synthetics' ); ?></span><input type="text" name="order_reference" autocomplete="off"></label>
 					<label><span><?php esc_html_e( 'Message', 'azure-synthetics' ); ?></span><textarea name="message" rows="6" required></textarea></label>
-					<label class="opt-checkbox-row"><input type="checkbox" name="research_acknowledgment" value="1" required><span><?php esc_html_e( 'I understand Azure Synthetics products are research-use-only materials and that support does not provide personal-use, preparation, treatment, or outcome guidance.', 'azure-synthetics' ); ?></span></label>
+					<label class="opt-checkbox-row"><input type="checkbox" name="research_acknowledgment" value="1" required><span><?php esc_html_e( 'I understand Azure products are research-use-only materials and support does not provide personal-use, preparation, treatment, or outcome guidance.', 'azure-synthetics' ); ?></span></label>
 					<button class="opt-button opt-button--primary" type="submit"><?php esc_html_e( 'Send Request', 'azure-synthetics' ); ?><?php azure_opt_render_arrow_icon(); ?></button>
 				</form>
 			</div>

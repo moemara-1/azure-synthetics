@@ -77,6 +77,122 @@
 		});
 	});
 
+	const cartToast = (() => {
+		let region;
+		let timer;
+
+		const ensureRegion = () => {
+			if (region) {
+				return region;
+			}
+
+			region = document.createElement('div');
+			region.className = 'opt-cart-toast-region';
+			region.setAttribute('aria-live', 'polite');
+			region.setAttribute('aria-atomic', 'true');
+			document.body.appendChild(region);
+			return region;
+		};
+
+		const productContext = (source) => {
+			const node = source && source.jquery ? source[0] : source;
+			const scope = node ? node.closest('.opt-product-card, .opt-product-buybox, .product') : null;
+			const title = scope?.querySelector('h1, h2, h3, .product_title')?.textContent?.trim()
+				|| node?.getAttribute?.('aria-label')?.replace(/^Add to cart:\s*/i, '').replace(/[“”"]/g, '').trim()
+				|| 'Product';
+			const image = scope?.querySelector('.opt-product-card__image img, .opt-product-visual img, img.wp-post-image, img')?.getAttribute('src') || '';
+			const href = scope?.querySelector('a[href*="/product/"]')?.getAttribute('href') || '/cart/';
+
+			return { title, image, href };
+		};
+
+		const show = (context = {}) => {
+			const target = ensureRegion();
+			const title = context.title || 'Product';
+			const image = context.image || '';
+			const href = context.href || '/cart/';
+
+			window.clearTimeout(timer);
+			target.replaceChildren();
+
+			const toast = document.createElement('div');
+			const content = document.createElement('div');
+			const titleNode = document.createElement('strong');
+			const status = document.createElement('span');
+			const link = document.createElement('a');
+			const close = document.createElement('button');
+
+			toast.className = 'opt-cart-toast';
+
+			if (image) {
+				const img = document.createElement('img');
+				img.src = image;
+				img.alt = '';
+				img.loading = 'lazy';
+				toast.appendChild(img);
+			}
+
+			titleNode.textContent = title;
+			status.textContent = 'Added to cart';
+			content.append(titleNode, status);
+			link.href = href.includes('/cart/') ? href : '/cart/';
+			link.textContent = 'View cart';
+			close.type = 'button';
+			close.setAttribute('aria-label', 'Dismiss cart notification');
+			close.textContent = '×';
+			toast.append(content, link, close);
+			target.appendChild(toast);
+			target.classList.add('is-visible');
+			close.addEventListener('click', () => {
+				target.classList.remove('is-visible');
+			}, { once: true });
+
+			timer = window.setTimeout(() => {
+				target.classList.remove('is-visible');
+			}, 4200);
+		};
+
+		return { productContext, show };
+	})();
+
+	const bindWooCartToast = () => {
+		if (!window.jQuery || !window.jQuery.fn || document.body.dataset.optCartToastBound) {
+			return Boolean(document.body.dataset.optCartToastBound);
+		}
+
+		document.body.dataset.optCartToastBound = 'true';
+		window.jQuery(document.body).on('added_to_cart', (event, fragments, cartHash, button) => {
+			cartToast.show(cartToast.productContext(button));
+		});
+		return true;
+	};
+
+	if (!bindWooCartToast()) {
+		window.addEventListener('load', bindWooCartToast, { once: true });
+	}
+
+	document.addEventListener('submit', (event) => {
+		const form = event.target.closest('form.cart');
+		if (!form) {
+			return;
+		}
+
+		const button = form.querySelector('.single_add_to_cart_button');
+		const context = cartToast.productContext(button || form);
+		window.sessionStorage.setItem('optPendingCartToast', JSON.stringify(context));
+	});
+
+	const storedCartToast = window.sessionStorage.getItem('optPendingCartToast');
+	const addMessage = document.querySelector('.woocommerce-message');
+	if (storedCartToast && addMessage && /added to (your )?cart/i.test(addMessage.textContent)) {
+		try {
+			cartToast.show(JSON.parse(storedCartToast));
+		} catch (error) {
+			cartToast.show();
+		}
+		window.sessionStorage.removeItem('optPendingCartToast');
+	}
+
 	const clock = document.querySelector('[data-optimization-clock]');
 	if (clock) {
 		const tick = () => {

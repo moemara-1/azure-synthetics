@@ -26,7 +26,7 @@ if ( $is_catalog_view ) :
 					<?php if ( $description ) : ?>
 						<p><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $description ), 34 ) ); ?></p>
 					<?php else : ?>
-						<p><?php esc_html_e( 'Premium research peptides with compound identity, vial amount, purity cue, storage note, and certificate support.', 'azure-synthetics' ); ?></p>
+						<p><?php esc_html_e( 'Premium research peptides with amount, form, purity cue, storage note, and certificate support.', 'azure-synthetics' ); ?></p>
 					<?php endif; ?>
 					<div class="opt-actions">
 						<a class="opt-button opt-button--primary" href="#catalog-main"><?php esc_html_e( 'Search Compounds', 'azure-synthetics' ); ?><?php azure_opt_render_arrow_icon(); ?></a>
@@ -35,8 +35,8 @@ if ( $is_catalog_view ) :
 				</div>
 				<div class="opt-specimen-panel">
 					<div class="opt-panel-head">
-						<span class="opt-label"><?php esc_html_e( 'Buyer checklist', 'azure-synthetics' ); ?></span>
-						<span class="opt-live"><i></i><?php esc_html_e( 'RUO', 'azure-synthetics' ); ?></span>
+						<span class="opt-label"><?php esc_html_e( 'Catalog checklist', 'azure-synthetics' ); ?></span>
+						<span class="opt-live"><i></i><?php esc_html_e( 'Open', 'azure-synthetics' ); ?></span>
 					</div>
 					<dl class="opt-specimen-table">
 						<div><dt><?php esc_html_e( 'Compound', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Name + alias', 'azure-synthetics' ); ?></dd></div>

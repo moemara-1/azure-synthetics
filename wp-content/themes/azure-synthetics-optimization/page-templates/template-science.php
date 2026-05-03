@@ -17,7 +17,7 @@ $source_cards   = azure_opt_get_science_source_cards();
 			<div>
 				<p class="opt-section-kicker"><?php esc_html_e( 'Science', 'azure-synthetics' ); ?></p>
 				<h1 class="opt-display"><?php esc_html_e( 'Peptide literature', 'azure-synthetics' ); ?></h1>
-				<p><?php esc_html_e( 'Human trials where they exist. Mechanism and preclinical context where they do not. Sources stay visible.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Human trials where they exist. Mechanism and preclinical context where they do not.', 'azure-synthetics' ); ?></p>
 			</div>
 			<div class="opt-specimen-panel">
 				<div class="opt-panel-head">
@@ -33,7 +33,7 @@ $source_cards   = azure_opt_get_science_source_cards();
 		<div class="opt-container">
 			<div class="opt-section-head opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( '01 / Flagship compounds', 'azure-synthetics' ); ?></p>
-				<h2 class="opt-display"><?php esc_html_e( 'Human signal where it exists. Mechanism where it does not.', 'azure-synthetics' ); ?></h2>
+				<h2 class="opt-display"><?php esc_html_e( 'Evidence varies by compound.', 'azure-synthetics' ); ?></h2>
 			</div>
 			<div class="opt-dossier-grid opt-reveal-stagger">
 				<?php foreach ( $dossiers as $dossier ) : ?>
@@ -62,7 +62,7 @@ $source_cards   = azure_opt_get_science_source_cards();
 		<div class="opt-container opt-science-grid">
 			<div class="opt-section-head opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( '02 / Evidence tiers', 'azure-synthetics' ); ?></p>
-				<h2 class="opt-display"><?php esc_html_e( 'The stronger the evidence, the clearer the context can be.', 'azure-synthetics' ); ?></h2>
+				<h2 class="opt-display"><?php esc_html_e( 'Evidence tiers', 'azure-synthetics' ); ?></h2>
 			</div>
 			<div class="opt-card-grid opt-card-grid--four opt-reveal-stagger">
 				<?php foreach ( $evidence_tiers as $tier ) : ?>
@@ -80,7 +80,7 @@ $source_cards   = azure_opt_get_science_source_cards();
 		<div class="opt-container">
 			<div class="opt-section-head opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( '03 / Why this matters', 'azure-synthetics' ); ?></p>
-				<h2 class="opt-display"><?php esc_html_e( 'Proof before hype.', 'azure-synthetics' ); ?></h2>
+				<h2 class="opt-display"><?php esc_html_e( 'What to check', 'azure-synthetics' ); ?></h2>
 			</div>
 			<div class="opt-card-grid opt-card-grid--four opt-reveal-stagger">
 				<?php foreach ( $source_cards as $card ) : ?>

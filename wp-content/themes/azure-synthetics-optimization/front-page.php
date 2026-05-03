@@ -11,35 +11,35 @@ $calculator_url = home_url( '/calculator/' );
 $products       = azure_opt_get_featured_products( 6 );
 $protocols      = array(
 	array(
-		'title' => __( 'Choose.', 'azure-synthetics' ),
-		'copy'  => __( 'Shop peptides, blends, longevity, nootropics, recovery, metabolic, aesthetic, and supplies from one catalog.', 'azure-synthetics' ),
+		'title' => __( 'Shop.', 'azure-synthetics' ),
+		'copy'  => __( 'Browse by category, compound, amount, and form from one organized catalog.', 'azure-synthetics' ),
 	),
 	array(
-		'title' => __( 'Verify.', 'azure-synthetics' ),
-		'copy'  => __( 'Check vial amount, form, purity cue, storage note, and certificate support before checkout.', 'azure-synthetics' ),
+		'title' => __( 'Check.', 'azure-synthetics' ),
+		'copy'  => __( 'Review purity cue, storage note, certificate support, and product details.', 'azure-synthetics' ),
 	),
 	array(
-		'title' => __( 'Receive.', 'azure-synthetics' ),
-		'copy'  => __( 'Tracked fulfillment, direct support, and clear order records for repeat buyers.', 'azure-synthetics' ),
+		'title' => __( 'Order.', 'azure-synthetics' ),
+		'copy'  => __( 'Use the cart, confirm the order, and contact support for documentation or shipping questions.', 'azure-synthetics' ),
 	),
 );
 
 $culture = array(
 	array(
 		'title' => __( 'Peptides', 'azure-synthetics' ),
-		'copy'  => __( 'Single-compound research peptides with amount, form, and purity cues visible.', 'azure-synthetics' ),
+		'copy'  => __( 'Single-compound listings with amount, form, and purity cues visible.', 'azure-synthetics' ),
 	),
 	array(
 		'title' => __( 'Blends', 'azure-synthetics' ),
-		'copy'  => __( 'Paired formats for recovery, axis, and stack-architecture research.', 'azure-synthetics' ),
+		'copy'  => __( 'Multi-compound formats grouped by research category.', 'azure-synthetics' ),
 	),
 	array(
 		'title' => __( 'Longevity', 'azure-synthetics' ),
-		'copy'  => __( 'Mitochondrial, redox, senescence, and cellular-resilience compounds.', 'azure-synthetics' ),
+		'copy'  => __( 'Mitochondrial, redox, senescence, and cellular-resilience research.', 'azure-synthetics' ),
 	),
 	array(
 		'title' => __( 'Nootropics', 'azure-synthetics' ),
-		'copy'  => __( 'Focus, sleep, stress, and neuro-signaling research categories.', 'azure-synthetics' ),
+		'copy'  => __( 'Focus, sleep, stress, and neuro-signaling categories.', 'azure-synthetics' ),
 	),
 	array(
 		'title' => __( 'Recovery', 'azure-synthetics' ),
@@ -55,7 +55,7 @@ $culture = array(
 	),
 	array(
 		'title' => __( 'Supplies', 'azure-synthetics' ),
-		'copy'  => __( 'Support items for organized research math and catalog pairing.', 'azure-synthetics' ),
+		'copy'  => __( 'Support items for calculator math and clean catalog pairing.', 'azure-synthetics' ),
 	),
 );
 ?>
@@ -71,11 +71,11 @@ $culture = array(
 					<?php esc_html_e( 'Premium research peptides', 'azure-synthetics' ); ?>
 				</div>
 				<h1 class="opt-display opt-hero__title">
-					<span><b><?php esc_html_e( 'Optimize', 'azure-synthetics' ); ?></b></span>
-					<span><b><?php esc_html_e( 'like you', 'azure-synthetics' ); ?></b></span>
-					<span class="opt-rotator" data-optimization-rotator data-words="<?php echo esc_attr( wp_json_encode( array( 'mean it.', 'track it.', 'verify it.', 'built it.', 'study it.' ) ) ); ?>">mean it.</span>
+					<span><b><?php esc_html_e( 'Research', 'azure-synthetics' ); ?></b></span>
+					<span><b><?php esc_html_e( 'peptides,', 'azure-synthetics' ); ?></b></span>
+					<span class="opt-rotator" data-optimization-rotator data-words="<?php echo esc_attr( wp_json_encode( array( 'organized.', 'clear.', 'verified.', 'simple.' ) ) ); ?>">organized.</span>
 				</h1>
-				<p class="opt-hero__lead"><?php esc_html_e( 'Premium research peptides for buyers comparing compounds, purity cues, certificates, storage, and published literature before they order.', 'azure-synthetics' ); ?></p>
+				<p class="opt-hero__lead"><?php esc_html_e( 'Shop premium research peptides by category, amount, form, storage note, and certificate support.', 'azure-synthetics' ); ?></p>
 				<div class="opt-actions">
 					<a class="opt-button opt-button--primary" href="<?php echo esc_url( azure_synthetics_shop_url() ); ?>">
 						<?php esc_html_e( 'Shop Peptides', 'azure-synthetics' ); ?>
@@ -96,11 +96,11 @@ $culture = array(
 				</div>
 				<dl class="opt-specimen-table">
 					<div><dt><?php esc_html_e( 'Catalog', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Peptides, blends, longevity, recovery, nootropics, and supplies', 'azure-synthetics' ); ?></dd></div>
-					<div><dt><?php esc_html_e( 'Listings', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Amount, form, purity cue, storage, and category context', 'azure-synthetics' ); ?></dd></div>
-					<div><dt><?php esc_html_e( 'Documents', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Batch-linked certificate requests through support', 'azure-synthetics' ); ?></dd></div>
-					<div><dt><?php esc_html_e( 'Orders', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Cart review, tracked shipping support, and repeat-buyer records', 'azure-synthetics' ); ?></dd></div>
+					<div><dt><?php esc_html_e( 'Listings', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Amount, form, storage, and purity cue', 'azure-synthetics' ); ?></dd></div>
+					<div><dt><?php esc_html_e( 'Documents', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Certificate requests through support', 'azure-synthetics' ); ?></dd></div>
+					<div><dt><?php esc_html_e( 'Orders', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Cart review and tracked support', 'azure-synthetics' ); ?></dd></div>
 				</dl>
-				<p class="opt-panel-note"><?php esc_html_e( 'Built for buyers who compare the label, category, storage note, and paperwork route before checkout.', 'azure-synthetics' ); ?></p>
+				<p class="opt-panel-note"><?php esc_html_e( 'Everything important stays close to the buying path.', 'azure-synthetics' ); ?></p>
 			</aside>
 		</div>
 	</section>
@@ -108,11 +108,10 @@ $culture = array(
 	<div class="opt-ticker" aria-hidden="true">
 		<div class="opt-ticker__track">
 			<?php for ( $i = 0; $i < 2; $i++ ) : ?>
-				<span><?php esc_html_e( 'HPLC-aware verification path', 'azure-synthetics' ); ?></span>
 				<span><?php esc_html_e( 'Premium research peptides', 'azure-synthetics' ); ?></span>
-				<span><?php esc_html_e( 'Peptides / blends / longevity / nootropics', 'azure-synthetics' ); ?></span>
-				<span><?php esc_html_e( 'Certificates through support', 'azure-synthetics' ); ?></span>
-				<span><?php esc_html_e( 'Research use only', 'azure-synthetics' ); ?></span>
+				<span><?php esc_html_e( 'Clear product details', 'azure-synthetics' ); ?></span>
+				<span><?php esc_html_e( 'Certificate support', 'azure-synthetics' ); ?></span>
+				<span><?php esc_html_e( 'Simple checkout', 'azure-synthetics' ); ?></span>
 			<?php endfor; ?>
 		</div>
 	</div>
@@ -121,9 +120,9 @@ $culture = array(
 		<div class="opt-container">
 			<div class="opt-section-head opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( '01 / How it works', 'azure-synthetics' ); ?></p>
-				<h2 class="opt-display"><?php esc_html_e( 'Choose. Verify. Receive.', 'azure-synthetics' ); ?></h2>
+				<h2 class="opt-display"><?php esc_html_e( 'Shop. Check. Order.', 'azure-synthetics' ); ?></h2>
 			</div>
-			<p class="opt-lede opt-reveal"><?php esc_html_e( 'Research peptides. Clear categories. Purity cues. Certificate support. Direct checkout. Azure keeps the buying path clean from catalog to order confirmation.', 'azure-synthetics' ); ?></p>
+			<p class="opt-lede opt-reveal"><?php esc_html_e( 'Azure keeps the essentials visible: category, amount, form, storage note, purity cue, certificate support, and checkout.', 'azure-synthetics' ); ?></p>
 			<div class="opt-card-grid opt-card-grid--three opt-reveal-stagger">
 				<?php foreach ( $protocols as $index => $protocol ) : ?>
 					<article class="opt-glass-card opt-tilt">
@@ -159,7 +158,7 @@ $culture = array(
 		<div class="opt-container">
 			<div class="opt-section-head opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( '03 / Featured peptides', 'azure-synthetics' ); ?></p>
-				<h2 class="opt-display"><?php esc_html_e( 'Featured compounds.', 'azure-synthetics' ); ?></h2>
+				<h2 class="opt-display"><?php esc_html_e( 'Featured products.', 'azure-synthetics' ); ?></h2>
 			</div>
 			<div class="opt-product-grid opt-reveal-stagger">
 				<?php foreach ( $products as $product ) : ?>
@@ -195,13 +194,13 @@ $culture = array(
 		<div class="opt-container">
 			<div class="opt-section-head opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( '04 / Peptide science', 'azure-synthetics' ); ?></p>
-				<h2 class="opt-display"><?php esc_html_e( 'Receptors, pathways, evidence.', 'azure-synthetics' ); ?></h2>
+				<h2 class="opt-display"><?php esc_html_e( 'Research context.', 'azure-synthetics' ); ?></h2>
 			</div>
 			<div class="opt-dashboard-grid opt-peptide-science opt-reveal-stagger">
 				<div class="opt-panel opt-panel--molecule opt-science-visual">
 					<div class="opt-panel-head">
 						<span><?php esc_html_e( 'Peptide chain', 'azure-synthetics' ); ?></span>
-						<code><?php esc_html_e( 'Amino acid signal', 'azure-synthetics' ); ?></code>
+						<code><?php esc_html_e( 'Amino acid sequence', 'azure-synthetics' ); ?></code>
 					</div>
 					<div class="opt-crosshair">
 						<?php azure_opt_render_molecule( 'opt-molecule opt-molecule--dashboard' ); ?>
@@ -215,7 +214,7 @@ $culture = array(
 						<span><?php esc_html_e( 'Metabolic', 'azure-synthetics' ); ?></span>
 						<code><?php esc_html_e( 'GLP-1 / GIP / glucagon', 'azure-synthetics' ); ?></code>
 					</div>
-					<p><?php esc_html_e( 'Retatrutide, tirzepatide, and mazdutide sit in incretin-family literature focused on receptor signaling, appetite biology, energy balance, and body-composition markers.', 'azure-synthetics' ); ?></p>
+					<p><?php esc_html_e( 'Retatrutide, tirzepatide, semaglutide, and mazdutide belong to incretin-family research around receptor signaling, appetite biology, and energy-balance markers.', 'azure-synthetics' ); ?></p>
 				</div>
 				<div class="opt-panel">
 					<div class="opt-panel-head">
@@ -244,23 +243,23 @@ $culture = array(
 		<div class="opt-container opt-field-grid">
 			<aside class="opt-field-side opt-reveal">
 				<p class="opt-section-kicker"><?php esc_html_e( '05 / Science notes', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Human signal where it exists. Mechanism where it does not.', 'azure-synthetics' ); ?></h2>
-				<p><?php esc_html_e( 'Evidence maturity changes by compound. Some metabolic peptides have human trials; many recovery, aesthetic, and longevity compounds remain mechanism-led or preclinical-heavy.', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'Evidence varies by compound.', 'azure-synthetics' ); ?></h2>
+				<p><?php esc_html_e( 'Some metabolic peptides have human trial literature. Many recovery, aesthetic, and longevity compounds are still mechanism-led or preclinical-heavy.', 'azure-synthetics' ); ?></p>
 			</aside>
 			<div class="opt-feed opt-reveal-stagger">
 				<article>
 					<span><?php esc_html_e( 'Retatrutide', 'azure-synthetics' ); ?></span>
-					<p><?php esc_html_e( 'Strongest current human-trial maturity in the featured catalog; positioned as metabolic research, not a consumer outcome claim.', 'azure-synthetics' ); ?></p>
+					<p><?php esc_html_e( 'Strong human-trial maturity in metabolic research, without consumer outcome claims.', 'azure-synthetics' ); ?></p>
 					<time><?php esc_html_e( 'Tier A', 'azure-synthetics' ); ?></time>
 				</article>
 				<article>
 					<span><?php esc_html_e( 'BPC-157', 'azure-synthetics' ); ?></span>
-					<p><?php esc_html_e( 'High demand in recovery circles with a preclinical-heavy evidence profile and conservative product language.', 'azure-synthetics' ); ?></p>
+					<p><?php esc_html_e( 'Recovery-category interest with a preclinical-heavy evidence profile.', 'azure-synthetics' ); ?></p>
 					<time><?php esc_html_e( 'Tier C', 'azure-synthetics' ); ?></time>
 				</article>
 				<article>
 					<span><?php esc_html_e( 'MOTS-c', 'azure-synthetics' ); ?></span>
-					<p><?php esc_html_e( 'Mitochondrial and longevity-adjacent literature context for buyers who want signal without fantasy.', 'azure-synthetics' ); ?></p>
+					<p><?php esc_html_e( 'Mitochondrial and longevity-adjacent research context.', 'azure-synthetics' ); ?></p>
 					<time><?php esc_html_e( 'Tier C', 'azure-synthetics' ); ?></time>
 				</article>
 			</div>
@@ -271,8 +270,8 @@ $culture = array(
 		<div class="opt-container opt-cta__inner opt-reveal">
 			<?php azure_opt_render_molecule( 'opt-molecule opt-molecule--cta' ); ?>
 			<p class="opt-section-kicker"><?php esc_html_e( 'Home / Shop / FAQ / Calculator / Contact', 'azure-synthetics' ); ?></p>
-			<h2 class="opt-display"><?php esc_html_e( 'Research peptides. Verification first.', 'azure-synthetics' ); ?></h2>
-			<p><?php esc_html_e( 'Open the catalog, compare compounds, use the calculator for research math, and contact support for certificates.', 'azure-synthetics' ); ?></p>
+			<h2 class="opt-display"><?php esc_html_e( 'Key details up front.', 'azure-synthetics' ); ?></h2>
+			<p><?php esc_html_e( 'Open the catalog, compare product details, use the calculator, and contact support for certificates.', 'azure-synthetics' ); ?></p>
 			<div class="opt-actions opt-actions--center">
 				<a class="opt-button opt-button--primary" href="<?php echo esc_url( azure_synthetics_shop_url() ); ?>"><?php esc_html_e( 'Shop', 'azure-synthetics' ); ?><?php azure_opt_render_arrow_icon(); ?></a>
 				<a class="opt-button opt-button--ghost" href="<?php echo esc_url( $calculator_url ); ?>"><?php esc_html_e( 'Calculator', 'azure-synthetics' ); ?><?php azure_opt_render_arrow_icon(); ?></a>

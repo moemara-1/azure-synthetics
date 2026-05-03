@@ -13,7 +13,7 @@ get_header();
 			<div>
 				<p class="opt-section-kicker"><?php esc_html_e( 'Search', 'azure-synthetics' ); ?></p>
 				<h1 class="opt-display"><?php echo esc_html( sprintf( __( 'Results for "%s"', 'azure-synthetics' ), get_search_query() ) ); ?></h1>
-				<p><?php esc_html_e( 'Search the shop, FAQ, calculator, and support pages by compound, family, or proof signal.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Search the shop, FAQ, calculator, and support pages by compound or category.', 'azure-synthetics' ); ?></p>
 			</div>
 			<?php azure_opt_render_research_notice(); ?>
 		</div>

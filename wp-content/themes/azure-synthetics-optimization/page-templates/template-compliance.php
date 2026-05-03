@@ -13,7 +13,7 @@ get_header();
 			<div>
 				<p class="opt-section-kicker"><?php esc_html_e( 'Research Use Policy', 'azure-synthetics' ); ?></p>
 				<h1 class="opt-display"><?php esc_html_e( 'Research use policy', 'azure-synthetics' ); ?></h1>
-				<p><?php esc_html_e( 'Premium research materials with clear limits: no personal-use, clinical, veterinary, preparation, or outcome guidance.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Clear product limits, storage notes, and support routes.', 'azure-synthetics' ); ?></p>
 			</div>
 			<div class="opt-specimen-panel">
 				<div class="opt-panel-head">
@@ -38,9 +38,9 @@ get_header();
 			</article>
 			<article class="opt-glass-card opt-prose">
 				<h2><?php esc_html_e( 'Plain-language policy', 'azure-synthetics' ); ?></h2>
-				<p><?php esc_html_e( 'Azure Synthetics lists premium research materials with product identity, amount, form, storage, certificate support, and order support.', 'azure-synthetics' ); ?></p>
-				<p><?php esc_html_e( 'Listings show compound class, research interest, storage expectations, and certificate pathways. They do not provide personal protocols, treatment advice, or guaranteed outcomes.', 'azure-synthetics' ); ?></p>
-				<p><?php esc_html_e( 'For documentation questions, wholesale setup, certificate requests, or order support, use the contact desk and include the product or batch reference when available.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Azure lists research materials with identity, amount, form, storage, certificate support, and order support.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Listings do not provide personal protocols, treatment advice, or guaranteed outcomes.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'For certificates, wholesale setup, or order support, contact the desk with the product or batch reference when available.', 'azure-synthetics' ); ?></p>
 			</article>
 		</div>
 	</section>

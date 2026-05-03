@@ -22,7 +22,7 @@ $catalog = azure_opt_get_category_nav_items();
 					<em><?php esc_html_e( 'Premium research peptides', 'azure-synthetics' ); ?></em>
 				</span>
 			</a>
-			<p class="opt-footer__tag"><?php esc_html_e( 'Research peptides. Certificate-supported. Global dispatch.', 'azure-synthetics' ); ?></p>
+			<p class="opt-footer__tag"><?php esc_html_e( 'Premium research peptides', 'azure-synthetics' ); ?></p>
 		</div>
 		<div class="opt-footer__col">
 			<h2><?php esc_html_e( 'Catalog', 'azure-synthetics' ); ?></h2>
@@ -46,8 +46,8 @@ $catalog = azure_opt_get_category_nav_items();
 		</div>
 	</div>
 	<div class="opt-container opt-footer__base">
-		<p><?php echo esc_html( azure_opt_research_boundary_text() ); ?></p>
-		<p><?php esc_html_e( 'No clinical guidance. Verify the certificate path.', 'azure-synthetics' ); ?></p>
+		<p><?php esc_html_e( 'Premium catalog.', 'azure-synthetics' ); ?></p>
+		<p><?php esc_html_e( 'Certificate support available.', 'azure-synthetics' ); ?></p>
 	</div>
 	<div class="opt-footer__mark" aria-hidden="true">AZURE</div>
 </footer>

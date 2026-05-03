@@ -14,7 +14,7 @@ get_header();
 				<div class="opt-tool-head">
 					<p class="opt-section-kicker"><?php esc_html_e( 'Calculator', 'azure-synthetics' ); ?></p>
 					<h1><?php esc_html_e( 'Reconstitution calculator', 'azure-synthetics' ); ?></h1>
-					<p><?php esc_html_e( 'Enter vial size, fluid volume, target amount, and syringe type. The output is arithmetic only.', 'azure-synthetics' ); ?></p>
+					<p><?php esc_html_e( 'Enter vial amount, fluid volume, target amount, and syringe type.', 'azure-synthetics' ); ?></p>
 				</div>
 				<div class="opt-calc-group">
 					<h2><?php esc_html_e( 'Syringe type', 'azure-synthetics' ); ?></h2>
@@ -104,12 +104,12 @@ get_header();
 					<span class="opt-label"><?php esc_html_e( 'Tool note', 'azure-synthetics' ); ?></span>
 					<span class="opt-live"><i></i><?php esc_html_e( 'Live', 'azure-synthetics' ); ?></span>
 				</div>
-				<p><?php esc_html_e( 'No protocol builder. No medical guidance. No personal-use instructions. Confirm every calculation against your own research SOP.', 'azure-synthetics' ); ?></p>
+				<p><?php esc_html_e( 'Arithmetic only. No protocol builder, medical guidance, or personal-use instructions.', 'azure-synthetics' ); ?></p>
 				<dl class="opt-specimen-table">
 					<div><dt><?php esc_html_e( 'Inputs', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'mg / mL / mcg', 'azure-synthetics' ); ?></dd></div>
 					<div><dt><?php esc_html_e( 'Output', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'volume + unit mark', 'azure-synthetics' ); ?></dd></div>
-					<div><dt><?php esc_html_e( 'Use', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Research math only', 'azure-synthetics' ); ?></dd></div>
-					<div><dt><?php esc_html_e( 'Policy', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'RUO', 'azure-synthetics' ); ?></dd></div>
+					<div><dt><?php esc_html_e( 'Use', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Math only', 'azure-synthetics' ); ?></dd></div>
+					<div><dt><?php esc_html_e( 'Policy', 'azure-synthetics' ); ?></dt><dd><?php esc_html_e( 'Research use', 'azure-synthetics' ); ?></dd></div>
 				</dl>
 			</aside>
 		</div>

@@ -46,6 +46,17 @@ $sections             = array_map(
 	},
 	$sections
 );
+$sections             = array_values(
+	array_filter(
+		$sections,
+		static function ( $section ) {
+			$label = isset( $section['label'] ) ? strtolower( (string) $section['label'] ) : '';
+
+			return ! in_array( $label, array( 'mechanism', 'use policy' ), true );
+		}
+	)
+);
+$research_focus       = $mechanism_summary ?: $copy['research'];
 $highlights           = array_filter(
 	array(
 		$evidence_tier,
@@ -83,7 +94,7 @@ $highlights           = array_filter(
 					</div>
 				<?php endif; ?>
 				<div class="opt-proof-card">
-					<strong><?php esc_html_e( 'Certificate path', 'azure-synthetics' ); ?></strong>
+					<strong><?php esc_html_e( 'Certificate support', 'azure-synthetics' ); ?></strong>
 					<p><?php echo esc_html( $copy['verification'] ?: $proof_surface_label ?: $documentation_status ); ?></p>
 				</div>
 				<div class="opt-buy-actions">
@@ -110,25 +121,15 @@ $highlights           = array_filter(
 	<section class="opt-section">
 		<div class="opt-container opt-two-column">
 			<div class="opt-prose opt-reveal">
-				<p class="opt-section-kicker"><?php esc_html_e( 'Compound overview', 'azure-synthetics' ); ?></p>
-				<h2><?php esc_html_e( 'Compound notes.', 'azure-synthetics' ); ?></h2>
-				<p><?php echo esc_html( $copy['research'] ); ?></p>
-				<p><?php echo esc_html( $copy['fit'] ); ?></p>
-				<?php the_content(); ?>
+				<p class="opt-section-kicker"><?php esc_html_e( 'Literature', 'azure-synthetics' ); ?></p>
+				<h2><?php esc_html_e( 'Research focus', 'azure-synthetics' ); ?></h2>
+				<p><?php echo esc_html( $research_focus ); ?></p>
 			</div>
 			<div class="opt-card-grid opt-reveal-stagger">
-				<?php if ( $mechanism_summary ) : ?>
-					<article class="opt-glass-card">
-						<span class="opt-card-index"><?php esc_html_e( 'Literature', 'azure-synthetics' ); ?></span>
-						<h3><?php esc_html_e( 'Pathway focus.', 'azure-synthetics' ); ?></h3>
-						<p><?php echo esc_html( $mechanism_summary ); ?></p>
-					</article>
-				<?php endif; ?>
 				<article class="opt-glass-card">
-					<span class="opt-card-index"><?php esc_html_e( 'Use policy', 'azure-synthetics' ); ?></span>
-					<h3><?php esc_html_e( 'Catalog limits.', 'azure-synthetics' ); ?></h3>
-					<p><?php echo esc_html( $copy['caution'] ); ?></p>
-					<p><?php echo esc_html( $disclaimer ); ?></p>
+					<span class="opt-card-index"><?php esc_html_e( 'Compare', 'azure-synthetics' ); ?></span>
+					<h3><?php esc_html_e( 'Key checks', 'azure-synthetics' ); ?></h3>
+					<p><?php esc_html_e( 'Confirm category, vial amount, form, storage note, purity cue, and certificate support before ordering.', 'azure-synthetics' ); ?></p>
 				</article>
 			</div>
 		</div>
@@ -139,7 +140,7 @@ $highlights           = array_filter(
 			<div class="opt-container">
 				<div class="opt-section-head opt-reveal">
 					<p class="opt-section-kicker"><?php esc_html_e( 'Science', 'azure-synthetics' ); ?></p>
-					<h2 class="opt-display"><?php esc_html_e( 'Source trail for serious buyers.', 'azure-synthetics' ); ?></h2>
+					<h2 class="opt-display"><?php esc_html_e( 'Sources', 'azure-synthetics' ); ?></h2>
 				</div>
 				<ul class="opt-source-list opt-source-list--large opt-reveal-stagger">
 					<?php foreach ( $sources as $source ) : ?>
@@ -155,7 +156,7 @@ $highlights           = array_filter(
 			<div class="opt-container opt-two-column">
 				<div>
 					<p class="opt-section-kicker"><?php esc_html_e( 'Product FAQ', 'azure-synthetics' ); ?></p>
-					<h2 class="opt-display"><?php esc_html_e( 'Details before the cart.', 'azure-synthetics' ); ?></h2>
+					<h2 class="opt-display"><?php esc_html_e( 'Product details', 'azure-synthetics' ); ?></h2>
 				</div>
 				<div class="opt-accordion-list opt-reveal-stagger">
 					<?php foreach ( $faqs as $faq ) : ?>
@@ -172,7 +173,7 @@ $highlights           = array_filter(
 	<section class="opt-section opt-cta">
 		<div class="opt-container opt-cta__inner">
 			<p class="opt-section-kicker"><?php esc_html_e( 'Continue shopping', 'azure-synthetics' ); ?></p>
-			<h2 class="opt-display"><?php esc_html_e( 'Compare the next compound.', 'azure-synthetics' ); ?></h2>
+			<h2 class="opt-display"><?php esc_html_e( 'Related products', 'azure-synthetics' ); ?></h2>
 			<div class="opt-related-products">
 				<?php
 				woocommerce_output_related_products(

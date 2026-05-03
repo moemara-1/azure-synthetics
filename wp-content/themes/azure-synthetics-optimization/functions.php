@@ -131,6 +131,44 @@ function azure_opt_product_image( $product, $context = 'card' ) {
 	return $product instanceof WC_Product ? $product->get_image( 'large' ) : '';
 }
 
+function azure_opt_cart_item_image_markup( $product ) {
+	if ( ! $product instanceof WC_Product ) {
+		return '';
+	}
+
+	$image = azure_opt_product_image( $product, 'cart' );
+
+	if ( ! $image ) {
+		return '';
+	}
+
+	return '<span class="opt-cart-item-thumb">' . wp_kses_post( $image ) . '</span>';
+}
+
+function azure_opt_filter_cart_item_thumbnail( $thumbnail, $cart_item, $cart_item_key ) {
+	$product = isset( $cart_item['data'] ) && $cart_item['data'] instanceof WC_Product ? $cart_item['data'] : null;
+	$image   = azure_opt_cart_item_image_markup( $product );
+
+	return $image ?: $thumbnail;
+}
+add_filter( 'woocommerce_cart_item_thumbnail', 'azure_opt_filter_cart_item_thumbnail', 20, 3 );
+
+function azure_opt_filter_checkout_cart_item_name( $name, $cart_item, $cart_item_key ) {
+	if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_wc_endpoint_url( 'order-received' ) ) {
+		return $name;
+	}
+
+	$product = isset( $cart_item['data'] ) && $cart_item['data'] instanceof WC_Product ? $cart_item['data'] : null;
+	$image   = azure_opt_cart_item_image_markup( $product );
+
+	if ( ! $image ) {
+		return $name;
+	}
+
+	return '<span class="opt-checkout-item">' . $image . '<span class="opt-checkout-item__name">' . wp_kses_post( $name ) . '</span></span>';
+}
+add_filter( 'woocommerce_cart_item_name', 'azure_opt_filter_checkout_cart_item_name', 20, 3 );
+
 function azure_opt_get_featured_products( $limit = 4 ) {
 	if ( ! function_exists( 'wc_get_products' ) ) {
 		return array();
@@ -180,15 +218,15 @@ function azure_opt_get_contact_request_topics() {
 	return array(
 		array(
 			'title'       => __( 'Certificates', 'azure-synthetics' ),
-			'description' => __( 'Request available COA, HPLC, storage, and identity documentation before or after ordering.', 'azure-synthetics' ),
+			'description' => __( 'Request available COA, HPLC, storage, and identity documentation.', 'azure-synthetics' ),
 		),
 		array(
 			'title'       => __( 'Wholesale', 'azure-synthetics' ),
-			'description' => __( 'Discuss volume ordering, repeat-buyer workflows, fulfillment timing, and documentation routing.', 'azure-synthetics' ),
+			'description' => __( 'Discuss volume ordering, repeat-buyer setup, fulfillment timing, and documentation routing.', 'azure-synthetics' ),
 		),
 		array(
 			'title'       => __( 'Order Support', 'azure-synthetics' ),
-			'description' => __( 'Get help with checkout, shipping availability, product selection, and batch-reference questions.', 'azure-synthetics' ),
+			'description' => __( 'Get help with checkout, shipping availability, product selection, and batch questions.', 'azure-synthetics' ),
 		),
 	);
 }
@@ -197,15 +235,15 @@ function azure_opt_get_faq_guidance_cards() {
 	return array(
 		array(
 			'title'       => __( 'Certificates', 'azure-synthetics' ),
-			'description' => __( 'Request batch-linked paperwork through support when documentation is needed for a specific order or compound.', 'azure-synthetics' ),
+			'description' => __( 'Request available paperwork through support for a product, order, or batch.', 'azure-synthetics' ),
 		),
 		array(
 			'title'       => __( 'Storage', 'azure-synthetics' ),
-			'description' => __( 'Product records list form, vial amount, and storage notes. Confirm product-specific handling when the order arrives.', 'azure-synthetics' ),
+			'description' => __( 'Product records list form, vial amount, and storage notes.', 'azure-synthetics' ),
 		),
 		array(
 			'title'       => __( 'Calculator', 'azure-synthetics' ),
-			'description' => __( 'The calculator returns concentration, volume, and syringe-unit arithmetic. It does not create protocols.', 'azure-synthetics' ),
+			'description' => __( 'The calculator returns concentration, volume, and syringe-unit arithmetic only.', 'azure-synthetics' ),
 		),
 	);
 }
@@ -445,7 +483,7 @@ function azure_opt_get_catalog_categories() {
 		),
 		'longevity'  => array(
 			'name'        => __( 'Longevity', 'azure-synthetics' ),
-			'description' => __( 'Mitochondrial, redox, cellular-aging, and resilience research for evidence-literate self-improvement buyers.', 'azure-synthetics' ),
+			'description' => __( 'Mitochondrial, redox, cellular-aging, and resilience research.', 'azure-synthetics' ),
 		),
 		'nootropics' => array(
 			'name'        => __( 'Nootropics', 'azure-synthetics' ),
@@ -461,7 +499,7 @@ function azure_opt_get_catalog_categories() {
 		),
 		'metabolic'  => array(
 			'name'        => __( 'Metabolic', 'azure-synthetics' ),
-			'description' => __( 'Body-composition, incretin, energy-use, and metabolic-signaling research lanes.', 'azure-synthetics' ),
+			'description' => __( 'Incretin, energy-use, and metabolic-signaling research.', 'azure-synthetics' ),
 		),
 		'aesthetic'  => array(
 			'name'        => __( 'Aesthetic', 'azure-synthetics' ),
@@ -469,7 +507,7 @@ function azure_opt_get_catalog_categories() {
 		),
 		'gh-axis'    => array(
 			'name'        => __( 'GH Axis', 'azure-synthetics' ),
-			'description' => __( 'GHRH, GHS-R, IGF, and endocrine-signaling research for system-minded buyers.', 'azure-synthetics' ),
+			'description' => __( 'GHRH, GHS-R, IGF, and endocrine-signaling research.', 'azure-synthetics' ),
 		),
 		'immune'     => array(
 			'name'        => __( 'Immune', 'azure-synthetics' ),
@@ -482,8 +520,8 @@ function azure_opt_get_catalog_lanes() {
 	return array(
 		'metabolic'  => array(
 			'descriptor' => __( 'Metabolic research', 'azure-synthetics' ),
-			'subtitle'  => __( 'Lyophilized metabolic research compound for body-composition literature review', 'azure-synthetics' ),
-			'badge'     => __( 'Metabolic signal', 'azure-synthetics' ),
+			'subtitle'  => __( 'Lyophilized metabolic research compound', 'azure-synthetics' ),
+			'badge'     => __( 'Metabolic', 'azure-synthetics' ),
 			'summary'   => __( 'metabolic signaling, incretin, AMPK, adipose, and energy-balance research', 'azure-synthetics' ),
 			'mechanism' => __( 'Metabolic entries center on receptor signaling, AMPK activity, adipose vasculature, GH-fragment biology, or energy-use markers depending on compound.', 'azure-synthetics' ),
 			'evidence'  => __( 'Tier A/B', 'azure-synthetics' ),
@@ -491,7 +529,7 @@ function azure_opt_get_catalog_lanes() {
 		'recovery'   => array(
 			'descriptor' => __( 'Recovery research', 'azure-synthetics' ),
 			'subtitle'  => __( 'Lyophilized recovery-category research peptide for repair-pathway review', 'azure-synthetics' ),
-			'badge'     => __( 'Recovery interest', 'azure-synthetics' ),
+			'badge'     => __( 'Recovery', 'azure-synthetics' ),
 			'summary'   => __( 'repair-pathway, collagen matrix, epithelial, connective-tissue, and tissue-stress research', 'azure-synthetics' ),
 			'mechanism' => __( 'Recovery entries are organized around collagen-matrix signaling, angiogenesis, epithelial integrity, tissue-stress response, or host-defense literature.', 'azure-synthetics' ),
 			'evidence'  => __( 'Tier B/C', 'azure-synthetics' ),
@@ -507,7 +545,7 @@ function azure_opt_get_catalog_lanes() {
 		'longevity'  => array(
 			'descriptor' => __( 'Longevity research', 'azure-synthetics' ),
 			'subtitle'  => __( 'Lyophilized cellular-performance research compound for longevity review', 'azure-synthetics' ),
-			'badge'     => __( 'Longevity signal', 'azure-synthetics' ),
+			'badge'     => __( 'Longevity', 'azure-synthetics' ),
 			'summary'   => __( 'mitochondrial, redox, telomere, senescence, and cellular-resilience research', 'azure-synthetics' ),
 			'mechanism' => __( 'Longevity entries focus on mitochondrial signaling, redox balance, cellular stress response, senescence markers, or telomere-adjacent literature.', 'azure-synthetics' ),
 			'evidence'  => __( 'Tier B/C', 'azure-synthetics' ),
@@ -515,7 +553,7 @@ function azure_opt_get_catalog_lanes() {
 		'nootropics' => array(
 			'descriptor' => __( 'Nootropic research', 'azure-synthetics' ),
 			'subtitle'  => __( 'Lyophilized focus and sleep research peptide for neuro-signaling review', 'azure-synthetics' ),
-			'badge'     => __( 'Neuro signal', 'azure-synthetics' ),
+			'badge'     => __( 'Nootropic', 'azure-synthetics' ),
 			'summary'   => __( 'focus, stress, sleep, neurotrophic, and neuroimmune research', 'azure-synthetics' ),
 			'mechanism' => __( 'Nootropic entries focus on neurotrophic signaling, stress-response pathways, sleep architecture, neurotransmission, or neuroimmune literature.', 'azure-synthetics' ),
 			'evidence'  => __( 'Tier B/C', 'azure-synthetics' ),
@@ -523,7 +561,7 @@ function azure_opt_get_catalog_lanes() {
 		'aesthetic'  => array(
 			'descriptor' => __( 'Aesthetic research', 'azure-synthetics' ),
 			'subtitle'  => __( 'Lyophilized aesthetic-signaling research peptide for appearance-category review', 'azure-synthetics' ),
-			'badge'     => __( 'Aesthetic signal', 'azure-synthetics' ),
+			'badge'     => __( 'Aesthetic', 'azure-synthetics' ),
 			'summary'   => __( 'skin, pigment, melanocortin, copper peptide, and dermal-matrix research', 'azure-synthetics' ),
 			'mechanism' => __( 'Aesthetic entries center on melanocortin receptors, copper peptide signaling, collagen, dermal matrix, and pigment-adjacent literature.', 'azure-synthetics' ),
 			'evidence'  => __( 'Tier B/C', 'azure-synthetics' ),
@@ -531,7 +569,7 @@ function azure_opt_get_catalog_lanes() {
 		'immune'     => array(
 			'descriptor' => __( 'Immune research', 'azure-synthetics' ),
 			'subtitle'  => __( 'Lyophilized immune-signaling research peptide for pathway review', 'azure-synthetics' ),
-			'badge'     => __( 'Immune signal', 'azure-synthetics' ),
+			'badge'     => __( 'Immune', 'azure-synthetics' ),
 			'summary'   => __( 'immune, epithelial, cytokine, host-defense, and inflammatory-pathway research', 'azure-synthetics' ),
 			'mechanism' => __( 'Immune entries center on T-cell signaling, epithelial integrity, cytokine networks, host-defense peptides, and inflammatory-pathway literature.', 'azure-synthetics' ),
 			'evidence'  => __( 'Tier B/C', 'azure-synthetics' ),
@@ -539,7 +577,7 @@ function azure_opt_get_catalog_lanes() {
 		'blends'     => array(
 			'descriptor' => __( 'Blend research', 'azure-synthetics' ),
 			'subtitle'  => __( 'Lyophilized multi-compound research blend for stack-architecture review', 'azure-synthetics' ),
-			'badge'     => __( 'Stack format', 'azure-synthetics' ),
+			'badge'     => __( 'Blend', 'azure-synthetics' ),
 			'summary'   => __( 'multi-compound architecture, pathway overlap, and paired research formats', 'azure-synthetics' ),
 			'mechanism' => __( 'Blend entries list component roles, category fit, pathway overlap, and format architecture.', 'azure-synthetics' ),
 			'evidence'  => __( 'Tier B/C', 'azure-synthetics' ),
@@ -710,7 +748,7 @@ function azure_opt_get_compound_literature_copy( $slug, $name, array $lane ) {
 	$copy = array(
 		'summary'   => sprintf(
 			/* translators: 1: product name, 2: lane summary. */
-			__( '%1$s is a premium research catalog item in %2$s. Amount, form, purity cue, storage, and certificate support are listed before checkout.', 'azure-synthetics' ),
+			__( '%1$s is a premium research catalog item in %2$s. Amount, form, purity cue, storage, and certificate support are included.', 'azure-synthetics' ),
 			$name,
 			$lane['summary']
 		),
@@ -720,7 +758,7 @@ function azure_opt_get_compound_literature_copy( $slug, $name, array $lane ) {
 			$name,
 			$lane['mechanism']
 		),
-		'fit'       => __( 'For buyers comparing compounds by category, vial amount, purity cue, storage requirements, and certificate access.', 'azure-synthetics' ),
+		'fit'       => __( 'Compare category, vial amount, purity cue, storage requirements, and certificate access.', 'azure-synthetics' ),
 		'caution'   => __( 'Research material only. No personal-use, clinical, veterinary, preparation, or outcome guidance is provided.', 'azure-synthetics' ),
 	);
 
@@ -728,7 +766,7 @@ function azure_opt_get_compound_literature_copy( $slug, $name, array $lane ) {
 		'retatrutide' => array(
 			'summary'   => __( 'Retatrutide is a metabolic research peptide studied as a triple agonist at GIP, GLP-1, and glucagon receptors. It carries one of the strongest human-trial evidence profiles in the current metabolic peptide category.', 'azure-synthetics' ),
 			'mechanism' => __( 'Published retatrutide literature focuses on incretin receptor signaling, glucagon-pathway activity, body-weight endpoints, metabolic markers, and dose-ranging study design.', 'azure-synthetics' ),
-			'fit'       => __( 'Best for buyers comparing high-interest metabolic peptides with human trial context, certificate support, and strict research-use boundaries.', 'azure-synthetics' ),
+			'fit'       => __( 'Useful for comparing metabolic peptides with human-trial context and certificate support.', 'azure-synthetics' ),
 		),
 		'tirzepatide' => array(
 			'summary'   => __( 'Tirzepatide is a dual GIP / GLP-1 receptor agonist reference point in metabolic research. It anchors comparisons across incretin signaling, glycemic markers, and body-composition literature.', 'azure-synthetics' ),
@@ -761,7 +799,7 @@ function azure_opt_get_compound_literature_copy( $slug, $name, array $lane ) {
 		'bpc-157' => array(
 			'summary'   => __( 'BPC-157 is a recovery-category research peptide with heavy interest around tissue-stress, tendon, gut, and wound-model literature. Human evidence remains limited compared with market demand.', 'azure-synthetics' ),
 			'mechanism' => __( 'BPC-157 literature centers on angiogenesis, nitric-oxide signaling, fibroblast activity, gastrointestinal models, tendon and ligament injury models, and preclinical repair pathways.', 'azure-synthetics' ),
-			'fit'       => __( 'For buyers comparing recovery-category compounds with the human-evidence gap stated plainly.', 'azure-synthetics' ),
+			'fit'       => __( 'Useful for comparing recovery-category compounds while keeping the human-evidence gap clear.', 'azure-synthetics' ),
 		),
 		'tb-500' => array(
 			'summary'   => __( 'TB-500 is a thymosin beta-4 fragment research peptide connected to actin regulation, cell migration, tissue-stress, and wound-model literature.', 'azure-synthetics' ),
@@ -786,12 +824,12 @@ function azure_opt_get_compound_literature_copy( $slug, $name, array $lane ) {
 		'cjc-1295-ipamorelin' => array(
 			'summary'   => __( 'CJC-1295 / Ipamorelin combines a GHRH analog research peptide with a selective ghrelin receptor secretagogue reference, creating a GH-axis research stack.', 'azure-synthetics' ),
 			'mechanism' => __( 'The literature centers on GHRH signaling, GHS-R activity, pulsatile GH release models, IGF-1 markers, and secretagogue selectivity.', 'azure-synthetics' ),
-			'fit'       => __( 'For buyers comparing GH-axis compounds by receptor class, format, certificate path, and storage requirements.', 'azure-synthetics' ),
+			'fit'       => __( 'Useful for comparing GH-axis compounds by receptor class, format, certificate path, and storage requirements.', 'azure-synthetics' ),
 		),
 		'mots-c' => array(
 			'summary'   => __( 'MOTS-c is a mitochondrial-derived peptide studied in metabolic stress, AMPK-adjacent signaling, glucose metabolism, and cellular adaptation literature.', 'azure-synthetics' ),
 			'mechanism' => __( 'MOTS-c literature centers on mitochondrial-nuclear signaling, AMPK pathway interaction, metabolic flexibility, cellular stress response, and aging-marker models.', 'azure-synthetics' ),
-			'fit'       => __( 'For buyers comparing longevity and cellular-performance compounds with mechanism-led evidence context.', 'azure-synthetics' ),
+			'fit'       => __( 'Useful for comparing longevity and cellular-performance compounds with mechanism-led evidence context.', 'azure-synthetics' ),
 		),
 		'ss-31-elamipretide' => array(
 			'summary'   => __( 'SS-31 / Elamipretide is a mitochondria-targeting peptide studied around cardiolipin interaction, mitochondrial membrane function, and oxidative-stress models.', 'azure-synthetics' ),
@@ -836,7 +874,7 @@ function azure_opt_get_compound_literature_copy( $slug, $name, array $lane ) {
 		'bacteriostatic-water' => array(
 			'summary'   => __( 'Bacteriostatic Water is a support item for research math and catalog pairing, labeled for sterile workflow organization.', 'azure-synthetics' ),
 			'mechanism' => __( 'This supply listing supports concentration calculations and storage planning. It is not a peptide and does not create protocol guidance.', 'azure-synthetics' ),
-			'fit'       => __( 'For buyers organizing research calculator inputs and supply pairing.', 'azure-synthetics' ),
+			'fit'       => __( 'Useful for organizing calculator inputs and supply pairing.', 'azure-synthetics' ),
 		),
 	);
 
@@ -862,7 +900,7 @@ function azure_opt_get_catalog_product_text( array $item, array $lane ) {
 		'<p>%s</p><p>%s</p><p>%s</p>',
 		esc_html( $summary ),
 		esc_html( $mechanism ),
-		esc_html__( 'Product details include amount, form, purity cue, storage note, and certificate support before checkout.', 'azure-synthetics' )
+		esc_html__( 'Includes amount, form, purity cue, storage note, and certificate support.', 'azure-synthetics' )
 	);
 
 	return array(
@@ -894,7 +932,7 @@ function azure_opt_save_catalog_meta( $product_id, array $item, array $lane, arr
 		),
 		array(
 			'question' => __( 'Does Azure provide protocols?', 'azure-synthetics' ),
-			'answer'   => __( 'No. The catalog is research-use-only and does not provide personal health, performance, treatment, or outcome guidance.', 'azure-synthetics' ),
+			'answer'   => __( 'No. The catalog does not provide preparation, treatment, personal-use, or outcome guidance.', 'azure-synthetics' ),
 		),
 	);
 
@@ -906,7 +944,7 @@ function azure_opt_save_catalog_meta( $product_id, array $item, array $lane, arr
 		'_azure_evidence_tier'           => $lane['evidence'],
 		'_azure_mechanism_summary'       => $text['mechanism'],
 		'_azure_documentation_status'    => __( 'Certificates by support', 'azure-synthetics' ),
-		'_azure_proof_surface_label'     => __( 'Purity cue, category context, storage note, and batch-linked certificate support before checkout.', 'azure-synthetics' ),
+		'_azure_proof_surface_label'     => __( 'Purity cue, storage note, and certificate support.', 'azure-synthetics' ),
 		'_azure_purity_percent'          => $item['purity'],
 		'_azure_form_factor'             => 'supplies' === $item['lane'] ? __( 'Sterile solution', 'azure-synthetics' ) : __( 'Lyophilized powder', 'azure-synthetics' ),
 		'_azure_vial_amount'             => $item['amount'],
@@ -922,7 +960,7 @@ function azure_opt_save_catalog_meta( $product_id, array $item, array $lane, arr
 		),
 		'_azure_meta_description'        => sprintf(
 			/* translators: %s: product name. */
-			__( 'Shop %s with amount, form, purity cue, storage note, certificate support, and concise research catalog context.', 'azure-synthetics' ),
+			__( 'Shop %s with amount, form, purity cue, storage note, and certificate support.', 'azure-synthetics' ),
 			$item['name']
 		),
 		'_azure_product_faqs'            => wp_json_encode( $faqs ),
@@ -1009,7 +1047,7 @@ function azure_opt_seed_catalog_once() {
 		return;
 	}
 
-	$version       = '2026-05-03-direct-copy-literature';
+	$version       = '2026-05-03-simplified-copy';
 	$current_count = wp_count_posts( 'product' );
 	$published     = isset( $current_count->publish ) ? (int) $current_count->publish : 0;
 
@@ -1156,20 +1194,20 @@ function azure_opt_get_product_copy( $product ) {
 
 	$exact = array(
 		'retatrutide' => array(
-			'badge'    => __( 'Metabolic flagship', 'azure-synthetics' ),
-			'category' => __( 'Body-composition research', 'azure-synthetics' ),
+			'badge'    => __( 'Metabolic', 'azure-synthetics' ),
+			'category' => __( 'Metabolic research', 'azure-synthetics' ),
 			'summary'  => $literature['summary'],
 			'research' => $literature['mechanism'],
 		),
 		'bpc-157' => array(
-			'badge'    => __( 'Recovery interest', 'azure-synthetics' ),
-			'category' => __( 'Training-stress research', 'azure-synthetics' ),
+			'badge'    => __( 'Recovery', 'azure-synthetics' ),
+			'category' => __( 'Recovery research', 'azure-synthetics' ),
 			'summary'  => $literature['summary'],
 			'research' => $literature['mechanism'],
 		),
 		'mots-c' => array(
-			'badge'    => __( 'Mitochondrial signal', 'azure-synthetics' ),
-			'category' => __( 'Longevity + energy research', 'azure-synthetics' ),
+			'badge'    => __( 'Longevity', 'azure-synthetics' ),
+			'category' => __( 'Longevity research', 'azure-synthetics' ),
 			'summary'  => $literature['summary'],
 			'research' => $literature['mechanism'],
 		),
@@ -1187,7 +1225,7 @@ function azure_opt_get_product_copy( $product ) {
 
 	if ( preg_match( '/retatrutide|tirzepatide|semaglutide|mazdutide|aod|adipotide|aicar|tesamorelin/', $slug ) ) {
 		$copy['badge']    = __( 'Metabolic research', 'azure-synthetics' );
-		$copy['category'] = __( 'Body-composition research', 'azure-synthetics' );
+		$copy['category'] = __( 'Metabolic research', 'azure-synthetics' );
 	} elseif ( preg_match( '/bpc|tb-500|kpv|ll-37|ghk/', $slug ) ) {
 		$copy['badge']    = __( 'Recovery research', 'azure-synthetics' );
 		$copy['category'] = __( 'Repair-pathway interest', 'azure-synthetics' );
@@ -1202,7 +1240,7 @@ function azure_opt_get_product_copy( $product ) {
 		$copy['category'] = __( 'Focus + sleep research', 'azure-synthetics' );
 	} elseif ( preg_match( '/melanotan|pt-141|snap/', $slug ) ) {
 		$copy['badge']    = __( 'Aesthetic research', 'azure-synthetics' );
-		$copy['category'] = __( 'Skin + aesthetic signaling', 'azure-synthetics' );
+		$copy['category'] = __( 'Aesthetic research', 'azure-synthetics' );
 	} elseif ( preg_match( '/water|supply|supplies/', $slug ) ) {
 		$copy['badge']    = __( 'Supply item', 'azure-synthetics' );
 		$copy['category'] = __( 'Research support', 'azure-synthetics' );
