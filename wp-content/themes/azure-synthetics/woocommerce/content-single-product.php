@@ -22,6 +22,7 @@ $disclaimer            = function_exists( 'azure_synthetics_get_product_meta_val
 $sections              = function_exists( 'azure_synthetics_get_product_sections' ) ? azure_synthetics_get_product_sections( $product_id ) : array();
 $faqs                  = function_exists( 'azure_synthetics_get_product_faqs' ) ? azure_synthetics_get_product_faqs( $product_id ) : array();
 $title                 = function_exists( 'azure_synthetics_get_product_display_title' ) ? azure_synthetics_get_product_display_title( $product_id ) : get_the_title( $product_id );
+$product_notices       = '';
 $highlights            = array_filter(
 	array(
 		$evidence_tier,
@@ -31,10 +32,21 @@ $highlights            = array_filter(
 		function_exists( 'azure_synthetics_get_product_meta_value' ) ? azure_synthetics_get_product_meta_value( $product_id, 'vial_amount', '' ) : '',
 	)
 );
+
+if ( function_exists( 'wc_print_notices' ) ) {
+	ob_start();
+	wc_print_notices();
+	$product_notices = trim( ob_get_clean() );
+}
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 	<div class="azure-shell">
 		<?php woocommerce_breadcrumb(); ?>
+		<?php if ( $product_notices ) : ?>
+			<div class="azure-product-notices" role="status" aria-live="polite">
+				<?php echo $product_notices; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</div>
+		<?php endif; ?>
 		<div class="azure-product-layout">
 			<div class="azure-product-gallery">
 				<?php
@@ -80,7 +92,6 @@ $highlights            = array_filter(
 					<strong><?php esc_html_e( 'Research notice', 'azure-synthetics' ); ?></strong>
 					<p><?php echo esc_html( $disclaimer ); ?></p>
 				</div>
-				<?php do_action( 'azure_synthetics_before_payment_methods' ); ?>
 				<?php woocommerce_template_single_add_to_cart(); ?>
 			</div>
 		</div>

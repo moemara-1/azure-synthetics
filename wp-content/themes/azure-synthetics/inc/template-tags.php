@@ -111,6 +111,15 @@ function azure_synthetics_account_url() {
 }
 
 /**
+ * Accessible account link label.
+ *
+ * @return string
+ */
+function azure_synthetics_account_label() {
+	return is_user_logged_in() ? __( 'My account', 'azure-synthetics' ) : __( 'Account and sign in', 'azure-synthetics' );
+}
+
+/**
  * Safe cart URL helper.
  *
  * @return string

@@ -37,12 +37,56 @@ class Checkout {
 		$this->compliance = $compliance;
 
 		add_action( 'woocommerce_init', array( $this, 'register_block_field' ) );
+		add_filter( 'woocommerce_checkout_registration_required', array( $this, 'allow_guest_checkout' ) );
+		add_filter( 'woocommerce_checkout_registration_enabled', array( $this, 'allow_checkout_registration' ) );
+		add_filter( 'pre_option_woocommerce_enable_guest_checkout', array( $this, 'enable_customer_account_option' ) );
+		add_filter( 'pre_option_woocommerce_enable_signup_and_login_from_checkout', array( $this, 'enable_customer_account_option' ) );
+		add_filter( 'pre_option_woocommerce_enable_myaccount_registration', array( $this, 'enable_customer_account_option' ) );
+		add_filter( 'pre_option_woocommerce_registration_generate_username', array( $this, 'enable_customer_account_option' ) );
+		add_filter( 'pre_option_woocommerce_registration_generate_password', array( $this, 'enable_customer_account_option' ) );
+		add_filter( 'pre_option_woocommerce_cart_redirect_after_add', array( $this, 'disable_cart_redirect_option' ) );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'register_classic_field' ) );
 		add_action( 'woocommerce_checkout_process', array( $this, 'validate_classic_field' ) );
 		add_action( 'woocommerce_checkout_create_order', array( $this, 'save_classic_field' ) );
 		add_action( 'woocommerce_set_additional_field_value', array( $this, 'sync_block_field' ), 10, 4 );
 		add_action( 'woocommerce_admin_order_data_after_billing_address', array( $this, 'render_admin_meta' ) );
 		add_action( 'woocommerce_email_after_order_table', array( $this, 'render_email_meta' ), 20, 4 );
+	}
+
+	/**
+	 * Keep checkout open to guests.
+	 *
+	 * @return bool
+	 */
+	public function allow_guest_checkout() {
+		return false;
+	}
+
+	/**
+	 * Allow customers to create an account during checkout.
+	 *
+	 * @return bool
+	 */
+	public function allow_checkout_registration() {
+		return true;
+	}
+
+	/**
+	 * Enable WooCommerce account/guest checkout options.
+	 *
+	 * @return string
+	 */
+	public function enable_customer_account_option() {
+		return 'yes';
+	}
+
+	/**
+	 * Keep product-page add-to-cart feedback on the product page.
+	 *
+	 * @return string
+	 */
+	public function disable_cart_redirect_option() {
+		return 'no';
 	}
 
 	/**

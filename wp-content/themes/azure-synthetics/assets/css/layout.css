@@ -95,10 +95,11 @@
 .azure-site-nav__actions {
 	display: flex;
 	align-items: center;
-	gap: 18px;
+	gap: 12px;
 	flex-shrink: 0;
 }
 
+.azure-site-nav__icon-link,
 .azure-site-nav__cart {
 	position: relative;
 	display: inline-flex;
@@ -113,12 +114,25 @@
 	color: var(--azure-teal);
 }
 
+.azure-site-nav__account {
+	border-color: rgba(231, 212, 171, 0.32);
+	background: rgba(231, 212, 171, 0.08);
+	color: var(--azure-gold-soft);
+}
+
 .azure-site-header--light .azure-site-nav__cart {
 	border-color: rgba(47, 134, 152, 0.18);
 	background: rgba(47, 134, 152, 0.06);
 	color: var(--azure-teal-strong);
 }
 
+.azure-site-header--light .azure-site-nav__account {
+	border-color: rgba(15, 25, 33, 0.14);
+	background: rgba(15, 25, 33, 0.04);
+	color: var(--azure-ink);
+}
+
+.azure-site-nav__icon,
 .azure-site-nav__cart-icon {
 	display: inline-flex;
 	width: 18px;
@@ -126,6 +140,7 @@
 	pointer-events: none;
 }
 
+.azure-site-nav__icon svg,
 .azure-site-nav__cart-icon svg {
 	display: block;
 	width: 100%;

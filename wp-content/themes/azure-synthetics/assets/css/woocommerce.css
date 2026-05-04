@@ -271,6 +271,16 @@
 	align-items: start;
 }
 
+.azure-product-notices {
+	margin-bottom: var(--azure-space-24);
+}
+
+.azure-product-notices .woocommerce-message {
+	margin: 0;
+	border-color: rgba(112, 201, 191, 0.24);
+	background: rgba(112, 201, 191, 0.14);
+}
+
 .azure-product-gallery,
 .azure-product-summary-card,
 .azure-product-section,

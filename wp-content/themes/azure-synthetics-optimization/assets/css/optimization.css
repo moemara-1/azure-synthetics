@@ -317,6 +317,35 @@ body.opt-site {
 	text-transform: uppercase;
 }
 
+.opt-account {
+	display: inline-grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid var(--opt-line-strong);
+	border-radius: 999px;
+	color: var(--opt-ink-dim);
+	background: oklch(100% 0 0 / 0.02);
+	transition: color 240ms var(--opt-ease), border-color 240ms var(--opt-ease), background 240ms var(--opt-ease);
+}
+
+.opt-account:hover,
+.opt-account:focus-visible {
+	color: var(--opt-teal);
+	border-color: var(--opt-teal);
+	background: oklch(80% 0.105 190 / 0.08);
+}
+
+.opt-account svg {
+	width: 19px;
+	height: 19px;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.8;
+}
+
 .opt-cart b {
 	display: grid;
 	place-items: center;
@@ -1843,6 +1872,16 @@ body.opt-site {
 	padding: clamp(32px, 5vh, 64px) 0;
 	border-bottom: 1px solid var(--opt-line);
 	background: linear-gradient(120deg, var(--opt-black), oklch(14% 0.03 200), var(--opt-black));
+}
+
+.opt-product-notices {
+	margin-bottom: var(--opt-space-5);
+}
+
+.opt-product-notices .woocommerce-message {
+	margin: 0;
+	border-color: oklch(80% 0.105 190 / 0.42);
+	background: oklch(80% 0.105 190 / 0.1);
 }
 
 .opt-product-hero__grid {

@@ -23,6 +23,7 @@ $disclaimer           = azure_opt_research_boundary_text();
 $sections             = function_exists( 'azure_synthetics_get_product_sections' ) ? azure_synthetics_get_product_sections( $product_id ) : array();
 $faqs                 = function_exists( 'azure_synthetics_get_product_faqs' ) ? azure_synthetics_get_product_faqs( $product_id ) : array();
 $sources              = azure_opt_get_product_sources( $product->get_slug() );
+$product_notices      = '';
 $sections             = array_map(
 	static function ( $section ) {
 		if ( ! isset( $section['label'] ) ) {
@@ -66,9 +67,20 @@ $highlights           = array_filter(
 		azure_opt_meta( $product_id, 'vial_amount', '' ),
 	)
 );
+
+if ( function_exists( 'wc_print_notices' ) ) {
+	ob_start();
+	wc_print_notices();
+	$product_notices = trim( ob_get_clean() );
+}
 ?>
 <article id="product-<?php the_ID(); ?>" <?php wc_product_class( 'opt-product-dossier', $product ); ?>>
 	<section class="opt-product-hero">
+		<?php if ( $product_notices ) : ?>
+			<div class="opt-container opt-product-notices" role="status" aria-live="polite">
+				<?php echo $product_notices; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</div>
+		<?php endif; ?>
 		<div class="opt-container opt-product-hero__grid">
 			<div class="opt-product-visual opt-reveal">
 				<?php echo wp_kses_post( azure_opt_product_image( $product, 'hero' ) ); ?>

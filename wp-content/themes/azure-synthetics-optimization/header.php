@@ -37,6 +37,12 @@ $nav_items  = azure_opt_get_primary_nav_items();
 		<?php endforeach; ?>
 	</nav>
 	<div class="opt-nav__actions">
+		<a class="opt-account" href="<?php echo esc_url( azure_synthetics_account_url() ); ?>" aria-label="<?php echo esc_attr( azure_synthetics_account_label() ); ?>">
+			<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+				<path d="M12 12.25a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Z" />
+				<path d="M4.75 20.25a7.25 7.25 0 0 1 14.5 0" />
+			</svg>
+		</a>
 		<a class="opt-cart" href="<?php echo esc_url( azure_synthetics_cart_url() ); ?>" aria-label="<?php echo esc_attr( sprintf( _n( 'View cart, %d item', 'View cart, %d items', $cart_count, 'azure-synthetics' ), $cart_count ) ); ?>">
 			<span><?php esc_html_e( 'Cart', 'azure-synthetics' ); ?></span>
 			<b><?php echo esc_html( $cart_count ); ?></b>

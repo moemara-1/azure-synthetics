@@ -1,6 +1,6 @@
 <?php
 /**
- * Gateway compatibility scaffolding.
+ * Future gateway compatibility extension point.
  *
  * @package AzureSyntheticsCore
  */
@@ -13,29 +13,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Gateway_Compat {
 	/**
-	 * Compliance manager.
-	 *
-	 * @var Compliance
-	 */
-	private $compliance;
-
-	/**
 	 * Constructor.
-	 *
-	 * @param Compliance $compliance Compliance manager.
 	 */
-	public function __construct( Compliance $compliance ) {
-		$this->compliance = $compliance;
-
-		add_action( 'woocommerce_review_order_before_payment', array( $this, 'render_gateway_notice' ), 5 );
+	public function __construct() {
+		add_filter( 'woocommerce_available_payment_gateways', array( $this, 'remove_manual_gateways' ) );
 	}
 
 	/**
-	 * Render gateway notice for shortcode checkout fallback.
+	 * Remove offline/manual gateways until a real payment integration is configured.
 	 *
-	 * @return void
+	 * @param array $gateways Available gateways keyed by gateway ID.
+	 * @return array
 	 */
-	public function render_gateway_notice() {
-		echo '<p class="azure-gateway-note">' . esc_html__( 'Payment methods remain WooCommerce-native so compatible high-risk or specialist gateways can be integrated later without rewriting the checkout.', 'azure-synthetics-core' ) . '</p>';
+	public function remove_manual_gateways( $gateways ) {
+		foreach ( array( 'bacs', 'cheque', 'cod' ) as $gateway_id ) {
+			unset( $gateways[ $gateway_id ] );
+		}
+
+		return $gateways;
 	}
 }

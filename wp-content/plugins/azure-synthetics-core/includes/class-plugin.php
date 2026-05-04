@@ -74,7 +74,7 @@ class Plugin {
 		$this->product_meta   = new Product_Meta();
 		$this->compliance     = new Compliance();
 		$this->checkout       = new Checkout( $this->compliance );
-		$this->gateway_compat = new Gateway_Compat( $this->compliance );
+		$this->gateway_compat = new Gateway_Compat();
 		$this->email_branding = new Email_Branding( $this->compliance );
 
 		register_activation_hook( AZURE_SYNTHETICS_CORE_FILE, array( __CLASS__, 'activate' ) );
@@ -91,5 +91,12 @@ class Plugin {
 				update_option( Compliance::option_key( $key ), $value );
 			}
 		}
+
+		update_option( 'woocommerce_enable_guest_checkout', 'yes' );
+		update_option( 'woocommerce_enable_signup_and_login_from_checkout', 'yes' );
+		update_option( 'woocommerce_enable_myaccount_registration', 'yes' );
+		update_option( 'woocommerce_registration_generate_username', 'yes' );
+		update_option( 'woocommerce_registration_generate_password', 'yes' );
+		update_option( 'woocommerce_cart_redirect_after_add', 'no' );
 	}
 }

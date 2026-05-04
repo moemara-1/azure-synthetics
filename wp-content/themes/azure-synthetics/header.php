@@ -50,7 +50,14 @@ $cart_count = azure_synthetics_cart_count();
 			);
 			?>
 			<div class="azure-site-nav__actions">
-				<a class="azure-site-nav__link" href="<?php echo esc_url( azure_synthetics_account_url() ); ?>"><?php esc_html_e( 'Account', 'azure-synthetics' ); ?></a>
+				<a class="azure-site-nav__icon-link azure-site-nav__account" href="<?php echo esc_url( azure_synthetics_account_url() ); ?>" aria-label="<?php echo esc_attr( azure_synthetics_account_label() ); ?>">
+					<span class="azure-site-nav__icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" focusable="false">
+							<path d="M12 12.25a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Z" />
+							<path d="M4.75 20.25a7.25 7.25 0 0 1 14.5 0" />
+						</svg>
+					</span>
+				</a>
 				<a class="azure-site-nav__cart" href="<?php echo esc_url( azure_synthetics_cart_url() ); ?>" aria-label="<?php echo esc_attr( sprintf( _n( 'View cart, %d item', 'View cart, %d items', $cart_count, 'azure-synthetics' ), $cart_count ) ); ?>" data-cart-count="<?php echo esc_attr( $cart_count ); ?>">
 					<span class="azure-site-nav__cart-icon" aria-hidden="true">
 						<svg viewBox="0 0 24 24" focusable="false">
